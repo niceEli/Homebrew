@@ -18,7 +18,7 @@ export default function kMatterTest () {
         k.color(255,0,0),
         k.rotate(0),
         // Matter For Rectangles
-        matterRect(engine)
+        matterRect(engine, { angle: 0.78539816})
     ])
     var PlatForm = k.add([
         k.pos(k.center().x - 64, k.center().y + 64),
