@@ -6,7 +6,6 @@ import matterCircle from '../kMatter/kMatterCircle'
 export default function kMatterTest () {
     // Setup Engine
     const engine = Matter.Engine.create()
-    engine.enableSleeping = true
     Matter.Composite.create(engine)
     k.onUpdate(() => {
         Matter.Engine.update(engine, k.dt() * 1000)
@@ -71,6 +70,6 @@ export default function kMatterTest () {
     k.onUpdate(() => {
         // k.camPos is the cameras vector 2 position
         // RigidBody.pos is the vector 2 position of the obj with variable RigidBody (Red square)
-        k.camPos(RigidBody.pos)
+        k.camPos(RigidBody.pos);
     })
 }
