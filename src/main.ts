@@ -14,6 +14,6 @@ k.scene('Jillian-Test-Scene', Jilian)
 
 //k.go('Hello-World-EX'); // This is a template scene
 
-//k.go('kMatter-Test') // This is a physics (matter) template scene
+k.go('kMatter-Test') // This is a physics (matter) template scene
 
-k.go('Jillian-Test-Scene')
+//k.go('Jillian-Test-Scene')
