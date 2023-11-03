@@ -6,12 +6,11 @@ import matterCircle from '../kMatter/kMatterCircle'
 export default function kMatterTest () {
     // Setup Engine
     const engine = Matter.Engine.create()
-    engine.enableSleeping =
+    engine.enableSleeping = true
     Matter.Composite.create(engine)
     k.onUpdate(() => {
         Matter.Engine.update(engine, k.dt() * 1000)
     })
-
     // Actors
     var RigidBody = k.add([
         k.pos(k.center().x, k.center().y),
@@ -20,7 +19,7 @@ export default function kMatterTest () {
         k.color(255,0,0),
         k.rotate(0),
         // Matter For Rectangles
-        matterRect(engine, { angle: 0.78539816})
+        matterRect(engine, { angle: 0.78539816 })
     ])
     var RigidBodyC = k.add([
         k.pos(k.center().x, k.center().y-40),
@@ -67,4 +66,11 @@ export default function kMatterTest () {
         // Matter For Rectangles
         matterRect(engine, { isStatic: true} )
     ])
+
+    // This script makes the camera follow the square (it runs on update)
+    k.onUpdate(() => {
+        // k.camPos is the cameras vector 2 position
+        // RigidBody.pos is the vector 2 position of the obj with variable RigidBody (Red square)
+        k.camPos(RigidBody.pos)
+    })
 }
