@@ -38,4 +38,13 @@ export default function kMatterTest () {
         // Matter For Rectangles
         matterRect(engine, { isStatic: true})
     ])
+    var PlatForm3 = k.add([
+        k.pos(k.center().x, k.center().y + 256),
+        k.anchor('center'),
+        k.rect(256,32),
+        k.color(0,0,0),
+        k.rotate(0),
+        // Matter For Rectangles
+        matterRect(engine, { isStatic: true})
+    ])
 }
