@@ -57,7 +57,7 @@ export default function kMatterTest () {
         matterRect(engine, { isStatic: true, angle: 0.78539816})
     ])
     var PlatForm4 = k.add([
-        k.pos(k.center().x + 208, k.center().y + 341),
+        k.pos(k.center().x + 208, k.center().y + 342),
         k.anchor('center'),
         k.rect(256,32),
         k.color(0,0,0),
