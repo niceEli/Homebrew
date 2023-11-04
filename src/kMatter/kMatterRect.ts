@@ -13,6 +13,14 @@ export default function matterRect (engine, options = {}) {
             if (!this.body){
                 return
             }
+            let collisions = 0
+            for (let i = 0; i < engine.world.bodies.length; i++) {
+                const element = engine.world.bodies[i];
+                const collision = Matter.Collision.collides(this.body, element)
+                if (collision != null && collision.bodyA != collision.bodyB){
+                    collisions++
+                }
+            }
             this.pos.x = this.body.position.x
             this.pos.y = this.body.position.y
             this.angle = this.body.angle * (180/Math.PI)
