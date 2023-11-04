@@ -1,7 +1,7 @@
 import k from '../kaboom'
 import Matter from 'matter-js'
 
-export default function PlayerPawnCircle (engine, options = {}, rad?) {
+export default function PlayerPawnCircle (engine, options = {}, rad?, rotate = false) {
     return{
         add(){
             const { x, y } = this.pos
@@ -23,7 +23,10 @@ export default function PlayerPawnCircle (engine, options = {}, rad?) {
             }
             this.pos.x = this.body.position.x
             this.pos.y = this.body.position.y
-
+            if (rotate){
+                this.angle = this.body.angle * (180/Math.PI)
+            }
+            
             if (k.isKeyDown("left") || k.isKeyDown("a")){
                 Matter.Body.applyForce(this.body, this.body.position, k.vec2(-0.001,0))
             } 

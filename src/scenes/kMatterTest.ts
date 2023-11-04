@@ -11,6 +11,7 @@ export default function kMatterTest () {
     k.onUpdate(() => {
         Matter.Engine.update(engine, k.dt() * 1000)
     })
+    
     // Actors
     var RigidBody = k.add([
         k.pos(k.center().x, k.center().y),
