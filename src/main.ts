@@ -16,4 +16,4 @@ k.scene('Jillian-Test-Scene', Jilian)
 
 k.go('kMatter-Test') // This is a physics (matter) template scene
 
-//k.go('Jillian-Test-Scene')
+//k.go('Jillian-Test-Scene') // This is a scene made by my friend that doesnt know how to program
