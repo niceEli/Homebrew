@@ -1,11 +1,11 @@
 import k from '../kaboom'
 import Matter from 'matter-js'
 
-export default function matterCircle (engine, options = {}) {
+export default function matterCircle (engine, options = {}, rad?) {
     return{
         add(){
             const { x, y } = this.pos
-            const { radius } = this
+            const { radius = rad } = this
             this.body = Matter.Bodies.circle(x, y, radius, options)
             Matter.Composite.add(engine.world, this.body)
         },

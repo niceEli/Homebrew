@@ -11,6 +11,8 @@ export default function kMatterTest () {
     k.onUpdate(() => {
         Matter.Engine.update(engine, k.dt() * 1000)
     })
+
+    k.loadSprite("RAD", "Radians.jpg")
     
     // Actors
     var RigidBody = k.add([
