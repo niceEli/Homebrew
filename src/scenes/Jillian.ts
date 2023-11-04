@@ -12,16 +12,16 @@ export default function Jilian () {
 
     var RB2 = k.add([
         k.pos(k.center()),
-        k.anchor('center'),
-        k.rect(32,32),
-        k.color(255,0,0),
+        //k.anchor('center'),
+        //k.rect(32,32),
+        //k.color(255,0,0),
         k.rotate(0)
     ])
     var RB3 = k.add([
         k.pos(k.center()),
-        k.anchor('center'),
-        k.rect(32,32),
-        k.color(255,0,0),
+        //k.anchor('center'),
+        //k.rect(32,32),
+        //k.color(255,0,0),
         k.rotate(0)
     ])
     
