@@ -1,7 +1,7 @@
 import kaboom from "kaboom"
 
 export const k = kaboom({
-    background: [0,0,0,0]
+    background: [255,255,255,255]
 })
 
 export default k

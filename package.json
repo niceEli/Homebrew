@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel src/index.html -p 8000 --dist-dir public --no-cache",
-    "build": "parcel build --dist-dir public",
+    "build": "parcel build --dist-dir public --public-url ./",
     "parcel": "parcel"
   },
   "author": "",
@@ -16,5 +16,9 @@
     "matter-js": "^0.19.0",
     "parcel": "^2.10.2",
     "parcel-reporter-static-files-copy": "^1.5.3"
+  },
+  "staticFiles": {
+    "staticPath": "./src/res",
+    "staticOutPath": "./res"
   }
 }
