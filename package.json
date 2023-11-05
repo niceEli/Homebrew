@@ -10,7 +10,7 @@
     "parcel": "parcel"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "kaboom": "^3000.1.14",
     "matter-js": "^0.19.0",
