@@ -12,9 +12,12 @@ export default function kMatterTest () {
         Matter.Engine.update(engine, k.dt() * 1000)
     })
 
+    // Load This Scene And Sprites
     k.loadSprite("RAD", "./res/Radians.jpg")
     k.loadSprite("CTPlayer", "./res/CTPlayer.png")
     
+    k.scene("kMatterTest", kMatterTest)
+
     // Actors
     // This One Object is for the player
     var PlayerPawn = k.add([
@@ -107,5 +110,10 @@ export default function kMatterTest () {
         // k.camPos is the cameras vector 2 position
         // RigidBody.pos is the vector 2 position of the obj with variable RigidBody (Red square)
         k.tween(k.camPos(), PlayerPawn.pos, 0.5, (p) => k.camPos(p))
+
+
+        if (PlayerPawn.pos.y >= 1000) {
+            k.go("kMatterTest")
+        }
     })
 }
