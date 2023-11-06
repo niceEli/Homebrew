@@ -12,7 +12,8 @@
 			"redhat.vscode-yaml",
 			"esbenp.prettier-vscode",
 			"christian-kohler.npm-intellisense",
-			"idered.npm"
+			"idered.npm",
+			"Tyriar.luna-paint"
 		]
 	}
 }
