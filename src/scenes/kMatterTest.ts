@@ -12,9 +12,22 @@ export default function kMatterTest () {
         Matter.Engine.update(engine, k.dt() * 1000)
     })
 
-    k.loadSprite("RAD", "Radians.jpg")
+    k.loadSprite("RAD", "./res/Radians.jpg")
+    k.loadSprite("CTPlayer", "./res/CTPlayer.png")
     
     // Actors
+    // This One Object is for the player
+    var PlayerPawn = k.add([
+        k.pos(k.center().x + 208, k.center().y + 342 - 16),
+        k.anchor('center'),
+        //k.circle(16),
+        //k.color(0,255,255),
+        k.rotate(0),
+        k.sprite("CTPlayer"),
+        k.scale(4),
+        // Matter For Pawns
+        PlayerPawnCircle(engine, {}, 16)
+    ])
     var RigidBody = k.add([
         k.pos(k.center().x, k.center().y),
         k.anchor('center'),
@@ -24,22 +37,31 @@ export default function kMatterTest () {
         // Matter For Rectangles
         matterRect(engine, { angle: 0.78539816 })
     ])
-    // This One Object is for the player
-    var PlayerPawn = k.add([
-        k.pos(k.center().x + 208, k.center().y + 342 - 16),
+    var RigidBody2 = k.add([
+        k.pos(k.center().x + 320, k.center().y + 278),
         k.anchor('center'),
-        k.circle(16),
-        k.color(0,255,255),
+        k.rect(32,64),
+        k.color(0,128,128),
         k.rotate(0),
-        // Matter For Pawns
-        PlayerPawnCircle(engine)
+        // Matter For Rectangles
+        matterRect(engine)
     ])
     var RigidBodyC = k.add([
         k.pos(k.center().x, k.center().y-40),
         k.anchor('center'),
+        k.sprite("RAD"),
+        k.rotate(0),
+        k.scale(0.045),
+        k.z(-2147483647),
+        // Matter For Circles
+        matterCircle(engine, {}, 16)
+    ])
+    var RigidBodyRAD = k.add([
+        k.pos(k.center().x, k.center().y-64),
+        k.anchor('center'),
+        k.rotate(0),
         k.circle(16),
         k.color(255,0,0),
-        k.rotate(0),
         // Matter For Circles
         matterCircle(engine)
     ])
