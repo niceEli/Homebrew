@@ -36,7 +36,7 @@ export default function PlayerPawnCircle (engine, options = {}, rad?, rotate = f
             if (k.isKeyPressed("up") || k.isKeyPressed("space") || k.isKeyPressed("w")){
                 if (collisions != 0)
                 { 
-                    Matter.Body.applyForce(this.body, this.body.position, k.vec2(0,-0.05))
+                    Matter.Body.applyForce(this.body, this.body.position, k.vec2(0,-0.01))
                 }
             }
         }
