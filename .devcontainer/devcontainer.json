@@ -13,7 +13,8 @@
 			"esbenp.prettier-vscode",
 			"christian-kohler.npm-intellisense",
 			"idered.npm",
-			"Tyriar.luna-paint"
+			"Tyriar.luna-paint",
+			"ms-vscode.vscode-typescript-next"
 		]
 	}
 }

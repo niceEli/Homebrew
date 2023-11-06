@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel src/index.html -p 8000 --dist-dir public --no-cache",
     "build": "parcel build --dist-dir public --public-url ./",
-    "parcel": "parcel"
+    "parcel": "parcel",
+    "Estart": "npm run build && electron ./public"
   },
   "author": "",
   "license": "MIT",
