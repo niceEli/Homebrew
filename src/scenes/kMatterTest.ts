@@ -23,11 +23,10 @@ export default function kMatterTest () {
     var PlayerPawn = k.add([
         k.pos(k.center().x + 208, k.center().y + 342 - 16),
         k.anchor('center'),
-        //k.circle(16),
-        //k.color(0,255,255),
         k.rotate(0),
         k.sprite("CTPlayer"),
         k.scale(4),
+        k.z(2147483647),
         // Matter For Pawns
         PlayerPawnCircle(engine, {}, 16)
     ])
