@@ -2,5 +2,18 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {},
-  }
+},
+"customizations": {
+	"vscode": {
+		"extensions": [
+			"ms-vscode-remote.remote-containers",
+			"VisualStudioExptTeam.vscodeintellicode",
+			"christian-kohler.path-intellisense",
+			"redhat.vscode-yaml",
+			"esbenp.prettier-vscode",
+			"christian-kohler.npm-intellisense",
+			"idered.npm"
+		]
+	}
+}
 }
