@@ -1,7 +1,7 @@
 {
   "name": "niceelitechkaboom",
   "version": "1.0.0",
-  "description": "",
+  "description": "What if there was a perfect engine. What if there was something that is like scratch but more professional. You decide",
   "source": "./src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "build": "parcel build --dist-dir public --public-url ./",
     "parcel": "parcel"
   },
-  "author": "",
+  "author": "niceEli",
   "license": "MIT",
   "dependencies": {
     "@williamhorning/cloudlink": "^4.1.1",
