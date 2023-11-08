@@ -129,7 +129,9 @@ export default function Ava () {
         // k.camPos is the cameras vector 2 position
         // RigidBody.pos is the vector 2 position of the obj with variable RigidBody (Red square)
         k.tween(k.camPos(), PlayerPawn.pos, 0.5, (p) => k.camPos(p))
-        if (PlayerPawn.pos.y >= 1000) {
+
+        // This code resets the scene if PlayerPawns position.y is above 1000 (the void) or the key R is pressed
+        if (PlayerPawn.pos.y >= 1000 || k.isKeyPressed("r")) {
             k.go("AvaC")
         }
     })
