@@ -1,26 +1,25 @@
 {
   "name": "niceelitechkaboom",
-  "version": "1.0.0",
-  "description": "What if there was a perfect engine. What if there was something that is like scratch but more professional. You decide",
-  "source": "./src/index.html",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/index.html -p 8000 --dist-dir public --no-cache",
-    "build": "parcel build --dist-dir public --public-url ./",
-    "parcel": "parcel"
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "preview": "vite preview"
   },
-  "author": "niceEli",
-  "license": "MIT",
+  "devDependencies": {
+    "electron": "^26.1.0",
+    "electron-builder": "^24.6.4",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-electron": "^0.14.0",
+    "vite-plugin-electron-renderer": "^0.14.5"
+  },
+  "main": "dist-electron/main.js",
   "dependencies": {
-    "@williamhorning/cloudlink": "^4.1.1",
+    "@types/electron": "^1.6.10",
+    "@types/matter-js": "^0.19.5",
     "kaboom": "^3000.1.17",
-    "kaboom-util": "^0.1.3",
-    "matter-js": "^0.19.0",
-    "parcel": "^2.10.3",
-    "parcel-reporter-static-files-copy": "^1.5.3"
-  },
-  "staticFiles": {
-    "staticPath": "./src/res",
-    "staticOutPath": "./res"
+    "matter-js": "^0.19.0"
   }
 }
