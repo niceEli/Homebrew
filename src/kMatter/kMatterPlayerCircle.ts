@@ -58,7 +58,10 @@ export default function PlayerPawnCircle(
       }
       if (k.isKeyPressed("space") && isDashable) {
         isDashable = false;
-        if (k.isKeyDown("right") || k.isKeyDown("d")) {
+        if (
+          (k.isKeyDown("right") || k.isKeyDown("d")) &&
+          !(k.isKeyDown("left") || k.isKeyDown("a"))
+        ) {
           if (collisions != 0) {
             var Vel = Matter.Vector.add(
               Matter.Body.getVelocity(this.body),
@@ -72,7 +75,10 @@ export default function PlayerPawnCircle(
           }
           Matter.Body.setVelocity(this.body, Vel);
         }
-        if (k.isKeyDown("left") || k.isKeyDown("a")) {
+        if (
+          (k.isKeyDown("left") || k.isKeyDown("a")) &&
+          !(k.isKeyDown("right") || k.isKeyDown("d"))
+        ) {
           if (collisions != 0) {
             var Vel = Matter.Vector.add(
               Matter.Body.getVelocity(this.body),
