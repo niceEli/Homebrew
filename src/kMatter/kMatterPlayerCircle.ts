@@ -7,6 +7,7 @@ export default function PlayerPawnCircle(
   rad?,
   rotate = false
 ) {
+  var isDashable: boolean = true;
   return {
     add() {
       const { x, y } = this.pos;
@@ -32,6 +33,10 @@ export default function PlayerPawnCircle(
         this.angle = this.body.angle * (180 / Math.PI);
       }
 
+      if (collisions !== 0) {
+        isDashable = true;
+      }
+
       if (k.isKeyDown("left") || k.isKeyDown("a")) {
         Matter.Body.applyForce(
           this.body,
@@ -42,16 +47,43 @@ export default function PlayerPawnCircle(
       if (k.isKeyDown("right") || k.isKeyDown("d")) {
         Matter.Body.applyForce(this.body, this.body.position, k.vec2(0.001, 0));
       }
-      if (
-        k.isKeyPressed("up") ||
-        k.isKeyPressed("space") ||
-        k.isKeyPressed("w")
-      ) {
+      if (k.isKeyPressed("up") || k.isKeyPressed("w")) {
         if (collisions != 0) {
-          var Vel = Matter.Vector.add(
+          let Vel = Matter.Vector.add(
             Matter.Body.getVelocity(this.body),
             Matter.Vector.create(0, -9)
           );
+          Matter.Body.setVelocity(this.body, Vel);
+        }
+      }
+      if (k.isKeyPressed("space") && isDashable) {
+        isDashable = false;
+        if (k.isKeyDown("right") || k.isKeyDown("d")) {
+          if (collisions != 0) {
+            var Vel = Matter.Vector.add(
+              Matter.Body.getVelocity(this.body),
+              Matter.Vector.create(8, 0)
+            );
+          } else {
+            var Vel = Matter.Vector.add(
+              Matter.Body.getVelocity(this.body),
+              Matter.Vector.create(8, -6)
+            );
+          }
+          Matter.Body.setVelocity(this.body, Vel);
+        }
+        if (k.isKeyDown("left") || k.isKeyDown("a")) {
+          if (collisions != 0) {
+            var Vel = Matter.Vector.add(
+              Matter.Body.getVelocity(this.body),
+              Matter.Vector.create(-8, 0)
+            );
+          } else {
+            var Vel = Matter.Vector.add(
+              Matter.Body.getVelocity(this.body),
+              Matter.Vector.create(-8, -6)
+            );
+          }
           Matter.Body.setVelocity(this.body, Vel);
         }
       }
