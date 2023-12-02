@@ -2,10 +2,10 @@ import k from "../kaboom";
 import Matter from "matter-js";
 
 export default function PlayerPawnCircle(
-  engine,
+  engine: any,
   options = {},
-  rad?,
-  rotate = false
+  rad?: number,
+  rotate: boolean = false
 ) {
   var isDashable: boolean = true;
   return {
