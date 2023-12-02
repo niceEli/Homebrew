@@ -5,6 +5,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
+    "buildWin": "tsc && vite build && electron-builder -w",
+    "buildMac": "tsc && vite build && electron-builder -m",
+    "buildGL": "tsc && vite build && electron-builder -l",
+    "buildWeb": "tsc && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
