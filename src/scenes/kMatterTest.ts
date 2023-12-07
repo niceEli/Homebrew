@@ -1,8 +1,8 @@
 import k from "../kaboom";
 import Matter from "matter-js";
-import matterRect from "../kMatter/kMatterRect";
-import matterCircle from "../kMatter/kMatterCircle";
-import PlayerPawnCircle from "../kMatter/kMatterPlayerCircle";
+import matterRect from "../kUtils/kMatterRect";
+import matterCircle from "../kUtils/kMatterCircle";
+import PlayerPawnCircle from "../kUtils/kMatterPlayerCircle";
 
 export default function kMatterTest() {
   // Setup Engine
