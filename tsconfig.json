@@ -22,4 +22,5 @@
     "noFallthroughCasesInSwitch": false
   },
   "include": ["src", "electron"],
+  "resolveJsonModule": true,
 }
