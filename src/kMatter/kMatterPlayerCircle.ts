@@ -1,10 +1,12 @@
+import { Vec2 } from "kaboom";
 import k from "../kaboom";
-import Matter from "matter-js";
+import Matter, { Vector } from "matter-js";
 
 export default function PlayerPawnCircle(
   engine: any,
   options = {},
   rad?: number,
+  scaleOPlayer?: Vector,
   rotate: boolean = false
 ) {
   var isDashable: boolean = true;
@@ -31,6 +33,15 @@ export default function PlayerPawnCircle(
       this.pos.y = this.body.position.y;
       if (rotate) {
         this.angle = this.body.angle * (180 / Math.PI);
+      }
+
+      if (!rotate) {
+        let vel = Matter.Body.getVelocity(this.body);
+        if (Math.round(vel.x) < 0) {
+          this.scale = k.vec2(-scaleOPlayer.x, scaleOPlayer.y);
+        } else if (Math.round(vel.x) > 0) {
+          this.scale = scaleOPlayer;
+        }
       }
 
       if (collisions !== 0) {

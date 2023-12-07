@@ -22,7 +22,7 @@ export default function Ava() {
     k.sprite("CTPlayer"),
     k.scale(4),
     // Matter For Pawns
-    PlayerPawnCircle(engine, {}, 16),
+    PlayerPawnCircle(engine, {}, 16, k.vec2(4, 4)),
   ]);
 
   var PlatForm = k.add([

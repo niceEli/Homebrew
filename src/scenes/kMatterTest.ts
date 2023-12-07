@@ -28,7 +28,7 @@ export default function kMatterTest() {
     k.scale(4),
     k.z(2147483647),
     // Matter For Pawns
-    PlayerPawnCircle(engine, {}, 16),
+    PlayerPawnCircle(engine, {}, 16, k.vec2(4, 4)),
   ]);
   var RigidBody = k.add([
     k.pos(k.center().x, k.center().y),
