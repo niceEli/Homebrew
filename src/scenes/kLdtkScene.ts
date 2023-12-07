@@ -3,10 +3,9 @@ import Matter from "matter-js";
 import matterRect from "../kUtils/kMatterRect";
 import matterCircle from "../kUtils/kMatterCircle";
 import PlayerPawnCircle from "../kUtils/kMatterPlayerCircle";
-import { Convert, LdtkJSON } from "../kUtils/kLdtkImporter";
 
 import * as sceneData from "../kLdtkWorlds/example.json";
-import { hexToRgb } from "../kUtils/kColor";
+import kLdtkSceneImporter from "../kUtils/kLdtkSceneImporter";
 
 export default function kLdtkScene() {
   // Setup Engine
@@ -15,31 +14,10 @@ export default function kLdtkScene() {
   k.onUpdate(() => {
     Matter.Engine.update(engine, k.dt() * 1000);
   });
-
-  //const LdtkJSON = Convert.toLdtkJSON();
-
   // Load This Scene And Sprites
   k.loadSprite("RAD", "Radians.jpg");
   k.loadSprite("CTPlayer", "CTPlayer.png");
-
-  for (let i = 0; i < sceneData.levels.length; i++) {
-    const element = sceneData.levels[i];
-    let bg = k.add([
-      //k.anchor("center"),
-      k.rect(element.pxWid, element.pxHei),
-      k.pos(element.worldX, element.worldY),
-      k.color(
-        hexToRgb(element.__bgColor).r,
-        hexToRgb(element.__bgColor).g,
-        hexToRgb(element.__bgColor).b
-      ),
-    ]);
-    for (let i = 0; i < element.layerInstances.length; i++) {
-      if (element.layerInstances[i].visible) {
-        console.log(`layer`, i, `is visible`);
-      }
-    }
-  }
+  kLdtkSceneImporter(sceneData);
 
   k.scene("kLdtkScene", kLdtkScene);
   // Actors
@@ -78,7 +56,7 @@ export default function kLdtkScene() {
     k.sprite("RAD"),
     k.rotate(0),
     k.scale(0.045),
-    k.z(-2147483647),
+    k.z(-214748364),
     // Matter For Circles
     matterCircle(engine, {}, 16),
   ]);
