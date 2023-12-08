@@ -116,7 +116,7 @@ export default function kLdtkSceneImporter(
               k.anchor("center"),
               k.rotate(0),
               k.sprite("CTPlayer"),
-              k.scale(levelsize),
+              k.scale(2 * levelsize),
               k.z(2147483647),
               // Matter For Pawns
               PlayerPawnCircle(
