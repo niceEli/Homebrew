@@ -13,7 +13,7 @@ export default function PlayerPawnCircle(
   return {
     add() {
       const { x, y } = this.pos;
-      const { radius = rad } = this;
+      var { radius = rad } = this;
       this.body = Matter.Bodies.circle(x, y, radius, options);
       Matter.Composite.add(engine.world, this.body);
     },
@@ -22,6 +22,9 @@ export default function PlayerPawnCircle(
         return;
       }
       let collisions = 0;
+
+      this.body.position.y += 10;
+      this.body.radius -= 3;
       for (let i = 0; i < engine.world.bodies.length; i++) {
         const element = engine.world.bodies[i];
         const collision = Matter.Collision.collides(this.body, element, null);
@@ -29,6 +32,9 @@ export default function PlayerPawnCircle(
           collisions++;
         }
       }
+      this.body.position.y -= 10;
+      this.body.radius += 3;
+
       this.pos.x = this.body.position.x;
       this.pos.y = this.body.position.y;
       if (rotate) {

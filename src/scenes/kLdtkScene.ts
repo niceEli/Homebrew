@@ -6,6 +6,7 @@ import PlayerPawnCircle from "../kUtils/kMatterPlayerCircle";
 
 import * as sceneData from "../kLdtkWorlds/example.json";
 import kLdtkSceneImporter from "../kUtils/kLdtkSceneImporter";
+import kMatterTest from "../scenes/kMatterTest";
 
 export default function kLdtkScene() {
   // Setup Engine
@@ -15,9 +16,7 @@ export default function kLdtkScene() {
     Matter.Engine.update(engine, k.dt() * 1000);
   });
   // Load This Scene And Sprites
-  k.loadSprite("RAD", "Radians.jpg");
-  k.loadSprite("CTPlayer", "CTPlayer.png");
-  kLdtkSceneImporter(sceneData, 2, kLdtkScene, engine);
+  kLdtkSceneImporter(sceneData, 2, kLdtkScene, kMatterTest, engine);
 
   k.scene("kLdtkScene", kLdtkScene);
 }
