@@ -157,6 +157,18 @@ export default function kLdtkSceneImporter(
               k.area(),
               "Win_Condition",
             ]);
+          } else if (ent.__identifier == "Text_Object") {
+            k.add([
+              k.text(ent.fieldInstances[0].__value, {
+                size: ent.fieldInstances[1].__value,
+                font: "sans-serif",
+                align: "center",
+              }),
+              k.anchor("center"),
+              k.z(2147483645),
+              k.color(ent.fieldInstances[2].__value),
+              k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+            ]);
           }
         }
       } else if (element.layerInstances[i].__type === "Tiles") {
