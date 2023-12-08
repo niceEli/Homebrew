@@ -18,5 +18,12 @@ export default function kLdtkScene() {
   // Load This Scene And Sprites
   kLdtkSceneImporter(sceneData, 2, kLdtkScene, kMatterTest, engine);
 
+  k.add([
+    k.rect(99999999, 99999999),
+    k.color(k.BLACK),
+    k.z(-999999999999999),
+    k.anchor("center"),
+  ]);
+
   k.scene("kLdtkScene", kLdtkScene);
 }
