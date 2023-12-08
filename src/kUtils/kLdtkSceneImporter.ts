@@ -118,6 +118,8 @@ export default function kLdtkSceneImporter(
               k.sprite("CTPlayer"),
               k.scale(2 * levelsize),
               k.z(2147483647),
+              k.fadeIn(0.16),
+              k.opacity(),
               // Matter For Pawns
               PlayerPawnCircle(
                 engine,
@@ -137,6 +139,8 @@ export default function kLdtkSceneImporter(
               k.sprite("box"),
               k.scale(2 * levelsize),
               k.z(2147483646),
+              k.fadeIn(0.16),
+              k.opacity(),
               matterRect4Sprites(
                 engine,
                 { angle: 0 },
