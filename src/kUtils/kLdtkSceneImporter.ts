@@ -22,42 +22,42 @@ export default function kLdtkSceneImporter(
   k.loadSprite("door", "end.png");
 
   // This is your level tiles
-  k.loadSpriteAtlas("spriteSheet.png", {
+  k.loadSpriteAtlas("spriteSheet16.png", {
     "0spriteSheet": {
       x: 0,
       y: 0,
-      width: 8,
-      height: 8,
+      width: 16,
+      height: 16,
     },
     "1spriteSheet": {
-      x: 8,
-      y: 0,
-      width: 8,
-      height: 8,
-    },
-    "2spriteSheet": {
       x: 16,
       y: 0,
-      width: 8,
-      height: 8,
+      width: 16,
+      height: 16,
+    },
+    "2spriteSheet": {
+      x: 32,
+      y: 0,
+      width: 16,
+      height: 16,
     },
     "3spriteSheet": {
       x: 0,
-      y: 8,
-      width: 8,
-      height: 8,
+      y: 16,
+      width: 16,
+      height: 16,
     },
     "4spriteSheet": {
-      x: 8,
-      y: 8,
-      width: 8,
-      height: 8,
+      x: 16,
+      y: 16,
+      width: 16,
+      height: 16,
     },
     "5spriteSheet": {
-      x: 16,
-      y: 8,
-      width: 8,
-      height: 8,
+      x: 32,
+      y: 16,
+      width: 16,
+      height: 16,
     },
   });
 
@@ -116,7 +116,7 @@ export default function kLdtkSceneImporter(
               k.anchor("center"),
               k.rotate(0),
               k.sprite("CTPlayer"),
-              k.scale(2 * levelsize),
+              k.scale(levelsize),
               k.z(2147483647),
               // Matter For Pawns
               PlayerPawnCircle(
@@ -161,7 +161,7 @@ export default function kLdtkSceneImporter(
           let spritename: string = gridInstanceOnPoint.t;
           spritename = spritename.toString() + "spriteSheet";
           k.add([
-            k.scale(2 * levelsize),
+            k.scale(levelsize),
             k.sprite(spritename),
             k.pos(
               gridInstanceOnPoint.px[0] * levelsize +
