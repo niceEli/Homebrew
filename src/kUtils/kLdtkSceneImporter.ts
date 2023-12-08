@@ -5,7 +5,7 @@ import matterRect, { matterRect4Sprites } from "./kMatterRect";
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
-import { SceneDef } from "kaboom";
+import { GameObj, SceneDef } from "kaboom";
 import kMatterTest from "../scenes/kMatterTest";
 
 export default function kLdtkSceneImporter(
@@ -111,7 +111,7 @@ export default function kLdtkSceneImporter(
               "Death_Trig",
             ]);
           } else if (ent.__identifier == "Player_Start") {
-            var player = k.add([
+            var player: GameObj = k.add([
               k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
               k.anchor("center"),
               k.rotate(0),
