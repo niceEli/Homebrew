@@ -103,7 +103,7 @@ export default function kLdtkSceneImporter(
               k.opacity(),
               matterRect4Sprites(
                 engine,
-                { angle: 0 },
+                { angle: 0, friction: 0.0001 },
                 k.vec2(16 * levelsize, 16 * levelsize)
               ),
             ]);
