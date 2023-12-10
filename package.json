@@ -1,6 +1,7 @@
 {
   "name": "niceelitechkaboom",
-  "private": true,
+  "author": "niceEli",
+  "description": "The Kaboom TS Game Engine (Hey atleast its not unity)",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
