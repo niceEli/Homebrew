@@ -1,0 +1,39 @@
+name: Electron Builder
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 21
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Electron app
+        run: npm run build -mwl
+
+  upload:
+    needs: build
+    runs-on: macos-latest
+
+    steps:
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: electron-artifacts
+          path: |
+            dist/${{ env.npm_package_name }}-Windows-*.exe
+            dist/${{ env.npm_package_name }}-Mac-*.dmg
+            dist/${{ env.npm_package_name }}-Linux-*.AppImage
