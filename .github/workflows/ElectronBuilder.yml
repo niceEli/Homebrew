@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -19,11 +19,11 @@ jobs:
           node-version: 20
 
       - name: Install dependencies and Build Electron app
-        run: npm install -D && npm run build -mwl
+        run: npm install -D && npm run build -wl
 
   upload:
     needs: build
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Upload artifacts
