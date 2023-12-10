@@ -18,11 +18,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Electron app
-        run: npm run build -mwl
+      - name: Install dependencies and Build Electron app
+        run: npm I -D && npm run build -mwl
 
   upload:
     needs: build
