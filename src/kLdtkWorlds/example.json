@@ -1514,6 +1514,29 @@
 								"id": "V_String",
 								"params": ["kMatterTest"]
 							}] }]
+						},
+						{
+							"__identifier": "Text_Object",
+							"__grid": [9,2],
+							"__pivot": [0.5,0.5],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#000000",
+							"__worldX": 600,
+							"__worldY": 216,
+							"iid": "aec564f0-8990-11ee-9017-418a727cc9dd",
+							"width": 16,
+							"height": 16,
+							"defUid": 128,
+							"px": [152,40],
+							"fieldInstances": [
+								{ "__identifier": "Text", "__type": "Multilines", "__value": "Get To The\nEnd To Win =>", "__tile": null, "defUid": 130, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Get To The\\nEnd To Win =>"]
+								}] },
+								{ "__identifier": "Size", "__type": "Float", "__value": 20.8, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [20.8] }] },
+								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 131, "realEditorValues": [] }
+							]
 						}
 					]
 				},
