@@ -19,7 +19,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies and Build Electron app
-        run: npm I -D && npm run build -mwl
+        run: npm install -D && npm run build -mwl
 
   upload:
     needs: build
