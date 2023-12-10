@@ -23,6 +23,7 @@
   "dependencies": {
     "@types/electron": "^1.6.10",
     "@types/matter-js": "^0.19.5",
+    "axios": "^1.6.2",
     "kaboom": "^3000.1.17",
     "matter-js": "^0.19.0"
   }

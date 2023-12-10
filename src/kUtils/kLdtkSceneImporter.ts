@@ -21,46 +21,6 @@ export default function kLdtkSceneImporter(
   k.loadSprite("box", "box.png");
   k.loadSprite("door", "end.png");
 
-  // This is your level tiles
-  k.loadSpriteAtlas("spriteSheet16.png", {
-    "0spriteSheet": {
-      x: 0,
-      y: 0,
-      width: 16,
-      height: 16,
-    },
-    "1spriteSheet": {
-      x: 16,
-      y: 0,
-      width: 16,
-      height: 16,
-    },
-    "2spriteSheet": {
-      x: 32,
-      y: 0,
-      width: 16,
-      height: 16,
-    },
-    "3spriteSheet": {
-      x: 0,
-      y: 16,
-      width: 16,
-      height: 16,
-    },
-    "4spriteSheet": {
-      x: 16,
-      y: 16,
-      width: 16,
-      height: 16,
-    },
-    "5spriteSheet": {
-      x: 32,
-      y: 16,
-      width: 16,
-      height: 16,
-    },
-  });
-
   let isInlevel: number;
   var condition: SceneDef;
 
@@ -115,8 +75,8 @@ export default function kLdtkSceneImporter(
               k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
               k.anchor("center"),
               k.rotate(0),
-              k.sprite("CTPlayer"),
-              k.scale(2 * levelsize),
+              k.sprite("SpriteSheet3"),
+              k.scale(levelsize),
               k.z(2147483647),
               k.fadeIn(0.16),
               k.opacity(),
@@ -125,7 +85,7 @@ export default function kLdtkSceneImporter(
                 engine,
                 {},
                 8 * levelsize,
-                k.vec2(2 * levelsize, 2 * levelsize)
+                k.vec2(levelsize, levelsize)
               ),
               kCamera(ent.fieldInstances[0].__value),
               kReset(currentScene),
@@ -136,8 +96,8 @@ export default function kLdtkSceneImporter(
             k.add([
               k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
               k.anchor("center"),
-              k.sprite("box"),
-              k.scale(2 * levelsize),
+              k.sprite("SpriteSheet30"),
+              k.scale(levelsize),
               k.z(2147483646),
               k.fadeIn(0.16),
               k.opacity(),
@@ -174,17 +134,18 @@ export default function kLdtkSceneImporter(
       } else if (element.layerInstances[i].__type === "Tiles") {
         for (let z = 0; z < element.layerInstances[i].gridTiles.length; z++) {
           let gridInstanceOnPoint = element.layerInstances[i].gridTiles[z];
-          let spritename: string = gridInstanceOnPoint.t;
-          spritename = spritename.toString() + "spriteSheet";
-          k.add([
+          let spritename: number = gridInstanceOnPoint.t;
+
+          let me = k.add([
             k.scale(levelsize),
-            k.sprite(spritename),
+            k.sprite("SpriteSheet" + spritename),
             k.pos(
               gridInstanceOnPoint.px[0] * levelsize +
                 element.worldX * levelsize,
               gridInstanceOnPoint.px[1] * levelsize + element.worldY * levelsize
             ),
           ]);
+          console.log(me);
         }
       }
     }

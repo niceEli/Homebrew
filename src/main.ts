@@ -6,6 +6,7 @@ import kMatterTest from "./scenes/kMatterTest";
 import Jilian from "./scenes/Jillian";
 import Ava from "./scenes/Ava";
 import kLdtkScene from "./scenes/kLdtkScene";
+import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
 
 // Add Scenes
 k.scene("Hello-World-EX", HelloWorld);
@@ -13,6 +14,9 @@ k.scene("kMatter-Test", kMatterTest);
 k.scene("Jillian-Test-Scene", Jilian);
 k.scene("AvaC", Ava);
 k.scene("kLdtkScene", kLdtkScene);
+
+// Load SpriteSheet
+loadSpritesSheet();
 
 // Run Scenes
 
