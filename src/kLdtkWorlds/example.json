@@ -536,7 +536,7 @@
 							"__worldX": 0,
 							"__worldY": 240,
 							"iid": "f79c8bc0-8990-11ee-a040-01d25f4eb279",
-							"width": 256,
+							"width": 288,
 							"height": 16,
 							"defUid": 109,
 							"px": [0,240],
@@ -1496,7 +1496,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "Get To The\nEnd To Win =>", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["Get To The\\nEnd To Win =>"]
+									"params": ["Get To The\nEnd To Win =>"]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 20.8, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [20.8] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 131, "realEditorValues": [] }
