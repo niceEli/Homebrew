@@ -1,15 +1,13 @@
 import k from "../kaboom";
 import { hexToRgb } from "../kUtils/kColor";
-import * as w from "../kLdtkWorlds/example.json";
 import matterRect, { matterRect4Sprites } from "./kMatterRect";
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
 import { GameObj, SceneDef } from "kaboom";
-import kMatterTest from "../scenes/kMatterTest";
 
 export default function kLdtkSceneImporter(
-  sceneData = w,
+  sceneData,
   levelsize: number = 2,
   currentScene: SceneDef,
   nextScene: SceneDef,

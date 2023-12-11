@@ -1,8 +1,5 @@
 import k from "../kaboom";
 import Matter from "matter-js";
-import matterRect from "../kUtils/kMatterRect";
-import matterCircle from "../kUtils/kMatterCircle";
-import PlayerPawnCircle from "../kUtils/kMatterPlayerCircle";
 
 import * as sceneData from "../kLdtkWorlds/example.json";
 import kLdtkSceneImporter from "../kUtils/kLdtkSceneImporter";
