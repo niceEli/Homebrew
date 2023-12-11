@@ -13,7 +13,7 @@ export default function kLdtkScene() {
     Matter.Engine.update(engine, k.dt() * 1000);
   });
   // Load This Scene And Sprites
-  kLdtkSceneImporter(sceneData, 2, kLdtkScene, kMatterTest, engine);
+  kLdtkSceneImporter(sceneData, 2, kLdtkScene, kLdtkScene, engine);
 
   k.add([
     k.rect(99999999, 99999999),
