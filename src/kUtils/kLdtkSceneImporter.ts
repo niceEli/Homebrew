@@ -143,7 +143,6 @@ export default function kLdtkSceneImporter(
               gridInstanceOnPoint.px[1] * levelsize + element.worldY * levelsize
             ),
           ]);
-          console.log(me);
         }
       }
     }
