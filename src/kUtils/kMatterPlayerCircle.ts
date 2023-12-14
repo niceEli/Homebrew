@@ -75,7 +75,7 @@ export default function PlayerPawnCircle(
       if (
         !(k.isKeyDown("left") || k.isKeyDown("a")) &&
         !(k.isKeyDown("right") || k.isKeyDown("d")) &&
-        CTTime > 0
+        collisions !== 0
       ) {
         Matter.Body.setVelocity(
           this.body,
