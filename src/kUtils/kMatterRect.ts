@@ -4,7 +4,7 @@ import Matter, { IChamferableBodyDefinition } from "matter-js";
 
 export default function matterRect(
   engine,
-  options: IChamferableBodyDefinition,
+  options?: IChamferableBodyDefinition,
   size?
 ) {
   return {
@@ -35,7 +35,7 @@ export default function matterRect(
 
 export function matterRect4Sprites(
   engine,
-  options: IChamferableBodyDefinition,
+  options?: IChamferableBodyDefinition,
   size?: Vec2
 ) {
   return {

@@ -46,7 +46,7 @@ export default function kMatterTest() {
     k.color(0, 128, 128),
     k.rotate(0),
     // Matter For Rectangles
-    matterRect(engine),
+    matterRect(engine, {}),
   ]);
   var RigidBodyC = k.add([
     k.pos(k.center().x, k.center().y - 40),
@@ -65,7 +65,7 @@ export default function kMatterTest() {
     k.circle(16),
     k.color(255, 0, 0),
     // Matter For Circles
-    matterCircle(engine),
+    matterCircle(engine, {}),
   ]);
   var PlatForm = k.add([
     k.pos(k.center().x - 64, k.center().y + 64),

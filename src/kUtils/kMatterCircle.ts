@@ -3,7 +3,7 @@ import Matter, { IBodyDefinition } from "matter-js";
 
 export default function matterCircle(
   engine: any,
-  options: IBodyDefinition,
+  options?: IBodyDefinition,
   rad?
 ) {
   return {

@@ -4,7 +4,7 @@ import Matter, { IBodyDefinition, Vector } from "matter-js";
 
 export default function PlayerPawnCircle(
   engine: any,
-  options: IBodyDefinition,
+  options?: IBodyDefinition,
   rad?: number,
   scaleOPlayer?: Vector,
   rotate: boolean = false
