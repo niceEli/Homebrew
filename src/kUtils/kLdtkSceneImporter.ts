@@ -101,7 +101,7 @@ export default function kLdtkSceneImporter(
               k.opacity(),
               matterRect4Sprites(
                 engine,
-                { angle: 0, friction: 0.0001 },
+                { angle: 0 },
                 k.vec2(16 * levelsize, 16 * levelsize)
               ),
             ]);
@@ -134,7 +134,7 @@ export default function kLdtkSceneImporter(
           let gridInstanceOnPoint = element.layerInstances[i].gridTiles[z];
           let spritename: number = gridInstanceOnPoint.t;
 
-          let me = k.add([
+          k.add([
             k.scale(levelsize),
             k.sprite("SpriteSheet" + spritename),
             k.pos(

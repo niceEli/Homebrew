@@ -1,7 +1,11 @@
 import kaboom from "kaboom";
-import Matter from "matter-js";
+import Matter, { IBodyDefinition } from "matter-js";
 
-export default function matterCircle(engine: any, options = {}, rad?) {
+export default function matterCircle(
+  engine: any,
+  options: IBodyDefinition,
+  rad?
+) {
   return {
     add() {
       const { x, y } = this.pos;

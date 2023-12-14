@@ -1,10 +1,10 @@
 import { Vec2 } from "kaboom";
 import k from "../kaboom";
-import Matter, { Vector } from "matter-js";
+import Matter, { IBodyDefinition, Vector } from "matter-js";
 
 export default function PlayerPawnCircle(
   engine: any,
-  options = {},
+  options: IBodyDefinition,
   rad?: number,
   scaleOPlayer?: Vector,
   rotate: boolean = false

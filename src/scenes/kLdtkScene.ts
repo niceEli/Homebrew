@@ -8,6 +8,8 @@ import kMatterTest from "../scenes/kMatterTest";
 export default function kLdtkScene() {
   // Setup Engine
   const engine: any = Matter.Engine.create();
+  engine.velocityIterations = 100;
+  engine.positionIterations = 200;
   Matter.Composite.create(engine);
   k.onUpdate(() => {
     Matter.Engine.update(engine, k.dt() * 1000);

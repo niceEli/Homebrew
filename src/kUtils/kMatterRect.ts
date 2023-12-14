@@ -1,8 +1,12 @@
 import { Vec2 } from "kaboom";
 import k from "../kaboom";
-import Matter from "matter-js";
+import Matter, { IChamferableBodyDefinition } from "matter-js";
 
-export default function matterRect(engine, options = {}, size?) {
+export default function matterRect(
+  engine,
+  options: IChamferableBodyDefinition,
+  size?
+) {
   return {
     add() {
       const { x, y } = this.pos;
@@ -29,7 +33,11 @@ export default function matterRect(engine, options = {}, size?) {
   };
 }
 
-export function matterRect4Sprites(engine, options = {}, size?: Vec2) {
+export function matterRect4Sprites(
+  engine,
+  options: IChamferableBodyDefinition,
+  size?: Vec2
+) {
   return {
     add() {
       const { x, y } = this.pos;
