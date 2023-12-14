@@ -30,7 +30,9 @@ export default function PlayerPawnCircle(
         const element = engine.world.bodies[i];
         const collision = Matter.Collision.collides(this.body, element, null);
         if (collision != null && collision.bodyA != collision.bodyB) {
-          collisions++;
+          if (Math.round(collision.normal.x) === 0) {
+            collisions++;
+          }
         }
       }
       this.body.position.y -= 10;
@@ -57,7 +59,7 @@ export default function PlayerPawnCircle(
       }
 
       if (collisions !== 0) {
-        CTTime = 0.16;
+        CTTime = 0.05;
         isDashable = true;
       }
 
