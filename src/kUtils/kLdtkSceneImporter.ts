@@ -81,7 +81,7 @@ export default function kLdtkSceneImporter(
               // Matter For Pawns
               PlayerPawnCircle(
                 engine,
-                {},
+                { friction: 0 },
                 8 * levelsize,
                 k.vec2(levelsize, levelsize)
               ),

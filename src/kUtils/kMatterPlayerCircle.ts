@@ -10,6 +10,7 @@ export default function PlayerPawnCircle(
   rotate: boolean = false
 ) {
   var isDashable: boolean = true;
+  var CTTime: number = 10;
   return {
     add() {
       const { x, y } = this.pos;
@@ -49,8 +50,14 @@ export default function PlayerPawnCircle(
           this.scale = scaleOPlayer;
         }
       }
+      if (CTTime > 0) {
+        CTTime = CTTime - k.dt();
+      } else if (CTTime <= 0) {
+        CTTime = 0;
+      }
 
       if (collisions !== 0) {
+        CTTime = 0.16;
         isDashable = true;
       }
 
@@ -64,8 +71,19 @@ export default function PlayerPawnCircle(
       if (k.isKeyDown("right") || k.isKeyDown("d")) {
         Matter.Body.applyForce(this.body, this.body.position, k.vec2(0.001, 0));
       }
+
+      if (
+        !(k.isKeyDown("left") || k.isKeyDown("a")) &&
+        !(k.isKeyDown("right") || k.isKeyDown("d")) &&
+        CTTime > 0
+      ) {
+        Matter.Body.setVelocity(
+          this.body,
+          k.vec2(0, Matter.Body.getVelocity(this.body).y)
+        );
+      }
       if (k.isKeyPressed("up") || k.isKeyPressed("w")) {
-        if (collisions != 0) {
+        if (CTTime > 0) {
           let Vel = Matter.Vector.add(
             Matter.Body.getVelocity(this.body),
             Matter.Vector.create(0, -9)
@@ -79,7 +97,7 @@ export default function PlayerPawnCircle(
           (k.isKeyDown("right") || k.isKeyDown("d")) &&
           !(k.isKeyDown("left") || k.isKeyDown("a"))
         ) {
-          if (collisions != 0) {
+          if (CTTime > 0) {
             var Vel = Matter.Vector.add(
               Matter.Body.getVelocity(this.body),
               Matter.Vector.create(8, 0)
@@ -96,7 +114,7 @@ export default function PlayerPawnCircle(
           (k.isKeyDown("left") || k.isKeyDown("a")) &&
           !(k.isKeyDown("right") || k.isKeyDown("d"))
         ) {
-          if (collisions != 0) {
+          if (CTTime > 0) {
             var Vel = Matter.Vector.add(
               Matter.Body.getVelocity(this.body),
               Matter.Vector.create(-8, 0)
