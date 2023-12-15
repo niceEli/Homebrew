@@ -30,7 +30,7 @@ export default function PlayerPawnCircle(
         const element = engine.world.bodies[i];
         const collision = Matter.Collision.collides(this.body, element, null);
         if (collision != null && collision.bodyA != collision.bodyB) {
-          if (Math.round(collision.normal.x) === 0) {
+          if (Math.round(collision.normal.y) === -1) {
             collisions++;
           }
         }
@@ -59,7 +59,7 @@ export default function PlayerPawnCircle(
       }
 
       if (collisions !== 0) {
-        CTTime = 0.05;
+        CTTime = 0.1618;
         isDashable = true;
       }
 
@@ -91,6 +91,7 @@ export default function PlayerPawnCircle(
             Matter.Vector.create(0, -9)
           );
           Matter.Body.setVelocity(this.body, Vel);
+          CTTime = 0;
         }
       }
       if (k.isKeyPressed("space") && isDashable) {
