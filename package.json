@@ -25,7 +25,7 @@
   "dependencies": {
     "axios": "^1.6.2",
     "kaboom": "^3000.1.17",
-    "kaboom-flex-ui": "^0.0.5",
+    "kaboom-flex-ui": "^0.0.7",
     "matter-js": "^0.19.0"
   }
 }
