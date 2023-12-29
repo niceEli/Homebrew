@@ -543,38 +543,6 @@
 							"fieldInstances": []
 						},
 						{
-							"__identifier": "Collider",
-							"__grid": [5,6],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#FF3000",
-							"__worldX": 80,
-							"__worldY": 96,
-							"iid": "fa464f00-8990-11ee-a040-6f8558d9c599",
-							"width": 48,
-							"height": 16,
-							"defUid": 109,
-							"px": [80,96],
-							"fieldInstances": []
-						},
-						{
-							"__identifier": "Collider",
-							"__grid": [6,7],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#FF3000",
-							"__worldX": 96,
-							"__worldY": 112,
-							"iid": "fb317250-8990-11ee-a040-d985a14e322d",
-							"width": 16,
-							"height": 16,
-							"defUid": 109,
-							"px": [96,112],
-							"fieldInstances": []
-						},
-						{
 							"__identifier": "Player_Start",
 							"__grid": [1,14],
 							"__pivot": [0.5,0.5],
@@ -691,6 +659,38 @@
 							"height": 16,
 							"defUid": 114,
 							"px": [120,216],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "Collider",
+							"__grid": [5,6],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#FF3000",
+							"__worldX": 80,
+							"__worldY": 96,
+							"iid": "fda31400-8990-11ee-bc29-7d47866962f8",
+							"width": 48,
+							"height": 16,
+							"defUid": 109,
+							"px": [80,96],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "Collider",
+							"__grid": [6,7],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#FF3000",
+							"__worldX": 96,
+							"__worldY": 112,
+							"iid": "fe5bdcb0-8990-11ee-bc29-6b989c9b82e6",
+							"width": 16,
+							"height": 16,
+							"defUid": 109,
+							"px": [96,112],
 							"fieldInstances": []
 						}
 					]
