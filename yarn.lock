@@ -1282,10 +1282,10 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-kaboom-flex-ui@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/kaboom-flex-ui/-/kaboom-flex-ui-0.0.5.tgz#3a52a49aeb11356f23a53d4818a591c3d39cb7a9"
-  integrity sha512-+SAqs+6QjuefylguXai/7eoJklA4yRfyrKhN7o/C+Xds6+fvVS5SNZznXiBAWA3wehX3uPXmcXVEMt+0ftjhgw==
+kaboom-flex-ui@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/kaboom-flex-ui/-/kaboom-flex-ui-0.0.8.tgz#ee578f327eff77327d2eb7eeafd7d6a40aa67ddf"
+  integrity sha512-myvbyr3dQ1YBk1Km3mctgSH1W9c4irk8EcDYzS5jaaoT4idcEjMGwxcAuGAPjVIkT4vijjEtupbcMPnlLKbRLA==
 
 kaboom@^3000.1.17:
   version "3000.1.17"
