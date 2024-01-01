@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/matter-js": "^0.19.5",
     "electron": "^28.1.0",
-    "electron-builder": "^24.9.3",
+    "electron-builder": "^24.10.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.6",
     "vite-plugin-electron": "^0.15.4",
