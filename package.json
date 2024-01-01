@@ -23,7 +23,7 @@
   },
   "main": "dist-electron/main.js",
   "dependencies": {
-    "axios": "^1.6.2",
+    "axios": "^1.6.3",
     "kaboom": "^3000.1.17",
     "kaboom-flex-ui": "^0.0.8",
     "matter-js": "^0.19.0"
