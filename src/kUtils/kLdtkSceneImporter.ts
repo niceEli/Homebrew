@@ -29,7 +29,7 @@ export default function kLdtkSceneImporter(
     groups.push({ active: false, chgX: 0, chgY: 0 });
   }
 
-  let maxGroups = 0;
+  let maxGroups = -1;
 
   // this will spawn everything from ldtk
   for (let i = 0; i < sceneData.levels.length; i++) {
@@ -203,38 +203,39 @@ export default function kLdtkSceneImporter(
   }
   let checkGroups = function () {
     let checkFlag = true;
+    if (maxGroups != -1) {
+      if (checkFlag) {
+        checkFlag = false;
 
-    if (checkFlag) {
-      checkFlag = false;
+        for (let i = 0; i <= maxGroups; i++) {
+          const { GroupID, NextGID, Func, X, Y } = scripts[i];
+          const group = groups[GroupID];
 
-      for (let i = 0; i <= maxGroups; i++) {
-        const { GroupID, NextGID, Func, X, Y } = scripts[i];
-        const group = groups[GroupID];
-
-        if (group.active) {
-          const runnableFunc = new Function(
-            "k",
-            "engine",
-            "Matter",
-            "groups",
-            "scripts",
-            "X",
-            "Y",
-            `
+          if (group.active) {
+            const runnableFunc = new Function(
+              "k",
+              "engine",
+              "Matter",
+              "groups",
+              "scripts",
+              "X",
+              "Y",
+              `
             return (async function() {
               ${Func}
             })();
           `
-          );
+            );
 
-          runnableFunc(k, engine, Matter, groups, scripts, X, Y);
+            runnableFunc(k, engine, Matter, groups, scripts, X, Y);
 
-          groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
-          groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
+            groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
+            groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
+          }
         }
+      } else {
+        checkFlag = true;
       }
-    } else {
-      checkFlag = true;
     }
   };
 
