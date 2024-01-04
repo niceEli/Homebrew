@@ -30,6 +30,9 @@ export default function matterRect(
       this.pos.y = this.body.position.y;
       this.angle = this.body.angle * (180 / Math.PI);
     },
+    destroy() {
+      Matter.Composite.remove(engine.world, this.body);
+    },
   };
 }
 
@@ -61,6 +64,34 @@ export function matterRect4Sprites(
       this.pos.x = this.body.position.x;
       this.pos.y = this.body.position.y;
       this.angle = this.body.angle * (180 / Math.PI);
+    },
+    destroy() {
+      Matter.Composite.remove(engine.world, this.body);
+    },
+  };
+}
+
+export function matterRect4Static(engine, size?: Vec2) {
+  return {
+    add() {
+      const { x, y } = this.pos;
+      const width = size.x;
+      const height = size.y;
+      this.body = Matter.Bodies.rectangle(x, y, width, height, {
+        isStatic: true,
+      });
+      Matter.Composite.add(engine.world, this.body);
+    },
+    update() {
+      if (!this.body) {
+        return;
+      }
+
+      Matter.Body.setPosition(this.body, { x: this.pos.x, y: this.pos.y });
+      Matter.Body.setVelocity(this.body, { x: 0, y: 0 });
+    },
+    destroy() {
+      Matter.Composite.remove(engine.world, this.body);
     },
   };
 }

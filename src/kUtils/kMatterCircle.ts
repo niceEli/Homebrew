@@ -29,5 +29,8 @@ export default function matterCircle(
       this.pos.y = this.body.position.y;
       this.angle = this.body.angle * (180 / Math.PI);
     },
+    destroy() {
+      Matter.Composite.remove(engine.world, this.body);
+    },
   };
 }

@@ -132,5 +132,8 @@ export default function PlayerPawnCircle(
         }
       }
     },
+    destroy() {
+      Matter.Composite.remove(engine.world, this.body);
+    },
   };
 }

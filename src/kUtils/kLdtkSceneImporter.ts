@@ -1,6 +1,9 @@
 import k from "../kaboom";
 import { hexToRgb } from "../kUtils/kColor";
-import matterRect, { matterRect4Sprites } from "./kMatterRect";
+import matterRect, {
+  matterRect4Sprites,
+  matterRect4Static,
+} from "./kMatterRect";
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
@@ -24,6 +27,8 @@ export default function kLdtkSceneImporter(
   let scripts = [];
   let groups = [];
   let CTriggers = [];
+
+  let classTiles = [];
 
   for (let i = 0; i < 9999; i++) {
     groups.push({ active: false, chgX: 0, chgY: 0 });
@@ -181,6 +186,42 @@ export default function kLdtkSceneImporter(
               ]),
               GroupID: ent.fieldInstances[0].__value,
             });
+          } else if (ent.__identifier == "EditableTile") {
+            let size = 16 * levelsize;
+            let spritename =
+              ent.fieldInstances[1].__value.x / 16 +
+              (ent.fieldInstances[1].__value.y / 16) * 25;
+            if (ent.fieldInstances[2].__value) {
+              classTiles.push({
+                entity: k.add([
+                  k.scale(levelsize),
+                  k.anchor("center"),
+                  k.sprite("SpriteSheet" + spritename),
+                  k.pos(
+                    ent.__worldX * levelsize + 8 * levelsize,
+                    ent.__worldY * levelsize + 8 * levelsize
+                  ),
+                  matterRect4Static(engine, k.vec2(size, size)),
+                  "Tile",
+                ]),
+                name: ent.fieldInstances[0].__value,
+              });
+            } else {
+              classTiles.push({
+                entity: k.add([
+                  k.scale(levelsize),
+                  k.sprite("SpriteSheet" + spritename),
+                  k.anchor("center"),
+                  k.z(1),
+                  k.pos(
+                    ent.__worldX * levelsize + 8 * levelsize,
+                    ent.__worldY * levelsize + 8 * levelsize
+                  ),
+                  "Tile",
+                ]),
+                name: ent.fieldInstances[0].__value,
+              });
+            }
           }
         }
       } else if (element.layerInstances[i].__type === "Tiles") {
@@ -196,6 +237,7 @@ export default function kLdtkSceneImporter(
                 element.worldX * levelsize,
               gridInstanceOnPoint.px[1] * levelsize + element.worldY * levelsize
             ),
+            "Tile",
           ]);
         }
       }
@@ -220,6 +262,9 @@ export default function kLdtkSceneImporter(
               "scripts",
               "X",
               "Y",
+              "currentScene",
+              "nextScene",
+              "classTiles",
               `
             return (async function() {
               ${Func}
@@ -227,7 +272,18 @@ export default function kLdtkSceneImporter(
           `
             );
 
-            runnableFunc(k, engine, Matter, groups, scripts, X, Y);
+            runnableFunc(
+              k,
+              engine,
+              Matter,
+              groups,
+              scripts,
+              X,
+              Y,
+              currentScene,
+              nextScene,
+              classTiles
+            );
 
             groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
             groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
