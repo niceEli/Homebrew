@@ -183,31 +183,48 @@ export default function kLdtkSceneImporter(
       }
     }
   }
-
+  let CHKGRPFF = true;
   let checkGroups = function () {
-    for (let i = 0; i < scripts.length; i++) {
-      const element = scripts[i];
-      if (groups[element.GroupID].active) {
-        const func = element.Func;
-        const runnableFunc = new Function(
-          "k",
-          "engine",
-          "Matter",
-          "groups",
-          "scripts",
-          "X",
-          "Y",
-          `
+    if (CHKGRPFF) {
+      CHKGRPFF = false;
+      for (let i = 0; i < scripts.length; i++) {
+        const element = scripts[i];
+        if (groups[element.GroupID].active) {
+          const func = element.Func;
+          const runnableFunc = new Function(
+            "k",
+            "engine",
+            "Matter",
+            "groups",
+            "scripts",
+            "X",
+            "Y",
+            `
         return (async function() {
           ${func}
         })();
       `
-        );
+          );
 
-        runnableFunc(k, engine, Matter, groups, scripts, element.X, element.Y);
-        groups.splice(element.GroupID, 1, { active: false, chgX: 0, chgY: 0 });
-        groups.splice(element.NextGID, 1, { active: true, chgX: 0, chgY: 0 });
+          runnableFunc(
+            k,
+            engine,
+            Matter,
+            groups,
+            scripts,
+            element.X,
+            element.Y
+          );
+          groups.splice(element.GroupID, 1, {
+            active: false,
+            chgX: 0,
+            chgY: 0,
+          });
+          groups.splice(element.NextGID, 1, { active: true, chgX: 0, chgY: 0 });
+        }
       }
+    } else {
+      CHKGRPFF = true;
     }
   };
 
