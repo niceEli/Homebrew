@@ -25,7 +25,7 @@ export default function kLdtkSceneImporter(
   let groups = [];
   let CTriggers = [];
 
-  for (let i = 0; i < 9999; i++) {
+  for (let i = 0; i < 999; i++) {
     groups.push({ active: false, chgX: 0, chgY: 0 });
   }
 
