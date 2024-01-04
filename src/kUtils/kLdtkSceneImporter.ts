@@ -183,14 +183,17 @@ export default function kLdtkSceneImporter(
       }
     }
   }
-  let CHKGRPFF = true;
   let checkGroups = function () {
-    if (CHKGRPFF) {
-      CHKGRPFF = false;
-      for (let i = 0; i < scripts.length; i++) {
-        const element = scripts[i];
-        if (groups[element.GroupID].active) {
-          const func = element.Func;
+    let checkFlag = true;
+
+    if (checkFlag) {
+      checkFlag = false;
+
+      for (const script of scripts) {
+        const { GroupID, NextGID, Func, X, Y } = script;
+        const group = groups[GroupID];
+
+        if (group.active) {
           const runnableFunc = new Function(
             "k",
             "engine",
@@ -200,31 +203,20 @@ export default function kLdtkSceneImporter(
             "X",
             "Y",
             `
-        return (async function() {
-          ${func}
-        })();
-      `
+            return (async function() {
+              ${Func}
+            })();
+          `
           );
 
-          runnableFunc(
-            k,
-            engine,
-            Matter,
-            groups,
-            scripts,
-            element.X,
-            element.Y
-          );
-          groups.splice(element.GroupID, 1, {
-            active: false,
-            chgX: 0,
-            chgY: 0,
-          });
-          groups.splice(element.NextGID, 1, { active: true, chgX: 0, chgY: 0 });
+          runnableFunc(k, engine, Matter, groups, scripts, X, Y);
+
+          groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
+          groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
         }
       }
     } else {
-      CHKGRPFF = true;
+      checkFlag = true;
     }
   };
 
