@@ -25,9 +25,11 @@ export default function kLdtkSceneImporter(
   let groups = [];
   let CTriggers = [];
 
-  for (let i = 0; i < 999; i++) {
+  for (let i = 0; i < 9999; i++) {
     groups.push({ active: false, chgX: 0, chgY: 0 });
   }
+
+  let maxGroups = 0;
 
   // this will spawn everything from ldtk
   for (let i = 0; i < sceneData.levels.length; i++) {
@@ -135,6 +137,16 @@ export default function kLdtkSceneImporter(
               k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
             ]);
           } else if (ent.__identifier == "Script") {
+            if (
+              maxGroups < ent.fieldInstances[1].__value ||
+              maxGroups < ent.fieldInstances[2].__value
+            ) {
+              let grp = ent.fieldInstances[1].__value;
+              if (grp < ent.fieldInstances[2].__value) {
+                grp = ent.fieldInstances[2].__value;
+              }
+              maxGroups = grp;
+            }
             scripts.push({
               Func: ent.fieldInstances[0].__value,
               GroupID: ent.fieldInstances[1].__value,
@@ -143,12 +155,18 @@ export default function kLdtkSceneImporter(
               Y: ent.__worldY * levelsize,
             });
           } else if (ent.__identifier == "StartTrigger") {
+            if (maxGroups < ent.fieldInstances[0].__value) {
+              maxGroups = ent.fieldInstances[0].__value;
+            }
             groups.splice(ent.fieldInstances[0].__value, 1, {
               active: true,
               chgX: 0,
               chgY: 0,
             });
           } else if (ent.__identifier == "CollisionTrigger") {
+            if (maxGroups < ent.fieldInstances[0].__value) {
+              maxGroups = ent.fieldInstances[0].__value;
+            }
             CTriggers.push({
               obj: k.add([
                 k.rect(levelsize * ent.width, levelsize * ent.height),
@@ -189,8 +207,8 @@ export default function kLdtkSceneImporter(
     if (checkFlag) {
       checkFlag = false;
 
-      for (const script of scripts) {
-        const { GroupID, NextGID, Func, X, Y } = script;
+      for (let i = 0; i <= maxGroups; i++) {
+        const { GroupID, NextGID, Func, X, Y } = scripts[i];
         const group = groups[GroupID];
 
         if (group.active) {
