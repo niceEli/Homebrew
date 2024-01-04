@@ -5,6 +5,7 @@ import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
 import { GameObj, SceneDef } from "kaboom";
+import Matter from "matter-js";
 
 export default function kLdtkSceneImporter(
   sceneData,
@@ -20,7 +21,13 @@ export default function kLdtkSceneImporter(
   k.loadSprite("door", "end.png");
 
   let isInlevel: number;
-  var condition: SceneDef;
+  let scripts = [];
+  let groups = [];
+  let CTriggers = [];
+
+  for (let i = 0; i < 9999; i++) {
+    groups.push({ active: false, chgX: 0, chgY: 0 });
+  }
 
   // this will spawn everything from ldtk
   for (let i = 0; i < sceneData.levels.length; i++) {
@@ -127,6 +134,35 @@ export default function kLdtkSceneImporter(
               k.color(ent.fieldInstances[2].__value),
               k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
             ]);
+          } else if (ent.__identifier == "Script") {
+            scripts.push({
+              Func: ent.fieldInstances[0].__value,
+              GroupID: ent.fieldInstances[1].__value,
+              NextGID: ent.fieldInstances[2].__value,
+              X: ent.__worldX * levelsize,
+              Y: ent.__worldY * levelsize,
+            });
+          } else if (ent.__identifier == "StartTrigger") {
+            groups.splice(ent.fieldInstances[0].__value, 1, {
+              active: true,
+              chgX: 0,
+              chgY: 0,
+            });
+          } else if (ent.__identifier == "CollisionTrigger") {
+            CTriggers.push({
+              obj: k.add([
+                k.rect(levelsize * ent.width, levelsize * ent.height),
+                k.pos(
+                  (ent.__worldX + ent.width / 2) * levelsize,
+                  (ent.__worldY + ent.height / 2) * levelsize
+                ),
+                k.anchor("center"),
+                k.opacity(0),
+                k.area(),
+                "CTrigger",
+              ]),
+              GroupID: ent.fieldInstances[0].__value,
+            });
           }
         }
       } else if (element.layerInstances[i].__type === "Tiles") {
@@ -147,6 +183,43 @@ export default function kLdtkSceneImporter(
       }
     }
   }
+
+  let checkGroups = function () {
+    for (let i = 0; i < scripts.length; i++) {
+      const element = scripts[i];
+      if (groups[element.GroupID].active) {
+        const func = element.Func;
+        const runnableFunc = new Function(
+          "k",
+          "engine",
+          "Matter",
+          "groups",
+          "scripts",
+          "X",
+          "Y",
+          `
+        return (async function() {
+          ${func}
+        })();
+      `
+        );
+
+        runnableFunc(k, engine, Matter, groups, scripts, element.X, element.Y);
+        groups.splice(element.GroupID, 1, { active: false, chgX: 0, chgY: 0 });
+        groups.splice(element.NextGID, 1, { active: true, chgX: 0, chgY: 0 });
+      }
+    }
+  };
+
+  k.onUpdate(checkGroups);
+
+  for (let i = 0; i < CTriggers.length; i++) {
+    const element = CTriggers[i];
+    element.obj.onCollide("Player", () => {
+      groups.splice(element.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
+    });
+  }
+
   player.onCollide("Death_Trig", () => {
     k.go("scene");
   });

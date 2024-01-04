@@ -7,7 +7,8 @@
 	"settings": {
 		"files.watcherExclude": {
 			"**/build/win-unpacked/**": true
-		}
+		},
+		"workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-auto"
 	},
 		
 }
