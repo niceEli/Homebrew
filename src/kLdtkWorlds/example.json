@@ -11,7 +11,7 @@
 	"iid": "a26276c0-7820-11ed-b6fd-ed05d55c9a75",
 	"jsonVersion": "1.4.1",
 	"appBuildId": 471015,
-	"nextUid": 153,
+	"nextUid": 154,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -949,7 +949,7 @@
 			"fieldDefs": [
 				{
 					"identifier": "GroupID",
-					"doc": null,
+					"doc": "Activates this group when colliding with player entitiy",
 					"__type": "Int",
 					"uid": 143,
 					"type": "F_Int",
@@ -973,6 +973,41 @@
 					"regex": null,
 					"acceptFileTypes": null,
 					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "UnCollideGroupID",
+					"doc": "Activates this group when no longer colliding with player entitiy",
+					"__type": "Int",
+					"uid": 153,
+					"type": "F_Int",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": -1,
+					"max": 9999,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Int", "params": [-1] },
 					"textLanguageMode": null,
 					"symmetricalRef": false,
 					"autoChainRef": true,
@@ -1238,6 +1273,7 @@
 							"px": [48,176],
 							"fieldInstances": [
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 2, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [2] }] },
+								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": 7, "__tile": null, "defUid": 153, "realEditorValues": [{ "id": "V_Int", "params": [7] }] },
 								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
 									"id": "V_Bool",
 									"params": [ true ]
@@ -1395,6 +1431,30 @@
 							"defUid": 109,
 							"px": [96,112],
 							"fieldInstances": []
+						},
+						{
+							"__identifier": "Script",
+							"__grid": [5,12],
+							"__pivot": [0.5,0.5],
+							"__tags": [],
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
+							"__smartColor": "#EAD4AA",
+							"__worldX": 88,
+							"__worldY": 200,
+							"iid": "eae8a010-8990-11ee-a338-9dfe13fa7fcc",
+							"width": 16,
+							"height": 16,
+							"defUid": 134,
+							"px": [88,200],
+							"fieldInstances": [
+								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "console.log(\"Ok Thanks Just Dont Touch It Again\");", "__tile": null, "defUid": 136, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["console.log(\"Ok Thanks Just Dont Touch It Again\");"]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 7, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [7] }] },
+								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 141, "realEditorValues": [] },
+								{ "__identifier": "Comment", "__type": "String", "__value": null, "__tile": null, "defUid": 144, "realEditorValues": [] }
+							]
 						}
 					]
 				},
@@ -1800,6 +1860,7 @@
 							"px": [112,160],
 							"fieldInstances": [
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 3, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [3] }] },
+								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
 								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
 									"id": "V_Bool",
 									"params": [ true ]
@@ -2572,6 +2633,7 @@
 							"px": [64,144],
 							"fieldInstances": [
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 10, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [10] }] },
+								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
 								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
 									"id": "V_Bool",
 									"params": [ true ]
@@ -2594,6 +2656,7 @@
 							"px": [80,128],
 							"fieldInstances": [
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 11, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [11] }] },
+								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
 								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
 									"id": "V_Bool",
 									"params": [ true ]
@@ -2616,6 +2679,7 @@
 							"px": [96,128],
 							"fieldInstances": [
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 12, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [12] }] },
+								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
 								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
 									"id": "V_Bool",
 									"params": [ true ]
@@ -2638,6 +2702,7 @@
 							"px": [112,144],
 							"fieldInstances": [
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 13, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [13] }] },
+								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
 								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
 									"id": "V_Bool",
 									"params": [ true ]
@@ -3276,6 +3341,7 @@
 							"px": [304,0],
 							"fieldInstances": [
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 4, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [4] }] },
+								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
 								{ "__identifier": "OneTime", "__type": "Bool", "__value": false, "__tile": null, "defUid": 150, "realEditorValues": [] }
 							]
 						},

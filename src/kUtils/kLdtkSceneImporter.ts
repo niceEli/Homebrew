@@ -33,6 +33,8 @@ export default function kLdtkSceneImporter(
 
   let classTiles = [];
 
+  let updateTriggers: number[] = [];
+
   let score: number = 0;
   let lives: number = 0;
   let health: number = 0;
@@ -192,7 +194,8 @@ export default function kLdtkSceneImporter(
                 "CTrigger",
               ]),
               GroupID: ent.fieldInstances[0].__value,
-              OneTime: ent.fieldInstances[1].__value,
+              UnCollideGroupID: ent.fieldInstances[1].__value,
+              OneTime: ent.fieldInstances[2].__value,
             });
           } else if (ent.__identifier == "EditableTile") {
             let size = 16 * levelsize;
@@ -233,6 +236,8 @@ export default function kLdtkSceneImporter(
                 name: ent.fieldInstances[0].__value,
               });
             }
+          } else if (ent.__identifier == "TickTrigger") {
+            updateTriggers.push(ent.fieldInstances[0].__value);
           }
         }
       } else if (element.layerInstances[i].__type === "Tiles") {
@@ -345,17 +350,31 @@ export default function kLdtkSceneImporter(
     } catch (error) {}
   };
 
-  k.onUpdate(checkGroups);
-
   for (let i = 0; i < CTriggers.length; i++) {
     const element = CTriggers[i];
     element.obj.onCollide("Player", () => {
       groups.splice(element.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
+    });
+    element.obj.onCollideEnd("Player", () => {
+      groups.splice(element.UnCollideGroupID, 1, {
+        active: true,
+        chgX: 0,
+        chgY: 0,
+      });
       if (element.OneTime) {
         k.destroy(element.obj);
       }
     });
   }
+
+  k.onUpdate(() => {
+    for (let i = 0; i < updateTriggers.length; i++) {
+      const element = updateTriggers[i];
+      groups.splice(element, 1, { active: true, chgX: 0, chgY: 0 });
+    }
+  });
+
+  k.onUpdate(checkGroups);
 
   player.onCollide("Death_Trig", () => {
     k.go("scene");
