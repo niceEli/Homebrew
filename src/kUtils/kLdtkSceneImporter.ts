@@ -9,6 +9,9 @@ import kCamera from "./kCamera";
 import kReset from "./kReset";
 import { GameObj, SceneDef } from "kaboom";
 import Matter from "matter-js";
+import matterCircle from "./kMatterCircle";
+import kDownloadToVar from "./kDownloadToVar";
+import loadSpritesSheet from "./kLoadSpriteSheet";
 
 export default function kLdtkSceneImporter(
   sceneData,
@@ -29,6 +32,10 @@ export default function kLdtkSceneImporter(
   let CTriggers = [];
 
   let classTiles = [];
+
+  let score: number = 0;
+  let lives: number = 0;
+  let health: number = 0;
 
   for (let i = 0; i < 9999; i++) {
     groups.push({ active: false, chgX: 0, chgY: 0 });
@@ -185,6 +192,7 @@ export default function kLdtkSceneImporter(
                 "CTrigger",
               ]),
               GroupID: ent.fieldInstances[0].__value,
+              OneTime: ent.fieldInstances[1].__value,
             });
           } else if (ent.__identifier == "EditableTile") {
             let size = 16 * levelsize;
@@ -197,6 +205,7 @@ export default function kLdtkSceneImporter(
                   k.scale(levelsize),
                   k.anchor("center"),
                   k.sprite("SpriteSheet" + spritename),
+                  k.z(2000),
                   k.pos(
                     ent.__worldX * levelsize + 8 * levelsize,
                     ent.__worldY * levelsize + 8 * levelsize
@@ -212,7 +221,7 @@ export default function kLdtkSceneImporter(
                   k.scale(levelsize),
                   k.sprite("SpriteSheet" + spritename),
                   k.anchor("center"),
-                  k.z(1),
+                  k.z(2000),
                   k.pos(
                     ent.__worldX * levelsize + 8 * levelsize,
                     ent.__worldY * levelsize + 8 * levelsize
@@ -243,15 +252,18 @@ export default function kLdtkSceneImporter(
       }
     }
   }
-  let checkGroups = function () {
+  let checkGroups = async function () {
     let checkFlag = true;
-    if (maxGroups != -1) {
+
+    if (maxGroups !== -1) {
       if (checkFlag) {
         checkFlag = false;
 
+        const asyncTasks = [];
+
         for (let i = 0; i <= maxGroups; i++) {
-          const { GroupID, NextGID, Func, X, Y } = scripts[i];
-          const group = groups[GroupID];
+          let { GroupID, NextGID, Func, X, Y } = scripts[i];
+          let group = groups[GroupID];
 
           if (group.active) {
             const runnableFunc = new Function(
@@ -265,30 +277,63 @@ export default function kLdtkSceneImporter(
               "currentScene",
               "nextScene",
               "classTiles",
+              "matterRect",
+              "matterRect4Sprites",
+              "matterRect4Static",
+              "PlayerPawnCircle",
+              "matterCircle",
+              "hexToRgb",
+              "kDownloadToVar",
+              "kCamera",
+              "kReset",
+              "loadSpritesSheet",
+              "player",
+              "score",
+              "lives",
+              "health",
               `
-            return (async function() {
-              ${Func}
-            })();
-          `
+              return (async function() {
+                ${Func}
+              })();
+            `
             );
 
-            runnableFunc(
-              k,
-              engine,
-              Matter,
-              groups,
-              scripts,
-              X,
-              Y,
-              currentScene,
-              nextScene,
-              classTiles
+            asyncTasks.push(
+              runnableFunc(
+                k,
+                engine,
+                Matter,
+                groups,
+                scripts,
+                X,
+                Y,
+                currentScene,
+                nextScene,
+                classTiles,
+                matterRect,
+                matterRect4Sprites,
+                matterRect4Static,
+                PlayerPawnCircle,
+                matterCircle,
+                hexToRgb,
+                kDownloadToVar,
+                kCamera,
+                kReset,
+                loadSpritesSheet,
+                player,
+                score,
+                lives,
+                health
+              )
             );
 
+            group = groups[GroupID];
             groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
             groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
           }
         }
+
+        await Promise.all(asyncTasks);
       } else {
         checkFlag = true;
       }
@@ -301,6 +346,9 @@ export default function kLdtkSceneImporter(
     const element = CTriggers[i];
     element.obj.onCollide("Player", () => {
       groups.splice(element.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
+      if (element.OneTime) {
+        k.destroy(element.obj);
+      }
     });
   }
 

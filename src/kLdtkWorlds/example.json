@@ -11,7 +11,7 @@
 	"iid": "a26276c0-7820-11ed-b6fd-ed05d55c9a75",
 	"jsonVersion": "1.4.1",
 	"appBuildId": 471015,
-	"nextUid": 150,
+	"nextUid": 151,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -480,7 +480,7 @@
 			"showName": true,
 			"tilesetId": 135,
 			"tileRenderMode": "Repeat",
-			"tileRect": { "tilesetUid": 135, "x": 256, "y": 272, "w": 16, "h": 16 },
+			"tileRect": { "tilesetUid": 135, "x": 144, "y": 16, "w": 16, "h": 16 },
 			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
@@ -623,7 +623,7 @@
 			"showName": true,
 			"tilesetId": 135,
 			"tileRenderMode": "FitInside",
-			"tileRect": { "tilesetUid": 135, "x": 16, "y": 48, "w": 16, "h": 16 },
+			"tileRect": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
 			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
@@ -911,6 +911,41 @@
 					"allowedRefsEntityUid": null,
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "OneTime",
+					"doc": "Decides to destroy the trigger object or not after being activated",
+					"__type": "Bool",
+					"uid": 150,
+					"type": "F_Bool",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		}
@@ -934,7 +969,7 @@
 			"savedSelections": [],
 			"cachedPixelData": {
 				"opaqueTiles": "0110000000000000000000000111001000000000000000000011111111100000000000000001111011110000000000000000111111111000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-				"averageColors": "0000f754f9998c858777b8547173a911a911a911a91100000000000000000000000000000000000000000000000000000000f1a4f753fe82859e2888fa64c811a911a911a911a91100000000000000000000000000000000000000000000000000000000f574f664f573f653f474f754f653f754f473cd72b66600000000000000000000000000000000000000000000000000000000f664f384f563f474b183f473f653f653f473b6669777b6660000000000000000000000000000000000000000000000000000f574f663f573f654f473f754f664f563f6ae419eb6660000000000000000000000000000000000000000000000000000000050005000400050005000400050004000400020004000300050000000000000000000000000000000000000000000000000005000500040006000600050003000400030006000400030004000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+				"averageColors": "0000f754f9998c858777b8547173a911a911a911a91100000000000000000000000000000000000000000000000000000000f1a4f753fe82859e2888fa64c811a911a911a911a91100000000000000000000000000000000000000000000000000000000f574f664f573f653f474f754f653f754f473cd72b66600000000000000000000000000000000000000000000000000000000f664f384f563f474b183f473f653f653f473b6669777b6660000000000000000000000000000000000000000000000000000f574f663f573f654f473f754f664f563f6ae4993b6669ba3000000000000000000000000000000000000000000000000000050005000400050005000400050004000400020004000300050000000000000000000000000000000000000000000000000005000500040006000600050003000400030006000400030004000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 			}
 		},
 		{
@@ -1050,7 +1085,7 @@
 							"__grid": [2,8],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 16, "y": 48, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
 							"__smartColor": "#EAD4AA",
 							"__worldX": 40,
 							"__worldY": 136,
@@ -1095,7 +1130,7 @@
 							"__grid": [3,8],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 16, "y": 48, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
 							"__smartColor": "#EAD4AA",
 							"__worldX": 56,
 							"__worldY": 136,
@@ -1131,14 +1166,20 @@
 							"height": 64,
 							"defUid": 142,
 							"px": [48,176],
-							"fieldInstances": [{ "__identifier": "GroupID", "__type": "Int", "__value": 2, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [2] }] }]
+							"fieldInstances": [
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 2, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [2] }] },
+								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ true ]
+								}] }
+							]
 						},
 						{
 							"__identifier": "Script",
 							"__grid": [5,11],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 16, "y": 48, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
 							"__smartColor": "#EAD4AA",
 							"__worldX": 88,
 							"__worldY": 184,
@@ -1687,14 +1728,20 @@
 							"height": 16,
 							"defUid": 142,
 							"px": [112,160],
-							"fieldInstances": [{ "__identifier": "GroupID", "__type": "Int", "__value": 3, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [3] }] }]
+							"fieldInstances": [
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 3, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [3] }] },
+								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ true ]
+								}] }
+							]
 						},
 						{
 							"__identifier": "Script",
 							"__grid": [9,10],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 16, "y": 48, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
 							"__smartColor": "#EAD4AA",
 							"__worldX": 408,
 							"__worldY": 168,
@@ -1704,10 +1751,10 @@
 							"defUid": 134,
 							"px": [152,168],
 							"fieldInstances": [
-								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"keyCollect1\" || element.name === \"keyCollect1_Door\") {\n  k.destroy(element.entity);\n }\n}", "__tile": null, "defUid": 136, "realEditorValues": [{
+								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"keyCollect1\" || element.name === \"keyCollect1_Door\") {\n  k.destroy(element.entity);\n }\n}\nk.loadSound(\"keyPickup\", \"sfx/keyPickup.wav\")\nk.play(\"keyPickup\")", "__tile": null, "defUid": 136, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"keyCollect1\" || element.name === \"keyCollect1_Door\") {\\n  k.destroy(element.entity);\\n }\\n}"
+										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"keyCollect1\" || element.name === \"keyCollect1_Door\") {\\n  k.destroy(element.entity);\\n }\\n}\\nk.loadSound(\"keyPickup\", \"sfx/keyPickup.wav\")\\nk.play(\"keyPickup\")"
 									]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 3, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [3] }] },
@@ -2322,6 +2369,314 @@
 								}] },
 								{ "__identifier": "Collisions", "__type": "Bool", "__value": true, "__tile": null, "defUid": 149, "realEditorValues": [] }
 							]
+						},
+						{
+							"__identifier": "EditableTile",
+							"__grid": [4,9],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#733E39",
+							"__worldX": 512,
+							"__worldY": 320,
+							"iid": "1e2187d0-8990-11ee-a89a-79b636ca950b",
+							"width": 16,
+							"height": 16,
+							"defUid": 146,
+							"px": [64,144],
+							"fieldInstances": [
+								{ "__identifier": "Class", "__type": "String", "__value": "Coin1", "__tile": null, "defUid": 148, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Coin1"]
+								}] },
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 147, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["176,64,16,16"]
+								}] },
+								{ "__identifier": "Collisions", "__type": "Bool", "__value": false, "__tile": null, "defUid": 149, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ false ]
+								}] }
+							]
+						},
+						{
+							"__identifier": "EditableTile",
+							"__grid": [5,8],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#733E39",
+							"__worldX": 528,
+							"__worldY": 304,
+							"iid": "1e7b8eb0-8990-11ee-a89a-3fcb4e306144",
+							"width": 16,
+							"height": 16,
+							"defUid": 146,
+							"px": [80,128],
+							"fieldInstances": [
+								{ "__identifier": "Class", "__type": "String", "__value": "Coin2", "__tile": null, "defUid": 148, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Coin2"]
+								}] },
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 147, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["176,64,16,16"]
+								}] },
+								{ "__identifier": "Collisions", "__type": "Bool", "__value": false, "__tile": null, "defUid": 149, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ false ]
+								}] }
+							]
+						},
+						{
+							"__identifier": "EditableTile",
+							"__grid": [6,8],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#733E39",
+							"__worldX": 544,
+							"__worldY": 304,
+							"iid": "1ea0a2e0-8990-11ee-a89a-1fbfdd804ca1",
+							"width": 16,
+							"height": 16,
+							"defUid": 146,
+							"px": [96,128],
+							"fieldInstances": [
+								{ "__identifier": "Class", "__type": "String", "__value": "Coin3", "__tile": null, "defUid": 148, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Coin3"]
+								}] },
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 147, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["176,64,16,16"]
+								}] },
+								{ "__identifier": "Collisions", "__type": "Bool", "__value": false, "__tile": null, "defUid": 149, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ false ]
+								}] }
+							]
+						},
+						{
+							"__identifier": "EditableTile",
+							"__grid": [7,9],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#733E39",
+							"__worldX": 560,
+							"__worldY": 320,
+							"iid": "1ee796f0-8990-11ee-a89a-07b2e78a31f4",
+							"width": 16,
+							"height": 16,
+							"defUid": 146,
+							"px": [112,144],
+							"fieldInstances": [
+								{ "__identifier": "Class", "__type": "String", "__value": "Coin4", "__tile": null, "defUid": 148, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Coin4"]
+								}] },
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 147, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["176,64,16,16"]
+								}] },
+								{ "__identifier": "Collisions", "__type": "Bool", "__value": false, "__tile": null, "defUid": 149, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ false ]
+								}] }
+							]
+						},
+						{
+							"__identifier": "CollisionTrigger",
+							"__grid": [4,9],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 135, "x": 400, "y": 16, "w": 16, "h": 16 },
+							"__smartColor": "#FF9800",
+							"__worldX": 512,
+							"__worldY": 320,
+							"iid": "347b9390-8990-11ee-a89a-93645637fa6b",
+							"width": 16,
+							"height": 16,
+							"defUid": 142,
+							"px": [64,144],
+							"fieldInstances": [
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 10, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [10] }] },
+								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ true ]
+								}] }
+							]
+						},
+						{
+							"__identifier": "CollisionTrigger",
+							"__grid": [5,8],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 135, "x": 400, "y": 16, "w": 16, "h": 16 },
+							"__smartColor": "#FF9800",
+							"__worldX": 528,
+							"__worldY": 304,
+							"iid": "34fcaa70-8990-11ee-a89a-1b22c31c66e3",
+							"width": 16,
+							"height": 16,
+							"defUid": 142,
+							"px": [80,128],
+							"fieldInstances": [
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 11, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [11] }] },
+								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ true ]
+								}] }
+							]
+						},
+						{
+							"__identifier": "CollisionTrigger",
+							"__grid": [6,8],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 135, "x": 400, "y": 16, "w": 16, "h": 16 },
+							"__smartColor": "#FF9800",
+							"__worldX": 544,
+							"__worldY": 304,
+							"iid": "3535e2e0-8990-11ee-a89a-119017ac6c03",
+							"width": 16,
+							"height": 16,
+							"defUid": 142,
+							"px": [96,128],
+							"fieldInstances": [
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 12, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [12] }] },
+								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ true ]
+								}] }
+							]
+						},
+						{
+							"__identifier": "CollisionTrigger",
+							"__grid": [7,9],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 135, "x": 400, "y": 16, "w": 16, "h": 16 },
+							"__smartColor": "#FF9800",
+							"__worldX": 560,
+							"__worldY": 320,
+							"iid": "35722890-8990-11ee-a89a-5985a9ca4351",
+							"width": 16,
+							"height": 16,
+							"defUid": 142,
+							"px": [112,144],
+							"fieldInstances": [
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 13, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [13] }] },
+								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ true ]
+								}] }
+							]
+						},
+						{
+							"__identifier": "Script",
+							"__grid": [4,6],
+							"__pivot": [0.5,0.5],
+							"__tags": [],
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
+							"__smartColor": "#EAD4AA",
+							"__worldX": 520,
+							"__worldY": 280,
+							"iid": "608f2550-8990-11ee-a89a-c7a147c9c3dc",
+							"width": 16,
+							"height": 16,
+							"defUid": 134,
+							"px": [72,104],
+							"fieldInstances": [
+								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Coin1\") {\n  k.destroy(element.entity);\n }\n}\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\nk.play(\"coinCollect\")\nscore++;", "__tile": null, "defUid": 136, "realEditorValues": [{
+									"id": "V_String",
+									"params": [
+										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Coin1\") {\\n  k.destroy(element.entity);\\n }\\n}\\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\\nk.play(\"coinCollect\")\\nscore++;"
+									]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 10, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [10] }] },
+								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 141, "realEditorValues": [] },
+								{ "__identifier": "Comment", "__type": "String", "__value": null, "__tile": null, "defUid": 144, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "Script",
+							"__grid": [5,6],
+							"__pivot": [0.5,0.5],
+							"__tags": [],
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
+							"__smartColor": "#EAD4AA",
+							"__worldX": 536,
+							"__worldY": 280,
+							"iid": "699ccda0-8990-11ee-a89a-01e9d864192f",
+							"width": 16,
+							"height": 16,
+							"defUid": 134,
+							"px": [88,104],
+							"fieldInstances": [
+								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Coin2\") {\n  k.destroy(element.entity);\n }\n}\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\nk.play(\"coinCollect\")\nscore++;", "__tile": null, "defUid": 136, "realEditorValues": [{
+									"id": "V_String",
+									"params": [
+										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Coin2\") {\\n  k.destroy(element.entity);\\n }\\n}\\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\\nk.play(\"coinCollect\")\\nscore++;"
+									]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 11, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [11] }] },
+								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 141, "realEditorValues": [] },
+								{ "__identifier": "Comment", "__type": "String", "__value": null, "__tile": null, "defUid": 144, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "Script",
+							"__grid": [6,6],
+							"__pivot": [0.5,0.5],
+							"__tags": [],
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
+							"__smartColor": "#EAD4AA",
+							"__worldX": 552,
+							"__worldY": 280,
+							"iid": "6d9c5ce0-8990-11ee-a89a-17573b361833",
+							"width": 16,
+							"height": 16,
+							"defUid": 134,
+							"px": [104,104],
+							"fieldInstances": [
+								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Coin3\") {\n  k.destroy(element.entity);\n }\n}\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\nk.play(\"coinCollect\")\nscore++", "__tile": null, "defUid": 136, "realEditorValues": [{
+									"id": "V_String",
+									"params": [
+										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Coin3\") {\\n  k.destroy(element.entity);\\n }\\n}\\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\\nk.play(\"coinCollect\")\\nscore++"
+									]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 12, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [12] }] },
+								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 141, "realEditorValues": [] },
+								{ "__identifier": "Comment", "__type": "String", "__value": null, "__tile": null, "defUid": 144, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "Script",
+							"__grid": [7,6],
+							"__pivot": [0.5,0.5],
+							"__tags": [],
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
+							"__smartColor": "#EAD4AA",
+							"__worldX": 568,
+							"__worldY": 280,
+							"iid": "730985e0-8990-11ee-a89a-cbd095a6b1dd",
+							"width": 16,
+							"height": 16,
+							"defUid": 134,
+							"px": [120,104],
+							"fieldInstances": [
+								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Coin4\") {\n  k.destroy(element.entity);\n }\n}\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\nk.play(\"coinCollect\")\nscore++", "__tile": null, "defUid": 136, "realEditorValues": [{
+									"id": "V_String",
+									"params": [
+										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Coin4\") {\\n  k.destroy(element.entity);\\n }\\n}\\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\\nk.play(\"coinCollect\")\\nscore++"
+									]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 13, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [13] }] },
+								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 141, "realEditorValues": [] },
+								{ "__identifier": "Comment", "__type": "String", "__value": null, "__tile": null, "defUid": 144, "realEditorValues": [] }
+							]
 						}
 					]
 				},
@@ -2811,7 +3166,7 @@
 							"__grid": [25,15],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 16, "y": 48, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
 							"__smartColor": "#EAD4AA",
 							"__worldX": 1112,
 							"__worldY": 296,
@@ -2849,14 +3204,17 @@
 							"height": 384,
 							"defUid": 142,
 							"px": [304,0],
-							"fieldInstances": [{ "__identifier": "GroupID", "__type": "Int", "__value": 4, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [4] }] }]
+							"fieldInstances": [
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 4, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [4] }] },
+								{ "__identifier": "OneTime", "__type": "Bool", "__value": false, "__tile": null, "defUid": 150, "realEditorValues": [] }
+							]
 						},
 						{
 							"__identifier": "Script",
 							"__grid": [25,14],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 16, "y": 48, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
 							"__smartColor": "#EAD4AA",
 							"__worldX": 1112,
 							"__worldY": 280,
