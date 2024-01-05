@@ -206,6 +206,7 @@ export default function kLdtkSceneImporter(
                   k.anchor("center"),
                   k.sprite("SpriteSheet" + spritename),
                   k.z(2000),
+                  k.offscreen({ hide: true }),
                   k.pos(
                     ent.__worldX * levelsize + 8 * levelsize,
                     ent.__worldY * levelsize + 8 * levelsize
@@ -222,6 +223,7 @@ export default function kLdtkSceneImporter(
                   k.sprite("SpriteSheet" + spritename),
                   k.anchor("center"),
                   k.z(2000),
+                  k.offscreen({ hide: true }),
                   k.pos(
                     ent.__worldX * levelsize + 8 * levelsize,
                     ent.__worldY * levelsize + 8 * levelsize
@@ -241,6 +243,7 @@ export default function kLdtkSceneImporter(
           k.add([
             k.scale(levelsize),
             k.sprite("SpriteSheet" + spritename),
+            k.offscreen({ hide: true }),
             k.pos(
               gridInstanceOnPoint.px[0] * levelsize +
                 element.worldX * levelsize,

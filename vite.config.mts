@@ -20,4 +20,7 @@ export default defineConfig({
       renderer: {},
     }),
   ],
+  build: {
+      minify: 'terser' // or "terser" but you need terser installed
+  }
 })
