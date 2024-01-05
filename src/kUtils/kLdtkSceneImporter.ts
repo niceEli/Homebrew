@@ -253,91 +253,93 @@ export default function kLdtkSceneImporter(
     }
   }
   let checkGroups = async function () {
-    let checkFlag = true;
+    try {
+      let checkFlag = true;
 
-    if (maxGroups !== -1) {
-      if (checkFlag) {
-        checkFlag = false;
+      if (maxGroups !== -1) {
+        if (checkFlag) {
+          checkFlag = false;
 
-        const asyncTasks = [];
+          const asyncTasks = [];
 
-        for (let i = 0; i <= maxGroups; i++) {
-          let { GroupID, NextGID, Func, X, Y } = scripts[i];
-          let group = groups[GroupID];
+          for (let i = 0; i <= maxGroups; i++) {
+            let { GroupID, NextGID, Func, X, Y } = scripts[i];
+            let group = groups[GroupID];
 
-          if (group.active) {
-            const runnableFunc = new Function(
-              "k",
-              "engine",
-              "Matter",
-              "groups",
-              "scripts",
-              "X",
-              "Y",
-              "currentScene",
-              "nextScene",
-              "classTiles",
-              "matterRect",
-              "matterRect4Sprites",
-              "matterRect4Static",
-              "PlayerPawnCircle",
-              "matterCircle",
-              "hexToRgb",
-              "kDownloadToVar",
-              "kCamera",
-              "kReset",
-              "loadSpritesSheet",
-              "player",
-              "score",
-              "lives",
-              "health",
+            if (group.active) {
+              const runnableFunc = new Function(
+                "k",
+                "engine",
+                "Matter",
+                "groups",
+                "scripts",
+                "X",
+                "Y",
+                "currentScene",
+                "nextScene",
+                "classTiles",
+                "matterRect",
+                "matterRect4Sprites",
+                "matterRect4Static",
+                "PlayerPawnCircle",
+                "matterCircle",
+                "hexToRgb",
+                "kDownloadToVar",
+                "kCamera",
+                "kReset",
+                "loadSpritesSheet",
+                "player",
+                "score",
+                "lives",
+                "health",
+                `
+                return (async function() {
+                  ${Func}
+                })();
               `
-              return (async function() {
-                ${Func}
-              })();
-            `
-            );
+              );
 
-            asyncTasks.push(
-              runnableFunc(
-                k,
-                engine,
-                Matter,
-                groups,
-                scripts,
-                X,
-                Y,
-                currentScene,
-                nextScene,
-                classTiles,
-                matterRect,
-                matterRect4Sprites,
-                matterRect4Static,
-                PlayerPawnCircle,
-                matterCircle,
-                hexToRgb,
-                kDownloadToVar,
-                kCamera,
-                kReset,
-                loadSpritesSheet,
-                player,
-                score,
-                lives,
-                health
-              )
-            );
+              asyncTasks.push(
+                runnableFunc(
+                  k,
+                  engine,
+                  Matter,
+                  groups,
+                  scripts,
+                  X,
+                  Y,
+                  currentScene,
+                  nextScene,
+                  classTiles,
+                  matterRect,
+                  matterRect4Sprites,
+                  matterRect4Static,
+                  PlayerPawnCircle,
+                  matterCircle,
+                  hexToRgb,
+                  kDownloadToVar,
+                  kCamera,
+                  kReset,
+                  loadSpritesSheet,
+                  player,
+                  score,
+                  lives,
+                  health
+                )
+              );
 
-            group = groups[GroupID];
-            groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
-            groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
+              group = groups[GroupID];
+              groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
+              groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
+            }
           }
-        }
 
-        await Promise.all(asyncTasks);
-      } else {
-        checkFlag = true;
+          await Promise.all(asyncTasks);
+        } else {
+          checkFlag = true;
+        }
       }
-    }
+    } catch (error) {}
   };
 
   k.onUpdate(checkGroups);
