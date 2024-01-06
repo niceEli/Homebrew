@@ -261,19 +261,22 @@ export default function kLdtkSceneImporter(
     }
   }
   let checkGroups = async function () {
-    try {
-      let checkFlag = true;
+    let checkFlag = true;
 
-      if (maxGroups !== -1) {
-        if (checkFlag) {
-          checkFlag = false;
+    if (maxGroups !== -1) {
+      if (checkFlag) {
+        checkFlag = false;
 
-          const asyncTasks = [];
+        const asyncTasks = [];
 
-          for (let i = 0; i <= maxGroups; i++) {
-            let { GroupID, NextGID, Func, X, Y } = scripts[i];
+        for (let i = 0; i <= maxGroups; i++) {
+          try {
+            let GroupID = scripts[i].GroupID;
+            let NextGID = scripts[i].NextGID;
+            let Func = scripts[i].Func;
+            let X = scripts[i].X;
+            let Y = scripts[i].Y;
             let group = groups[GroupID];
-
             if (group.active) {
               const runnableFunc = new Function(
                 "k",
@@ -301,10 +304,10 @@ export default function kLdtkSceneImporter(
                 "lives",
                 "health",
                 `
-                return (async function() {
-                  ${Func}
-                })();
-              `
+                  return (async function() {
+                    ${Func}
+                  })();
+                `
               );
 
               asyncTasks.push(
@@ -340,14 +343,19 @@ export default function kLdtkSceneImporter(
               groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
               groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
             }
-          }
-
-          await Promise.all(asyncTasks);
-        } else {
-          checkFlag = true;
+          } catch (error) {}
         }
+        try {
+          await Promise.all(asyncTasks);
+        } catch (error) {
+          let reelError = "UGC JS Script ERR: " + error;
+          k.debug.log(reelError);
+          console.error(reelError);
+        }
+      } else {
+        checkFlag = true;
       }
-    } catch (error) {}
+    }
   };
 
   for (let i = 0; i < CTriggers.length; i++) {
