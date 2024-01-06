@@ -11,7 +11,7 @@
 	"iid": "a26276c0-7820-11ed-b6fd-ed05d55c9a75",
 	"jsonVersion": "1.4.1",
 	"appBuildId": 471015,
-	"nextUid": 165,
+	"nextUid": 171,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -129,7 +129,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "Stretch",
 			"tileRect": null,
-			"uiTileRect": { "tilesetUid": 116, "x": 32, "y": 0, "w": 16, "h": 16 },
+			"uiTileRect": { "tilesetUid": 135, "x": 272, "y": 48, "w": 16, "h": 16 },
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -160,9 +160,9 @@
 			"color": "#FF0098",
 			"renderMode": "Tile",
 			"showName": true,
-			"tilesetId": 116,
+			"tilesetId": 135,
 			"tileRenderMode": "FitInside",
-			"tileRect": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+			"tileRect": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
@@ -197,7 +197,7 @@
 			"tilesetId": 116,
 			"tileRenderMode": "FitInside",
 			"tileRect": { "tilesetUid": 116, "x": 48, "y": 0, "w": 16, "h": 16 },
-			"uiTileRect": null,
+			"uiTileRect": { "tilesetUid": 135, "x": 0, "y": 32, "w": 16, "h": 16 },
 			"nineSliceBorders": [],
 			"maxCount": 1,
 			"limitScope": "PerWorld",
@@ -270,7 +270,7 @@
 			"tilesetId": 116,
 			"tileRenderMode": "FitInside",
 			"tileRect": { "tilesetUid": 116, "x": 80, "y": 16, "w": 16, "h": 16 },
-			"uiTileRect": null,
+			"uiTileRect": { "tilesetUid": 135, "x": 64, "y": 256, "w": 16, "h": 16 },
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -295,16 +295,16 @@
 			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 1,
-			"fillOpacity": 1,
-			"lineOpacity": 1,
+			"fillOpacity": 0.08,
+			"lineOpacity": 0,
 			"hollow": false,
 			"color": "#00FF75",
-			"renderMode": "Cross",
+			"renderMode": "Tile",
 			"showName": true,
-			"tilesetId": null,
+			"tilesetId": 135,
 			"tileRenderMode": "FitInside",
-			"tileRect": null,
-			"uiTileRect": { "tilesetUid": 116, "x": 0, "y": 16, "w": 16, "h": 16 },
+			"tileRect": { "tilesetUid": 135, "x": 256, "y": 144, "w": 16, "h": 16 },
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 1,
 			"limitScope": "PerWorld",
@@ -338,7 +338,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
-			"uiTileRect": { "tilesetUid": 116, "x": 32, "y": 16, "w": 16, "h": 16 },
+			"uiTileRect": { "tilesetUid": 135, "x": 160, "y": 16, "w": 16, "h": 16 },
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -878,41 +878,6 @@
 			"pivotY": 0,
 			"fieldDefs": [
 				{
-					"identifier": "ActivateGroupID",
-					"doc": "set to -1 to make it always on. set to anything else to make it only deploy after the group in ActivateGroupID is active",
-					"__type": "Int",
-					"uid": 164,
-					"type": "F_Int",
-					"isArray": false,
-					"canBeNull": false,
-					"arrayMinLength": null,
-					"arrayMaxLength": null,
-					"editorDisplayMode": "ValueOnly",
-					"editorDisplayScale": 1,
-					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
-					"editorDisplayColor": null,
-					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
-					"editorCutLongValues": true,
-					"editorTextSuffix": null,
-					"editorTextPrefix": "ActiveWithGroup: ",
-					"useForSmartColor": false,
-					"min": -1,
-					"max": 9999,
-					"regex": null,
-					"acceptFileTypes": null,
-					"defaultOverride": { "id": "V_Int", "params": [-1] },
-					"textLanguageMode": null,
-					"symmetricalRef": false,
-					"autoChainRef": true,
-					"allowOutOfLevelRef": true,
-					"allowedRefs": "OnlySame",
-					"allowedRefsEntityUid": null,
-					"allowedRefTags": [],
-					"tilesetUid": null
-				},
-				{
 					"identifier": "GroupID",
 					"doc": null,
 					"__type": "Int",
@@ -938,6 +903,41 @@
 					"regex": null,
 					"acceptFileTypes": null,
 					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "ActivateGroupID",
+					"doc": "set to -1 to make it always on. set to anything else to make it only deploy after the group in ActivateGroupID is active",
+					"__type": "Int",
+					"uid": 164,
+					"type": "F_Int",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": "ActiveWithGroup: ",
+					"useForSmartColor": false,
+					"min": -1,
+					"max": 9999,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Int", "params": [-1] },
 					"textLanguageMode": null,
 					"symmetricalRef": false,
 					"autoChainRef": true,
@@ -1088,6 +1088,146 @@
 					"tilesetUid": null
 				}
 			]
+		},
+		{
+			"identifier": "Collectible",
+			"uid": 165,
+			"tags": [],
+			"exportToToc": false,
+			"doc": "Collect a coin and get score but also if you set a group id then you also can run a script :)",
+			"width": 16,
+			"height": 16,
+			"resizableX": false,
+			"resizableY": false,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
+			"keepAspectRatio": false,
+			"tileOpacity": 1,
+			"fillOpacity": 0.08,
+			"lineOpacity": 0,
+			"hollow": false,
+			"color": "#FEE761",
+			"renderMode": "Tile",
+			"showName": true,
+			"tilesetId": 135,
+			"tileRenderMode": "FitInside",
+			"tileRect": { "tilesetUid": 135, "x": 208, "y": 0, "w": 16, "h": 16 },
+			"uiTileRect": null,
+			"nineSliceBorders": [],
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": [
+				{
+					"identifier": "Tile",
+					"doc": null,
+					"__type": "Tile",
+					"uid": 166,
+					"type": "F_Tile",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "EntityTile",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": 116
+				},
+				{
+					"identifier": "Sound_Effect",
+					"doc": "assuming . = KaboomTS/Public",
+					"__type": "String",
+					"uid": 170,
+					"type": "F_String",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Center",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "GroupID",
+					"doc": null,
+					"__type": "Int",
+					"uid": 167,
+					"type": "F_Int",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Center",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": "Group: ",
+					"useForSmartColor": false,
+					"min": -1,
+					"max": 9999,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Int", "params": [-1] },
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		}
 	], "tilesets": [
 		{
@@ -1209,7 +1349,7 @@
 							"__grid": [12,14],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 192,
 							"__worldY": 224,
@@ -1823,7 +1963,7 @@
 							"__grid": [2,7],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 288,
 							"__worldY": 112,
@@ -1839,7 +1979,7 @@
 							"__grid": [0,25],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 256,
 							"__worldY": 400,
@@ -1849,58 +1989,6 @@
 							"defUid": 113,
 							"px": [0,400],
 							"fieldInstances": []
-						},
-						{
-							"__identifier": "EditableTile",
-							"__grid": [7,10],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 144, "y": 64, "w": 16, "h": 16 },
-							"__smartColor": "#733E39",
-							"__worldX": 368,
-							"__worldY": 160,
-							"iid": "731d4d10-8990-11ee-b36a-b1723aad984b",
-							"width": 16,
-							"height": 16,
-							"defUid": 146,
-							"px": [112,160],
-							"fieldInstances": [
-								{ "__identifier": "Class", "__type": "String", "__value": "keyCollect1", "__tile": null, "defUid": 148, "realEditorValues": [{
-									"id": "V_String",
-									"params": ["keyCollect1"]
-								}] },
-								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 144, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 144, "y": 64, "w": 16, "h": 16 }, "defUid": 147, "realEditorValues": [{
-									"id": "V_String",
-									"params": ["144,64,16,16"]
-								}] },
-								{ "__identifier": "Collisions", "__type": "Bool", "__value": false, "__tile": null, "defUid": 149, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ false ]
-								}] }
-							]
-						},
-						{
-							"__identifier": "CollisionTrigger",
-							"__grid": [7,10],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 400, "y": 16, "w": 16, "h": 16 },
-							"__smartColor": "#FF9800",
-							"__worldX": 368,
-							"__worldY": 160,
-							"iid": "85da34e0-8990-11ee-b36a-b731f6dff8a5",
-							"width": 16,
-							"height": 16,
-							"defUid": 142,
-							"px": [112,160],
-							"fieldInstances": [
-								{ "__identifier": "GroupID", "__type": "Int", "__value": 3, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [3] }] },
-								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
-								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ true ]
-								}] }
-							]
 						},
 						{
 							"__identifier": "Script",
@@ -1994,6 +2082,32 @@
 							"defUid": 109,
 							"px": [48,208],
 							"fieldInstances": []
+						},
+						{
+							"__identifier": "Collectible",
+							"__grid": [7,10],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 144, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#FEE761",
+							"__worldX": 368,
+							"__worldY": 160,
+							"iid": "c564ae80-8990-11ee-a02e-bd7f3903e75f",
+							"width": 16,
+							"height": 16,
+							"defUid": 165,
+							"px": [112,160],
+							"fieldInstances": [
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 144, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 144, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["144,64,16,16"]
+								}] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/keyPickup.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["sfx/keyPickup.wav"]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": 3, "__tile": null, "defUid": 167, "realEditorValues": [{ "id": "V_Int", "params": [3] }] }
+							]
 						}
 					]
 				},
@@ -2457,7 +2571,7 @@
 							"__grid": [11,0],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 624,
 							"__worldY": 176,
@@ -2473,7 +2587,7 @@
 							"__grid": [0,14],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 448,
 							"__worldY": 400,
@@ -2537,315 +2651,107 @@
 							]
 						},
 						{
-							"__identifier": "EditableTile",
+							"__identifier": "Collectible",
 							"__grid": [4,9],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
-							"__smartColor": "#733E39",
+							"__smartColor": "#FEE761",
 							"__worldX": 512,
 							"__worldY": 320,
-							"iid": "1e2187d0-8990-11ee-a89a-79b636ca950b",
+							"iid": "9fc3cee0-8990-11ee-a02e-43ac15566b70",
 							"width": 16,
 							"height": 16,
-							"defUid": 146,
+							"defUid": 165,
 							"px": [64,144],
 							"fieldInstances": [
-								{ "__identifier": "Class", "__type": "String", "__value": "Coin1", "__tile": null, "defUid": 148, "realEditorValues": [{
-									"id": "V_String",
-									"params": ["Coin1"]
-								}] },
-								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 147, "realEditorValues": [{
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["176,64,16,16"]
 								}] },
-								{ "__identifier": "Collisions", "__type": "Bool", "__value": false, "__tile": null, "defUid": 149, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ false ]
-								}] }
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["sfx/coinCollect.wav"]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							]
 						},
 						{
-							"__identifier": "EditableTile",
-							"__grid": [5,8],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
-							"__smartColor": "#733E39",
-							"__worldX": 528,
-							"__worldY": 304,
-							"iid": "1e7b8eb0-8990-11ee-a89a-3fcb4e306144",
-							"width": 16,
-							"height": 16,
-							"defUid": 146,
-							"px": [80,128],
-							"fieldInstances": [
-								{ "__identifier": "Class", "__type": "String", "__value": "Coin2", "__tile": null, "defUid": 148, "realEditorValues": [{
-									"id": "V_String",
-									"params": ["Coin2"]
-								}] },
-								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 147, "realEditorValues": [{
-									"id": "V_String",
-									"params": ["176,64,16,16"]
-								}] },
-								{ "__identifier": "Collisions", "__type": "Bool", "__value": false, "__tile": null, "defUid": 149, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ false ]
-								}] }
-							]
-						},
-						{
-							"__identifier": "EditableTile",
+							"__identifier": "Collectible",
 							"__grid": [6,8],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
-							"__smartColor": "#733E39",
+							"__smartColor": "#FEE761",
 							"__worldX": 544,
 							"__worldY": 304,
-							"iid": "1ea0a2e0-8990-11ee-a89a-1fbfdd804ca1",
+							"iid": "a00f08b0-8990-11ee-a02e-e99a2ed79f5f",
 							"width": 16,
 							"height": 16,
-							"defUid": 146,
+							"defUid": 165,
 							"px": [96,128],
 							"fieldInstances": [
-								{ "__identifier": "Class", "__type": "String", "__value": "Coin3", "__tile": null, "defUid": 148, "realEditorValues": [{
-									"id": "V_String",
-									"params": ["Coin3"]
-								}] },
-								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 147, "realEditorValues": [{
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["176,64,16,16"]
 								}] },
-								{ "__identifier": "Collisions", "__type": "Bool", "__value": false, "__tile": null, "defUid": 149, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ false ]
-								}] }
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["sfx/coinCollect.wav"]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							]
 						},
 						{
-							"__identifier": "EditableTile",
+							"__identifier": "Collectible",
+							"__grid": [5,8],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#FEE761",
+							"__worldX": 528,
+							"__worldY": 304,
+							"iid": "a043fb60-8990-11ee-a02e-7fbb2020b951",
+							"width": 16,
+							"height": 16,
+							"defUid": 165,
+							"px": [80,128],
+							"fieldInstances": [
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["176,64,16,16"]
+								}] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["sfx/coinCollect.wav"]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "Collectible",
 							"__grid": [7,9],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
-							"__smartColor": "#733E39",
+							"__smartColor": "#FEE761",
 							"__worldX": 560,
 							"__worldY": 320,
-							"iid": "1ee796f0-8990-11ee-a89a-07b2e78a31f4",
+							"iid": "a087e230-8990-11ee-a02e-2b09bfe12c07",
 							"width": 16,
 							"height": 16,
-							"defUid": 146,
+							"defUid": 165,
 							"px": [112,144],
 							"fieldInstances": [
-								{ "__identifier": "Class", "__type": "String", "__value": "Coin4", "__tile": null, "defUid": 148, "realEditorValues": [{
-									"id": "V_String",
-									"params": ["Coin4"]
-								}] },
-								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 147, "realEditorValues": [{
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["176,64,16,16"]
 								}] },
-								{ "__identifier": "Collisions", "__type": "Bool", "__value": false, "__tile": null, "defUid": 149, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ false ]
-								}] }
-							]
-						},
-						{
-							"__identifier": "CollisionTrigger",
-							"__grid": [4,9],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 400, "y": 16, "w": 16, "h": 16 },
-							"__smartColor": "#FF9800",
-							"__worldX": 512,
-							"__worldY": 320,
-							"iid": "347b9390-8990-11ee-a89a-93645637fa6b",
-							"width": 16,
-							"height": 16,
-							"defUid": 142,
-							"px": [64,144],
-							"fieldInstances": [
-								{ "__identifier": "GroupID", "__type": "Int", "__value": 10, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [10] }] },
-								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
-								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ true ]
-								}] }
-							]
-						},
-						{
-							"__identifier": "CollisionTrigger",
-							"__grid": [5,8],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 400, "y": 16, "w": 16, "h": 16 },
-							"__smartColor": "#FF9800",
-							"__worldX": 528,
-							"__worldY": 304,
-							"iid": "34fcaa70-8990-11ee-a89a-1b22c31c66e3",
-							"width": 16,
-							"height": 16,
-							"defUid": 142,
-							"px": [80,128],
-							"fieldInstances": [
-								{ "__identifier": "GroupID", "__type": "Int", "__value": 11, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [11] }] },
-								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
-								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ true ]
-								}] }
-							]
-						},
-						{
-							"__identifier": "CollisionTrigger",
-							"__grid": [6,8],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 400, "y": 16, "w": 16, "h": 16 },
-							"__smartColor": "#FF9800",
-							"__worldX": 544,
-							"__worldY": 304,
-							"iid": "3535e2e0-8990-11ee-a89a-119017ac6c03",
-							"width": 16,
-							"height": 16,
-							"defUid": 142,
-							"px": [96,128],
-							"fieldInstances": [
-								{ "__identifier": "GroupID", "__type": "Int", "__value": 12, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [12] }] },
-								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
-								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ true ]
-								}] }
-							]
-						},
-						{
-							"__identifier": "CollisionTrigger",
-							"__grid": [7,9],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 400, "y": 16, "w": 16, "h": 16 },
-							"__smartColor": "#FF9800",
-							"__worldX": 560,
-							"__worldY": 320,
-							"iid": "35722890-8990-11ee-a89a-5985a9ca4351",
-							"width": 16,
-							"height": 16,
-							"defUid": 142,
-							"px": [112,144],
-							"fieldInstances": [
-								{ "__identifier": "GroupID", "__type": "Int", "__value": 13, "__tile": null, "defUid": 143, "realEditorValues": [{ "id": "V_Int", "params": [13] }] },
-								{ "__identifier": "UnCollideGroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 153, "realEditorValues": [] },
-								{ "__identifier": "OneTime", "__type": "Bool", "__value": true, "__tile": null, "defUid": 150, "realEditorValues": [{
-									"id": "V_Bool",
-									"params": [ true ]
-								}] }
-							]
-						},
-						{
-							"__identifier": "Script",
-							"__grid": [4,6],
-							"__pivot": [0.5,0.5],
-							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
-							"__smartColor": "#EAD4AA",
-							"__worldX": 520,
-							"__worldY": 280,
-							"iid": "608f2550-8990-11ee-a89a-c7a147c9c3dc",
-							"width": 16,
-							"height": 16,
-							"defUid": 134,
-							"px": [72,104],
-							"fieldInstances": [
-								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Coin1\") {\n  k.destroy(element.entity);\n }\n}\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\nk.play(\"coinCollect\")\nscore++;", "__tile": null, "defUid": 136, "realEditorValues": [{
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
 									"id": "V_String",
-									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Coin1\") {\\n  k.destroy(element.entity);\\n }\\n}\\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\\nk.play(\"coinCollect\")\\nscore++;"
-									]
+									"params": ["sfx/coinCollect.wav"]
 								}] },
-								{ "__identifier": "GroupID", "__type": "Int", "__value": 10, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [10] }] },
-								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 141, "realEditorValues": [] },
-								{ "__identifier": "Comment", "__type": "String", "__value": null, "__tile": null, "defUid": 144, "realEditorValues": [] }
-							]
-						},
-						{
-							"__identifier": "Script",
-							"__grid": [5,6],
-							"__pivot": [0.5,0.5],
-							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
-							"__smartColor": "#EAD4AA",
-							"__worldX": 536,
-							"__worldY": 280,
-							"iid": "699ccda0-8990-11ee-a89a-01e9d864192f",
-							"width": 16,
-							"height": 16,
-							"defUid": 134,
-							"px": [88,104],
-							"fieldInstances": [
-								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Coin2\") {\n  k.destroy(element.entity);\n }\n}\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\nk.play(\"coinCollect\")\nscore++;", "__tile": null, "defUid": 136, "realEditorValues": [{
-									"id": "V_String",
-									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Coin2\") {\\n  k.destroy(element.entity);\\n }\\n}\\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\\nk.play(\"coinCollect\")\\nscore++;"
-									]
-								}] },
-								{ "__identifier": "GroupID", "__type": "Int", "__value": 11, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [11] }] },
-								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 141, "realEditorValues": [] },
-								{ "__identifier": "Comment", "__type": "String", "__value": null, "__tile": null, "defUid": 144, "realEditorValues": [] }
-							]
-						},
-						{
-							"__identifier": "Script",
-							"__grid": [6,6],
-							"__pivot": [0.5,0.5],
-							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
-							"__smartColor": "#EAD4AA",
-							"__worldX": 552,
-							"__worldY": 280,
-							"iid": "6d9c5ce0-8990-11ee-a89a-17573b361833",
-							"width": 16,
-							"height": 16,
-							"defUid": 134,
-							"px": [104,104],
-							"fieldInstances": [
-								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Coin3\") {\n  k.destroy(element.entity);\n }\n}\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\nk.play(\"coinCollect\")\nscore++", "__tile": null, "defUid": 136, "realEditorValues": [{
-									"id": "V_String",
-									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Coin3\") {\\n  k.destroy(element.entity);\\n }\\n}\\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\\nk.play(\"coinCollect\")\\nscore++"
-									]
-								}] },
-								{ "__identifier": "GroupID", "__type": "Int", "__value": 12, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [12] }] },
-								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 141, "realEditorValues": [] },
-								{ "__identifier": "Comment", "__type": "String", "__value": null, "__tile": null, "defUid": 144, "realEditorValues": [] }
-							]
-						},
-						{
-							"__identifier": "Script",
-							"__grid": [7,6],
-							"__pivot": [0.5,0.5],
-							"__tags": [],
-							"__tile": { "tilesetUid": 135, "x": 32, "y": 48, "w": 16, "h": 16 },
-							"__smartColor": "#EAD4AA",
-							"__worldX": 568,
-							"__worldY": 280,
-							"iid": "730985e0-8990-11ee-a89a-cbd095a6b1dd",
-							"width": 16,
-							"height": 16,
-							"defUid": 134,
-							"px": [120,104],
-							"fieldInstances": [
-								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Coin4\") {\n  k.destroy(element.entity);\n }\n}\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\nk.play(\"coinCollect\")\nscore++", "__tile": null, "defUid": 136, "realEditorValues": [{
-									"id": "V_String",
-									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Coin4\") {\\n  k.destroy(element.entity);\\n }\\n}\\nk.loadSound(\"coinCollect\", \"sfx/coinCollect.wav\")\\nk.play(\"coinCollect\")\\nscore++"
-									]
-								}] },
-								{ "__identifier": "GroupID", "__type": "Int", "__value": 13, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [13] }] },
-								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 141, "realEditorValues": [] },
-								{ "__identifier": "Comment", "__type": "String", "__value": null, "__tile": null, "defUid": 144, "realEditorValues": [] }
+								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							]
 						}
 					]
@@ -3048,7 +2954,7 @@
 							"__grid": [5,12],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 784,
 							"__worldY": 240,
@@ -3064,7 +2970,7 @@
 							"__grid": [6,17],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 800,
 							"__worldY": 320,
@@ -3080,7 +2986,7 @@
 							"__grid": [7,15],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 816,
 							"__worldY": 288,
@@ -3096,7 +3002,7 @@
 							"__grid": [7,10],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 816,
 							"__worldY": 208,
@@ -3112,7 +3018,7 @@
 							"__grid": [6,8],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 800,
 							"__worldY": 176,
@@ -3128,7 +3034,7 @@
 							"__grid": [7,0],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 816,
 							"__worldY": 48,
@@ -3144,7 +3050,7 @@
 							"__grid": [8,22],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 832,
 							"__worldY": 400,
@@ -3160,7 +3066,7 @@
 							"__grid": [14,22],
 							"__pivot": [0,0],
 							"__tags": [],
-							"__tile": { "tilesetUid": 116, "x": 64, "y": 0, "w": 16, "h": 16 },
+							"__tile": { "tilesetUid": 135, "x": 96, "y": 0, "w": 16, "h": 16 },
 							"__smartColor": "#FF0098",
 							"__worldX": 928,
 							"__worldY": 400,
@@ -3176,7 +3082,7 @@
 							"__grid": [25,18],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
-							"__tile": null,
+							"__tile": { "tilesetUid": 135, "x": 256, "y": 144, "w": 16, "h": 16 },
 							"__smartColor": "#00FF75",
 							"__worldX": 1112,
 							"__worldY": 344,
@@ -3405,6 +3311,110 @@
 									"id": "V_String",
 									"params": ["Shows Value In Console"]
 								}] }
+							]
+						},
+						{
+							"__identifier": "Collectible",
+							"__grid": [9,19],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#FEE761",
+							"__worldX": 848,
+							"__worldY": 352,
+							"iid": "35957bd0-8990-11ee-a02e-47c7a2912c4b",
+							"width": 16,
+							"height": 16,
+							"defUid": 165,
+							"px": [144,304],
+							"fieldInstances": [
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["176,64,16,16"]
+								}] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["sfx/coinCollect.wav"]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [null] }
+							]
+						},
+						{
+							"__identifier": "Collectible",
+							"__grid": [7,20],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#FEE761",
+							"__worldX": 816,
+							"__worldY": 368,
+							"iid": "e424d7f0-8990-11ee-a02e-9f0974ced7f6",
+							"width": 16,
+							"height": 16,
+							"defUid": 165,
+							"px": [112,320],
+							"fieldInstances": [
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["176,64,16,16"]
+								}] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["sfx/coinCollect.wav"]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "Collectible",
+							"__grid": [11,20],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#FEE761",
+							"__worldX": 880,
+							"__worldY": 368,
+							"iid": "e47ff040-8990-11ee-a02e-cfd31993a998",
+							"width": 16,
+							"height": 16,
+							"defUid": 165,
+							"px": [176,320],
+							"fieldInstances": [
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["176,64,16,16"]
+								}] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["sfx/coinCollect.wav"]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "Collectible",
+							"__grid": [20,20],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 },
+							"__smartColor": "#FEE761",
+							"__worldX": 1024,
+							"__worldY": 368,
+							"iid": "ed8497e0-8990-11ee-a02e-2524f2d6502a",
+							"width": 16,
+							"height": 16,
+							"defUid": 165,
+							"px": [320,320],
+							"fieldInstances": [
+								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["176,64,16,16"]
+								}] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["sfx/coinCollect.wav"]
+								}] },
+								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							]
 						}
 					]

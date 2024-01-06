@@ -28,12 +28,15 @@ export default function kLdtkSceneImporter(
 
   let isInlevel: number;
   let scripts = [];
-  let groups = [];
+  let groups: { active; chgX; chgY }[] = [{ active: false, chgX: 0, chgY: 0 }];
   let CTriggers = [];
 
   let classTiles = [];
 
   let updateTriggers: number[] = [];
+  let unactiveUpdateTriggers: { ActivateGroupID: number; GroupID: number }[] = [
+    { ActivateGroupID: -1, GroupID: -1 },
+  ];
 
   let score: number = 0;
   let lives: number = 0;
@@ -42,6 +45,7 @@ export default function kLdtkSceneImporter(
   for (let i = 0; i < 9999; i++) {
     groups.push({ active: false, chgX: 0, chgY: 0 });
   }
+  groups.splice(0, 1);
 
   let maxGroups = -1;
 
@@ -260,7 +264,35 @@ export default function kLdtkSceneImporter(
                 }
                 break;
               case "TickTrigger":
-                updateTriggers.push(entValues["GroupID"]);
+                if (entValues["ActivateGroupID"] === -1) {
+                  updateTriggers.push(entValues["GroupID"]);
+                } else {
+                  unactiveUpdateTriggers.push({
+                    ActivateGroupID: entValues["ActivateGroupID"],
+                    GroupID: entValues["GroupID"],
+                  });
+                }
+                break;
+              case "Collectible":
+                let CollectibleSpritename =
+                  entValues["Tile"].x / 16 + (entValues["Tile"].y / 16) * 25;
+                k.add([
+                  k.scale(levelsize),
+                  k.sprite("SpriteSheet" + CollectibleSpritename),
+                  k.anchor("center"),
+                  k.z(2000),
+                  k.offscreen({ hide: true }),
+                  k.pos(
+                    ent.__worldX * levelsize + 8 * levelsize,
+                    ent.__worldY * levelsize + 8 * levelsize
+                  ),
+                  k.area(),
+                  {
+                    GroupID: entValues["GroupID"],
+                    SFX: entValues["Sound_Effect"],
+                  },
+                  "Collectible",
+                ]);
                 break;
               default:
                 let text = k.add([
@@ -440,8 +472,28 @@ export default function kLdtkSceneImporter(
       }
     });
   }
+  player.onCollide("Collectible", (c) => {
+    if (c.GroupID !== -1) {
+      groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
+    }
+    if (c.SFX !== "") {
+      k.loadSound("TempSFX", c.SFX);
+      k.play("TempSFX");
+    }
+    k.destroy(c);
+  });
 
   k.onUpdate(() => {
+    for (let i = 0; i < unactiveUpdateTriggers.length; i++) {
+      const element = unactiveUpdateTriggers[i];
+      try {
+        if (groups[element.ActivateGroupID].active) {
+          score++;
+          unactiveUpdateTriggers.splice(i, 1);
+          updateTriggers.push(element.GroupID);
+        }
+      } catch {}
+    }
     for (let i = 0; i < updateTriggers.length; i++) {
       const element = updateTriggers[i];
       groups.splice(element, 1, { active: true, chgX: 0, chgY: 0 });
@@ -460,6 +512,7 @@ export default function kLdtkSceneImporter(
   player.onCollideUpdate("BG", () => {
     isInlevel = 5;
   });
+
   k.onUpdate(() => {
     if (isInlevel <= 0) {
       k.go("scene");
