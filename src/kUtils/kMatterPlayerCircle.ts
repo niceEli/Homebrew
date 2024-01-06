@@ -7,6 +7,7 @@ export default function PlayerPawnCircle(
   options?: IBodyDefinition,
   rad?: number,
   scaleOPlayer?: Vector,
+  multiplier: number = 1,
   rotate: boolean = false
 ) {
   var isDashable: boolean = true;
@@ -67,11 +68,15 @@ export default function PlayerPawnCircle(
         Matter.Body.applyForce(
           this.body,
           this.body.position,
-          k.vec2(-0.001, 0)
+          k.vec2(-0.001 * multiplier, 0)
         );
       }
       if (k.isKeyDown("right") || k.isKeyDown("d")) {
-        Matter.Body.applyForce(this.body, this.body.position, k.vec2(0.001, 0));
+        Matter.Body.applyForce(
+          this.body,
+          this.body.position,
+          k.vec2(0.001 * multiplier, 0)
+        );
       }
 
       if (
@@ -88,7 +93,7 @@ export default function PlayerPawnCircle(
         if (CTTime > 0) {
           let Vel = Matter.Vector.add(
             Matter.Body.getVelocity(this.body),
-            Matter.Vector.create(0, -9)
+            Matter.Vector.create(0, -9 * multiplier)
           );
           Matter.Body.setVelocity(this.body, Vel);
           CTTime = 0;
@@ -103,12 +108,12 @@ export default function PlayerPawnCircle(
           if (CTTime > 0) {
             var Vel = Matter.Vector.add(
               Matter.Body.getVelocity(this.body),
-              Matter.Vector.create(8, 0)
+              Matter.Vector.create(8 * multiplier, 0)
             );
           } else {
             var Vel = Matter.Vector.add(
               Matter.Body.getVelocity(this.body),
-              Matter.Vector.create(8, -6)
+              Matter.Vector.create(8 * multiplier, -6 * multiplier)
             );
           }
           Matter.Body.setVelocity(this.body, Vel);
@@ -120,12 +125,12 @@ export default function PlayerPawnCircle(
           if (CTTime > 0) {
             var Vel = Matter.Vector.add(
               Matter.Body.getVelocity(this.body),
-              Matter.Vector.create(-8, 0)
+              Matter.Vector.create(-8 * multiplier, 0)
             );
           } else {
             var Vel = Matter.Vector.add(
               Matter.Body.getVelocity(this.body),
-              Matter.Vector.create(-8, -6)
+              Matter.Vector.create(-8 * multiplier, -6)
             );
           }
           Matter.Body.setVelocity(this.body, Vel);

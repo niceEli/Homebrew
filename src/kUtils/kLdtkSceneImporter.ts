@@ -61,202 +61,255 @@ export default function kLdtkSceneImporter(
       ),
     ]);
     for (let i = 0; i < element.layerInstances.length; i++) {
-      if (element.layerInstances[i].__type === "Entities") {
-        for (
-          let z = 0;
-          z < element.layerInstances[i].entityInstances.length;
-          z++
-        ) {
-          const ent = element.layerInstances[i].entityInstances[z];
-          if (ent.__identifier == "Collider") {
-            k.add([
-              k.rect(levelsize * ent.width, levelsize * ent.height),
-              k.pos(
-                (ent.__worldX + ent.width / 2) * levelsize,
-                (ent.__worldY + ent.height / 2) * levelsize
-              ),
-              k.anchor("center"),
-              k.opacity(0),
-              matterRect(engine, { isStatic: true }),
-            ]);
-          } else if (ent.__identifier == "Death_Trig") {
-            k.add([
-              k.rect(levelsize * ent.width, levelsize * ent.height),
-              k.pos(
-                (ent.__worldX + ent.width / 2) * levelsize,
-                (ent.__worldY + ent.height / 2) * levelsize
-              ),
-              k.anchor("center"),
-              k.opacity(0),
-              k.area(),
-              "Death_Trig",
-            ]);
-          } else if (ent.__identifier == "Player_Start") {
-            var player: GameObj = k.add([
-              k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
-              k.anchor("center"),
-              k.rotate(0),
-              k.sprite("SpriteSheet3"),
-              k.scale(levelsize),
-              k.z(2147483647),
-              k.fadeIn(0.16),
-              k.opacity(),
-              // Matter For Pawns
-              PlayerPawnCircle(
-                engine,
-                { friction: 0 },
-                8 * levelsize,
-                k.vec2(levelsize, levelsize)
-              ),
-              kCamera(ent.fieldInstances[0].__value),
-              kReset(currentScene),
-              k.area(),
-              "Player",
-            ]);
-          } else if (ent.__identifier == "Box_Spawner") {
-            k.add([
-              k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
-              k.anchor("center"),
-              k.sprite("SpriteSheet30"),
-              k.scale(levelsize),
-              k.z(2147483646),
-              k.fadeIn(0.16),
-              k.opacity(),
-              matterRect4Sprites(
-                engine,
-                { angle: 0 },
-                k.vec2(16 * levelsize, 16 * levelsize)
-              ),
-            ]);
-          } else if (ent.__identifier == "Win_Condition") {
-            k.add([
-              k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
-              k.anchor("center"),
-              k.sprite("door"),
-              k.scale(2 * levelsize),
-              k.z(-2147483645),
-              k.area(),
-              "Win_Condition",
-            ]);
-          } else if (ent.__identifier == "Text_Object") {
-            k.add([
-              k.text(ent.fieldInstances[0].__value, {
-                size: ent.fieldInstances[1].__value,
-                font: "sans-serif",
-                align: "center",
-              }),
-              k.anchor("center"),
-              k.z(2147483645),
-              k.color(ent.fieldInstances[2].__value),
-              k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
-            ]);
-          } else if (ent.__identifier == "Script") {
-            if (
-              maxGroups < ent.fieldInstances[1].__value ||
-              maxGroups < ent.fieldInstances[2].__value
-            ) {
-              let grp = ent.fieldInstances[1].__value;
-              if (grp < ent.fieldInstances[2].__value) {
-                grp = ent.fieldInstances[2].__value;
-              }
-              maxGroups = grp;
-            }
-            scripts.push({
-              Func: ent.fieldInstances[0].__value,
-              GroupID: ent.fieldInstances[1].__value,
-              NextGID: ent.fieldInstances[2].__value,
-              X: ent.__worldX * levelsize,
-              Y: ent.__worldY * levelsize,
-            });
-          } else if (ent.__identifier == "StartTrigger") {
-            if (maxGroups < ent.fieldInstances[0].__value) {
-              maxGroups = ent.fieldInstances[0].__value;
-            }
-            groups.splice(ent.fieldInstances[0].__value, 1, {
-              active: true,
-              chgX: 0,
-              chgY: 0,
-            });
-          } else if (ent.__identifier == "CollisionTrigger") {
-            if (maxGroups < ent.fieldInstances[0].__value) {
-              maxGroups = ent.fieldInstances[0].__value;
-            }
-            CTriggers.push({
-              obj: k.add([
-                k.rect(levelsize * ent.width, levelsize * ent.height),
-                k.pos(
-                  (ent.__worldX + ent.width / 2) * levelsize,
-                  (ent.__worldY + ent.height / 2) * levelsize
-                ),
-                k.anchor("center"),
-                k.opacity(0),
-                k.area(),
-                "CTrigger",
-              ]),
-              GroupID: ent.fieldInstances[0].__value,
-              UnCollideGroupID: ent.fieldInstances[1].__value,
-              OneTime: ent.fieldInstances[2].__value,
-            });
-          } else if (ent.__identifier == "EditableTile") {
-            let size = 16 * levelsize;
-            let spritename =
-              ent.fieldInstances[1].__value.x / 16 +
-              (ent.fieldInstances[1].__value.y / 16) * 25;
-            if (ent.fieldInstances[2].__value) {
-              classTiles.push({
-                entity: k.add([
-                  k.scale(levelsize),
-                  k.anchor("center"),
-                  k.sprite("SpriteSheet" + spritename),
-                  k.z(2000),
-                  k.offscreen({ hide: true }),
+      switch (element.layerInstances[i].__type) {
+        case "Entities":
+          for (
+            let z = 0;
+            z < element.layerInstances[i].entityInstances.length;
+            z++
+          ) {
+            const ent = element.layerInstances[i].entityInstances[z];
+            switch (ent.__identifier) {
+              case "Collider":
+                k.add([
+                  k.rect(levelsize * ent.width, levelsize * ent.height),
                   k.pos(
-                    ent.__worldX * levelsize + 8 * levelsize,
-                    ent.__worldY * levelsize + 8 * levelsize
+                    (ent.__worldX + ent.width / 2) * levelsize,
+                    (ent.__worldY + ent.height / 2) * levelsize
                   ),
-                  matterRect4Static(engine, k.vec2(size, size)),
-                  "Tile",
-                ]),
-                name: ent.fieldInstances[0].__value,
-              });
-            } else {
-              classTiles.push({
-                entity: k.add([
-                  k.scale(levelsize),
-                  k.sprite("SpriteSheet" + spritename),
                   k.anchor("center"),
-                  k.z(2000),
-                  k.offscreen({ hide: true }),
+                  k.opacity(0),
+                  matterRect(engine, { isStatic: true }),
+                ]);
+                break;
+              case "Death_Trig":
+                k.add([
+                  k.rect(levelsize * ent.width, levelsize * ent.height),
                   k.pos(
-                    ent.__worldX * levelsize + 8 * levelsize,
-                    ent.__worldY * levelsize + 8 * levelsize
+                    (ent.__worldX + ent.width / 2) * levelsize,
+                    (ent.__worldY + ent.height / 2) * levelsize
                   ),
-                  "Tile",
-                ]),
-                name: ent.fieldInstances[0].__value,
-              });
+                  k.anchor("center"),
+                  k.opacity(0),
+                  k.area(),
+                  "Death_Trig",
+                ]);
+                break;
+              case "Player_Start":
+                var player: GameObj = k.add([
+                  k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+                  k.anchor("center"),
+                  k.rotate(0),
+                  k.sprite("SpriteSheet3"),
+                  k.scale(levelsize),
+                  k.z(2147483647),
+                  k.fadeIn(0.16),
+                  k.opacity(),
+                  // Matter For Pawns
+                  PlayerPawnCircle(
+                    engine,
+                    { friction: 0 },
+                    8 * levelsize,
+                    k.vec2(levelsize, levelsize),
+                    levelsize / 2
+                  ),
+                  kCamera(ent.fieldInstances[0].__value),
+                  kReset(currentScene),
+                  k.area(),
+                  "Player",
+                ]);
+                break;
+              case "Box_Spawner":
+                k.add([
+                  k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+                  k.anchor("center"),
+                  k.sprite("SpriteSheet30"),
+                  k.scale(levelsize),
+                  k.z(2147483646),
+                  k.fadeIn(0.16),
+                  k.opacity(),
+                  matterRect4Sprites(
+                    engine,
+                    { angle: 0 },
+                    k.vec2(16 * levelsize, 16 * levelsize)
+                  ),
+                ]);
+                break;
+              case "Win_Condition":
+                k.add([
+                  k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+                  k.anchor("center"),
+                  k.sprite("door"),
+                  k.scale(2 * levelsize),
+                  k.z(-2147483645),
+                  k.area(),
+                  "Win_Condition",
+                ]);
+                break;
+              case "Text_Object":
+                k.add([
+                  k.text(ent.fieldInstances[0].__value, {
+                    size: ent.fieldInstances[1].__value,
+                    font: "sans-serif",
+                    align: "center",
+                  }),
+                  k.anchor("center"),
+                  k.z(2147483645),
+                  k.color(ent.fieldInstances[2].__value),
+                  k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+                ]);
+                break;
+              case "Script":
+                if (
+                  maxGroups < ent.fieldInstances[1].__value ||
+                  maxGroups < ent.fieldInstances[2].__value
+                ) {
+                  let grp = ent.fieldInstances[1].__value;
+                  if (grp < ent.fieldInstances[2].__value) {
+                    grp = ent.fieldInstances[2].__value;
+                  }
+                  maxGroups = grp;
+                }
+                scripts.push({
+                  Func: ent.fieldInstances[0].__value,
+                  GroupID: ent.fieldInstances[1].__value,
+                  NextGID: ent.fieldInstances[2].__value,
+                  X: ent.__worldX * levelsize,
+                  Y: ent.__worldY * levelsize,
+                });
+                break;
+              case "StartTrigger":
+                if (maxGroups < ent.fieldInstances[0].__value) {
+                  maxGroups = ent.fieldInstances[0].__value;
+                }
+                groups.splice(ent.fieldInstances[0].__value, 1, {
+                  active: true,
+                  chgX: 0,
+                  chgY: 0,
+                });
+                break;
+              case "CollisionTrigger":
+                if (maxGroups < ent.fieldInstances[0].__value) {
+                  maxGroups = ent.fieldInstances[0].__value;
+                }
+                CTriggers.push({
+                  obj: k.add([
+                    k.rect(levelsize * ent.width, levelsize * ent.height),
+                    k.pos(
+                      (ent.__worldX + ent.width / 2) * levelsize,
+                      (ent.__worldY + ent.height / 2) * levelsize
+                    ),
+                    k.anchor("center"),
+                    k.opacity(0),
+                    k.area(),
+                    "CTrigger",
+                  ]),
+                  GroupID: ent.fieldInstances[0].__value,
+                  UnCollideGroupID: ent.fieldInstances[1].__value,
+                  OneTime: ent.fieldInstances[2].__value,
+                });
+                break;
+              case "EditableTile":
+                let size = 16 * levelsize;
+                let spritename =
+                  ent.fieldInstances[1].__value.x / 16 +
+                  (ent.fieldInstances[1].__value.y / 16) * 25;
+                if (ent.fieldInstances[2].__value) {
+                  classTiles.push({
+                    entity: k.add([
+                      k.scale(levelsize),
+                      k.anchor("center"),
+                      k.sprite("SpriteSheet" + spritename),
+                      k.z(2000),
+                      k.offscreen({ hide: true }),
+                      k.pos(
+                        ent.__worldX * levelsize + 8 * levelsize,
+                        ent.__worldY * levelsize + 8 * levelsize
+                      ),
+                      matterRect4Static(engine, k.vec2(size, size)),
+                      "Tile",
+                    ]),
+                    name: ent.fieldInstances[0].__value,
+                  });
+                } else {
+                  classTiles.push({
+                    entity: k.add([
+                      k.scale(levelsize),
+                      k.sprite("SpriteSheet" + spritename),
+                      k.anchor("center"),
+                      k.z(2000),
+                      k.offscreen({ hide: true }),
+                      k.pos(
+                        ent.__worldX * levelsize + 8 * levelsize,
+                        ent.__worldY * levelsize + 8 * levelsize
+                      ),
+                      "Tile",
+                    ]),
+                    name: ent.fieldInstances[0].__value,
+                  });
+                }
+                break;
+              case "TickTrigger":
+                updateTriggers.push(ent.fieldInstances[0].__value);
+                break;
+              default:
+                let text = k.add([
+                  k.scale(levelsize),
+                  k.text(
+                    "// - LDTKJSON ERR \n// - Unknown Object: \n" +
+                      ent.__identifier,
+                    {
+                      size: 8 * levelsize,
+                    }
+                  ),
+                  k.z(2002),
+                  k.offscreen({ hide: true }),
+                  k.color(k.WHITE),
+                  k.outline(2.5 * levelsize, k.WHITE),
+                  k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+                ]);
+                let textObj = k.add([
+                  k.scale(levelsize, levelsize),
+                  k.sprite("SpriteSheet0", {
+                    tiled: true,
+                    width: text.width,
+                    height: text.height,
+                  }),
+                  k.z(2001),
+                  k.offscreen({ hide: true }),
+                  k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+                  {
+                    Update() {
+                      this.sprite.height = text.height;
+                      this.sprite.width = text.width;
+                    },
+                  },
+                ]);
+                break;
             }
-          } else if (ent.__identifier == "TickTrigger") {
-            updateTriggers.push(ent.fieldInstances[0].__value);
           }
-        }
-      } else if (element.layerInstances[i].__type === "Tiles") {
-        for (let z = 0; z < element.layerInstances[i].gridTiles.length; z++) {
-          let gridInstanceOnPoint = element.layerInstances[i].gridTiles[z];
-          let spritename: number = gridInstanceOnPoint.t;
+          break;
+        case "Tiles":
+          for (let z = 0; z < element.layerInstances[i].gridTiles.length; z++) {
+            let gridInstanceOnPoint = element.layerInstances[i].gridTiles[z];
+            let spritename: number = gridInstanceOnPoint.t;
 
-          k.add([
-            k.scale(levelsize),
-            k.sprite("SpriteSheet" + spritename),
-            k.offscreen({ hide: true }),
-            k.pos(
-              gridInstanceOnPoint.px[0] * levelsize +
-                element.worldX * levelsize,
-              gridInstanceOnPoint.px[1] * levelsize + element.worldY * levelsize
-            ),
-            "Tile",
-          ]);
-        }
+            k.add([
+              k.scale(levelsize),
+              k.sprite("SpriteSheet" + spritename),
+              k.offscreen({ hide: true }),
+              k.pos(
+                gridInstanceOnPoint.px[0] * levelsize +
+                  element.worldX * levelsize,
+                gridInstanceOnPoint.px[1] * levelsize +
+                  element.worldY * levelsize
+              ),
+              "Tile",
+            ]);
+          }
+          break;
+        default:
+          break;
       }
     }
   }
