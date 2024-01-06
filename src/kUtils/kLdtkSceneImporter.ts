@@ -69,6 +69,17 @@ export default function kLdtkSceneImporter(
             z++
           ) {
             const ent = element.layerInstances[i].entityInstances[z];
+
+            let entValues: object = {};
+            for (let m = 0; m < ent.fieldInstances.length; m++) {
+              const element = ent.fieldInstances[m];
+
+              const identifier = element.__identifier;
+              const value = element.__value;
+
+              entValues[identifier] = value;
+            }
+
             switch (ent.__identifier) {
               case "Collider":
                 k.add([
@@ -113,7 +124,7 @@ export default function kLdtkSceneImporter(
                     k.vec2(levelsize, levelsize),
                     levelsize / 2
                   ),
-                  kCamera(ent.fieldInstances[0].__value),
+                  kCamera(entValues["UseCamera"]),
                   kReset(currentScene),
                   k.area(),
                   "Player",
@@ -148,49 +159,49 @@ export default function kLdtkSceneImporter(
                 break;
               case "Text_Object":
                 k.add([
-                  k.text(ent.fieldInstances[0].__value, {
-                    size: ent.fieldInstances[1].__value,
+                  k.text(entValues["Text"], {
+                    size: entValues["Size"],
                     font: "sans-serif",
                     align: "center",
                   }),
                   k.anchor("center"),
                   k.z(2147483645),
-                  k.color(ent.fieldInstances[2].__value),
+                  k.color(entValues["Color"]),
                   k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
                 ]);
                 break;
               case "Script":
                 if (
-                  maxGroups < ent.fieldInstances[1].__value ||
-                  maxGroups < ent.fieldInstances[2].__value
+                  maxGroups < entValues["GroupID"] ||
+                  maxGroups < entValues["NextGID"]
                 ) {
-                  let grp = ent.fieldInstances[1].__value;
-                  if (grp < ent.fieldInstances[2].__value) {
-                    grp = ent.fieldInstances[2].__value;
+                  let grp = entValues["GroupID"];
+                  if (grp < entValues["NextGID"]) {
+                    grp = entValues["NextGID"];
                   }
                   maxGroups = grp;
                 }
                 scripts.push({
-                  Func: ent.fieldInstances[0].__value,
-                  GroupID: ent.fieldInstances[1].__value,
-                  NextGID: ent.fieldInstances[2].__value,
+                  Func: entValues["AsyncJSCode"],
+                  GroupID: entValues["GroupID"],
+                  NextGID: entValues["NextGID"],
                   X: ent.__worldX * levelsize,
                   Y: ent.__worldY * levelsize,
                 });
                 break;
               case "StartTrigger":
-                if (maxGroups < ent.fieldInstances[0].__value) {
-                  maxGroups = ent.fieldInstances[0].__value;
+                if (maxGroups < entValues["GroupID"]) {
+                  maxGroups = entValues["GroupID"];
                 }
-                groups.splice(ent.fieldInstances[0].__value, 1, {
+                groups.splice(entValues["GroupID"], 1, {
                   active: true,
                   chgX: 0,
                   chgY: 0,
                 });
                 break;
               case "CollisionTrigger":
-                if (maxGroups < ent.fieldInstances[0].__value) {
-                  maxGroups = ent.fieldInstances[0].__value;
+                if (maxGroups < entValues["GroupID"]) {
+                  maxGroups = entValues["GroupID"];
                 }
                 CTriggers.push({
                   obj: k.add([
@@ -204,17 +215,16 @@ export default function kLdtkSceneImporter(
                     k.area(),
                     "CTrigger",
                   ]),
-                  GroupID: ent.fieldInstances[0].__value,
-                  UnCollideGroupID: ent.fieldInstances[1].__value,
-                  OneTime: ent.fieldInstances[2].__value,
+                  GroupID: entValues["GroupID"],
+                  UnCollideGroupID: entValues["UnCollideGroupID"],
+                  OneTime: entValues["OneTime"],
                 });
                 break;
               case "EditableTile":
                 let size = 16 * levelsize;
                 let spritename =
-                  ent.fieldInstances[1].__value.x / 16 +
-                  (ent.fieldInstances[1].__value.y / 16) * 25;
-                if (ent.fieldInstances[2].__value) {
+                  entValues["Tile"].x / 16 + (entValues["Tile"].y / 16) * 25;
+                if (entValues["Collisions"]) {
                   classTiles.push({
                     entity: k.add([
                       k.scale(levelsize),
@@ -229,7 +239,7 @@ export default function kLdtkSceneImporter(
                       matterRect4Static(engine, k.vec2(size, size)),
                       "Tile",
                     ]),
-                    name: ent.fieldInstances[0].__value,
+                    name: entValues["Class"],
                   });
                 } else {
                   classTiles.push({
@@ -245,12 +255,12 @@ export default function kLdtkSceneImporter(
                       ),
                       "Tile",
                     ]),
-                    name: ent.fieldInstances[0].__value,
+                    name: entValues["Class"],
                   });
                 }
                 break;
               case "TickTrigger":
-                updateTriggers.push(ent.fieldInstances[0].__value);
+                updateTriggers.push(entValues["Group"]);
                 break;
               default:
                 let text = k.add([
