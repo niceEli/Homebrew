@@ -260,14 +260,16 @@ export default function kLdtkSceneImporter(
                 }
                 break;
               case "TickTrigger":
-                updateTriggers.push(entValues["Group"]);
+                updateTriggers.push(entValues["GroupID"]);
                 break;
               default:
                 let text = k.add([
                   k.scale(levelsize),
                   k.text(
                     "// - LDTKJSON ERR \n// - Unknown Object: \n" +
-                      ent.__identifier,
+                      ent.__identifier +
+                      "\n" +
+                      JSON.stringify(entValues),
                     {
                       size: 8 * levelsize,
                     }
@@ -411,8 +413,9 @@ export default function kLdtkSceneImporter(
         try {
           await Promise.all(asyncTasks);
         } catch (error) {
-          let reelError = "UGC JS Script ERR: " + error;
-          k.debug.log(reelError);
+          let reelError = "UGC JS Script ERR: " + error.stack;
+          let smallError = "UGC JS Script ERR: " + error;
+          k.debug.log(smallError);
           console.error(reelError);
         }
       } else {
