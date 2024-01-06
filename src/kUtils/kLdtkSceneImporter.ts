@@ -276,6 +276,12 @@ export default function kLdtkSceneImporter(
               case "Collectible":
                 let CollectibleSpritename =
                   entValues["Tile"].x / 16 + (entValues["Tile"].y / 16) * 25;
+                if (entValues["Sound_Effect"] !== "") {
+                  k.loadSound(
+                    entValues["Sound_Effect"],
+                    entValues["Sound_Effect"]
+                  );
+                }
                 k.add([
                   k.scale(levelsize),
                   k.sprite("SpriteSheet" + CollectibleSpritename),
@@ -477,8 +483,7 @@ export default function kLdtkSceneImporter(
       groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
     }
     if (c.SFX !== "") {
-      k.loadSound("TempSFX", c.SFX);
-      k.play("TempSFX");
+      k.play(c.SFX);
     }
     k.destroy(c);
   });
