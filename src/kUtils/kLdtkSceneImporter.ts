@@ -483,6 +483,7 @@ export default function kLdtkSceneImporter(
       groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
     }
     if (c.SFX !== "") {
+      k.loadSound(c.SFX, c.SFX);
       k.play(c.SFX);
     }
     k.destroy(c);
