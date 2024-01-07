@@ -300,6 +300,33 @@ export default function kLdtkSceneImporter(
                   "Collectible",
                 ]);
                 break;
+              case "Phys_Object":
+                let POent = k.add([
+                  k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+                  k.anchor("center"),
+                  k.rect(ent.width * levelsize, ent.height * levelsize),
+                  k.color(
+                    hexToRgb(entValues["Color"]).r,
+                    hexToRgb(entValues["Color"]).g,
+                    hexToRgb(entValues["Color"]).b
+                  ),
+                  k.rotate(0),
+                  k.z(300000000),
+                  k.outline(0.5, k.BLACK),
+                  matterRect(engine, {
+                    angle: k.deg2rad(entValues["Angle"]),
+                    friction: entValues["Friction"],
+                    isStatic: entValues["IsStatic"],
+                  }),
+                ]);
+
+                if (entValues["Class"] !== "") {
+                  classTiles.push({
+                    entity: POent,
+                    name: entValues["Class"],
+                  });
+                }
+                break;
               default:
                 let text = k.add([
                   k.scale(levelsize),
@@ -363,6 +390,9 @@ export default function kLdtkSceneImporter(
       }
     }
   }
+
+  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
   let checkGroups = async function () {
     let checkFlag = true;
 
@@ -406,6 +436,7 @@ export default function kLdtkSceneImporter(
                 "score",
                 "lives",
                 "health",
+                "delay",
                 `
                   return (async function() {
                     ${Func}
@@ -438,7 +469,8 @@ export default function kLdtkSceneImporter(
                   player,
                   score,
                   lives,
-                  health
+                  health,
+                  delay
                 )
               );
 
