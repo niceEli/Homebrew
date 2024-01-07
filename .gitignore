@@ -23,3 +23,6 @@ release
 *.njsproj
 *.sln
 *.sw?
+
+src/kLdtkWorlds/campaign/*/backups
+src/kLdtkWorlds/*/backups
