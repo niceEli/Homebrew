@@ -391,7 +391,9 @@ export default function kLdtkSceneImporter(
     }
   }
 
-  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+  async function delay(ms) {
+    new Promise((res) => setTimeout(res, ms));
+  }
 
   let checkGroups = async function () {
     let checkFlag = true;
