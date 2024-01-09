@@ -1,13 +1,14 @@
 import k from "../../kaboom";
 import Matter from "matter-js";
 
-import * as sceneData from "../../kLdtkWorlds/campaign/Empty.json";
 import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";
 
-export default function Empty() {
+import Empty from "./Empty";
+
+export default async function Level1() {
   // Conf
-  const ThisLevel = Empty;
+  const ThisLevel = Level1;
   const Nextlevel = Empty;
 
   // Setup Engine
@@ -18,6 +19,7 @@ export default function Empty() {
   k.onUpdate(() => {
     Matter.Engine.update(engine, k.dt() * 1000);
   });
+  let sceneData = await import("../../kLdtkWorlds/campaign/empty.json");
   // Load This Scene And Sprites
   kLdtkSceneImporter(sceneData, 2, ThisLevel, Nextlevel, engine);
 
