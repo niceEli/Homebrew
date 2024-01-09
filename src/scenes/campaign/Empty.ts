@@ -19,7 +19,7 @@ export default async function Level1() {
   k.onUpdate(() => {
     Matter.Engine.update(engine, k.dt() * 1000);
   });
-  let sceneData = await import("../../kLdtkWorlds/campaign/empty.json");
+  let sceneData = await import("../../kLdtkWorlds/campaign/Empty.json");
   // Load This Scene And Sprites
   kLdtkSceneImporter(sceneData, 2, ThisLevel, Nextlevel, engine);
 
