@@ -21,6 +21,7 @@ export default async function Level1() {
   });
   let sceneData = await import("../../kLdtkWorlds/campaign/Level1.json");
   // Load This Scene And Sprites
+  localStorage.setItem("cLevel", ThisLevel.name);
   kLdtkSceneImporter(sceneData, 2, ThisLevel, Nextlevel, engine);
 
   k.add([

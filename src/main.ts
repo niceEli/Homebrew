@@ -15,7 +15,7 @@ k.scene("kMatter-Test", kMatterTest);
 k.scene("Jillian-Test-Scene", Jilian);
 k.scene("AvaC", Ava);
 k.scene("kLdtkScene", kLdtkScene);
-k.scene("EmptyLDTK", Empty);
+k.scene("Empty", Empty);
 k.scene("Level1", Level1);
 
 // Load SpriteSheet
