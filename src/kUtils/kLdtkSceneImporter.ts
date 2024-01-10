@@ -38,6 +38,14 @@ export default function kLdtkSceneImporter(
     { ActivateGroupID: -1, GroupID: -1 },
   ];
 
+  let tiles: { spriteID: string; x: number; y: number }[] = [
+    {
+      spriteID: "",
+      x: 0,
+      y: 0,
+    },
+  ];
+
   let score: number = 0;
   let lives: number = 0;
   let health: number = 0;
@@ -371,6 +379,18 @@ export default function kLdtkSceneImporter(
             let gridInstanceOnPoint = element.layerInstances[i].gridTiles[z];
             let spritename: number = gridInstanceOnPoint.t;
 
+            let spriteID = "SpriteSheet" + spritename;
+            let x =
+              gridInstanceOnPoint.px[0] * levelsize +
+              element.worldX * levelsize;
+            let y =
+              gridInstanceOnPoint.px[1] * levelsize +
+              element.worldY * levelsize;
+
+            tiles.push({ spriteID: spriteID, x: x, y: y });
+
+            // May remove this later but it could cause problems without it.
+            /*
             k.add([
               k.scale(levelsize),
               k.sprite("SpriteSheet" + spritename),
@@ -382,7 +402,7 @@ export default function kLdtkSceneImporter(
                   element.worldY * levelsize
               ),
               "Tile",
-            ]);
+            ]);*/
           }
           break;
         default:
@@ -391,9 +411,23 @@ export default function kLdtkSceneImporter(
     }
   }
 
+  tiles.splice(0, 1);
+
   async function delay(ms) {
     new Promise((res) => setTimeout(res, ms));
   }
+
+  k.onDraw(() => {
+    for (let i = 0; i < tiles.length; i++) {
+      const element = tiles[i];
+
+      k.drawSprite({
+        sprite: element.spriteID,
+        pos: k.vec2(element.x, element.y),
+        scale: levelsize,
+      });
+    }
+  });
 
   let checkGroups = async function () {
     let checkFlag = true;
@@ -439,6 +473,7 @@ export default function kLdtkSceneImporter(
                 "lives",
                 "health",
                 "delay",
+                "tiles",
                 `
                   return (async function() {
                     ${Func}
@@ -472,7 +507,8 @@ export default function kLdtkSceneImporter(
                   score,
                   lives,
                   health,
-                  delay
+                  delay,
+                  tiles
                 )
               );
 
