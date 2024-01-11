@@ -1,11 +1,16 @@
 import k from "../kaboom";
 import Matter from "matter-js";
 
-import * as sceneData from "../kLdtkWorlds/example.json";
 import kLdtkSceneImporter from "../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../scenes/kMatterTest";
 
-export default function kLdtkScene() {
+import Empty from "./campaign/Empty"; //You need to uncomment this
+
+export default async function kLdtkScene() {
+  // Conf
+  const ThisLevel = kLdtkScene;
+  const Nextlevel = kLdtkScene;
+
   // Setup Engine
   const engine: any = Matter.Engine.create();
   engine.velocityIterations = 100;
@@ -14,8 +19,16 @@ export default function kLdtkScene() {
   k.onUpdate(() => {
     Matter.Engine.update(engine, k.dt() * 1000);
   });
+  let sceneData = await import("../kLdtkWorlds/example.json");
   // Load This Scene And Sprites
-  kLdtkSceneImporter(sceneData, 2, kLdtkScene, kLdtkScene, engine);
+  localStorage.setItem("cLevel", ThisLevel.name);
+  try {
+    kLdtkSceneImporter(sceneData, 2, ThisLevel, Nextlevel, engine);
+  } catch (error) {
+    k.debug.error(error);
+    k.debug.paused = true;
+    console.error(error.stack);
+  }
 
   k.add([
     k.rect(99999999, 99999999),
@@ -24,5 +37,5 @@ export default function kLdtkScene() {
     k.anchor("center"),
   ]);
 
-  k.scene("kLdtkScene", kLdtkScene);
+  k.scene("kLdtkScene", ThisLevel);
 }
