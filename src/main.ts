@@ -9,6 +9,9 @@ k.add([
   k.anchor("center"),
 ]);
 
+// Reset Score
+sessionStorage.setItem("score", "0");
+
 // Import Scenes
 import HelloWorld from "./scenes/helloworld";
 import kMatterTest from "./scenes/kMatterTest";
