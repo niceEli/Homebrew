@@ -27,7 +27,7 @@ export default async function Empty() {
   } catch (error) {
     k.debug.error(error);
     k.debug.paused = true;
-    console.error(error);
+    throw new error(error);
   }
 
   k.add([

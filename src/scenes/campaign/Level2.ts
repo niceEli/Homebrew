@@ -26,7 +26,7 @@ export default async function Level2() {
   } catch (error) {
     k.debug.error(error);
     k.debug.paused = true;
-    console.error(error);
+    throw new error(error);
   }
 
   k.add([
