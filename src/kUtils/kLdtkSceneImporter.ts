@@ -148,7 +148,7 @@ export default function kLdtkSceneImporter(
                     levelsize,
                     ent.__grid
                   ),
-                  kReset(currentScene),
+                  kReset(currentScene, deathScore),
                   k.area(),
                   "Player",
                 ]);
