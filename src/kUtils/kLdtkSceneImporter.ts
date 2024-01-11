@@ -56,7 +56,8 @@ export default function kLdtkSceneImporter(
     { x: 0, y: 0, sx: 0, sy: 0 },
   ];
 
-  let score: number = 0;
+  let score: number = Number(sessionStorage.getItem("score"));
+  let deathScore: number = score;
   let lives: number = 0;
   let health: number = 0;
 
@@ -415,6 +416,18 @@ export default function kLdtkSceneImporter(
     }
   }
 
+  const scoreText = k.add([
+    k.fixed(),
+    k.pos(12, 12),
+    k.text(String(score)),
+    k.z(Infinity),
+    {
+      update() {
+        this.text = String(score);
+      },
+    },
+  ]);
+
   tiles.splice(0, 1);
   colliders.splice(0, 1);
 
@@ -481,6 +494,7 @@ export default function kLdtkSceneImporter(
                 "health",
                 "delay",
                 "tiles",
+                "scoreText",
                 `
                   return (async function() {
                     ${Func}
@@ -515,7 +529,8 @@ export default function kLdtkSceneImporter(
                   lives,
                   health,
                   delay,
-                  tiles
+                  tiles,
+                  scoreText
                 )
               );
 
@@ -568,6 +583,7 @@ export default function kLdtkSceneImporter(
 
   if (player != null) {
     player.onCollide("Collectible", (c) => {
+      score++;
       if (c.GroupID !== -1) {
         groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
       }
@@ -578,6 +594,7 @@ export default function kLdtkSceneImporter(
       k.destroy(c);
     });
     player.onCollide("Death_Trig", () => {
+      sessionStorage.setItem("score", String(deathScore));
       k.go("scene");
     });
     player.onCollide("Win_Condition", () => {
@@ -588,6 +605,7 @@ export default function kLdtkSceneImporter(
       isInlevel = 5;
     });
   } else {
+    k.destroy(scoreText);
     k.debug.log("Render Mode.");
     k.debug.log("You Are Not Able To Play The Level In");
     k.debug.log("");
@@ -595,11 +613,11 @@ export default function kLdtkSceneImporter(
   }
 
   k.onUpdate(() => {
+    sessionStorage.setItem("score", String(score));
     for (let i = 0; i < unactiveUpdateTriggers.length; i++) {
       const element = unactiveUpdateTriggers[i];
       try {
         if (groups[element.ActivateGroupID].active) {
-          score++;
           unactiveUpdateTriggers.splice(i, 1);
           updateTriggers.push(element.GroupID);
         }
@@ -615,6 +633,7 @@ export default function kLdtkSceneImporter(
 
   k.onUpdate(() => {
     if (isInlevel <= 0) {
+      sessionStorage.setItem("score", String(deathScore));
       k.go("scene");
     }
     isInlevel--;
