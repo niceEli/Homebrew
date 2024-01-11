@@ -3,12 +3,11 @@ import Matter from "matter-js";
 
 import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";
+import Empty from "./Empty";
 
-//import Empty from "./Empty"; //You need to uncomment this
-
-export default async function Empty() {
+export default async function Level2() {
   // Conf
-  const ThisLevel = Empty;
+  const ThisLevel = Level2;
   const Nextlevel = Empty;
 
   // Setup Engine
@@ -19,7 +18,7 @@ export default async function Empty() {
   k.onUpdate(() => {
     Matter.Engine.update(engine, k.dt() * 1000);
   });
-  let sceneData = await import("../../kLdtkWorlds/campaign/Empty.json");
+  let sceneData = await import("../../kLdtkWorlds/campaign/Level2.json");
   // Load This Scene And Sprites
   localStorage.setItem("cLevel", ThisLevel.name);
   try {

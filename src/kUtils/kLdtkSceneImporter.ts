@@ -7,7 +7,7 @@ import matterRect, {
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
-import { GameObj, SceneDef } from "kaboom";
+import { Asset, GameObj, SceneDef, SpriteData } from "kaboom";
 import Matter from "matter-js";
 import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";
@@ -38,12 +38,22 @@ export default function kLdtkSceneImporter(
     { ActivateGroupID: -1, GroupID: -1 },
   ];
 
-  let tiles: { spriteID: string; x: number; y: number }[] = [
+  let tiles: {
+    spriteID: string;
+    x: number;
+    y: number;
+    spriteData: any;
+  }[] = [
     {
       spriteID: "",
       x: 0,
       y: 0,
+      spriteData: null,
     },
+  ];
+
+  let colliders: { x: number; y: number; sx: number; sy: number }[] = [
+    { x: 0, y: 0, sx: 0, sy: 0 },
   ];
 
   let score: number = 0;
@@ -94,16 +104,11 @@ export default function kLdtkSceneImporter(
 
             switch (ent.__identifier) {
               case "Collider":
-                k.add([
-                  k.rect(levelsize * ent.width, levelsize * ent.height),
-                  k.pos(
-                    (ent.__worldX + ent.width / 2) * levelsize,
-                    (ent.__worldY + ent.height / 2) * levelsize
-                  ),
-                  k.anchor("center"),
-                  k.opacity(0),
-                  matterRect(engine, { isStatic: true }),
-                ]);
+                let x = (ent.__worldX + ent.width / 2) * levelsize;
+                let y = (ent.__worldY + ent.height / 2) * levelsize;
+                let sx = levelsize * ent.width;
+                let sy = levelsize * ent.height;
+                colliders.push({ x: x, y: y, sx: sx, sy: sy });
                 break;
               case "Death_Trig":
                 k.add([
@@ -136,7 +141,12 @@ export default function kLdtkSceneImporter(
                     k.vec2(levelsize, levelsize),
                     levelsize / 2
                   ),
-                  kCamera(entValues["UseCamera"]),
+                  kCamera(
+                    entValues["UseCamera"],
+                    entValues["CamPos"],
+                    levelsize,
+                    ent.__grid
+                  ),
                   kReset(currentScene),
                   k.area(),
                   "Player",
@@ -379,7 +389,7 @@ export default function kLdtkSceneImporter(
             let gridInstanceOnPoint = element.layerInstances[i].gridTiles[z];
             let spritename: number = gridInstanceOnPoint.t;
 
-            let spriteID = "SpriteSheet" + spritename;
+            let spriteID: string = "SpriteSheet" + spritename;
             let x =
               gridInstanceOnPoint.px[0] * levelsize +
               element.worldX * levelsize;
@@ -387,22 +397,16 @@ export default function kLdtkSceneImporter(
               gridInstanceOnPoint.px[1] * levelsize +
               element.worldY * levelsize;
 
-            tiles.push({ spriteID: spriteID, x: x, y: y });
+            let spriteTile;
 
-            // May remove this later but it could cause problems without it.
-            /*
-            k.add([
-              k.scale(levelsize),
-              k.sprite("SpriteSheet" + spritename),
-              k.offscreen({ hide: true }),
-              k.pos(
-                gridInstanceOnPoint.px[0] * levelsize +
-                  element.worldX * levelsize,
-                gridInstanceOnPoint.px[1] * levelsize +
-                  element.worldY * levelsize
-              ),
-              "Tile",
-            ]);*/
+            spriteTile = k.getSprite(spriteID);
+
+            tiles.push({
+              spriteID: spriteID,
+              x: x,
+              y: y,
+              spriteData: spriteTile.data,
+            });
           }
           break;
         default:
@@ -412,6 +416,7 @@ export default function kLdtkSceneImporter(
   }
 
   tiles.splice(0, 1);
+  colliders.splice(0, 1);
 
   async function delay(ms) {
     new Promise((res) => setTimeout(res, ms));
@@ -421,10 +426,12 @@ export default function kLdtkSceneImporter(
     for (let i = 0; i < tiles.length; i++) {
       const element = tiles[i];
 
-      k.drawSprite({
-        sprite: element.spriteID,
+      k.drawUVQuad({
         pos: k.vec2(element.x, element.y),
-        scale: levelsize,
+        width: element.spriteData.width * levelsize,
+        height: element.spriteData.height * levelsize,
+        tex: element.spriteData.tex,
+        quad: element.spriteData.frames[0],
       });
     }
   });
@@ -548,16 +555,44 @@ export default function kLdtkSceneImporter(
       }
     });
   }
-  player.onCollide("Collectible", (c) => {
-    if (c.GroupID !== -1) {
-      groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
-    }
-    if (c.SFX !== "") {
-      k.loadSound(c.SFX, c.SFX);
-      k.play(c.SFX);
-    }
-    k.destroy(c);
-  });
+  for (let i = 0; i < colliders.length; i++) {
+    const element = colliders[i];
+    k.add([
+      k.rect(element.sx, element.sy),
+      k.pos(element.x, element.y),
+      k.anchor("center"),
+      k.opacity(0),
+      matterRect(engine, { isStatic: true }),
+    ]);
+  }
+
+  if (player != null) {
+    player.onCollide("Collectible", (c) => {
+      if (c.GroupID !== -1) {
+        groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
+      }
+      if (c.SFX !== "") {
+        k.loadSound(c.SFX, c.SFX);
+        k.play(c.SFX);
+      }
+      k.destroy(c);
+    });
+    player.onCollide("Death_Trig", () => {
+      k.go("scene");
+    });
+    player.onCollide("Win_Condition", () => {
+      k.scene("nextLevel", nextScene);
+      k.go("nextLevel");
+    });
+    player.onCollideUpdate("BG", () => {
+      isInlevel = 5;
+    });
+  } else {
+    k.debug.log("Render Mode.");
+    k.debug.log("You Are Not Able To Play The Level In");
+    k.debug.log("");
+    k.debug.log("Player Not Found. Render Mode Active!");
+  }
 
   k.onUpdate(() => {
     for (let i = 0; i < unactiveUpdateTriggers.length; i++) {
@@ -577,17 +612,6 @@ export default function kLdtkSceneImporter(
   });
 
   k.onUpdate(checkGroups);
-
-  player.onCollide("Death_Trig", () => {
-    k.go("scene");
-  });
-  player.onCollide("Win_Condition", () => {
-    k.scene("nextLevel", nextScene);
-    k.go("nextLevel");
-  });
-  player.onCollideUpdate("BG", () => {
-    isInlevel = 5;
-  });
 
   k.onUpdate(() => {
     if (isInlevel <= 0) {

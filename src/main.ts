@@ -1,5 +1,14 @@
 // Imports
 import k from "./kaboom";
+
+// Make Black Screen
+k.add([
+  k.rect(99999999, 99999999),
+  k.color(k.BLACK),
+  k.z(-999999999999999),
+  k.anchor("center"),
+]);
+
 // Import Scenes
 import HelloWorld from "./scenes/helloworld";
 import kMatterTest from "./scenes/kMatterTest";
@@ -8,6 +17,7 @@ import Ava from "./scenes/Ava";
 import kLdtkScene from "./scenes/kLdtkScene";
 import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
 import Level1 from "./scenes/campaign/Level1";
+import Level2 from "./scenes/campaign/Level2";
 import Empty from "./scenes/campaign/Empty";
 // Add Scenes
 k.scene("Hello-World-EX", HelloWorld);
@@ -17,6 +27,7 @@ k.scene("AvaC", Ava);
 k.scene("kLdtkScene", kLdtkScene);
 k.scene("Empty", Empty);
 k.scene("Level1", Level1);
+k.scene("Level2", Level2);
 
 // Load SpriteSheet
 loadSpritesSheet();
@@ -33,4 +44,5 @@ loadSpritesSheet();
 
 //k.go('AvaC') // My Sister wrote this "obby"
 
-k.go("Level1");
+//k.go("Level1");
+k.go("Level2");
