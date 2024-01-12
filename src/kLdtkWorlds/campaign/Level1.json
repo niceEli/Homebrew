@@ -1687,7 +1687,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "WASD Or Arrow Keys To Move\nW Or Up Arrow To Jump", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["WASD Or Arrow Keys To Move\\nW Or Up Arrow To Jump"]
+									"params": ["WASD Or Arrow Keys To Move\nW Or Up Arrow To Jump"]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 16, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [16] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 131, "realEditorValues": [] }
@@ -1975,7 +1975,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "DO NOT\nFALL OUT OF THE SPACECRAFT", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["DO NOT\\nFALL OUT OF THE SPACECRAFT"]
+									"params": ["DO NOT\nFALL OUT OF THE SPACECRAFT"]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 16, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [16] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 131, "realEditorValues": [] }
@@ -3217,7 +3217,7 @@
 								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Key_Door\") {\n  k.destroy(element.entity);\n }\n}", "__tile": null, "defUid": 136, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Key_Door\") {\\n  k.destroy(element.entity);\\n }\\n}"
+										"for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Key_Door\") {\n  k.destroy(element.entity);\n }\n}"
 									]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 0, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [0] }] },
@@ -3618,7 +3618,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "\"Theres So Many Other Ships\"\n\"But Where is HE\"", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["\"Theres So Many Other Ships\"\\n\"But Where is HE\""]
+									"params": ["\"Theres So Many Other Ships\"\n\"But Where is HE\""]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 32, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [32] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#FFFFFF", "__tile": null, "defUid": 131, "realEditorValues": [{ "id": "V_Int", "params": [16777215] }] }

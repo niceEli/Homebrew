@@ -21,6 +21,7 @@ import kLdtkScene from "./scenes/kLdtkScene";
 import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
 import Level1 from "./scenes/campaign/Level1";
 import Level2 from "./scenes/campaign/Level2";
+import Level3 from "./scenes/campaign/Level3";
 import Empty from "./scenes/campaign/Empty";
 // Add Scenes
 k.scene("Hello-World-EX", HelloWorld);
@@ -31,6 +32,7 @@ k.scene("kLdtkScene", kLdtkScene);
 k.scene("Empty", Empty);
 k.scene("Level1", Level1);
 k.scene("Level2", Level2);
+k.scene("Level3", Level3);
 
 // Load SpriteSheet
 loadSpritesSheet();
@@ -45,7 +47,8 @@ loadSpritesSheet();
 
 //k.go('Jillian-Test-Scene') // This is a scene made by my friend that doesnt know how to program
 
-//k.go('AvaC') // My Sister wrote this "obby"
+//k.go("AvaC"); // My Sister wrote this "obby"
 
 k.go("Level1");
 //k.go("Level2");
+//k.go("Level3");

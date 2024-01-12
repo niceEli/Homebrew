@@ -3,6 +3,6 @@ declare module "*.json" {
   export default value;
 }
 declare module "*.ldtk" {
-  const value: any;
+  const value: object;
   export default value;
 }
