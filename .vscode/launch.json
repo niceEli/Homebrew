@@ -9,6 +9,19 @@
             "name": "Start Live Editor",
             "request": "launch",
             "type": "node-terminal"
+        },
+        {
+            "name": "Start Live Editor (Bun)",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "bun dev",
+            "cwd": "${workspaceFolder}"
+          },
+        {
+            "type": "bun",
+            "request": "attach",
+            "name": "Attach to Bun",
+            "url": "ws://localhost:6499/"
         }
     ]
 }
