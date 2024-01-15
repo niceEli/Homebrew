@@ -19,10 +19,13 @@ import Jilian from "./scenes/Jillian";
 import Ava from "./scenes/Ava";
 import kLdtkScene from "./scenes/kLdtkScene";
 import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
+import Empty from "./scenes/campaign/Empty";
+
+// Import Campaign
 import Level1 from "./scenes/campaign/Level1";
 import Level2 from "./scenes/campaign/Level2";
 import Level3 from "./scenes/campaign/Level3";
-import Empty from "./scenes/campaign/Empty";
+import Level4 from "./scenes/campaign/Level4";
 // Add Scenes
 k.scene("Hello-World-EX", HelloWorld);
 k.scene("kMatter-Test", kMatterTest);
@@ -33,6 +36,7 @@ k.scene("Empty", Empty);
 k.scene("Level1", Level1);
 k.scene("Level2", Level2);
 k.scene("Level3", Level3);
+k.scene("Level4", Level4);
 
 // Load SpriteSheet
 loadSpritesSheet();

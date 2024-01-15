@@ -1,5 +1,6 @@
 import k from "../kaboom";
 import * as luaInJs from "lua-in-js";
+import * as storage from "../kUtils/kScriptVars";
 import { hexToRgb } from "../kUtils/kColor";
 import matterRect, {
   matterRect4Sprites,
@@ -503,6 +504,7 @@ export default function kLdtkSceneImporter(
                   "tiles",
                   "scoreText",
                   "luaInJS",
+                  "storage",
                   `
                     return (async function() {
                       ${Func}
@@ -539,13 +541,16 @@ export default function kLdtkSceneImporter(
                     delay,
                     tiles,
                     scoreText,
-                    luaInJs
+                    luaInJs,
+                    storage
                   )
                 );
               } else {
                 const luaEnv = luaInJs.createEnv();
                 const moonScriptFunc = luaEnv.parse(
                   `
+                local console = ${console}
+                local process = ${process}
                 local k = ${k}
                 local engine = ${engine}
                 local Matter = ${Matter}
@@ -574,6 +579,7 @@ export default function kLdtkSceneImporter(
                 local tiles = ${tiles}
                 local scoreText = ${scoreText}
                 local luaInJs = ${luaInJs}
+                local storage = ${storage}
                 
                 ` + Func
                 );
