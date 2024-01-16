@@ -589,8 +589,8 @@ export default function kLdtkSceneImporter(
         try {
           await Promise.all(asyncTasks);
         } catch (error) {
-          let reelError = `UGC Script ERR: ` + error.stack;
-          let smallError = `UGC Script ERR: ` + error;
+          let reelError = `UGC JS Script ERR: ` + error.stack;
+          let smallError = `UGC JS Script ERR: ` + error;
           k.debug.log(smallError);
           console.error(reelError);
         }
