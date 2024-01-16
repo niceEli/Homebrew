@@ -193,6 +193,7 @@ export default function kLdtkSceneImporter(
                   k.z(2147483646),
                   k.fadeIn(0.16),
                   k.opacity(),
+                  k.area(),
                   matterRect4Sprites(
                     engine,
                     { angle: 0 },
@@ -621,6 +622,7 @@ export default function kLdtkSceneImporter(
       k.pos(element.x, element.y),
       k.anchor("center"),
       k.opacity(0),
+      k.area(),
       matterRect(engine, { isStatic: true }),
     ]);
   }

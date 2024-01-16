@@ -1,5 +1,6 @@
 import k from "../../kaboom";
 import Matter from "matter-js";
+import delay from "../../kUtils/kDelay";
 
 import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";
@@ -16,9 +17,6 @@ export default async function Empty() {
   engine.velocityIterations = 100;
   engine.positionIterations = 200;
   Matter.Composite.create(engine);
-  k.onUpdate(() => {
-    Matter.Engine.update(engine, k.dt() * 1000);
-  });
   let sceneData = await import("../../kLdtkWorlds/campaign/Empty.json");
   // Load This Scene And Sprites
   localStorage.setItem("cLevel", ThisLevel.name);
@@ -38,4 +36,9 @@ export default async function Empty() {
   ]);
 
   k.scene("kLdtkScene", ThisLevel);
+
+  await new Promise((f) => setTimeout(f, 100));
+  k.onUpdate(() => {
+    Matter.Engine.update(engine, k.dt() * 1000);
+  });
 }
