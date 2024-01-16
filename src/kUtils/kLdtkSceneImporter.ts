@@ -1,4 +1,6 @@
 import k from "../kaboom";
+import * as ts from "typescript";
+import * as terser from "terser";
 import { hexToRgb } from "../kUtils/kColor";
 import matterRect, {
   matterRect4Sprites,
@@ -25,6 +27,35 @@ export default function kLdtkSceneImporter(
   k.loadSprite("CTPlayer", "CTPlayer.png");
   k.loadSprite("box", "box.png");
   k.loadSprite("door", "end.png");
+
+  async function compileTypeScript(code: string): Promise<string> {
+    const compilerOptions: ts.CompilerOptions = {
+      target: ts.ScriptTarget.ES5,
+      module: ts.ModuleKind.CommonJS,
+    };
+
+    const result = ts.transpileModule(code, { compilerOptions });
+
+    if (result.diagnostics && result.diagnostics.length > 0) {
+      const errorMessages = result.diagnostics.map((diagnostic) => {
+        const { line, character } =
+          diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start || 0);
+        const message = ts.flattenDiagnosticMessageText(
+          diagnostic.messageText,
+          "\n"
+        );
+        return `${diagnostic.file.fileName} (${line + 1},${
+          character + 1
+        }): ${message}`;
+      });
+
+      throw new Error(errorMessages.join("\n"));
+    }
+
+    const minifiedCode = await terser.minify(result.outputText);
+
+    return minifiedCode.code || "";
+  }
 
   let isInlevel: number;
   let scripts = [];
@@ -203,6 +234,19 @@ export default function kLdtkSceneImporter(
                     grp = entValues["NextGID"];
                   }
                   maxGroups = grp;
+                }
+                let thisScript;
+                compileTypeScript(entValues["AsyncJSCode"])
+                  .then((jsCode) => thisScript)
+                  .catch((error) => {
+                    console.error("TSC ERR: " + error.stack);
+                    k.debug.error("TSC ERR: " + error);
+                  });
+                try {
+                  let thisScript = compileTypeScript(entValues["AsyncJSCode"]);
+                } catch (error) {
+                  console.error("TSC ERR: " + error.stack);
+                  k.debug.error("TSC ERR: " + error);
                 }
                 scripts.push({
                   Func: entValues["AsyncJSCode"],

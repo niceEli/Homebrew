@@ -15,7 +15,6 @@
   "devDependencies": {
     "electron": "^26.1.0",
     "electron-builder": "^24.6.4",
-    "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-plugin-electron": "^0.14.0",
     "vite-plugin-electron-renderer": "^0.14.5"
@@ -23,6 +22,7 @@
   "main": "dist-electron/main.js",
   "dependencies": {
     "@types/matter-js": "^0.19.5",
+    "typescript": "^5.2.2",
     "axios": "^1.6.2",
     "kaboom": "^3000.1.17",
     "kaboom-flex-ui": "^0.0.8",
