@@ -26,7 +26,6 @@
     "axios": "^1.6.2",
     "kaboom": "^3000.1.17",
     "kaboom-flex-ui": "^0.0.8",
-    "lua-in-js": "^2.2.4",
     "matter-js": "^0.19.0",
     "terser": "^5.26.0"
   }

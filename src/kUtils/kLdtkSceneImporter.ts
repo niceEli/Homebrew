@@ -1,5 +1,4 @@
 import k from "../kaboom";
-import * as luaInJs from "lua-in-js";
 import * as storage from "../kUtils/kScriptVars";
 import { hexToRgb } from "../kUtils/kColor";
 import matterRect, {
@@ -469,127 +468,82 @@ export default function kLdtkSceneImporter(
             let X = scripts[i].X;
             let Y = scripts[i].Y;
             let group = groups[GroupID];
-            let useMoonScript = scripts["lua"];
-            if (useMoonScript == undefined || useMoonScript == null) {
-              useMoonScript = false;
-            }
+            let useMoonScript: boolean = scripts[i].lua;
             if (group.active == true) {
-              if (useMoonScript == false) {
-                const runnableFunc = new Function(
-                  "k",
-                  "engine",
-                  "Matter",
-                  "groups",
-                  "scripts",
-                  "X",
-                  "Y",
-                  "currentScene",
-                  "nextScene",
-                  "classTiles",
-                  "matterRect",
-                  "matterRect4Sprites",
-                  "matterRect4Static",
-                  "PlayerPawnCircle",
-                  "matterCircle",
-                  "hexToRgb",
-                  "kDownloadToVar",
-                  "kCamera",
-                  "kReset",
-                  "loadSpritesSheet",
-                  "player",
-                  "score",
-                  "lives",
-                  "health",
-                  "delay",
-                  "tiles",
-                  "scoreText",
-                  "luaInJS",
-                  "storage",
-                  `
+              const runnableFunc = new Function(
+                "k",
+                "engine",
+                "Matter",
+                "groups",
+                "scripts",
+                "X",
+                "Y",
+                "currentScene",
+                "nextScene",
+                "classTiles",
+                "matterRect",
+                "matterRect4Sprites",
+                "matterRect4Static",
+                "PlayerPawnCircle",
+                "matterCircle",
+                "hexToRgb",
+                "kDownloadToVar",
+                "kCamera",
+                "kReset",
+                "loadSpritesSheet",
+                "player",
+                "score",
+                "lives",
+                "health",
+                "delay",
+                "tiles",
+                "scoreText",
+                "luaInJS",
+                "storage",
+                `
                     return (async function() {
                       ${Func}
                     })();
                   `
-                );
+              );
 
-                asyncTasks.push(
-                  runnableFunc(
-                    k,
-                    engine,
-                    Matter,
-                    groups,
-                    scripts,
-                    X,
-                    Y,
-                    currentScene,
-                    nextScene,
-                    classTiles,
-                    matterRect,
-                    matterRect4Sprites,
-                    matterRect4Static,
-                    PlayerPawnCircle,
-                    matterCircle,
-                    hexToRgb,
-                    kDownloadToVar,
-                    kCamera,
-                    kReset,
-                    loadSpritesSheet,
-                    player,
-                    score,
-                    lives,
-                    health,
-                    delay,
-                    tiles,
-                    scoreText,
-                    luaInJs,
-                    storage
-                  )
-                );
-              } else {
-                const luaEnv = luaInJs.createEnv();
-                const moonScriptFunc = luaEnv.parse(
-                  `
-                local console = ${console}
-                local process = ${process}
-                local k = ${k}
-                local engine = ${engine}
-                local Matter = ${Matter}
-                local groups = ${groups}
-                local scripts = ${scripts}
-                local X = ${X}
-                local Y = ${Y}
-                local currentScene = ${currentScene}
-                local nextScene = ${nextScene}
-                local classTiles = ${classTiles}
-                local matterRect = ${matterRect}
-                local matterRect4Sprites = ${matterRect4Sprites}
-                local matterRect4Static = ${matterRect4Static}
-                local PlayerPawnCircle = ${PlayerPawnCircle}
-                local matterCircle = ${matterCircle}
-                local hexToRgb = ${hexToRgb}
-                local kDownloadToVar = ${kDownloadToVar}
-                local kCamera = ${kCamera}
-                local kReset = ${kReset}
-                local loadSpritesSheet = ${loadSpritesSheet}
-                local player = ${player}
-                local score = ${score}
-                local lives = ${lives}
-                local health = ${health}
-                local delay = ${delay}
-                local tiles = ${tiles}
-                local scoreText = ${scoreText}
-                local luaInJs = ${luaInJs}
-                local storage = ${storage}
-                
-                ` + Func
-                );
-                asyncTasks.push(moonScriptFunc.exec);
-              }
-
-              group = groups[GroupID];
-              groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
-              groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
+              asyncTasks.push(
+                runnableFunc(
+                  k,
+                  engine,
+                  Matter,
+                  groups,
+                  scripts,
+                  X,
+                  Y,
+                  currentScene,
+                  nextScene,
+                  classTiles,
+                  matterRect,
+                  matterRect4Sprites,
+                  matterRect4Static,
+                  PlayerPawnCircle,
+                  matterCircle,
+                  hexToRgb,
+                  kDownloadToVar,
+                  kCamera,
+                  kReset,
+                  loadSpritesSheet,
+                  player,
+                  score,
+                  lives,
+                  health,
+                  delay,
+                  tiles,
+                  scoreText,
+                  storage
+                )
+              );
             }
+
+            group = groups[GroupID];
+            groups[GroupID] = { active: false, chgX: 0, chgY: 0 };
+            groups[NextGID] = { active: true, chgX: 0, chgY: 0 };
           } catch (error) {}
         }
         try {
@@ -597,7 +551,7 @@ export default function kLdtkSceneImporter(
         } catch (error) {
           let reelError = `UGC Script ERR: ` + error.stack;
           let smallError = `UGC Script ERR: ` + error;
-          k.debug.log(smallError);
+          k.debug.error(smallError);
           console.error(reelError);
         }
       } else {
