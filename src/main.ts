@@ -22,6 +22,8 @@ import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
 import Level1 from "./scenes/campaign/Level1";
 import Level2 from "./scenes/campaign/Level2";
 import Level3 from "./scenes/campaign/Level3";
+import Level4 from "./scenes/campaign/Level4";
+import Level5 from "./scenes/campaign/Level5";
 import Empty from "./scenes/campaign/Empty";
 // Add Scenes
 k.scene("Hello-World-EX", HelloWorld);
@@ -33,6 +35,8 @@ k.scene("Empty", Empty);
 k.scene("Level1", Level1);
 k.scene("Level2", Level2);
 k.scene("Level3", Level3);
+k.scene("Level4", Level4);
+k.scene("Level5", Level5);
 
 // Load SpriteSheet
 loadSpritesSheet();
@@ -49,6 +53,8 @@ loadSpritesSheet();
 
 //k.go("AvaC"); // My Sister wrote this "obby"
 
-k.go("Level1");
+//k.go("Level1");
 //k.go("Level2");
 //k.go("Level3");
+//k.go("Level4");
+k.go("Level5");

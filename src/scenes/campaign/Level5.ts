@@ -6,19 +6,18 @@ import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";
 
 import Empty from "./Empty"; //You need to uncomment this
-import Level5 from "./Level5";
 
-export default async function Level4() {
+export default async function Level5() {
   // Conf
-  const ThisLevel = Level4;
-  const Nextlevel = Level5;
+  const ThisLevel = Level5;
+  const Nextlevel = Empty;
 
   // Setup Engine
   const engine: any = Matter.Engine.create();
-  engine.velocityIterations = 10;
-  engine.positionIterations = 20;
+  engine.velocityIterations = 100;
+  engine.positionIterations = 200;
   Matter.Composite.create(engine);
-  let sceneData = await import("../../kLdtkWorlds/campaign/Level4.json");
+  let sceneData = await import("../../kLdtkWorlds/campaign/Level5.json");
   // Load This Scene And Sprites
   localStorage.setItem("cLevel", ThisLevel.name);
   try {
