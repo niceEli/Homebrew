@@ -376,7 +376,6 @@ export default function kLdtkSceneImporter(
                   ),
                   k.rotate(0),
                   k.z(300000000),
-                  k.outline(0.5, k.BLACK),
                   matterRect(engine, {
                     angle: k.deg2rad(entValues["Angle"]),
                     friction: entValues["Friction"],
