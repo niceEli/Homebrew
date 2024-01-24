@@ -53,8 +53,8 @@ loadSpritesSheet();
 
 //k.go("AvaC"); // My Sister wrote this "obby"
 
-//k.go("Level1");
+k.go("Level1");
 //k.go("Level2");
 //k.go("Level3");
 //k.go("Level4");
-k.go("Level5");
+//k.go("Level5");
