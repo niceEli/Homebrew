@@ -12,6 +12,7 @@
     "package": "tauri build"
   },
   "dependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.9.6",
     "@tauri-apps/api": "^1.5.2",
     "@types/matter-js": "^0.19.5",
     "axios": "^1.6.2",
