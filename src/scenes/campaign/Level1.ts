@@ -9,6 +9,7 @@ import Level2 from "./Level2";
 
 export default async function Level1() {
   // Conf
+  const LevelName = "Level1";
   const ThisLevel = Level1;
   const Nextlevel = Level2;
 
@@ -19,7 +20,7 @@ export default async function Level1() {
   Matter.Composite.create(engine);
   let sceneData = await import("../../kLdtkWorlds/campaign/Level1.json");
   // Load This Scene And Sprites
-  localStorage.setItem("cLevel", ThisLevel.name);
+  localStorage.setItem("cLevel", LevelName);
   try {
     kLdtkSceneImporter(sceneData, 2, ThisLevel, Nextlevel, engine);
   } catch (error) {
@@ -36,6 +37,7 @@ export default async function Level1() {
   ]);
 
   k.scene("kLdtkScene", ThisLevel);
+  k.scene(LevelName, ThisLevel);
 
   await new Promise((f) => setTimeout(f, 100));
   k.onUpdate(() => {
