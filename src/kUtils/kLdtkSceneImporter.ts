@@ -9,7 +9,7 @@ import matterRect, {
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
-import { Asset, GameObj, SceneDef, SpriteData } from "kaboom";
+import { GameObj, SceneDef } from "kaboom";
 import Matter from "matter-js";
 import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";
@@ -28,39 +28,12 @@ export default function kLdtkSceneImporter(
   k.loadSprite("box", "box.png");
   k.loadSprite("door", "end.png");
 
-  async function compileTypeScript(code: string): Promise<string> {
-    const compilerOptions: ts.CompilerOptions = {
-      target: ts.ScriptTarget.ES5,
-      module: ts.ModuleKind.CommonJS,
-    };
-
-    const result = ts.transpileModule(code, { compilerOptions });
-
-    if (result.diagnostics && result.diagnostics.length > 0) {
-      const errorMessages = result.diagnostics.map((diagnostic) => {
-        const { line, character } =
-          diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start || 0);
-        const message = ts.flattenDiagnosticMessageText(
-          diagnostic.messageText,
-          "\n"
-        );
-        return `${diagnostic.file.fileName} (${line + 1},${
-          character + 1
-        }): ${message}`;
-      });
-
-      throw new Error(errorMessages.join("\n"));
-    }
-
-    const minifiedCode = await terser.minify(result.outputText);
-
-    return minifiedCode.code || "";
-  }
-
   let isInlevel: number;
   let scripts = [];
   let groups: { active; chgX; chgY }[] = [{ active: false, chgX: 0, chgY: 0 }];
   let CTriggers = [];
+
+  let metadata;
 
   let classTiles = [];
 
@@ -82,6 +55,8 @@ export default function kLdtkSceneImporter(
       spriteData: null,
     },
   ];
+
+  let sounds: string[] = [""];
 
   let colliders: { x: number; y: number; sx: number; sy: number }[] = [
     { x: 0, y: 0, sx: 0, sy: 0 },
@@ -236,19 +211,6 @@ export default function kLdtkSceneImporter(
                   }
                   maxGroups = grp;
                 }
-                let thisScript;
-                compileTypeScript(entValues["AsyncJSCode"])
-                  .then((jsCode) => thisScript)
-                  .catch((error) => {
-                    console.error("TSC ERR: " + error.stack);
-                    k.debug.error("TSC ERR: " + error);
-                  });
-                try {
-                  let thisScript = compileTypeScript(entValues["AsyncJSCode"]);
-                } catch (error) {
-                  console.error("TSC ERR: " + error.stack);
-                  k.debug.error("TSC ERR: " + error);
-                }
                 scripts.push({
                   Func: entValues["AsyncJSCode"],
                   GroupID: entValues["GroupID"],
@@ -340,11 +302,8 @@ export default function kLdtkSceneImporter(
               case "Collectible":
                 let CollectibleSpritename =
                   entValues["Tile"].x / 16 + (entValues["Tile"].y / 16) * 25;
-                if (entValues["Sound_Effect"] !== "") {
-                  k.loadSound(
-                    entValues["Sound_Effect"],
-                    entValues["Sound_Effect"]
-                  );
+                if (!sounds.includes(entValues["Sound_Effect"])) {
+                  sounds.push(entValues["Sound_Effect"]);
                 }
                 k.add([
                   k.scale(levelsize),
@@ -389,6 +348,60 @@ export default function kLdtkSceneImporter(
                     name: entValues["Class"],
                   });
                 }
+                break;
+              case "Metadata":
+                metadata = entValues;
+                break;
+              case "Delete_Class":
+                let Delete_Class_Code =
+                  "for(let i=0;i<classTiles.length;i++){const element=classTiles[i];if(element.name=='" +
+                  String(entValues["Name"]) +
+                  "'){k.destroy(element.entity);}}";
+                if (
+                  maxGroups < entValues["GroupID"] ||
+                  maxGroups < entValues["NextGID"]
+                ) {
+                  let grp = entValues["GroupID"];
+                  if (grp < entValues["NextGID"]) {
+                    grp = entValues["NextGID"];
+                  }
+                  maxGroups = grp;
+                }
+                scripts.push({
+                  Func: Delete_Class_Code,
+                  GroupID: entValues["GroupID"],
+                  NextGID: entValues["NextGID"],
+                  X: ent.__worldX * levelsize,
+                  Y: ent.__worldY * levelsize,
+                });
+                break;
+              case "Play_Sound":
+                let Play_Sound_Code =
+                  'k.loadSound("' +
+                  String(entValues["Name"]) +
+                  '","' +
+                  String(entValues["Name"]) +
+                  '");k.play("' +
+                  String(entValues["Name"]) +
+                  '");';
+                if (
+                  maxGroups < entValues["GroupID"] ||
+                  maxGroups < entValues["NextGID"]
+                ) {
+                  let grp = entValues["GroupID"];
+                  if (grp < entValues["NextGID"]) {
+                    grp = entValues["NextGID"];
+                  }
+                  maxGroups = grp;
+                }
+                console.log(Play_Sound_Code);
+                scripts.push({
+                  Func: Play_Sound_Code,
+                  GroupID: entValues["GroupID"],
+                  NextGID: entValues["NextGID"],
+                  X: ent.__worldX * levelsize,
+                  Y: ent.__worldY * levelsize,
+                });
                 break;
               default:
                 let text = k.add([
@@ -460,6 +473,15 @@ export default function kLdtkSceneImporter(
     }
   }
 
+  if (metadata == undefined) {
+    metadata = {
+      Level_Name: null,
+      Author: null,
+      Description: null,
+      Revision: null,
+    };
+  }
+
   const scoreText = k.add([
     k.fixed(),
     k.pos(12, 12),
@@ -474,6 +496,17 @@ export default function kLdtkSceneImporter(
 
   tiles.splice(0, 1);
   colliders.splice(0, 1);
+  sounds.splice(0, 1);
+
+  for (let i = 0; i < sounds.length; i++) {
+    const sound = sounds[i];
+    try {
+      k.loadSound(sound, sound);
+    } catch (error) {
+      k.debug.error(`Unknown Sound: ${sound}`);
+      console.error(`Unknown Sound: ${sound}. ERROR STACK: ${error.stack}`);
+    }
+  }
 
   async function delay(ms) {
     new Promise((res) => setTimeout(res, ms));
@@ -633,7 +666,6 @@ export default function kLdtkSceneImporter(
         groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
       }
       if (c.SFX !== "") {
-        k.loadSound(c.SFX, c.SFX);
         k.play(c.SFX);
       }
       k.destroy(c);
