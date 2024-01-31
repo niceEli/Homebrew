@@ -9,6 +9,7 @@ import kMatterTest from "../../scenes/kMatterTest";
 
 export default async function Empty() {
   // Conf
+  const LevelName = "Empty";
   const ThisLevel = Empty;
   const Nextlevel = Empty;
 
@@ -19,7 +20,7 @@ export default async function Empty() {
   Matter.Composite.create(engine);
   let sceneData = await import("../../kLdtkWorlds/campaign/Empty.json");
   // Load This Scene And Sprites
-  localStorage.setItem("cLevel", ThisLevel.name);
+  localStorage.setItem("cLevel", LevelName);
   try {
     kLdtkSceneImporter(sceneData, 2, ThisLevel, Nextlevel, engine);
   } catch (error) {
@@ -36,6 +37,7 @@ export default async function Empty() {
   ]);
 
   k.scene("kLdtkScene", ThisLevel);
+  k.scene(LevelName, ThisLevel);
 
   await new Promise((f) => setTimeout(f, 100));
   k.onUpdate(() => {
