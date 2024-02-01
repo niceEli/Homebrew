@@ -1853,9 +1853,9 @@
 									"id": "V_String",
 									"params": ["144,64,16,16"]
 								}] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/keyPickup.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/keyPickup", "__tile": null, "defUid": 170, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["sfx/keyPickup.wav"]
+									"params": ["sfx/keyPickup"]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 1, "__tile": null, "defUid": 167, "realEditorValues": [{ "id": "V_Int", "params": [1] }] }
 							],
@@ -1878,7 +1878,7 @@
 								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Door\") {\n  k.destroy(element.entity);\n }\n}", "__tile": null, "defUid": 136, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Door\") {\n  k.destroy(element.entity);\n }\n}"
+										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Door\") {\\n  k.destroy(element.entity);\\n }\\n}"
 									]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 1, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
@@ -2062,7 +2062,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "We Need To Come To A\nMutual Agreement", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["We Need To Come To A\nMutual Agreement"]
+									"params": ["We Need To Come To A\\nMutual Agreement"]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 32, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [32] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 131, "realEditorValues": [{ "id": "V_Int", "params": [0] }] }
@@ -2298,7 +2298,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "Theres Infinte Ships And I Dont\nThink You will Survive this time", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["Theres Infinte Ships And I Dont\\nThink You will Survive this time"]
+									"params": ["Theres Infinte Ships And I Dont\nThink You will Survive this time"]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 16, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [16] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 131, "realEditorValues": [{ "id": "V_Int", "params": [0] }] }
@@ -2348,7 +2348,7 @@
 								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Door2\") {\n  k.destroy(element.entity);\n }\n}", "__tile": null, "defUid": 136, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Door2\") {\\n  k.destroy(element.entity);\\n }\\n}"
+										"for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Door2\") {\n  k.destroy(element.entity);\n }\n}"
 									]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 2, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [2] }] },
