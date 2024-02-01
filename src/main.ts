@@ -28,6 +28,7 @@ import Level2 from "./scenes/campaign/Level2";
 import Level3 from "./scenes/campaign/Level3";
 import Level4 from "./scenes/campaign/Level4";
 import Level5 from "./scenes/campaign/Level5";
+import Level6 from "./scenes/campaign/Level6";
 import Empty from "./scenes/campaign/Empty";
 // Add Scenes
 k.scene("Hello-World-EX", HelloWorld);
@@ -41,6 +42,7 @@ k.scene("Level2", Level2);
 k.scene("Level3", Level3);
 k.scene("Level4", Level4);
 k.scene("Level5", Level5);
+k.scene("Level6", Level6);
 
 // Load SpriteSheet
 loadSpritesSheet();
@@ -62,3 +64,4 @@ k.go("Level1");
 //k.go("Level3");
 //k.go("Level4");
 //k.go("Level5");
+//k.go("Level6");

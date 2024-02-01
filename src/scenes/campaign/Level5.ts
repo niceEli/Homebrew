@@ -4,6 +4,7 @@ import delay from "../../kUtils/kDelay";
 
 import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";
+import Level6 from "./Level6";
 
 import Empty from "./Empty"; //You need to uncomment this
 
@@ -11,7 +12,7 @@ export default async function Level5() {
   // Conf
   const LevelName = "Level5";
   const ThisLevel = Level5;
-  const Nextlevel = Empty;
+  const Nextlevel = Level6;
 
   // Setup Engine
   const engine: any = Matter.Engine.create();

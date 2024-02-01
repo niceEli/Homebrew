@@ -394,7 +394,6 @@ export default function kLdtkSceneImporter(
                   }
                   maxGroups = grp;
                 }
-                console.log(Play_Sound_Code);
                 scripts.push({
                   Func: Play_Sound_Code,
                   GroupID: entValues["GroupID"],
