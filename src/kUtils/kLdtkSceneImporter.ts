@@ -412,6 +412,7 @@ export default function kLdtkSceneImporter(
                       JSON.stringify(entValues),
                     {
                       size: 8 * levelsize,
+                      font: "jetbrains",
                     }
                   ),
                   k.z(2002),
