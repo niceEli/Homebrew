@@ -2218,7 +2218,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "Welcome To\nYour Exam", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["Welcome To\\nYour Exam"]
+									"params": ["Welcome To\nYour Exam"]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 16, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [16] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 131, "realEditorValues": [] }
@@ -2797,9 +2797,9 @@
 							"defUid": 203,
 							"px": [16,224],
 							"fieldInstances": [
-								{ "__identifier": "Name", "__type": "String", "__value": "sfx/impactLight.mp3", "__tile": null, "defUid": 204, "realEditorValues": [{
+								{ "__identifier": "Name", "__type": "String", "__value": "sfx/impactLight", "__tile": null, "defUid": 204, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["sfx/impactLight.mp3"]
+									"params": ["sfx/impactLight"]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 1, "__tile": null, "defUid": 205, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
 								{ "__identifier": "NextGID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 206, "realEditorValues": [] },

@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.5.1",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"iid": "a26276c0-7820-11ed-b6fd-ed05d55c9a75",
-	"jsonVersion": "1.5.1",
-	"appBuildId": 473602,
+	"jsonVersion": "1.5.3",
+	"appBuildId": 473703,
 	"nextUid": 191,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -1701,7 +1701,7 @@
 									"id": "V_Bool",
 									"params": [ false ]
 								}] },
-								{ "__identifier": "CamPos", "__type": "Point", "__value": { "cx": 7.5, "cy": 7 }, "__tile": null, "defUid": 184, "realEditorValues": [{
+								{ "__identifier": "CamPos", "__type": "Point", "__value": { "cx": 7, "cy": 7 }, "__tile": null, "defUid": 184, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["7,7"]
 								}] }

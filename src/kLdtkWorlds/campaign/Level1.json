@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.5.1",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"iid": "a26276c0-7820-11ed-b6fd-ed05d55c9a75",
-	"jsonVersion": "1.5.1",
-	"appBuildId": 473602,
+	"jsonVersion": "1.5.3",
+	"appBuildId": 473703,
 	"nextUid": 191,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -1466,7 +1466,7 @@
 					"acceptFileTypes": null,
 					"defaultOverride": {
 						"id": "V_String",
-						"params": ["sfx/coinCollect.wav"]
+						"params": ["sfx/coinCollect"]
 					},
 					"textLanguageMode": null,
 					"symmetricalRef": false,
@@ -1687,7 +1687,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "WASD Or Arrow Keys To Move\nW Or Up Arrow To Jump", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["WASD Or Arrow Keys To Move\nW Or Up Arrow To Jump"]
+									"params": ["WASD Or Arrow Keys To Move\\nW Or Up Arrow To Jump"]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 16, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [16] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 131, "realEditorValues": [] }
@@ -1725,7 +1725,7 @@
 							"px": [128,224],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 128,
@@ -1745,7 +1745,7 @@
 							"px": [176,224],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 176,
@@ -1765,7 +1765,7 @@
 							"px": [224,224],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 224,
@@ -1975,7 +1975,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "DO NOT\nFALL OUT OF THE SPACECRAFT", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["DO NOT\nFALL OUT OF THE SPACECRAFT"]
+									"params": ["DO NOT\\nFALL OUT OF THE SPACECRAFT"]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 16, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [16] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 131, "realEditorValues": [] }
@@ -2189,7 +2189,7 @@
 							"px": [80,144],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 336,
@@ -2209,7 +2209,7 @@
 							"px": [176,144],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 432,
@@ -2229,7 +2229,7 @@
 							"px": [192,144],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 448,
@@ -2249,7 +2249,7 @@
 							"px": [272,144],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 528,
@@ -2269,7 +2269,7 @@
 							"px": [288,144],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 544,
@@ -2289,7 +2289,7 @@
 							"px": [416,144],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 672,
@@ -2309,7 +2309,7 @@
 							"px": [384,112],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 640,
@@ -2329,7 +2329,7 @@
 							"px": [416,80],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 672,
@@ -2349,7 +2349,7 @@
 							"px": [384,48],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 640,
@@ -2369,7 +2369,7 @@
 							"px": [416,16],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 672,
@@ -2739,7 +2739,7 @@
 							"px": [16,208],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 640,
@@ -2759,7 +2759,7 @@
 							"px": [48,176],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 672,
@@ -2779,7 +2779,7 @@
 							"px": [16,144],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 640,
@@ -2799,7 +2799,7 @@
 							"px": [48,112],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 672,
@@ -2819,7 +2819,7 @@
 							"px": [16,80],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 640,
@@ -2839,7 +2839,7 @@
 							"px": [48,48],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 672,
@@ -2859,7 +2859,7 @@
 							"px": [16,16],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 640,
@@ -3192,9 +3192,9 @@
 									"id": "V_String",
 									"params": ["144,64,16,16"]
 								}] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/keyPickup.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/keyPickup", "__tile": null, "defUid": 170, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["sfx/keyPickup.wav"]
+									"params": ["sfx/keyPickup"]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 0, "__tile": null, "defUid": 167, "realEditorValues": [{ "id": "V_Int", "params": [0] }] }
 							],
@@ -3217,7 +3217,7 @@
 								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Key_Door\") {\n  k.destroy(element.entity);\n }\n}", "__tile": null, "defUid": 136, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Key_Door\") {\n  k.destroy(element.entity);\n }\n}"
+										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Key_Door\") {\\n  k.destroy(element.entity);\\n }\\n}"
 									]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 0, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [0] }] },
@@ -3367,7 +3367,7 @@
 							"px": [144,208],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 672,
@@ -3387,7 +3387,7 @@
 							"px": [64,96],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 592,
@@ -3407,7 +3407,7 @@
 							"px": [16,208],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 544,
@@ -3618,7 +3618,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "\"Theres So Many Other Ships\"\n\"But Where is HE\"", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["\"Theres So Many Other Ships\"\n\"But Where is HE\""]
+									"params": ["\"Theres So Many Other Ships\"\\n\"But Where is HE\""]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 32, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [32] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#FFFFFF", "__tile": null, "defUid": 131, "realEditorValues": [{ "id": "V_Int", "params": [16777215] }] }
@@ -3640,7 +3640,7 @@
 							"px": [128,48],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 400,
@@ -3903,7 +3903,7 @@
 							"px": [88,96],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 152,
@@ -3923,7 +3923,7 @@
 							"px": [112,64],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 176,

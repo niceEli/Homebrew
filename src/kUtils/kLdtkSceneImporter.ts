@@ -1,7 +1,6 @@
 import k from "../kaboom";
-import * as ts from "typescript";
-import * as terser from "terser";
-import { hexToRgb } from "../kUtils/kColor";
+import * as kEnumToPath from "./kEnumToPath";
+import { hexToRgb } from "./kColor";
 import matterRect, {
   matterRect4Sprites,
   matterRect4Static,
@@ -302,8 +301,10 @@ export default function kLdtkSceneImporter(
               case "Collectible":
                 let CollectibleSpritename =
                   entValues["Tile"].x / 16 + (entValues["Tile"].y / 16) * 25;
-                if (!sounds.includes(entValues["Sound_Effect"])) {
-                  sounds.push(entValues["Sound_Effect"]);
+                if (
+                  !sounds.includes(kEnumToPath.run(entValues["Sound_Effect"]))
+                ) {
+                  sounds.push(kEnumToPath.run(entValues["Sound_Effect"]));
                 }
                 k.add([
                   k.scale(levelsize),
@@ -378,11 +379,11 @@ export default function kLdtkSceneImporter(
               case "Play_Sound":
                 let Play_Sound_Code =
                   'k.loadSound("' +
-                  String(entValues["Name"]) +
+                  String(kEnumToPath.run(entValues["Name"])) +
                   '","' +
-                  String(entValues["Name"]) +
+                  String(kEnumToPath.run(entValues["Name"])) +
                   '");k.play("' +
-                  String(entValues["Name"]) +
+                  String(kEnumToPath.run(entValues["Name"])) +
                   '");';
                 if (
                   maxGroups < entValues["GroupID"] ||

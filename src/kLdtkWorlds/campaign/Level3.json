@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.5.1",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"iid": "a26276c0-7820-11ed-b6fd-ed05d55c9a75",
-	"jsonVersion": "1.5.1",
-	"appBuildId": 473602,
+	"jsonVersion": "1.5.3",
+	"appBuildId": 473703,
 	"nextUid": 196,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -1503,7 +1503,7 @@
 					"acceptFileTypes": null,
 					"defaultOverride": {
 						"id": "V_String",
-						"params": ["sfx/coinCollect.wav"]
+						"params": ["sfx/coinCollect"]
 					},
 					"textLanguageMode": null,
 					"symmetricalRef": false,
@@ -1822,7 +1822,7 @@
 							"px": [64,176],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 64,
@@ -1842,7 +1842,7 @@
 							"px": [96,128],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 96,
@@ -1862,7 +1862,7 @@
 							"px": [128,80],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 128,
@@ -1962,7 +1962,7 @@
 								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Door\") {\n  k.destroy(element.entity);\n }\n}", "__tile": null, "defUid": 136, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Door\") {\n  k.destroy(element.entity);\n }\n}"
+										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Door\") {\\n  k.destroy(element.entity);\\n }\\n}"
 									]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 0, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [0] }] },
@@ -2141,9 +2141,9 @@
 									"id": "V_String",
 									"params": ["144,64,16,16"]
 								}] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/keyPickup.wav", "__tile": null, "defUid": 170, "realEditorValues": [{
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/keyPickup", "__tile": null, "defUid": 170, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["sfx/keyPickup.wav"]
+									"params": ["sfx/keyPickup"]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 0, "__tile": null, "defUid": 167, "realEditorValues": [{ "id": "V_Int", "params": [0] }] }
 							],
@@ -2340,7 +2340,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "Press Jump\nAnd Then Dash\nFor A Vertical\nBoost!!!", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["Press Jump\nAnd Then Dash\nFor A Vertical\nBoost!!!"]
+									"params": ["Press Jump\\nAnd Then Dash\\nFor A Vertical\\nBoost!!!"]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 32, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [32] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#FFFFFF", "__tile": null, "defUid": 131, "realEditorValues": [{ "id": "V_Int", "params": [16777215] }] }
@@ -2526,7 +2526,7 @@
 							"px": [144,112],
 							"fieldInstances": [
 								{ "__identifier": "Tile", "__type": "Tile", "__value": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "__tile": { "tilesetUid": 116, "x": 176, "y": 64, "w": 16, "h": 16 }, "defUid": 166, "realEditorValues": [] },
-								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect.wav", "__tile": null, "defUid": 170, "realEditorValues": [] },
+								{ "__identifier": "Sound_Effect", "__type": "String", "__value": "sfx/coinCollect", "__tile": null, "defUid": 170, "realEditorValues": [] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": -1, "__tile": null, "defUid": 167, "realEditorValues": [] }
 							],
 							"__worldX": 656,
