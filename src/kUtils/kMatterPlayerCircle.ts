@@ -1,6 +1,6 @@
 import { Vec2 } from "kaboom";
 import k from "../kaboom";
-import Matter, { IBodyDefinition, Vector } from "matter-js";
+import Matter, { IBodyDefinition, Vector, Vertices } from "matter-js";
 
 export default function PlayerPawnCircle(
   engine: any,
@@ -140,6 +140,13 @@ export default function PlayerPawnCircle(
     },
     destroy() {
       Matter.Composite.remove(engine.world, body);
+    },
+    set velocity(vel: Vector) {
+      Matter.Body.setVelocity(body, vel);
+    },
+
+    get velocity(): Vector {
+      return Matter.Body.getVelocity(body);
     },
   };
 }

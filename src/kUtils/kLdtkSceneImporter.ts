@@ -9,7 +9,7 @@ import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
 import { GameObj, SceneDef } from "kaboom";
-import Matter from "matter-js";
+import Matter, { Vector } from "matter-js";
 import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";
 import loadSpritesSheet from "./kLoadSpriteSheet";
@@ -33,6 +33,17 @@ export default function kLdtkSceneImporter(
   let CTriggers = [];
 
   let metadata;
+
+  let i;
+
+  let enemys: {
+    ent?: GameObj;
+    unkillable?: boolean;
+    startPos?: any;
+    endPos?: any;
+    waitTime?: number;
+    moveTime?: number;
+  }[] = [{}];
 
   let classTiles = [];
 
@@ -65,6 +76,7 @@ export default function kLdtkSceneImporter(
   let deathScore: number = score;
   let lives: number = 0;
   let health: number = 0;
+  let isDead: boolean = false;
 
   for (let i = 0; i < 9999; i++) {
     groups.push({ active: false, chgX: 0, chgY: 0 });
@@ -299,12 +311,17 @@ export default function kLdtkSceneImporter(
                 }
                 break;
               case "Collectible":
+                let cSound: string;
+                if (entValues["Sound_Effect"] === "CUSTOM") {
+                  cSound = entValues["Custom_Sound"];
+                } else {
+                  cSound = kEnumToPath.run(entValues["Sound_Effect"]);
+                }
+
                 let CollectibleSpritename =
                   entValues["Tile"].x / 16 + (entValues["Tile"].y / 16) * 25;
-                if (
-                  !sounds.includes(kEnumToPath.run(entValues["Sound_Effect"]))
-                ) {
-                  sounds.push(kEnumToPath.run(entValues["Sound_Effect"]));
+                if (!sounds.includes(cSound)) {
+                  sounds.push(cSound);
                 }
                 k.add([
                   k.scale(levelsize),
@@ -377,14 +394,17 @@ export default function kLdtkSceneImporter(
                 });
                 break;
               case "Play_Sound":
-                let Play_Sound_Code =
-                  'k.loadSound("' +
-                  String(kEnumToPath.run(entValues["Name"])) +
-                  '","' +
-                  String(kEnumToPath.run(entValues["Name"])) +
-                  '");k.play("' +
-                  String(kEnumToPath.run(entValues["Name"])) +
-                  '");';
+                let qsSound: string;
+                if (entValues["Name"] === "CUSTOM") {
+                  qsSound = entValues["Custom_Sound"];
+                } else {
+                  qsSound = kEnumToPath.run(entValues["Name"]);
+                }
+
+                if (!sounds.includes(qsSound)) {
+                  sounds.push(qsSound);
+                }
+                let Play_Sound_Code = 'k.play("' + String(qsSound) + '");';
                 if (
                   maxGroups < entValues["GroupID"] ||
                   maxGroups < entValues["NextGID"]
@@ -401,6 +421,43 @@ export default function kLdtkSceneImporter(
                   NextGID: entValues["NextGID"],
                   X: ent.__worldX * levelsize,
                   Y: ent.__worldY * levelsize,
+                });
+                break;
+              case "Enemy":
+                let enemySpriteName =
+                  entValues["Tile"].x / 16 + (entValues["Tile"].y / 16) * 25;
+                let endPosOne = k.vec2(
+                  entValues["End_Pos"].cx - ent.__grid[0],
+                  entValues["End_Pos"].cy - ent.__grid[1]
+                );
+                let endPosition = k.vec2(
+                  ent.__worldX * levelsize + endPosOne.x * 16 * levelsize,
+                  ent.__worldY * levelsize + endPosOne.y * 16 * levelsize
+                );
+                enemys.push({
+                  ent: k.add([
+                    k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+                    k.scale(levelsize),
+                    k.sprite("SpriteSheet" + enemySpriteName),
+                    k.state("idleStart", [
+                      "idleStart",
+                      "moveEnd",
+                      "idleEnd",
+                      "moveStart",
+                    ]),
+                    k.timer(),
+                    k.area(),
+                    { unkillable: entValues["Unkillable"] },
+                    "enemy",
+                  ]),
+                  startPos: k.vec2(
+                    ent.__worldX * levelsize,
+                    ent.__worldY * levelsize
+                  ),
+                  endPos: endPosition,
+                  waitTime: entValues["waitTime"] / 1000,
+                  unkillable: entValues["Unkillable"],
+                  moveTime: entValues["moveTime"] / 1000,
                 });
                 break;
               default:
@@ -474,6 +531,11 @@ export default function kLdtkSceneImporter(
     }
   }
 
+  tiles.splice(0, 1);
+  colliders.splice(0, 1);
+  sounds.splice(0, 1);
+  enemys.splice(0, 1);
+
   if (metadata == undefined) {
     metadata = {
       Level_Name: null,
@@ -494,10 +556,6 @@ export default function kLdtkSceneImporter(
       },
     },
   ]);
-
-  tiles.splice(0, 1);
-  colliders.splice(0, 1);
-  sounds.splice(0, 1);
 
   for (let i = 0; i < sounds.length; i++) {
     const sound = sounds[i];
@@ -527,6 +585,136 @@ export default function kLdtkSceneImporter(
     }
   });
 
+  for (let i = 0; i < CTriggers.length; i++) {
+    const element = CTriggers[i];
+    element.obj.onCollide("Player", () => {
+      groups.splice(element.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
+    });
+    element.obj.onCollideEnd("Player", () => {
+      groups.splice(element.UnCollideGroupID, 1, {
+        active: true,
+        chgX: 0,
+        chgY: 0,
+      });
+      if (element.OneTime) {
+        k.destroy(element.obj);
+      }
+    });
+  }
+  for (let i = 0; i < colliders.length; i++) {
+    const element = colliders[i];
+    k.add([
+      k.rect(element.sx, element.sy),
+      k.pos(element.x, element.y),
+      k.anchor("center"),
+      k.opacity(0),
+      k.area(),
+      matterRect(engine, { isStatic: true }),
+    ]);
+  }
+
+  if (player != null) {
+    player.onCollide("Collectible", (c) => {
+      score++;
+      if (c.GroupID !== -1) {
+        groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
+      }
+      if (c.SFX !== "") {
+        k.play(c.SFX);
+      }
+      k.destroy(c);
+    });
+    player.onCollide("Death_Trig", () => {
+      isDead = true;
+    });
+    player.onCollide("Win_Condition", () => {
+      k.scene("nextLevel", nextScene);
+      k.go("nextLevel");
+    });
+    player.onCollideUpdate("BG", () => {
+      isInlevel = 5;
+    });
+  } else {
+    k.destroy(scoreText);
+    k.debug.log("Render Mode.");
+    k.debug.log("You Are Not Able To Play The Level In");
+    k.debug.log("");
+    k.debug.log("Player Not Found. Render Mode Active!");
+  }
+
+  k.onUpdate(() => {
+    sessionStorage.setItem("score", String(score));
+    for (let i = 0; i < unactiveUpdateTriggers.length; i++) {
+      const element = unactiveUpdateTriggers[i];
+      try {
+        if (groups[element.ActivateGroupID].active) {
+          unactiveUpdateTriggers.splice(i, 1);
+          updateTriggers.push(element.GroupID);
+        }
+      } catch {}
+    }
+    for (let i = 0; i < updateTriggers.length; i++) {
+      const element = updateTriggers[i];
+      groups.splice(element, 1, { active: true, chgX: 0, chgY: 0 });
+    }
+  });
+
+  k.onUpdate(() => {
+    if (isInlevel <= 0) {
+      isDead = true;
+    }
+    isInlevel--;
+  });
+
+  k.onCollide("Player", "enemy", (a, b, col) => {
+    if (b.unkillable == true) {
+      isDead = true;
+    } else {
+      if (a.pos.y < b.pos.y) {
+        k.destroy(b);
+        a.velocity = { x: a.velocity.x, y: -9 };
+      } else {
+        isDead = true;
+      }
+    }
+  });
+
+  for (let i = 0; i < enemys.length; i++) {
+    const enemy = enemys[i];
+    enemy.ent.onStateEnter("idleStart", () => {
+      k.wait(enemy.waitTime, () => enemy.ent.enterState("moveEnd"));
+    });
+    enemy.ent.onStateEnter("moveEnd", () => {
+      k.tween(
+        enemy.startPos,
+        enemy.endPos,
+        enemy.moveTime,
+        (p) => (enemy.ent.pos = p),
+        k.easings.easeInOutCubic
+      ).then(() => enemy.ent.enterState("idleEnd"));
+    });
+    enemy.ent.onStateEnter("idleEnd", () => {
+      k.wait(enemy.waitTime, () => enemy.ent.enterState("moveStart"));
+    });
+    enemy.ent.onStateEnter("moveStart", () => {
+      k.tween(
+        enemy.endPos,
+        enemy.startPos,
+        enemy.moveTime,
+        (p) => (enemy.ent.pos = p),
+        k.easings.easeInOutCubic
+      ).then(() => enemy.ent.enterState("idleStart"));
+    });
+  }
+
+  k.onUpdate(() => {
+    if (isDead) {
+      sessionStorage.setItem("score", String(deathScore));
+      k.go("scene");
+    }
+  });
+
+  // Scripting stuff
   let checkGroups = async function () {
     let checkFlag = true;
 
@@ -573,6 +761,7 @@ export default function kLdtkSceneImporter(
                 "delay",
                 "tiles",
                 "scoreText",
+                "enemys",
                 `
                   return (async function() {
                     ${Func}
@@ -608,7 +797,8 @@ export default function kLdtkSceneImporter(
                   health,
                   delay,
                   tiles,
-                  scoreText
+                  scoreText,
+                  enemys
                 )
               );
 
@@ -631,89 +821,5 @@ export default function kLdtkSceneImporter(
       }
     }
   };
-
-  for (let i = 0; i < CTriggers.length; i++) {
-    const element = CTriggers[i];
-    element.obj.onCollide("Player", () => {
-      groups.splice(element.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
-    });
-    element.obj.onCollideEnd("Player", () => {
-      groups.splice(element.UnCollideGroupID, 1, {
-        active: true,
-        chgX: 0,
-        chgY: 0,
-      });
-      if (element.OneTime) {
-        k.destroy(element.obj);
-      }
-    });
-  }
-  for (let i = 0; i < colliders.length; i++) {
-    const element = colliders[i];
-    k.add([
-      k.rect(element.sx, element.sy),
-      k.pos(element.x, element.y),
-      k.anchor("center"),
-      k.opacity(0),
-      k.area(),
-      matterRect(engine, { isStatic: true }),
-    ]);
-  }
-
-  if (player != null) {
-    player.onCollide("Collectible", (c) => {
-      score++;
-      if (c.GroupID !== -1) {
-        groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
-      }
-      if (c.SFX !== "") {
-        k.play(c.SFX);
-      }
-      k.destroy(c);
-    });
-    player.onCollide("Death_Trig", () => {
-      sessionStorage.setItem("score", String(deathScore));
-      k.go("scene");
-    });
-    player.onCollide("Win_Condition", () => {
-      k.scene("nextLevel", nextScene);
-      k.go("nextLevel");
-    });
-    player.onCollideUpdate("BG", () => {
-      isInlevel = 5;
-    });
-  } else {
-    k.destroy(scoreText);
-    k.debug.log("Render Mode.");
-    k.debug.log("You Are Not Able To Play The Level In");
-    k.debug.log("");
-    k.debug.log("Player Not Found. Render Mode Active!");
-  }
-
-  k.onUpdate(() => {
-    sessionStorage.setItem("score", String(score));
-    for (let i = 0; i < unactiveUpdateTriggers.length; i++) {
-      const element = unactiveUpdateTriggers[i];
-      try {
-        if (groups[element.ActivateGroupID].active) {
-          unactiveUpdateTriggers.splice(i, 1);
-          updateTriggers.push(element.GroupID);
-        }
-      } catch {}
-    }
-    for (let i = 0; i < updateTriggers.length; i++) {
-      const element = updateTriggers[i];
-      groups.splice(element, 1, { active: true, chgX: 0, chgY: 0 });
-    }
-  });
-
   k.onUpdate(checkGroups);
-
-  k.onUpdate(() => {
-    if (isInlevel <= 0) {
-      sessionStorage.setItem("score", String(deathScore));
-      k.go("scene");
-    }
-    isInlevel--;
-  });
 }
