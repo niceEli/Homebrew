@@ -37,6 +37,7 @@ export default function kLdtkSceneImporter(
   let metadata;
 
   let i;
+  let r;
 
   k.camScale(zoom);
 
