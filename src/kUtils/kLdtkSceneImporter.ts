@@ -8,7 +8,7 @@ import matterRect, {
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
-import { GameObj, SceneDef } from "kaboom";
+import { GameObj, SceneDef, Vec2 } from "kaboom";
 import Matter, { Vector } from "matter-js";
 import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";
@@ -16,16 +16,18 @@ import loadSpritesSheet from "./kLoadSpriteSheet";
 
 export default function kLdtkSceneImporter(
   sceneData,
-  levelsize: number = 2,
   currentScene: SceneDef,
   nextScene: SceneDef,
-  engine?: any
+  engine?: any,
+  zoom = k.vec2(1, 1)
 ) {
   // Load The Level
   k.scene("scene", currentScene);
   k.loadSprite("CTPlayer", "CTPlayer.png");
   k.loadSprite("box", "box.png");
   k.loadSprite("door", "end.png");
+
+  let levelsize = 2;
 
   let isInlevel: number;
   let scripts = [];
@@ -35,6 +37,8 @@ export default function kLdtkSceneImporter(
   let metadata;
 
   let i;
+
+  k.camScale(zoom);
 
   let enemys: {
     ent?: GameObj;
@@ -176,7 +180,7 @@ export default function kLdtkSceneImporter(
                   k.anchor("center"),
                   k.sprite("SpriteSheet30"),
                   k.scale(levelsize),
-                  k.z(2147483646),
+                  k.z(2147483645),
                   k.fadeIn(0.16),
                   k.opacity(),
                   k.area(),
@@ -438,6 +442,7 @@ export default function kLdtkSceneImporter(
                   ent: k.add([
                     k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
                     k.scale(levelsize),
+                    k.z(2147483646),
                     k.sprite("SpriteSheet" + enemySpriteName),
                     k.state("idleStart", [
                       "idleStart",
@@ -673,6 +678,7 @@ export default function kLdtkSceneImporter(
       if (a.pos.y < b.pos.y) {
         k.destroy(b);
         a.velocity = { x: a.velocity.x, y: -9 };
+        a.isDashable = true;
       } else {
         isDead = true;
       }
@@ -690,7 +696,7 @@ export default function kLdtkSceneImporter(
         enemy.endPos,
         enemy.moveTime,
         (p) => (enemy.ent.pos = p),
-        k.easings.easeInOutCubic
+        k.easings.linear
       ).then(() => enemy.ent.enterState("idleEnd"));
     });
     enemy.ent.onStateEnter("idleEnd", () => {
@@ -702,7 +708,7 @@ export default function kLdtkSceneImporter(
         enemy.startPos,
         enemy.moveTime,
         (p) => (enemy.ent.pos = p),
-        k.easings.easeInOutCubic
+        k.easings.linear
       ).then(() => enemy.ent.enterState("idleStart"));
     });
   }

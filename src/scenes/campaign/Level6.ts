@@ -6,12 +6,13 @@ import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";
 
 import Empty from "./Empty"; //You need to uncomment this
+import Level7 from "./Level7";
 
 export default async function Level6() {
   // Conf
   const LevelName = "Level6";
   const ThisLevel = Level6;
-  const Nextlevel = Empty;
+  const Nextlevel = Level7;
 
   // Setup Engine
   const engine: any = Matter.Engine.create();
@@ -22,7 +23,7 @@ export default async function Level6() {
   // Load This Scene And Sprites
   localStorage.setItem("cLevel", LevelName);
   try {
-    kLdtkSceneImporter(sceneData, 2, ThisLevel, Nextlevel, engine);
+    kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
   } catch (error) {
     k.debug.error(error);
     k.debug.paused = true;

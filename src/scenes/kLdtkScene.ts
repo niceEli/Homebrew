@@ -23,7 +23,7 @@ export default async function kLdtkScene() {
   // Load This Scene And Sprites
   localStorage.setItem("cLevel", ThisLevel.name);
   try {
-    kLdtkSceneImporter(sceneData, 2, ThisLevel, Nextlevel, engine);
+    kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
   } catch (error) {
     k.debug.error(error);
     k.debug.paused = true;

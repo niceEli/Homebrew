@@ -148,5 +148,12 @@ export default function PlayerPawnCircle(
     get velocity(): Vector {
       return Matter.Body.getVelocity(body);
     },
+
+    set isDashable(v: boolean) {
+      isDashable = v;
+    },
+    get isDashable() {
+      return isDashable;
+    },
   };
 }
