@@ -13,6 +13,7 @@ import Matter, { Vector } from "matter-js";
 import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";
 import loadSpritesSheet from "./kLoadSpriteSheet";
+import * as IMC from "../Controls/INPUT_movement";
 
 export default function kLdtkSceneImporter(
   sceneData,
@@ -769,6 +770,7 @@ export default function kLdtkSceneImporter(
                 "tiles",
                 "scoreText",
                 "enemys",
+                "IMC",
                 `
                   return (async function() {
                     ${Func}
@@ -805,7 +807,8 @@ export default function kLdtkSceneImporter(
                   delay,
                   tiles,
                   scoreText,
-                  enemys
+                  enemys,
+                  IMC
                 )
               );
 
