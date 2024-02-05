@@ -4,6 +4,8 @@
 
 // Imports
 import k from "./kaboom";
+import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
+import loadSounds from "./kUtils/kLoadSounds";
 
 // Make Black Screen
 k.add([
@@ -22,7 +24,7 @@ import kMatterTest from "./scenes/kMatterTest";
 import Jilian from "./scenes/Jillian";
 import Ava from "./scenes/Ava";
 import kLdtkScene from "./scenes/kLdtkScene";
-import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
+// Import Campaign Levels
 import Level1 from "./scenes/campaign/Level1";
 import Level2 from "./scenes/campaign/Level2";
 import Level3 from "./scenes/campaign/Level3";
@@ -51,23 +53,28 @@ k.scene("Level8", Level8);
 // Load SpriteSheet
 loadSpritesSheet();
 
-// Run Scenes
+// Load Sounds
+loadSounds();
 
-//k.go('Hello-World-EX'); // This is a template scene
+k.onLoad(() => {
+  // Run Scenes
 
-//k.go("kMatter-Test"); // This is a physics (matter) template scene
+  //k.go('Hello-World-EX'); // This is a template scene
 
-//k.go("kLdtkScene");
+  //k.go("kMatter-Test"); // This is a physics (matter) template scene
 
-//k.go('Jillian-Test-Scene') // This is a scene made by my friend that doesnt know how to program
+  //k.go("kLdtkScene");
 
-//k.go("AvaC"); // My Sister wrote this "obby"
+  //k.go('Jillian-Test-Scene') // This is a scene made by my friend that doesnt know how to program
 
-k.go("Level1");
-//k.go("Level2");
-//k.go("Level3");
-//k.go("Level4");
-//k.go("Level5");
-//k.go("Level6");
-//k.go("Level7");
-//k.go("Level8");
+  //k.go("AvaC"); // My Sister wrote this "obby"
+
+  k.go("Level1");
+  //k.go("Level2");
+  //k.go("Level3");
+  //k.go("Level4");
+  //k.go("Level5");
+  //k.go("Level6");
+  //k.go("Level7");
+  //k.go("Level8");
+});

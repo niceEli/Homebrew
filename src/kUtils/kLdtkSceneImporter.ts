@@ -564,16 +564,6 @@ export default function kLdtkSceneImporter(
     },
   ]);
 
-  for (let i = 0; i < sounds.length; i++) {
-    const sound = sounds[i];
-    try {
-      k.loadSound(sound, sound);
-    } catch (error) {
-      k.debug.error(`Unknown Sound: ${sound}`);
-      console.error(`Unknown Sound: ${sound}. ERROR STACK: ${error.stack}`);
-    }
-  }
-
   async function delay(ms) {
     new Promise((res) => setTimeout(res, ms));
   }
