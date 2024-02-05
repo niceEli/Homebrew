@@ -1,5 +1,6 @@
 import { SceneDef } from "kaboom";
 import k from "../kaboom";
+import * as IMC from "../Controls/INPUT_movement";
 
 export default function kReset(currentScene: SceneDef, deathScore: number) {
   return {
@@ -7,7 +8,7 @@ export default function kReset(currentScene: SceneDef, deathScore: number) {
       k.scene("scene", currentScene);
     },
     update() {
-      if (k.isKeyPressed("r")) {
+      if (IMC.reseting()) {
         sessionStorage.setItem("score", String(deathScore));
         k.go("scene");
       }

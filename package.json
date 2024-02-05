@@ -22,11 +22,11 @@
   "main": "dist-electron/main.js",
   "dependencies": {
     "@types/matter-js": "^0.19.5",
-    "typescript": "^5.2.2",
     "axios": "^1.6.2",
     "kaboom": "^3000.1.17",
     "kaboom-flex-ui": "^0.0.8",
     "matter-js": "^0.19.0",
-    "terser": "^5.26.0"
+    "terser": "^5.26.0",
+    "typescript": "^5.2.2"
   }
 }
