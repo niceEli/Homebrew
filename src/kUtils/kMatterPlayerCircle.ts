@@ -1,6 +1,6 @@
 import * as IMC from "../Controls/INPUT_movement";
 import k from "../kaboom";
-import Matter, { IBodyDefinition, Vector, Vertices } from "matter-js";
+import Matter, { IBodyDefinition, Vector } from "matter-js";
 
 export default function PlayerPawnCircle(
   engine: any,
@@ -8,15 +8,15 @@ export default function PlayerPawnCircle(
   rad?: number,
   scaleOPlayer?: Vector,
   multiplier: number = 1,
-  rotate: boolean = false
+  rotate: boolean = false,
 ) {
-  var isDashable: boolean = true;
-  var CTTime: number = 10;
-  var body: Matter.Body;
+  let isDashable: boolean = true;
+  let CTTime: number = 10;
+  let body: Matter.Body;
   return {
     add() {
       const { x, y } = this.pos;
-      var { radius = rad } = this;
+      let { radius = rad } = this;
       body = Matter.Bodies.circle(x, y, radius, options);
       Matter.Composite.add(engine.world, body);
     },
@@ -69,28 +69,31 @@ export default function PlayerPawnCircle(
         Matter.Body.applyForce(
           body,
           body.position,
-          k.vec2(-0.001 * multiplier, 0)
+          k.vec2(-0.001 * multiplier, 0),
         );
       }
       if (IMC.movement() === 1) {
         Matter.Body.applyForce(
           body,
           body.position,
-          k.vec2(0.001 * multiplier, 0)
+          k.vec2(0.001 * multiplier, 0),
         );
       }
 
       if (IMC.movement() === 0 && collisions !== 0) {
         Matter.Body.setVelocity(
           body,
-          k.vec2(0, Matter.Body.getVelocity(body).y)
+          k.vec2(0, Matter.Body.getVelocity(body).y),
         );
       }
       if (IMC.jumping()) {
         if (CTTime > 0) {
           let Vel = Matter.Vector.add(
             Matter.Body.getVelocity(body),
-            Matter.Vector.create(0, -9 * multiplier)
+            Matter.Vector.create(
+              0,
+              -Matter.Body.getVelocity(body).y + -9 * multiplier,
+            ),
           );
           Matter.Body.setVelocity(body, Vel);
           CTTime = 0;
@@ -99,30 +102,52 @@ export default function PlayerPawnCircle(
       if (IMC.dashing() && isDashable) {
         isDashable = false;
         if (IMC.movement() === 1) {
+          let Vel: Matter.Vector;
           if (CTTime > 0) {
-            var Vel = Matter.Vector.add(
+            Vel = Matter.Vector.add(
               Matter.Body.getVelocity(body),
-              Matter.Vector.create(8 * multiplier, 0)
+              Matter.Vector.create(8 * multiplier, 0),
             );
           } else {
-            var Vel = Matter.Vector.add(
-              Matter.Body.getVelocity(body),
-              Matter.Vector.create(8 * multiplier, -6 * multiplier)
-            );
+            if (Matter.Body.getVelocity(body).y <= 0) {
+              Vel = Matter.Vector.add(
+                Matter.Body.getVelocity(body),
+                Matter.Vector.create(8 * multiplier, -6 * multiplier),
+              );
+            } else {
+              Vel = Matter.Vector.add(
+                Matter.Body.getVelocity(body),
+                Matter.Vector.create(
+                  8 * multiplier,
+                  -Matter.Body.getVelocity(body).y + -6 * multiplier,
+                ),
+              );
+            }
           }
           Matter.Body.setVelocity(body, Vel);
         }
         if (IMC.movement() === -1) {
+          let Vel: Matter.Vector;
           if (CTTime > 0) {
-            var Vel = Matter.Vector.add(
+            Vel = Matter.Vector.add(
               Matter.Body.getVelocity(body),
-              Matter.Vector.create(-8 * multiplier, 0)
+              Matter.Vector.create(-8 * multiplier, 0),
             );
           } else {
-            var Vel = Matter.Vector.add(
-              Matter.Body.getVelocity(body),
-              Matter.Vector.create(-8 * multiplier, -6)
-            );
+            if (Matter.Body.getVelocity(body).y <= 0) {
+              Vel = Matter.Vector.add(
+                Matter.Body.getVelocity(body),
+                Matter.Vector.create(-8 * multiplier, -6 * multiplier),
+              );
+            } else {
+              Vel = Matter.Vector.add(
+                Matter.Body.getVelocity(body),
+                Matter.Vector.create(
+                  -8 * multiplier,
+                  -Matter.Body.getVelocity(body).y + -6 * multiplier,
+                ),
+              );
+            }
           }
           Matter.Body.setVelocity(body, Vel);
         }

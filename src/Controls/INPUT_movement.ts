@@ -41,11 +41,12 @@ export function jumping(): boolean {
 export function dashing(): boolean {
   let value: boolean = false;
   if (
-    k.isKeyPressed("space") ||
-    k.isGamepadButtonPressed("lshoulder") ||
-    k.isGamepadButtonPressed("rshoulder") ||
-    k.isGamepadButtonPressed("ltrigger") ||
-    k.isGamepadButtonPressed("rtrigger")
+    (k.isKeyPressed("space") ||
+      k.isGamepadButtonPressed("lshoulder") ||
+      k.isGamepadButtonPressed("rshoulder") ||
+      k.isGamepadButtonPressed("ltrigger") ||
+      k.isGamepadButtonPressed("rtrigger")) &&
+    movement() !== 0
   ) {
     value = true;
   }

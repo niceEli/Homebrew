@@ -1701,9 +1701,9 @@
 									"id": "V_Bool",
 									"params": [ false ]
 								}] },
-								{ "__identifier": "CamPos", "__type": "Point", "__value": { "cx": 7, "cy": 7 }, "__tile": null, "defUid": 184, "realEditorValues": [{
+								{ "__identifier": "CamPos", "__type": "Point", "__value": { "cx": 8, "cy": 8 }, "__tile": null, "defUid": 184, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["7,7"]
+									"params": ["8,8"]
 								}] }
 							],
 							"__worldX": 128,

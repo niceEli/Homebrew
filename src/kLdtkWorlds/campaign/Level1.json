@@ -1632,8 +1632,8 @@
 							"__tile": null,
 							"__smartColor": "#FF3000",
 							"iid": "cb4f17a0-8990-11ee-8936-5deb83abb519",
-							"width": 256,
-							"height": 16,
+							"width": 272,
+							"height": 80,
 							"defUid": 109,
 							"px": [0,240],
 							"fieldInstances": [],
@@ -1982,22 +1982,6 @@
 							],
 							"__worldX": 344,
 							"__worldY": 216
-						},
-						{
-							"__identifier": "Collider",
-							"__grid": [0,8],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#FF3000",
-							"iid": "636f2f20-8990-11ee-8936-cf6eefa9d2b5",
-							"width": 16,
-							"height": 64,
-							"defUid": 109,
-							"px": [0,128],
-							"fieldInstances": [],
-							"__worldX": 256,
-							"__worldY": 240
 						},
 						{
 							"__identifier": "Collider",
@@ -3217,7 +3201,7 @@
 								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Key_Door\") {\n  k.destroy(element.entity);\n }\n}", "__tile": null, "defUid": 136, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"for (let i = 0; i < classTiles.length; i++) {\\n const element = classTiles[i];\\n if (element.name === \"Key_Door\") {\\n  k.destroy(element.entity);\\n }\\n}"
+										"for (let i = 0; i < classTiles.length; i++) {\n const element = classTiles[i];\n if (element.name === \"Key_Door\") {\n  k.destroy(element.entity);\n }\n}"
 									]
 								}] },
 								{ "__identifier": "GroupID", "__type": "Int", "__value": 0, "__tile": null, "defUid": 138, "realEditorValues": [{ "id": "V_Int", "params": [0] }] },
@@ -3618,7 +3602,7 @@
 							"fieldInstances": [
 								{ "__identifier": "Text", "__type": "Multilines", "__value": "\"Theres So Many Other Ships\"\n\"But Where is HE\"", "__tile": null, "defUid": 130, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["\"Theres So Many Other Ships\"\\n\"But Where is HE\""]
+									"params": ["\"Theres So Many Other Ships\"\n\"But Where is HE\""]
 								}] },
 								{ "__identifier": "Size", "__type": "Float", "__value": 32, "__tile": null, "defUid": 132, "realEditorValues": [{ "id": "V_Float", "params": [32] }] },
 								{ "__identifier": "Color", "__type": "Color", "__value": "#FFFFFF", "__tile": null, "defUid": 131, "realEditorValues": [{ "id": "V_Int", "params": [16777215] }] }

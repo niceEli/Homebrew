@@ -2845,19 +2845,19 @@
 						},
 						{
 							"__identifier": "Collider",
-							"__grid": [5,1],
+							"__grid": [5,-1],
 							"__pivot": [0,0],
 							"__tags": ["Physics_And_Tiles"],
 							"__tile": null,
 							"__smartColor": "#FF3000",
 							"iid": "38aed8e0-b0a0-11ee-b59a-e99b307137ae",
 							"width": 16,
-							"height": 192,
+							"height": 224,
 							"defUid": 109,
-							"px": [80,16],
+							"px": [80,-16],
 							"fieldInstances": [],
 							"__worldX": 80,
-							"__worldY": 528
+							"__worldY": 496
 						},
 						{
 							"__identifier": "Collider",
@@ -2957,19 +2957,19 @@
 						},
 						{
 							"__identifier": "Collider",
-							"__grid": [9,1],
+							"__grid": [9,0],
 							"__pivot": [0,0],
 							"__tags": ["Physics_And_Tiles"],
 							"__tile": null,
 							"__smartColor": "#FF3000",
 							"iid": "3fc740e0-b0a0-11ee-b59a-134c95f1dd30",
 							"width": 16,
-							"height": 48,
+							"height": 64,
 							"defUid": 109,
-							"px": [144,16],
+							"px": [144,0],
 							"fieldInstances": [],
 							"__worldX": 144,
-							"__worldY": 528
+							"__worldY": 512
 						},
 						{
 							"__identifier": "Collider",
@@ -3002,22 +3002,6 @@
 							"fieldInstances": [],
 							"__worldX": 224,
 							"__worldY": 736
-						},
-						{
-							"__identifier": "Collider",
-							"__grid": [5,0],
-							"__pivot": [0,0],
-							"__tags": ["Physics_And_Tiles"],
-							"__tile": null,
-							"__smartColor": "#FF3000",
-							"iid": "7dc2b730-b0a0-11ee-b59a-8bf85a9836b3",
-							"width": 80,
-							"height": 16,
-							"defUid": 109,
-							"px": [80,0],
-							"fieldInstances": [],
-							"__worldX": 80,
-							"__worldY": 512
 						},
 						{
 							"__identifier": "Collider",
@@ -3327,18 +3311,18 @@
 						},
 						{
 							"__identifier": "Collider",
-							"__grid": [1,15],
+							"__grid": [-1,15],
 							"__pivot": [0,0],
 							"__tags": ["Physics_And_Tiles"],
 							"__tile": null,
 							"__smartColor": "#FF3000",
 							"iid": "ba9e1780-b0a0-11ee-b59a-77d0c4e9a7d6",
-							"width": 48,
-							"height": 16,
+							"width": 80,
+							"height": 32,
 							"defUid": 109,
-							"px": [16,240],
+							"px": [-16,240],
 							"fieldInstances": [],
-							"__worldX": 112,
+							"__worldX": 80,
 							"__worldY": 496
 						},
 						{
