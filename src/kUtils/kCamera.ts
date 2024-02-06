@@ -4,7 +4,7 @@ export default function kCamera(
   useCam: boolean = true,
   CamPos: { cx: number; cy: number },
   levelSize: number,
-  grid
+  grid: number[],
 ) {
   return {
     add() {
@@ -16,7 +16,7 @@ export default function kCamera(
           let y = CamPos.cy - grid[1];
           k.camPos(
             this.pos.x + x * 16 * levelSize,
-            this.pos.y + y * 16 * levelSize
+            this.pos.y + y * 16 * levelSize,
           );
         }
       }
