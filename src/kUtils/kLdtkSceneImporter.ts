@@ -8,8 +8,8 @@ import matterRect, {
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
-import { GameObj, SceneDef, Vec2 } from "kaboom";
-import Matter, { Vector } from "matter-js";
+import { GameObj, SceneDef } from "kaboom";
+import Matter from "matter-js";
 import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";
 import loadSpritesSheet from "./kLoadSpriteSheet";
@@ -20,7 +20,7 @@ export default function kLdtkSceneImporter(
   currentScene: SceneDef,
   nextScene: SceneDef,
   engine?: any,
-  zoom = k.vec2(1, 1)
+  zoom = k.vec2(1, 1),
 ) {
   // Load The Level
   k.scene("scene", currentScene);
@@ -103,7 +103,7 @@ export default function kLdtkSceneImporter(
       k.color(
         hexToRgb(element.__bgColor).r,
         hexToRgb(element.__bgColor).g,
-        hexToRgb(element.__bgColor).b
+        hexToRgb(element.__bgColor).b,
       ),
     ]);
     for (let i = 0; i < element.layerInstances.length; i++) {
@@ -139,7 +139,7 @@ export default function kLdtkSceneImporter(
                   k.rect(levelsize * ent.width, levelsize * ent.height),
                   k.pos(
                     (ent.__worldX + ent.width / 2) * levelsize,
-                    (ent.__worldY + ent.height / 2) * levelsize
+                    (ent.__worldY + ent.height / 2) * levelsize,
                   ),
                   k.anchor("center"),
                   k.opacity(0),
@@ -163,13 +163,13 @@ export default function kLdtkSceneImporter(
                     { friction: 0 },
                     8 * levelsize,
                     k.vec2(levelsize, levelsize),
-                    levelsize / 2
+                    levelsize / 2,
                   ),
                   kCamera(
                     entValues["UseCamera"],
                     entValues["CamPos"],
                     levelsize,
-                    ent.__grid
+                    ent.__grid,
                   ),
                   kReset(currentScene, deathScore),
                   k.area(),
@@ -189,7 +189,7 @@ export default function kLdtkSceneImporter(
                   matterRect4Sprites(
                     engine,
                     { angle: 0 },
-                    k.vec2(16 * levelsize, 16 * levelsize)
+                    k.vec2(16 * levelsize, 16 * levelsize),
                   ),
                 ]);
                 break;
@@ -255,7 +255,7 @@ export default function kLdtkSceneImporter(
                     k.rect(levelsize * ent.width, levelsize * ent.height),
                     k.pos(
                       (ent.__worldX + ent.width / 2) * levelsize,
-                      (ent.__worldY + ent.height / 2) * levelsize
+                      (ent.__worldY + ent.height / 2) * levelsize,
                     ),
                     k.anchor("center"),
                     k.opacity(0),
@@ -281,7 +281,7 @@ export default function kLdtkSceneImporter(
                       k.offscreen({ hide: true }),
                       k.pos(
                         ent.__worldX * levelsize + 8 * levelsize,
-                        ent.__worldY * levelsize + 8 * levelsize
+                        ent.__worldY * levelsize + 8 * levelsize,
                       ),
                       matterRect4Static(engine, k.vec2(size, size)),
                       "Tile",
@@ -298,7 +298,7 @@ export default function kLdtkSceneImporter(
                       k.offscreen({ hide: true }),
                       k.pos(
                         ent.__worldX * levelsize + 8 * levelsize,
-                        ent.__worldY * levelsize + 8 * levelsize
+                        ent.__worldY * levelsize + 8 * levelsize,
                       ),
                       "Tile",
                     ]),
@@ -337,7 +337,7 @@ export default function kLdtkSceneImporter(
                   k.offscreen({ hide: true }),
                   k.pos(
                     ent.__worldX * levelsize + 8 * levelsize,
-                    ent.__worldY * levelsize + 8 * levelsize
+                    ent.__worldY * levelsize + 8 * levelsize,
                   ),
                   k.area(),
                   {
@@ -355,7 +355,7 @@ export default function kLdtkSceneImporter(
                   k.color(
                     hexToRgb(entValues["Color"]).r,
                     hexToRgb(entValues["Color"]).g,
-                    hexToRgb(entValues["Color"]).b
+                    hexToRgb(entValues["Color"]).b,
                   ),
                   k.rotate(0),
                   k.z(300000000),
@@ -434,11 +434,11 @@ export default function kLdtkSceneImporter(
                   entValues["Tile"].x / 16 + (entValues["Tile"].y / 16) * 25;
                 let endPosOne = k.vec2(
                   entValues["End_Pos"].cx - ent.__grid[0],
-                  entValues["End_Pos"].cy - ent.__grid[1]
+                  entValues["End_Pos"].cy - ent.__grid[1],
                 );
                 let endPosition = k.vec2(
                   ent.__worldX * levelsize + endPosOne.x * 16 * levelsize,
-                  ent.__worldY * levelsize + endPosOne.y * 16 * levelsize
+                  ent.__worldY * levelsize + endPosOne.y * 16 * levelsize,
                 );
                 enemys.push({
                   ent: k.add([
@@ -459,7 +459,7 @@ export default function kLdtkSceneImporter(
                   ]),
                   startPos: k.vec2(
                     ent.__worldX * levelsize,
-                    ent.__worldY * levelsize
+                    ent.__worldY * levelsize,
                   ),
                   endPos: endPosition,
                   waitTime: entValues["waitTime"] / 1000,
@@ -478,7 +478,7 @@ export default function kLdtkSceneImporter(
                     {
                       size: 8 * levelsize,
                       font: "jetbrains",
-                    }
+                    },
                   ),
                   k.z(2002),
                   k.offscreen({ hide: true }),
@@ -688,7 +688,7 @@ export default function kLdtkSceneImporter(
         enemy.endPos,
         enemy.moveTime,
         (p) => (enemy.ent.pos = p),
-        k.easings.linear
+        k.easings.linear,
       ).then(() => enemy.ent.enterState("idleEnd"));
     });
     enemy.ent.onStateEnter("idleEnd", () => {
@@ -700,7 +700,7 @@ export default function kLdtkSceneImporter(
         enemy.startPos,
         enemy.moveTime,
         (p) => (enemy.ent.pos = p),
-        k.easings.linear
+        k.easings.linear,
       ).then(() => enemy.ent.enterState("idleStart"));
     });
   }
@@ -765,7 +765,7 @@ export default function kLdtkSceneImporter(
                   return (async function() {
                     ${Func}
                   })();
-                `
+                `,
               );
 
               asyncTasks.push(
@@ -798,8 +798,8 @@ export default function kLdtkSceneImporter(
                   tiles,
                   scoreText,
                   enemys,
-                  IMC
-                )
+                  IMC,
+                ),
               );
 
               group = groups[GroupID];
