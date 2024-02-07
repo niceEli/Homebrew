@@ -1,4 +1,6 @@
 import k from "../kaboom";
+import { Vec2 } from "kaboom";
+import { Vector } from "matter-js";
 
 export function movement(): number {
   let value: number = 0;
@@ -70,4 +72,38 @@ export function reseting(): boolean {
   }
 
   return value;
+}
+
+export function looking(): Vec2 {
+  const kVec = k.getGamepadStick("right");
+  const stick: Vector = { x: kVec.x, y: kVec.y };
+  let normalVec = Vector.magnitude(stick);
+  if (normalVec <= 0.4) {
+    stick.x = 0;
+    stick.y = 0;
+    normalVec = Vector.magnitude(stick);
+  }
+  if (normalVec == 0) {
+    let vec: Vector = { x: 0, y: 0 };
+    if (k.isKeyDown("i")) {
+      vec.y -= 1;
+    }
+    if (k.isKeyDown("k")) {
+      vec.y += 1;
+    }
+    if (k.isKeyDown("j")) {
+      vec.x -= 1;
+    }
+    if (k.isKeyDown("l")) {
+      vec.x += 1;
+    }
+    const nVecCache = Vector.normalise(vec);
+    const nVec = {
+      x: nVecCache.x * 300,
+      y: nVecCache.y * 300,
+    };
+    return k.vec2(nVec.x, nVec.y);
+  } else {
+    return k.vec2(stick.x * 300, stick.y * 300);
+  }
 }

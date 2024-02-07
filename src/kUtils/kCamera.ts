@@ -1,4 +1,5 @@
 import k from "../kaboom";
+import * as IMC from "../Controls/INPUT_movement";
 
 export default function kCamera(
   useCam: boolean = true,
@@ -23,7 +24,12 @@ export default function kCamera(
     },
     update() {
       if (useCam) {
-        k.tween(k.camPos(), this.pos, 0.5, (p) => k.camPos(p));
+        k.tween(
+          k.camPos(),
+          k.vec2(IMC.looking().x + this.pos.x, IMC.looking().y + this.pos.y),
+          0.5,
+          (p) => k.camPos(p),
+        );
       }
     },
   };
