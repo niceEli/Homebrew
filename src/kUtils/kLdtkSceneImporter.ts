@@ -102,6 +102,61 @@ export default function kLdtkSceneImporter(
   let maxGroups = -1;
 
   // this will spawn everything from ldtk
+
+  for (let i = 0; i < sceneData.levels.length; i++) {
+    const element = sceneData.levels[i];
+    for (let i = 0; i < element.layerInstances.length; i++) {
+      if (element.layerInstances[i].__type == "Entities") {
+        for (
+          let z = 0;
+          z < element.layerInstances[i].entityInstances.length;
+          z++
+        ) {
+          const ent = element.layerInstances[i].entityInstances[z];
+
+          let entValues: object = {};
+          for (let m = 0; m < ent.fieldInstances.length; m++) {
+            const element = ent.fieldInstances[m];
+
+            const identifier = element.__identifier;
+            const value = element.__value;
+
+            entValues[identifier] = value;
+          }
+          if (ent.__identifier == "Player_Start") {
+            var player: GameObj = k.add([
+              k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+              k.anchor("center"),
+              k.rotate(0),
+              k.sprite("SpriteSheet3"),
+              k.scale(levelsize),
+              k.z(2147483647),
+              k.fadeIn(0.16),
+              k.opacity(),
+              // Matter For Pawns
+              PlayerPawnCircle(
+                engine,
+                { friction: 0 },
+                8 * levelsize,
+                k.vec2(levelsize, levelsize),
+                levelsize / 2
+              ),
+              kCamera(
+                entValues["UseCamera"],
+                entValues["CamPos"],
+                levelsize,
+                ent.__grid
+              ),
+              kReset(currentScene, deathScore),
+              k.area(),
+              "Player",
+            ]);
+          }
+        }
+      }
+    }
+  }
+
   for (let i = 0; i < sceneData.levels.length; i++) {
     const element = sceneData.levels[i];
     let bg = k.add([
@@ -158,33 +213,6 @@ export default function kLdtkSceneImporter(
                 ]);
                 break;
               case "Player_Start":
-                var player: GameObj = k.add([
-                  k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
-                  k.anchor("center"),
-                  k.rotate(0),
-                  k.sprite("SpriteSheet3"),
-                  k.scale(levelsize),
-                  k.z(2147483647),
-                  k.fadeIn(0.16),
-                  k.opacity(),
-                  // Matter For Pawns
-                  PlayerPawnCircle(
-                    engine,
-                    { friction: 0 },
-                    8 * levelsize,
-                    k.vec2(levelsize, levelsize),
-                    levelsize / 2
-                  ),
-                  kCamera(
-                    entValues["UseCamera"],
-                    entValues["CamPos"],
-                    levelsize,
-                    ent.__grid
-                  ),
-                  kReset(currentScene, deathScore),
-                  k.area(),
-                  "Player",
-                ]);
                 break;
               case "Box_Spawner":
                 k.add([
