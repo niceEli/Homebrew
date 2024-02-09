@@ -101,6 +101,7 @@ export default function PlayerPawnCircle(
       }
       if (IMC.dashing() && isDashable) {
         isDashable = false;
+        IMC.rumble(100);
         if (IMC.movement() === 1) {
           let Vel: Matter.Vector;
           if (CTTime > 0) {

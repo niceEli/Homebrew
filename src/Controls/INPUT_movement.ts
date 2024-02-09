@@ -107,3 +107,21 @@ export function looking(): Vec2 {
     return k.vec2(stick.x * 300, stick.y * 300);
   }
 }
+
+export function rumble(time: number) {
+  try {
+    // Kaboom gamepad
+    const gamepadIndex = k.getGamepads()[0].index;
+    // Browser gamepad
+    const gamepad = navigator.getGamepads()[gamepadIndex];
+    // Then use the vibration api
+    gamepad.vibrationActuator.playEffect("dual-rumble", {
+      startDelay: 0,
+      duration: time,
+      weakMagnitude: 1.0,
+      strongMagnitude: 1.0,
+    });
+  } catch (error) {
+    
+  }
+}

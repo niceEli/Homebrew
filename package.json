@@ -25,6 +25,7 @@
     "axios": "^1.6.2",
     "kaboom": "^3000.1.17",
     "kaboom-flex-ui": "^0.0.8",
+    "kalang": "^0.0.3",
     "matter-js": "^0.19.0",
     "terser": "^5.26.0",
     "typescript": "^5.2.2"
