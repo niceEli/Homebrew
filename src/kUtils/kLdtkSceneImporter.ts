@@ -1,8 +1,6 @@
 import k from "../kaboom";
 import * as kEnumToPath from "./kEnumToPath";
-import { Lexer } from "kalang/lexer";
-import { Parser } from "kalang/parser";
-import { Transpiler } from "kalang/transpiler";
+import * as lua from "kalang";
 import { hexToRgb } from "./kColor";
 import matterRect, {
   matterRect4Sprites,
@@ -30,13 +28,6 @@ export default function kLdtkSceneImporter(
   k.loadSprite("CTPlayer", "CTPlayer.png");
   k.loadSprite("box", "box.png");
   k.loadSprite("door", "end.png");
-
-  function transpileLuaString(source: string): string {
-    const tokens = new Lexer(source).lexAll();
-    const ast = new Parser(tokens).parse();
-
-    return new Transpiler(ast).transpile();
-  }
 
   let levelsize = 2;
 
@@ -273,10 +264,15 @@ export default function kLdtkSceneImporter(
                     break;
                   case "KaLang_Lua":
                     try {
-                      script = transpileLuaString(entValues["AsyncJSCode"]);
+                      script = lua.transpileString(entValues["AsyncJSCode"]);
                     } catch (e) {
+                      let formatErr = lua.formatError(
+                        e,
+                        entValues["AsyncJSCode"],
+                        entValues["Comment"]
+                      );
                       k.debug.error("Lua Conv Err: " + e);
-                      console.error("Lua Conv Err: " + e.stack);
+                      console.error("Lua Conv Err: " + formatErr);
                     }
                     break;
                   default:

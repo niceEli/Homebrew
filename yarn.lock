@@ -320,7 +320,7 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.34.tgz#10964ba0dee6ac4cd462e2795b6bebd407303433"
   integrity sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==
 
-"@types/node@*", "@types/node@^20.11.5", "@types/node@^20.3.3":
+"@types/node@*", "@types/node@^20.11.5":
   version "20.11.17"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.17.tgz#cdd642d0e62ef3a861f88ddbc2b61e32578a9292"
   integrity sha512-QmgQZGWu1Yw9TDyAP9ZzpFJKynYNeOvwMJmaxABfieQoVoiVOS6MN1WSpqpRcbeA5+RW82kraAVxCCJg+780Qw==
@@ -458,12 +458,6 @@ argparse@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
   integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
-
-"argue@github:neverUsedGithub/Argue":
-  version "1.0.0"
-  resolved "https://codeload.github.com/neverUsedGithub/Argue/tar.gz/7b8305755e0ba444cce7e3867447c25e76c90426"
-  dependencies:
-    "@types/node" "^20.3.3"
 
 assert-plus@^1.0.0:
   version "1.0.0"
@@ -1361,13 +1355,12 @@ kaboom@^3000.1.17:
   resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-3000.1.17.tgz#a05491f9a80a42155276020cd0c024cd4af96e7c"
   integrity sha512-npAtjGxj9Oj9vLpXfURck9eUPHR2ac1Lhc1bNcZ0NWcs+Lgs40Ty+wjujv1C2DwjWvxaX+3r2G64M35BS/Ry2g==
 
-kalang@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/kalang/-/kalang-0.0.3.tgz#128d255543bb9c3e9a55f4c19e8486c44db14b6f"
-  integrity sha512-wySifesuOvWJa7i871iG90aOsMbMoQQjxQtgfIGLAZTdmeI1VSsfpl3LMPCVj96laQYb3ftlug7ilXTilDf01A==
+kalang@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/kalang/-/kalang-0.0.6.tgz#022a8f5a8310a959f266ed4f9e203dc823e94f9a"
+  integrity sha512-uUSes239emKhWnYi5th/VBq2rrLt24QuVuSTKrXEfZS9yGEXcyhOlcxz54r156N1X2UFhZuYDzWScLIRr6Rqew==
   dependencies:
     "@types/node" "^20.11.5"
-    argue "github:neverUsedGithub/Argue"
     commander "^11.1.0"
 
 keyv@^4.0.0:
