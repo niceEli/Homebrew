@@ -8,6 +8,6 @@
 		"files.watcherExclude": {
 			"**/build/win-unpacked/**": true
 		},
-		"workbench.iconTheme": "catppuccin-frappe"
+		"workbench.iconTheme": "material-icon-theme"
 	},
 }
