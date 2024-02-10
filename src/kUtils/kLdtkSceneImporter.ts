@@ -43,6 +43,15 @@ export default function kLdtkSceneImporter(
 
   k.camScale(zoom);
 
+  function print(text: string) {
+    k.debug.log(text);
+    console.log(text);
+  }
+  function printError(text: string) {
+    k.debug.error(text);
+    console.error(text);
+  }
+
   let enemys: {
     ent?: GameObj;
     unkillable?: boolean;
@@ -813,6 +822,8 @@ export default function kLdtkSceneImporter(
                 "scoreText",
                 "enemys",
                 "IMC",
+                "print",
+                "printError",
                 `
                   return (async function() {
                     ${Func}
@@ -850,7 +861,9 @@ export default function kLdtkSceneImporter(
                   tiles,
                   scoreText,
                   enemys,
-                  IMC
+                  IMC,
+                  print,
+                  printError
                 )
               );
 
