@@ -6,20 +6,19 @@ import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";
 
 import Empty from "./Empty"; //You need to uncomment this
-import TopDown from "./TopDown";
 
-export default async function Level8() {
+export default async function TopDown() {
   // Conf
-  const LevelName = "Level8";
-  const ThisLevel = Level8;
-  const Nextlevel = TopDown;
+  const LevelName = "TopDown";
+  const ThisLevel = TopDown;
+  const Nextlevel = Empty;
 
   // Setup Engine
   const engine: any = Matter.Engine.create();
   engine.velocityIterations = 100;
   engine.positionIterations = 200;
   Matter.Composite.create(engine);
-  let sceneData = await import("../../kLdtkWorlds/campaign/Level8.json");
+  let sceneData = await import("../../kLdtkWorlds/campaign/TopDown.json");
   // Load This Scene And Sprites
   localStorage.setItem("cLevel", LevelName);
   try {

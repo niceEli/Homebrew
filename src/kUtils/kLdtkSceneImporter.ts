@@ -157,6 +157,7 @@ export default function kLdtkSceneImporter(
               kReset(currentScene, deathScore),
               k.area(),
               "Player",
+              "Solid",
             ]);
           }
         }
@@ -219,8 +220,6 @@ export default function kLdtkSceneImporter(
                   "Death_Trig",
                 ]);
                 break;
-              case "Player_Start":
-                break;
               case "Box_Spawner":
                 k.add([
                   k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
@@ -237,6 +236,7 @@ export default function kLdtkSceneImporter(
                     k.vec2(16 * levelsize, 16 * levelsize)
                   ),
                   "Box",
+                  "Solid",
                 ]);
                 break;
               case "Win_Condition":
@@ -329,6 +329,7 @@ export default function kLdtkSceneImporter(
                     k.opacity(0),
                     k.area(),
                     "CTrigger",
+                    "Solid",
                   ]),
                   GroupID: entValues["GroupID"],
                   UnCollideGroupID: entValues["UnCollideGroupID"],
@@ -353,6 +354,7 @@ export default function kLdtkSceneImporter(
                       ),
                       matterRect4Static(engine, k.vec2(size, size)),
                       "Tile",
+                      "Solid",
                     ]),
                     name: entValues["Class"],
                   });
@@ -415,11 +417,14 @@ export default function kLdtkSceneImporter(
                   "Collectible",
                 ]);
                 break;
+              case "Player_Start":
+                break;
               case "Phys_Object":
                 let POent = k.add([
                   k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
                   k.anchor("center"),
                   k.rect(ent.width * levelsize, ent.height * levelsize),
+                  k.area(),
                   k.color(
                     hexToRgb(entValues["Color"]).r,
                     hexToRgb(entValues["Color"]).g,
@@ -432,6 +437,7 @@ export default function kLdtkSceneImporter(
                     friction: entValues["Friction"],
                     isStatic: entValues["IsStatic"],
                   }),
+                  "Solid",
                 ]);
 
                 if (entValues["Class"] !== "") {
@@ -696,6 +702,7 @@ export default function kLdtkSceneImporter(
       k.area(),
       matterRect(engine, { isStatic: true }),
       "walls",
+      "Solid",
     ]);
   }
 

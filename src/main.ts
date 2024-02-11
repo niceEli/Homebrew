@@ -34,6 +34,7 @@ import Level6 from "./scenes/campaign/Level6";
 import Level7 from "./scenes/campaign/Level7";
 import Level8 from "./scenes/campaign/Level8";
 import Empty from "./scenes/campaign/Empty";
+import TopDown from "./scenes/campaign/TopDown";
 // Add Scenes
 k.scene("Hello-World-EX", HelloWorld);
 k.scene("kMatter-Test", kMatterTest);
@@ -49,6 +50,7 @@ k.scene("Level5", Level5);
 k.scene("Level6", Level6);
 k.scene("Level7", Level7);
 k.scene("Level8", Level8);
+k.scene("TopDown", TopDown);
 
 // Load SpriteSheet
 loadSpritesSheet();
@@ -77,5 +79,6 @@ k.onLoad(() => {
   //k.go("Level6");
   //k.go("Level7");
   //k.go("Level8");
+  //k.go("TopDown")
   //k.go("Empty");
 });

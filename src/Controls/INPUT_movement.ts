@@ -46,6 +46,16 @@ export function movementY(): number {
   return value;
 }
 
+export function movementTD(): Vec2 {
+  let x = movement();
+  let y = movementY();
+
+  let vec: Vector = { x: x, y: y };
+  vec = Vector.normalise(vec);
+
+  return k.vec2(vec.x, vec.y);
+}
+
 export function jumping(): boolean {
   let value: boolean = false;
   if (
