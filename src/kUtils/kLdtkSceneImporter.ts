@@ -40,14 +40,16 @@ export default function kLdtkSceneImporter(
 
   let i;
   let r;
+  k.onUpdate(() => {
+    let zScalar = k.height() / 691;
+    k.camScale(k.vec2(zoom.x * zScalar, zoom.y * zScalar));
+  });
 
-  k.camScale(zoom);
-
-  function print(text: string) {
+  function print(text: any) {
     k.debug.log(text);
     console.log(text);
   }
-  function printError(text: string) {
+  function printError(text: any) {
     k.debug.error(text);
     console.error(text);
   }
@@ -634,20 +636,11 @@ export default function kLdtkSceneImporter(
       const element = tiles[i];
       if (
         element.x + 16 * levelsize >=
-        k.camPos().x - k.canvas.width / k.camScale().x / 2
+        k.camPos().x - k.width() / k.camScale().x / 2
       ) {
-        if (
-          element.x - 16 * levelsize <=
-          k.camPos().x + k.canvas.width / k.camScale().x / 2
-        ) {
-          if (
-            element.y + 16 * levelsize >=
-            k.camPos().y - k.canvas.height / 2
-          ) {
-            if (
-              element.y - 16 * levelsize <=
-              k.camPos().y + k.canvas.height / 2
-            ) {
+        if (element.x <= k.camPos().x + k.width() / k.camScale().x / 2) {
+          if (element.y + 16 * levelsize >= k.camPos().y - k.height() / 2) {
+            if (element.y - 8 * levelsize <= k.camPos().y + k.height() / 2) {
               k.drawUVQuad({
                 pos: k.vec2(element.x, element.y),
                 width: element.spriteData.width * levelsize,
