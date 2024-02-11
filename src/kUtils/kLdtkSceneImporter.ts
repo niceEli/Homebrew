@@ -628,7 +628,7 @@ export default function kLdtkSceneImporter(
     {
       update() {
         this.text = String(score);
-        this.scale = zoomy
+        this.scale = k.vec2(zoomy.x / zoom.x, zoomy.x / zoom.x);
       },
     },
   ]);
