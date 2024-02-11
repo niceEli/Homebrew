@@ -36,13 +36,18 @@ export default function kLdtkSceneImporter(
   let groups: { active; chgX; chgY }[] = [{ active: false, chgX: 0, chgY: 0 }];
   let CTriggers = [];
 
+  let zScalar = 1;
+
+  let zoomy = k.vec2(1, 1);
+
   let metadata;
 
   let i;
   let r;
   k.onUpdate(() => {
-    let zScalar = k.height() / 691;
-    k.camScale(k.vec2(zoom.x * zScalar, zoom.y * zScalar));
+    zScalar = k.height() / 691;
+    zoomy = k.vec2(zoom.x * zScalar, zoom.y * zScalar);
+    k.camScale(zoomy);
   });
 
   function print(text: any) {
@@ -639,8 +644,14 @@ export default function kLdtkSceneImporter(
         k.camPos().x - k.width() / k.camScale().x / 2
       ) {
         if (element.x <= k.camPos().x + k.width() / k.camScale().x / 2) {
-          if (element.y + 16 * levelsize >= k.camPos().y - k.height() / 2) {
-            if (element.y - 8 * levelsize <= k.camPos().y + k.height() / 2) {
+          if (
+            element.y + 16 * levelsize >=
+            k.camPos().y - k.height() / k.camScale().y / 2
+          ) {
+            if (
+              element.y - 8 * levelsize <=
+              k.camPos().y + k.height() / k.camScale().y / 2
+            ) {
               k.drawUVQuad({
                 pos: k.vec2(element.x, element.y),
                 width: element.spriteData.width * levelsize,
