@@ -637,6 +637,7 @@ export default function kLdtkSceneImporter(
   }
 
   k.onDraw(() => {
+    let tTiles = 0;
     for (let i = 0; i < tiles.length; i++) {
       const element = tiles[i];
       if (
@@ -652,6 +653,7 @@ export default function kLdtkSceneImporter(
               element.y - 8 * levelsize <=
               k.camPos().y + k.height() / k.camScale().y / 2
             ) {
+              tTiles++;
               k.drawUVQuad({
                 pos: k.vec2(element.x, element.y),
                 width: element.spriteData.width * levelsize,
@@ -664,6 +666,7 @@ export default function kLdtkSceneImporter(
         }
       }
     }
+    console.debug("Tiles Rendered This Frame: " + tTiles);
   });
 
   for (let i = 0; i < CTriggers.length; i++) {
@@ -809,6 +812,7 @@ export default function kLdtkSceneImporter(
             let Y = scripts[i].Y;
             let group = groups[GroupID];
             if (group.active) {
+              console.debug("GID: " + i + " Active");
               const runnableFunc = new Function(
                 "k",
                 "engine",
