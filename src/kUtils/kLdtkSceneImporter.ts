@@ -921,5 +921,8 @@ export default function kLdtkSceneImporter(
     k.debug.log("You Are Not Able To Play The Level In");
     k.debug.log("");
     k.debug.log("Player Not Found. Render Mode Active!");
+    k.onUpdate(() => {
+      k.camPos(k.width() / zoomy.x / 2, k.height() / zoomy.y / 2);
+    });
   }
 }
