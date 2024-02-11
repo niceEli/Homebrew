@@ -1355,10 +1355,10 @@ kaboom@^3000.1.17:
   resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-3000.1.17.tgz#a05491f9a80a42155276020cd0c024cd4af96e7c"
   integrity sha512-npAtjGxj9Oj9vLpXfURck9eUPHR2ac1Lhc1bNcZ0NWcs+Lgs40Ty+wjujv1C2DwjWvxaX+3r2G64M35BS/Ry2g==
 
-kalang@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/kalang/-/kalang-0.0.11.tgz#86dc068fce16a1341678887061e85790bed0fa5f"
-  integrity sha512-yipADyVRBPsK4iHn+aYXuxb9C2/vFY7hLuNGTTso6/fiPMVvLjEgPspwDNlSKyPmxjZ6tgY1FpVi0Wx3tMiCnA==
+kalang@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/kalang/-/kalang-0.0.12.tgz#5c8dcb645b1321d592f0dbd4e88bcc8719abd263"
+  integrity sha512-iJ6qZdfRO7jlM4u1VOfcRVR17fJzDeKxoW6cj7FDifQEkLoDwyrEFUxzLYzNEhbbcS9VpMsPEhKSmIObXuHKPw==
   dependencies:
     "@types/node" "^20.11.5"
     commander "^11.1.0"
