@@ -24,6 +24,28 @@ export function movement(): number {
   return value;
 }
 
+export function movementY(): number {
+  let value: number = 0;
+  if (
+    k.isKeyDown("up") ||
+    k.isKeyDown("w") ||
+    k.getGamepadStick("left").y <= -0.5 ||
+    k.isGamepadButtonDown("dpad-up")
+  ) {
+    value -= 1;
+  }
+  if (
+    k.isKeyDown("down") ||
+    k.isKeyDown("s") ||
+    k.getGamepadStick("left").y >= 0.5 ||
+    k.isGamepadButtonDown("dpad-down")
+  ) {
+    value += 1;
+  }
+
+  return value;
+}
+
 export function jumping(): boolean {
   let value: boolean = false;
   if (
@@ -121,7 +143,5 @@ export function rumble(time: number) {
       weakMagnitude: 1.0,
       strongMagnitude: 1.0,
     });
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 }

@@ -4,7 +4,8 @@ import Matter, { IBodyDefinition } from "matter-js";
 export default function matterCircle(
   engine: any,
   options?: IBodyDefinition,
-  rad?
+  rad?,
+  isStatic = false
 ) {
   var body: Matter.Body;
   return {
@@ -26,9 +27,15 @@ export default function matterCircle(
           collisions++;
         }
       }
-      this.pos.x = body.position.x;
-      this.pos.y = body.position.y;
-      this.angle = body.angle * (180 / Math.PI);
+      if (isStatic) {
+        Matter.Body.setPosition(body, { x: this.pos.x, y: this.pos.y });
+        Matter.Body.setVelocity(body, { x: 0, y: 0 });
+        //body.angle = this.angle / (180 / Math.PI);
+      } else {
+        this.pos.x = body.position.x;
+        this.pos.y = body.position.y;
+        this.angle = body.angle * (180 / Math.PI);
+      }
     },
     destroy() {
       Matter.Composite.remove(engine.world, body);

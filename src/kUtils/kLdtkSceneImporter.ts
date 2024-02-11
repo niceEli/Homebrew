@@ -9,7 +9,7 @@ import matterRect, {
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
-import { GameObj, SceneDef } from "kaboom";
+import { GameObj, SceneDef, Vec2 } from "kaboom";
 import Matter from "matter-js";
 import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";
@@ -229,6 +229,7 @@ export default function kLdtkSceneImporter(
                     { angle: 0 },
                     k.vec2(16 * levelsize, 16 * levelsize)
                   ),
+                  "Box",
                 ]);
                 break;
               case "Win_Condition":
@@ -378,7 +379,7 @@ export default function kLdtkSceneImporter(
                 break;
               case "Collectible":
                 let cSound: string;
-                if (entValues["Sound_Effect"] === "CUSTOM") {
+                if (entValues["Sound_Effect"] == "CUSTOM") {
                   cSound = entValues["Custom_Sound"];
                 } else {
                   cSound = kEnumToPath.run(entValues["Sound_Effect"]);
@@ -402,7 +403,7 @@ export default function kLdtkSceneImporter(
                   k.area(),
                   {
                     GroupID: entValues["GroupID"],
-                    SFX: entValues["Sound_Effect"],
+                    SFX: cSound,
                   },
                   "Collectible",
                 ]);
@@ -631,14 +632,33 @@ export default function kLdtkSceneImporter(
   k.onDraw(() => {
     for (let i = 0; i < tiles.length; i++) {
       const element = tiles[i];
-
-      k.drawUVQuad({
-        pos: k.vec2(element.x, element.y),
-        width: element.spriteData.width * levelsize,
-        height: element.spriteData.height * levelsize,
-        tex: element.spriteData.tex,
-        quad: element.spriteData.frames[0],
-      });
+      if (
+        element.x + 16 * levelsize >=
+        k.camPos().x - k.canvas.width / k.camScale().x / 2
+      ) {
+        if (
+          element.x - 16 * levelsize <=
+          k.camPos().x + k.canvas.width / k.camScale().x / 2
+        ) {
+          if (
+            element.y + 16 * levelsize >=
+            k.camPos().y - k.canvas.height / 2
+          ) {
+            if (
+              element.y - 16 * levelsize <=
+              k.camPos().y + k.canvas.height / 2
+            ) {
+              k.drawUVQuad({
+                pos: k.vec2(element.x, element.y),
+                width: element.spriteData.width * levelsize,
+                height: element.spriteData.height * levelsize,
+                tex: element.spriteData.tex,
+                quad: element.spriteData.frames[0],
+              });
+            }
+          }
+        }
+      }
     }
   });
 
@@ -667,37 +687,8 @@ export default function kLdtkSceneImporter(
       k.opacity(0),
       k.area(),
       matterRect(engine, { isStatic: true }),
+      "walls",
     ]);
-  }
-
-  if (player != null) {
-    player.onCollide("Collectible", (c) => {
-      score++;
-      IMC.rumble(200);
-      if (c.GroupID !== -1) {
-        groups.splice(c.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
-      }
-      if (c.SFX !== "") {
-        k.play(c.SFX);
-      }
-      k.destroy(c);
-    });
-    player.onCollide("Death_Trig", () => {
-      isDead = true;
-    });
-    player.onCollide("Win_Condition", () => {
-      k.scene("nextLevel", nextScene);
-      k.go("nextLevel");
-    });
-    player.onCollideUpdate("BG", () => {
-      isInlevel = 5;
-    });
-  } else {
-    k.destroy(scoreText);
-    k.debug.log("Render Mode.");
-    k.debug.log("You Are Not Able To Play The Level In");
-    k.debug.log("");
-    k.debug.log("Player Not Found. Render Mode Active!");
   }
 
   k.onUpdate(() => {
@@ -766,6 +757,28 @@ export default function kLdtkSceneImporter(
     });
   }
 
+  k.onCollide("Player", "Collectible", (a, b, c) => {
+    score++;
+    IMC.rumble(200);
+    if (b.GroupID !== -1) {
+      groups.splice(b.GroupID, 1, { active: true, chgX: 0, chgY: 0 });
+    }
+    if (b.SFX !== "") {
+      k.play(b.SFX);
+    }
+    k.destroy(b);
+  });
+  k.onCollide("Player", "Death_Trig", () => {
+    isDead = true;
+  });
+  k.onCollide("Player", "Win_Condition", () => {
+    k.scene("nextLevel", nextScene);
+    k.go("nextLevel");
+  });
+  k.onCollideUpdate("Player", "BG", () => {
+    isInlevel = 5;
+  });
+
   k.onUpdate(() => {
     if (isDead) {
       sessionStorage.setItem("score", String(deathScore));
@@ -824,6 +837,8 @@ export default function kLdtkSceneImporter(
                 "IMC",
                 "print",
                 "printError",
+                "deathScore",
+                "levelSize",
                 `
                   return (async function() {
                     ${Func}
@@ -863,7 +878,9 @@ export default function kLdtkSceneImporter(
                   enemys,
                   IMC,
                   print,
-                  printError
+                  printError,
+                  deathScore,
+                  levelsize
                 )
               );
 
@@ -887,4 +904,13 @@ export default function kLdtkSceneImporter(
     }
   };
   k.onUpdate(checkGroups);
+  checkGroups();
+
+  if (k.get("Player")[0] == undefined) {
+    k.destroy(scoreText);
+    k.debug.log("Render Mode.");
+    k.debug.log("You Are Not Able To Play The Level In");
+    k.debug.log("");
+    k.debug.log("Player Not Found. Render Mode Active!");
+  }
 }
