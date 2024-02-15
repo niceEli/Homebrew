@@ -48,7 +48,6 @@ async function UGCLevel() {
   Matter.Composite.create(engine);
   let sceneData = JSON.parse(sessionStorage.getItem("UGCLevelData"));
   // Load This Scene And Sprites
-  localStorage.setItem("cLevel", LevelName);
   try {
     kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
   } catch (error) {
