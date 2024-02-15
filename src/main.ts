@@ -61,6 +61,10 @@ loadSpritesSheet();
 loadSounds();
 
 k.onLoad(() => {
+  if (k.isKeyDown("c")) {
+    k.go("UGCLoader");
+    return;
+  }
   // Run Scenes
   //
   //k.go('Hello-World-EX'); // This is a template scene
@@ -69,7 +73,7 @@ k.onLoad(() => {
   //
   //k.go("kLdtkScene");
   //
-  //k.go('Jillian-Test-Scene') // This is a scene made by my friend that doesnt know how to program
+  //k.go('Jillian-rTest-Scene') // This is a scene made by my friend that doesnt know how to program
   //
   //k.go("AvaC"); // My Sister wrote this "obby"
   //
