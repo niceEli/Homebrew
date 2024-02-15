@@ -9,6 +9,7 @@ import Empty from "./Empty"; //You need to uncomment this
 import Level8 from "./Level8";
 
 export default async function Level7() {
+  k.setBackground(k.BLACK);
   // Conf
   const LevelName = "Level7";
   const ThisLevel = Level7;
@@ -29,13 +30,6 @@ export default async function Level7() {
     k.debug.paused = true;
     console.error(error.stack);
   }
-
-  k.add([
-    k.rect(99999999, 99999999),
-    k.color(k.BLACK),
-    k.z(-999999999999999),
-    k.anchor("center"),
-  ]);
 
   k.scene("kLdtkScene", ThisLevel);
   k.scene(LevelName, ThisLevel);

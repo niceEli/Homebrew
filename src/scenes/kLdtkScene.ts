@@ -7,6 +7,7 @@ import kMatterTest from "../scenes/kMatterTest";
 import Empty from "./campaign/Empty"; //You need to uncomment this
 
 export default async function kLdtkScene() {
+  k.setBackground(k.BLACK);
   // Conf
   const ThisLevel = kLdtkScene;
   const Nextlevel = kLdtkScene;

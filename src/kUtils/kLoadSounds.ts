@@ -2,17 +2,17 @@ import k from "../kaboom";
 
 export default function loadSounds() {
   // MUS
-  k.loadSound("mus/barelySurvived", "mus/barelySurvived");
-  k.loadSound("mus/danceFloor", "mus/danceFloor");
-  k.loadSound("mus/helloDarkness", "mus/helloDarkness");
-  k.loadSound("mus/lethalJester", "mus/lethalJester");
-  k.loadSound("mus/lurkingCloser", "mus/lurkingCloser");
-  k.loadSound("mus/outsideAtNight", "mus/outsideAtNight");
-  k.loadSound("mus/phoneCall", "mus/phoneCall");
-  k.loadSound("mus/pianoComfort", "mus/pianoComfort");
-  k.loadSound("mus/purgatoriByKORAII", "mus/purgatoriByKORAII");
-  k.loadSound("mus/wrongPlaceWrongTime", "mus/wrongPlaceWrongTime");
-  k.loadSound("mus/youMadeItToTheTop", "mus/youMadeItToTheTop");
+  k.loadMusic("mus/barelySurvived", "mus/barelySurvived");
+  k.loadMusic("mus/danceFloor", "mus/danceFloor");
+  k.loadMusic("mus/helloDarkness", "mus/helloDarkness");
+  k.loadMusic("mus/lethalJester", "mus/lethalJester");
+  k.loadMusic("mus/lurkingCloser", "mus/lurkingCloser");
+  k.loadMusic("mus/outsideAtNight", "mus/outsideAtNight");
+  k.loadMusic("mus/phoneCall", "mus/phoneCall");
+  k.loadMusic("mus/pianoComfort", "mus/pianoComfort");
+  k.loadMusic("mus/purgatoriByKORAII", "mus/purgatoriByKORAII");
+  k.loadMusic("mus/wrongPlaceWrongTime", "mus/wrongPlaceWrongTime");
+  k.loadMusic("mus/youMadeItToTheTop", "mus/youMadeItToTheTop");
 
   // SFX
 

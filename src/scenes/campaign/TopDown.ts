@@ -8,6 +8,7 @@ import kMatterTest from "../../scenes/kMatterTest";
 import Empty from "./Empty"; //You need to uncomment this
 
 export default async function TopDown() {
+  k.setBackground(k.BLACK);
   // Conf
   const LevelName = "TopDown";
   const ThisLevel = TopDown;
@@ -28,13 +29,6 @@ export default async function TopDown() {
     k.debug.paused = true;
     console.error(error.stack);
   }
-
-  k.add([
-    k.rect(99999999, 99999999),
-    k.color(k.BLACK),
-    k.z(-999999999999999),
-    k.anchor("center"),
-  ]);
 
   k.scene("kLdtkScene", ThisLevel);
   k.scene(LevelName, ThisLevel);
