@@ -8,7 +8,7 @@ import Empty from "./Empty";
 import Level3 from "./Level3";
 
 export default async function Level2() {
-  k.setBackground(0,0,0);
+  k.setBackground(0, 0, 0, 1);
   // Conf
   const LevelName = "Level2";
   const ThisLevel = Level2;

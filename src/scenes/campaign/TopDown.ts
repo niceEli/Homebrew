@@ -8,7 +8,7 @@ import kMatterTest from "../../scenes/kMatterTest";
 import Empty from "./Empty"; //You need to uncomment this
 
 export default async function TopDown() {
-  k.setBackground(0,0,0);
+  k.setBackground(0, 0, 0, 1);
   // Conf
   const LevelName = "TopDown";
   const ThisLevel = TopDown;

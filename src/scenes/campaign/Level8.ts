@@ -9,7 +9,7 @@ import Empty from "./Empty"; //You need to uncomment this
 import TopDown from "./TopDown";
 
 export default async function Level8() {
-  k.setBackground(0,0,0);
+  k.setBackground(0, 0, 0, 1);
   // Conf
   const LevelName = "Level8";
   const ThisLevel = Level8;

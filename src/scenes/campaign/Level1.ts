@@ -6,14 +6,13 @@ import kMatterTest from "../../scenes/kMatterTest";
 import delay from "../../kUtils/kDelay";
 import Empty from "./Empty";
 import Level2 from "./Level2";
-import UGCLoader from "../UGCLoader";
 
 export default async function Level1() {
-  k.setBackground(0, 0, 0);
+  k.setBackground(0, 0, 0, 1);
   // Conf
   const LevelName = "Level1";
   const ThisLevel = Level1;
-  const Nextlevel = UGCLoader;
+  const Nextlevel = Level2;
 
   // Setup Engine
   const engine: any = Matter.Engine.create();

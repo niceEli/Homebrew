@@ -31,7 +31,7 @@ export default async function UGCLoader() {
 }
 
 async function UGCLevel() {
-  k.setBackground(k.BLACK);
+  k.setBackground(0, 0, 0, 1);
   // Conf
   const LevelName = "UGCLevel";
   const ThisLevel = UGCLoader;
