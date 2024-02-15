@@ -1,12 +1,8 @@
 import k from "../kaboom";
 import Matter from "matter-js";
-import delay from "../kUtils/kDelay";
-import * as $ from "jquery";
 
 import kLdtkSceneImporter from "../kUtils/kLdtkSceneImporter";
-import kMatterTest from "../scenes/kMatterTest";
 
-import Empty from "./campaign/Empty";
 import Dropzone from "dropzone";
 import UGCUploader from "./UGCUploader";
 
