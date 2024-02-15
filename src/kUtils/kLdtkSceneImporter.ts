@@ -21,7 +21,7 @@ export default function kLdtkSceneImporter(
   currentScene: SceneDef,
   nextScene: SceneDef,
   engine?: any,
-  zoom = k.vec2(1, 1)
+  zoomZ = k.vec2(1, 1)
 ) {
   // Load The Level
   k.scene("scene", currentScene);
@@ -42,13 +42,10 @@ export default function kLdtkSceneImporter(
 
   let metadata;
 
+  let zoom = zoomZ;
+
   let i;
   let r;
-  k.onUpdate(() => {
-    zScalar = k.height() / 691;
-    zoomy = k.vec2(zoom.x * zScalar, zoom.y * zScalar);
-    k.camScale(zoomy);
-  });
 
   function print(text: any) {
     k.debug.log(text);
@@ -620,12 +617,20 @@ export default function kLdtkSceneImporter(
 
   if (metadata == undefined) {
     metadata = {
-      Level_Name: null,
-      Author: null,
-      Description: null,
-      Revision: null,
+      Level_Name: "myLevel",
+      Author: "John Doe",
+      Description: "",
+      Revision: 1,
+      Zoom: 1,
     };
   }
+
+  k.onUpdate(() => {
+    zoom = k.vec2(zoomZ.x * metadata.Zoom, zoomZ.y * metadata.Zoom);
+    zScalar = k.height() / 691;
+    zoomy = k.vec2(zoom.x * zScalar, zoom.y * zScalar);
+    k.camScale(zoomy);
+  });
 
   const scoreText = k.add([
     k.fixed(),
