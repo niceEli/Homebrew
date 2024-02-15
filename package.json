@@ -21,8 +21,12 @@
   },
   "main": "dist-electron/main.js",
   "dependencies": {
+    "@types/dropzone": "^5.7.8",
+    "@types/jquery": "^3.5.29",
     "@types/matter-js": "^0.19.5",
     "axios": "^1.6.2",
+    "dropzone": "^6.0.0-beta.2",
+    "jquery": "^3.7.1",
     "kaboom": "https://github.com/replit/kaboom",
     "kaboom-flex-ui": "^0.0.8",
     "kalang": "^0.0.13",

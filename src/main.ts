@@ -24,6 +24,7 @@ import kMatterTest from "./scenes/kMatterTest";
 import Jilian from "./scenes/Jillian";
 import Ava from "./scenes/Ava";
 import kLdtkScene from "./scenes/kLdtkScene";
+import UGCLoader from "./scenes/UGCLoader";
 // Import Campaign Levels
 import Level1 from "./scenes/campaign/Level1";
 import Level2 from "./scenes/campaign/Level2";
@@ -41,6 +42,7 @@ k.scene("kMatter-Test", kMatterTest);
 k.scene("Jillian-Test-Scene", Jilian);
 k.scene("AvaC", Ava);
 k.scene("kLdtkScene", kLdtkScene);
+k.scene("UGCLoader", UGCLoader);
 k.scene("Empty", Empty);
 k.scene("Level1", Level1);
 k.scene("Level2", Level2);
@@ -70,6 +72,8 @@ k.onLoad(() => {
   //k.go('Jillian-Test-Scene') // This is a scene made by my friend that doesnt know how to program
   //
   //k.go("AvaC"); // My Sister wrote this "obby"
+  //
+  //k.go("UGCLoader");
   //
   k.go("Level1");
   //k.go("Level2");

@@ -262,6 +262,11 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.6.0.tgz#3c7c9c46e678feefe7a2e5bb609d3dbd665ffb3f"
   integrity sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==
 
+"@swc/helpers@^0.2.13":
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.2.14.tgz#20288c3627442339dd3d743c944f7043ee3590f0"
+  integrity sha512-wpCQMhf5p5GhNg2MmGKXzUNwxe7zRiCsmqYsamez2beP7mKPCSiu+BjZcdN95yYSzO857kr0VfQewmGpS77nqA==
+
 "@szmarczak/http-timer@^4.0.5":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@szmarczak/http-timer/-/http-timer-4.0.6.tgz#b4a914bb62e7c272d4e5989fe4440f812ab1d807"
@@ -291,6 +296,13 @@
   dependencies:
     "@types/ms" "*"
 
+"@types/dropzone@^5.7.8":
+  version "5.7.8"
+  resolved "https://registry.yarnpkg.com/@types/dropzone/-/dropzone-5.7.8.tgz#3a4a03b54d15cb07bfd40dc55626c77c43a5d2fb"
+  integrity sha512-+L0/KRMuB8cIiCe5AfF448nGMpY+gHiSakqsqT3plEIfgqSV+gcVs1AkngM9zZG8hi6lgMxy4iYEuGXXmqjYvg==
+  dependencies:
+    "@types/jquery" "*"
+
 "@types/fs-extra@9.0.13", "@types/fs-extra@^9.0.11":
   version "9.0.13"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-9.0.13.tgz#7594fbae04fe7f1918ce8b3d213f74ff44ac1f45"
@@ -302,6 +314,13 @@
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.4.tgz#b979ebad3919799c979b17c72621c0bc0a31c6c4"
   integrity sha512-1m0bIFVc7eJWyve9S0RnuRgcQqF/Xd5QsUZAZeQFr1Q3/p9JWoQQEqmVy+DPTNpGXwhgIetAoYF8JSc33q29QA==
+
+"@types/jquery@*", "@types/jquery@^3.5.29":
+  version "3.5.29"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.29.tgz#3c06a1f519cd5fc3a7a108971436c00685b5dcea"
+  integrity sha512-oXQQC9X9MOPRrMhPHHOsXqeQDnWeCDT3PelUIg/Oy8FAbzSZtFHRjc7IpbfFVmpLtJ+UOoywpRsuO5Jxjybyeg==
+  dependencies:
+    "@types/sizzle" "*"
 
 "@types/keyv@^3.1.4":
   version "3.1.4"
@@ -348,6 +367,11 @@
   integrity sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==
   dependencies:
     "@types/node" "*"
+
+"@types/sizzle@*":
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.8.tgz#518609aefb797da19bf222feb199e8f653ff7627"
+  integrity sha512-0vWLNK2D5MT9dg0iOo8GlKguPAU02QjmZitPEsXRuJXU/OGIOt9vT9Fc26wtYuavLxtO45v9PGleoL9Z0k1LHg==
 
 "@types/verror@^1.10.3":
   version "1.10.9"
@@ -824,6 +848,14 @@ dotenv@^9.0.2:
   version "9.0.2"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-9.0.2.tgz#dacc20160935a37dea6364aa1bef819fb9b6ab05"
   integrity sha512-I9OvvrHp4pIARv4+x9iuewrWycX6CcZtoAu1XrzPxc5UygMJXJZYmBsynku8IkrJwgypE5DGNjDPmPRhDCptUg==
+
+dropzone@^6.0.0-beta.2:
+  version "6.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/dropzone/-/dropzone-6.0.0-beta.2.tgz#098be8fa84bdc08674cf0b74f4c889e2679083d6"
+  integrity sha512-k44yLuFFhRk53M8zP71FaaNzJYIzr99SKmpbO/oZKNslDjNXQsBTdfLs+iONd0U0L94zzlFzRnFdqbLcs7h9fQ==
+  dependencies:
+    "@swc/helpers" "^0.2.13"
+    just-extend "^5.0.0"
 
 eastasianwidth@^0.2.0:
   version "0.2.0"
@@ -1302,6 +1334,11 @@ jake@^10.8.5:
     filelist "^1.0.4"
     minimatch "^3.1.2"
 
+jquery@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
+  integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
+
 js-yaml@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
@@ -1345,15 +1382,19 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+just-extend@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/just-extend/-/just-extend-5.1.1.tgz#4f33b1fc719964f816df55acc905776694b713ab"
+  integrity sha512-b+z6yF1d4EOyDgylzQo5IminlUmzSeqR1hs/bzjBNjuGras4FXq/6TrzjxfN0j+TmI0ltJzTNlqXUMCniciwKQ==
+
 kaboom-flex-ui@^0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/kaboom-flex-ui/-/kaboom-flex-ui-0.0.8.tgz#ee578f327eff77327d2eb7eeafd7d6a40aa67ddf"
   integrity sha512-myvbyr3dQ1YBk1Km3mctgSH1W9c4irk8EcDYzS5jaaoT4idcEjMGwxcAuGAPjVIkT4vijjEtupbcMPnlLKbRLA==
 
-kaboom@^3000.1.17:
+"kaboom@https://github.com/replit/kaboom":
   version "3000.1.17"
-  resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-3000.1.17.tgz#a05491f9a80a42155276020cd0c024cd4af96e7c"
-  integrity sha512-npAtjGxj9Oj9vLpXfURck9eUPHR2ac1Lhc1bNcZ0NWcs+Lgs40Ty+wjujv1C2DwjWvxaX+3r2G64M35BS/Ry2g==
+  resolved "https://github.com/replit/kaboom#2e7a62fcbc9e610d60b39404d9608de56cd5777e"
 
 kalang@^0.0.13:
   version "0.0.13"
