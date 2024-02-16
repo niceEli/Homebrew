@@ -7,7 +7,7 @@ import Dropzone from "dropzone";
 import UGCUploader from "./UGCUploader";
 
 export default async function UGCLoader() {
-  k.setBackground(k.WHITE);
+  k.setBackground(k.BLACK);
   let dz = document.createElement("form");
   dz.id = "UGCUploadLoadLevel";
   dz.className = "dropzone";
