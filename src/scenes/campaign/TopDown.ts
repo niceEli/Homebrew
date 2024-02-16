@@ -8,6 +8,7 @@ import kMatterTest from "../../scenes/kMatterTest";
 import Empty from "./Empty"; //You need to uncomment this
 
 export default async function TopDown() {
+  sessionStorage.setItem("isUGC", "false");
   k.setBackground(0, 0, 0, 1);
   // Conf
   const LevelName = "TopDown";

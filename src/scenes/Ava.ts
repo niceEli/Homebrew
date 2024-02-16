@@ -4,6 +4,7 @@ import matterRect from "../kUtils/kMatterRect";
 import PlayerPawnCircle from "../kUtils/kMatterPlayerCircle";
 
 export default function Ava() {
+  sessionStorage.setItem("isUGC", "false");
   k.setBackground(k.WHITE);
   // Setup Engine
   const engine: any = Matter.Engine.create();

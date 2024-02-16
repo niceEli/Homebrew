@@ -8,6 +8,7 @@ import Empty from "./Empty";
 import Level3 from "./Level3";
 
 export default async function Level2() {
+  sessionStorage.setItem("isUGC", "false");
   k.setBackground(0, 0, 0, 1);
   // Conf
   const LevelName = "Level2";
