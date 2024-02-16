@@ -47,9 +47,9 @@ async function UGCLevel() {
   try {
     kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
   } catch (error) {
-    k.debug.error(error);
+    k.debug.error("Your Level File Has A Error: " + error);
     k.debug.paused = true;
-    console.error(error.stack);
+    console.error("Your Level File Has A Error: " + error.stack);
   }
 
   k.scene("kLdtkScene", ThisLevel);
