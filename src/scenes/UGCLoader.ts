@@ -16,7 +16,7 @@ export default async function UGCLoader() {
     "style",
     "display: flex; justify-content: center; align-items: center; height: 100vh;"
   );
-  document.body.insertAdjacentElement("afterbegin", dz);
+  document.body.insertAdjacentElement("beforebegin", dz);
   let myDropzone = new Dropzone("#UGCUploadLoadLevel", {
     acceptedFiles: ".json,.ldtk",
   });
