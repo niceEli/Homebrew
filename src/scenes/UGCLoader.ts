@@ -16,13 +16,17 @@ export default async function UGCLoader() {
     "style",
     "display: flex; justify-content: center; align-items: center; height: 100vh;"
   );
-  document.body.insertAdjacentElement("beforebegin", dz);
+  document.body.insertAdjacentElement("afterbegin", dz);
   let myDropzone = new Dropzone("#UGCUploadLoadLevel", {
     acceptedFiles: ".json,.ldtk",
   });
   myDropzone.on("addedfile", async function (file) {
     myDropzone.removeAllFiles();
     sessionStorage.setItem("UGCLevelData", await file.text());
+    let hiddenInputs = document.getElementsByClassName("dz-hidden-input");
+    while (hiddenInputs[0]) {
+      hiddenInputs[0].parentNode.removeChild(hiddenInputs[0]);
+    }
     myDropzone.element.remove();
     document.querySelector("#UGCUploadLoadLevel");
     k.scene("UGCLevel", UGCLevel);
