@@ -407,7 +407,7 @@ export default function kLdtkSceneImporter(
                     ent.__worldX * levelsize + 8 * levelsize,
                     ent.__worldY * levelsize + 8 * levelsize
                   ),
-                  k.area(),
+                  k.area({ scale: 0.6 }),
                   {
                     GroupID: entValues["GroupID"],
                     SFX: cSound,
