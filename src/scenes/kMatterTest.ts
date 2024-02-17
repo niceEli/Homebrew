@@ -5,6 +5,7 @@ import matterCircle from "../kUtils/kMatterCircle";
 import PlayerPawnCircle from "../kUtils/kMatterPlayerCircle";
 
 export default function kMatterTest() {
+  sessionStorage.setItem("isUGC", "false");
   k.setBackground(k.WHITE);
   // Setup Engine
   const engine: any = Matter.Engine.create();

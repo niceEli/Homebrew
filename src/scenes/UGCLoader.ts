@@ -8,6 +8,7 @@ import UGCUploader from "./UGCUploader";
 
 export default async function UGCLoader() {
   k.setBackground(k.RED);
+  k.add([k.text("An Error Has Occured. \nPlease Reload"), k.pos(20, 20)]);
   let dz = document.createElement("form");
   dz.id = "UGCUploadLoadLevel";
   dz.className = "dropzone";
@@ -23,6 +24,11 @@ export default async function UGCLoader() {
   myDropzone.on("addedfile", async function (file) {
     myDropzone.removeAllFiles();
     sessionStorage.setItem("UGCLevelData", await file.text());
+    sessionStorage.setItem("isUGC", "true");
+    let hiddenInputs = document.getElementsByClassName("dz-hidden-input");
+    while (hiddenInputs[0]) {
+      hiddenInputs[0].parentNode.removeChild(hiddenInputs[0]);
+    }
     myDropzone.element.remove();
     document.querySelector("#UGCUploadLoadLevel");
     k.scene("UGCLevel", UGCLevel);

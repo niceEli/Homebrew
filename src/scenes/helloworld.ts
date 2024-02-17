@@ -1,6 +1,7 @@
 import k from "../kaboom";
 
 export default function HelloWorld() {
+  sessionStorage.setItem("isUGC", "false");
   k.setBackground(k.WHITE);
   // Actors
   var RB = k.add([
