@@ -1,5 +1,6 @@
 import kaboom from "kaboom";
 import Matter, { IBodyDefinition } from "matter-js";
+import k from "../kaboom";
 
 export default function matterCircle(
   engine: any,
@@ -8,6 +9,7 @@ export default function matterCircle(
   isStatic = false
 ) {
   var body: Matter.Body;
+  let prevPos = k.vec2();
   return {
     add() {
       const { x, y } = this.pos;
@@ -19,6 +21,10 @@ export default function matterCircle(
       if (!body) {
         return;
       }
+      if (prevPos !== this.pos) {
+        Matter.Body.setPosition(body, this.pos);
+      }
+      prevPos = this.pos;
       let collisions = 0;
       for (let i = 0; i < engine.world.bodies.length; i++) {
         const element = engine.world.bodies[i];

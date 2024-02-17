@@ -8,6 +8,7 @@ export default function matterRect(
   size?
 ) {
   var body: Matter.Body;
+  let prevPos = k.vec2();
   return {
     add() {
       const { x, y } = this.pos;
@@ -19,6 +20,10 @@ export default function matterRect(
       if (!body) {
         return;
       }
+      if (prevPos !== this.pos) {
+        Matter.Body.setPosition(body, this.pos);
+      }
+      prevPos = this.pos;
       let collisions = 0;
       for (let i = 0; i < engine.world.bodies.length; i++) {
         const element = engine.world.bodies[i];
@@ -43,6 +48,7 @@ export function matterRect4Sprites(
   size?: Vec2
 ) {
   var body: Matter.Body;
+  let prevPos = k.vec2();
   return {
     add() {
       const { x, y } = this.pos;
@@ -55,6 +61,10 @@ export function matterRect4Sprites(
       if (!body) {
         return;
       }
+      if (prevPos !== this.pos) {
+        Matter.Body.setPosition(body, this.pos);
+      }
+      prevPos = this.pos;
       let collisions = 0;
       for (let i = 0; i < engine.world.bodies.length; i++) {
         const element = engine.world.bodies[i];
@@ -89,7 +99,6 @@ export function matterRect4Static(engine, size?: Vec2) {
       if (!body) {
         return;
       }
-
       Matter.Body.setPosition(body, { x: this.pos.x, y: this.pos.y });
       Matter.Body.setVelocity(body, { x: 0, y: 0 });
     },

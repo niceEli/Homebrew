@@ -8,11 +8,12 @@ export default function PlayerPawnCircle(
   rad?: number,
   scaleOPlayer?: Vector,
   multiplier: number = 1,
-  rotate: boolean = false,
+  rotate: boolean = false
 ) {
   let isDashable: boolean = true;
   let CTTime: number = 10;
   let body: Matter.Body;
+  let prevPos = k.vec2();
   return {
     add() {
       const { x, y } = this.pos;
@@ -25,7 +26,10 @@ export default function PlayerPawnCircle(
         return;
       }
       let collisions = 0;
-
+      if (prevPos !== this.pos) {
+        Matter.Body.setPosition(body, this.pos);
+      }
+      prevPos = this.pos;
       body.position.y += 10;
       body.circleRadius -= 3;
       for (let i = 0; i < engine.world.bodies.length; i++) {
@@ -65,25 +69,24 @@ export default function PlayerPawnCircle(
         isDashable = true;
       }
 
-      if (IMC.movement() === -1) {
+      if (IMC.movement() === -1 && Matter.Body.getVelocity(body).x >= -13) {
         Matter.Body.applyForce(
           body,
           body.position,
-          k.vec2(-0.001 * multiplier, 0),
+          k.vec2(-0.001 * multiplier, 0)
         );
       }
-      if (IMC.movement() === 1) {
+      if (IMC.movement() === 1 && Matter.Body.getVelocity(body).x <= 13) {
         Matter.Body.applyForce(
           body,
           body.position,
-          k.vec2(0.001 * multiplier, 0),
+          k.vec2(0.001 * multiplier, 0)
         );
       }
-
       if (IMC.movement() === 0 && collisions !== 0) {
         Matter.Body.setVelocity(
           body,
-          k.vec2(0, Matter.Body.getVelocity(body).y),
+          k.vec2(0, Matter.Body.getVelocity(body).y)
         );
       }
       if (IMC.jumping()) {
@@ -92,8 +95,8 @@ export default function PlayerPawnCircle(
             Matter.Body.getVelocity(body),
             Matter.Vector.create(
               0,
-              -Matter.Body.getVelocity(body).y + -9 * multiplier,
-            ),
+              -Matter.Body.getVelocity(body).y + -9 * multiplier
+            )
           );
           Matter.Body.setVelocity(body, Vel);
           CTTime = 0;
@@ -107,21 +110,21 @@ export default function PlayerPawnCircle(
           if (CTTime > 0) {
             Vel = Matter.Vector.add(
               Matter.Body.getVelocity(body),
-              Matter.Vector.create(8 * multiplier, 0),
+              Matter.Vector.create(8 * multiplier, 0)
             );
           } else {
             if (Matter.Body.getVelocity(body).y <= 0) {
               Vel = Matter.Vector.add(
                 Matter.Body.getVelocity(body),
-                Matter.Vector.create(8 * multiplier, -6 * multiplier),
+                Matter.Vector.create(8 * multiplier, -6 * multiplier)
               );
             } else {
               Vel = Matter.Vector.add(
                 Matter.Body.getVelocity(body),
                 Matter.Vector.create(
                   8 * multiplier,
-                  -Matter.Body.getVelocity(body).y + -6 * multiplier,
-                ),
+                  -Matter.Body.getVelocity(body).y + -6 * multiplier
+                )
               );
             }
           }
@@ -132,21 +135,21 @@ export default function PlayerPawnCircle(
           if (CTTime > 0) {
             Vel = Matter.Vector.add(
               Matter.Body.getVelocity(body),
-              Matter.Vector.create(-8 * multiplier, 0),
+              Matter.Vector.create(-8 * multiplier, 0)
             );
           } else {
             if (Matter.Body.getVelocity(body).y <= 0) {
               Vel = Matter.Vector.add(
                 Matter.Body.getVelocity(body),
-                Matter.Vector.create(-8 * multiplier, -6 * multiplier),
+                Matter.Vector.create(-8 * multiplier, -6 * multiplier)
               );
             } else {
               Vel = Matter.Vector.add(
                 Matter.Body.getVelocity(body),
                 Matter.Vector.create(
                   -8 * multiplier,
-                  -Matter.Body.getVelocity(body).y + -6 * multiplier,
-                ),
+                  -Matter.Body.getVelocity(body).y + -6 * multiplier
+                )
               );
             }
           }

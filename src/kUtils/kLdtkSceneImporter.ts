@@ -514,7 +514,10 @@ export default function kLdtkSceneImporter(
                 );
                 enemys.push({
                   ent: k.add([
-                    k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
+                    k.pos(
+                      ent.__worldX + 8 * levelsize,
+                      ent.__worldY + 8 * levelsize
+                    ),
                     k.scale(levelsize),
                     k.z(2147483646),
                     k.sprite("SpriteSheet" + enemySpriteName),
@@ -525,15 +528,19 @@ export default function kLdtkSceneImporter(
                       "moveStart",
                     ]),
                     k.timer(),
-                    k.area(),
+                    k.anchor("center"),
+                    k.area({ scale: 0.6 }),
                     { unkillable: entValues["Unkillable"] },
                     "enemy",
                   ]),
                   startPos: k.vec2(
-                    ent.__worldX * levelsize,
-                    ent.__worldY * levelsize
+                    ent.__worldX * levelsize + 8 * levelsize,
+                    ent.__worldY * levelsize + 8 * levelsize
                   ),
-                  endPos: endPosition,
+                  endPos: k.vec2(
+                    endPosition.x + 8 * levelsize,
+                    endPosition.y + 8 * levelsize
+                  ),
                   waitTime: entValues["waitTime"] / 1000,
                   unkillable: entValues["Unkillable"],
                   moveTime: entValues["moveTime"] / 1000,
@@ -740,7 +747,7 @@ export default function kLdtkSceneImporter(
     if (b.unkillable == true) {
       isDead = true;
     } else {
-      if (a.pos.y < b.pos.y) {
+      if (a.pos.y < b.pos.y - 4 * levelsize) {
         k.destroy(b);
         a.velocity = { x: a.velocity.x, y: -9 };
         a.isDashable = true;
@@ -749,7 +756,6 @@ export default function kLdtkSceneImporter(
       }
     }
   });
-
   for (let i = 0; i < enemys.length; i++) {
     const enemy = enemys[i];
     enemy.ent.onStateEnter("idleStart", () => {
