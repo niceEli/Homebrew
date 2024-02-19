@@ -15,6 +15,7 @@ import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";
 import loadSpritesSheet from "./kLoadSpriteSheet";
 import * as IMC from "../Controls/INPUT_movement";
+import soundComp from "./soundComp";
 
 export default function kLdtkSceneImporter(
   sceneData,
@@ -867,6 +868,7 @@ export default function kLdtkSceneImporter(
                 "printError",
                 "deathScore",
                 "levelSize",
+                "soundComp",
                 `
                   return (async function() {
                     ${Func}
@@ -908,7 +910,8 @@ export default function kLdtkSceneImporter(
                   print,
                   printError,
                   deathScore,
-                  levelsize
+                  levelsize,
+                  soundComp
                 )
               );
 
