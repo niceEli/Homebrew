@@ -5,6 +5,7 @@ export default function loadSounds() {
   k.loadMusic("mus/barelySurvived", "mus/barelySurvived");
   k.loadMusic("mus/danceFloor", "mus/danceFloor");
   k.loadMusic("mus/helloDarkness", "mus/helloDarkness");
+  k.loadMusic("mus/homeBrew", "mus/homeBrew");
   k.loadMusic("mus/lethalJester", "mus/lethalJester");
   k.loadMusic("mus/lurkingCloser", "mus/lurkingCloser");
   k.loadMusic("mus/outsideAtNight", "mus/outsideAtNight");

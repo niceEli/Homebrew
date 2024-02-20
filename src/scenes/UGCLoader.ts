@@ -7,8 +7,15 @@ import Dropzone from "dropzone";
 import UGCUploader from "./UGCUploader";
 
 export default async function UGCLoader() {
-  k.setBackground(k.RED);
-  k.add([k.text("An Error Has Occured. \nPlease Reload"), k.pos(20, 20)]);
+  k.setBackground(k.BLUE);
+  let homeBrewBGM = k.play("mus/homeBrew");
+  homeBrewBGM.loop = true;
+  k.add([
+    k.text(
+      "An Error Has Occured When Spawning The Upload Panel. \nPlease Reload!"
+    ),
+    k.pos(20, 20),
+  ]);
   let dz = document.createElement("form");
   dz.id = "UGCUploadLoadLevel";
   dz.className = "dropzone";
@@ -31,6 +38,7 @@ export default async function UGCLoader() {
     }
     myDropzone.element.remove();
     document.querySelector("#UGCUploadLoadLevel");
+    homeBrewBGM.stop();
     k.scene("UGCLevel", UGCLevel);
     k.go("UGCLevel");
   });

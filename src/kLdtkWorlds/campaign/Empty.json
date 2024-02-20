@@ -2537,6 +2537,7 @@
 			{ "id": "mus_barelySurvived", "tileRect": null, "color": 16711680 },
 			{ "id": "mus_danceFloor", "tileRect": null, "color": 16711680 },
 			{ "id": "mus_helloDarkness", "tileRect": null, "color": 16711680 },
+			{ "id": "mus_homeBrew", "tileRect": null, "color": 16711680 },
 			{ "id": "mus_lethalJester", "tileRect": null, "color": 16711680 },
 			{ "id": "mus_lurkingCloser", "tileRect": null, "color": 16711680 },
 			{ "id": "mus_outsideAtNight", "tileRect": null, "color": 16711680 },
