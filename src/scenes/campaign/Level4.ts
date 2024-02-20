@@ -2,6 +2,8 @@ import k from "../../kaboom";
 import Matter from "matter-js";
 import delay from "../../kUtils/kDelay";
 
+import * as gameInfo from "../../gameInfo.json"
+
 import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";
 
@@ -9,7 +11,7 @@ import Empty from "./Empty"; //You need to uncomment this
 import Level5 from "./Level5";
 
 export default async function Level4() {
-  sessionStorage.setItem("isUGC", "false");
+  sessionStorage.setItem(gameInfo.internalName + "_isUGC", "false");
   k.setBackground(0, 0, 0, 1);
   // Conf
   const LevelName = "Level4";
@@ -23,7 +25,7 @@ export default async function Level4() {
   Matter.Composite.create(engine);
   let sceneData = await import("../../kLdtkWorlds/campaign/Level4.json");
   // Load This Scene And Sprites
-  localStorage.setItem("cLevel", LevelName);
+  localStorage.setItem(gameInfo.internalName + "_cLevel", LevelName);
   try {
     kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
   } catch (error) {

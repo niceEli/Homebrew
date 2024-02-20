@@ -16,6 +16,7 @@ import kDownloadToVar from "./kDownloadToVar";
 import loadSpritesSheet from "./kLoadSpriteSheet";
 import * as IMC from "../Controls/INPUT_movement";
 import soundComp from "./soundComp";
+import * as gameInfo from "../gameInfo.json"
 
 export default function kLdtkSceneImporter(
   sceneData,
@@ -93,7 +94,7 @@ export default function kLdtkSceneImporter(
     { x: 0, y: 0, sx: 0, sy: 0 },
   ];
 
-  let score: number = Number(sessionStorage.getItem("score"));
+  let score: number = Number(sessionStorage.getItem(gameInfo.internalName + "_score"));
   let deathScore: number = score;
   let lives: number = 0;
   let health: number = 0;
@@ -721,7 +722,7 @@ export default function kLdtkSceneImporter(
   }
 
   k.onUpdate(() => {
-    sessionStorage.setItem("score", String(score));
+    sessionStorage.setItem(gameInfo.internalName + "_score", String(score));
     for (let i = 0; i < unactiveUpdateTriggers.length; i++) {
       const element = unactiveUpdateTriggers[i];
       try {
@@ -809,7 +810,7 @@ export default function kLdtkSceneImporter(
 
   k.onUpdate(() => {
     if (isDead) {
-      sessionStorage.setItem("score", String(deathScore));
+      sessionStorage.setItem(gameInfo.internalName + "_score", String(deathScore));
       k.go("scene");
     }
   });

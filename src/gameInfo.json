@@ -1,0 +1,12 @@
+{
+  "$schema": "https://niceeli.tech/gameinfo_Schema.json",
+  "internalName": "tech.niceeli.kaboomTS",
+  "friendlyName": "PhysFormer 2",
+  "version": "1.0.0",
+  "UGCApi": "http://www.niceeli.tech/backbone",
+  "tags": [
+    "platformer",
+    "fun",
+    "difficult"
+  ]
+}

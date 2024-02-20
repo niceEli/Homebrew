@@ -1,6 +1,7 @@
 import { SceneDef } from "kaboom";
 import k from "../kaboom";
 import * as IMC from "../Controls/INPUT_movement";
+import * as gameInfo from "../gameInfo.json";
 
 export default function kReset(currentScene: SceneDef, deathScore: number) {
   return {
@@ -9,7 +10,7 @@ export default function kReset(currentScene: SceneDef, deathScore: number) {
     },
     update() {
       if (IMC.reseting()) {
-        sessionStorage.setItem("score", String(deathScore));
+        sessionStorage.setItem(gameInfo.internalName + "_score", String(deathScore));
         k.go("scene");
       }
     },

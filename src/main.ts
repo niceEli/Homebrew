@@ -6,6 +6,7 @@
 import k from "./kaboom";
 import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
 import loadSounds from "./kUtils/kLoadSounds";
+import * as gameInfo from "./gameInfo.json"
 
 // Make Black Screen
 k.add([
@@ -16,7 +17,7 @@ k.add([
 ]);
 
 // Reset Score
-sessionStorage.setItem("score", "0");
+sessionStorage.setItem(gameInfo.internalName + "_score", "0");
 
 // Import Scenes
 import HelloWorld from "./scenes/helloworld";

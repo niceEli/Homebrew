@@ -2,9 +2,10 @@ import k from "../kaboom";
 import Matter from "matter-js";
 import matterRect from "../kUtils/kMatterRect";
 import PlayerPawnCircle from "../kUtils/kMatterPlayerCircle";
+import * as gameInfo from "../gameInfo.json";
 
 export default function Ava() {
-  sessionStorage.setItem("isUGC", "false");
+  sessionStorage.setItem(gameInfo.internalName + "_isUGC", "false");
   k.setBackground(k.WHITE);
   // Setup Engine
   const engine: any = Matter.Engine.create();

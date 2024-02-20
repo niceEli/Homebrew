@@ -1,6 +1,8 @@
 import k from "../kaboom";
 import Matter from "matter-js";
 
+import * as gameInfo from "../gameInfo.json";
+
 import kLdtkSceneImporter from "../kUtils/kLdtkSceneImporter";
 
 import Dropzone from "dropzone";
@@ -30,8 +32,8 @@ export default async function UGCLoader() {
   });
   myDropzone.on("addedfile", async function (file) {
     myDropzone.removeAllFiles();
-    sessionStorage.setItem("UGCLevelData", await file.text());
-    sessionStorage.setItem("isUGC", "true");
+    sessionStorage.setItem(gameInfo.internalName + "_UGCLevelData", await file.text());
+    sessionStorage.setItem(gameInfo.internalName + "_isUGC", "true");
     let hiddenInputs = document.getElementsByClassName("dz-hidden-input");
     while (hiddenInputs[0]) {
       hiddenInputs[0].parentNode.removeChild(hiddenInputs[0]);
@@ -56,7 +58,7 @@ async function UGCLevel() {
   engine.velocityIterations = 100;
   engine.positionIterations = 200;
   Matter.Composite.create(engine);
-  let sceneData = JSON.parse(sessionStorage.getItem("UGCLevelData"));
+  let sceneData = JSON.parse(sessionStorage.getItem(gameInfo.internalName + "_UGCLevelData"));
   // Load This Scene And Sprites
   try {
     kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
