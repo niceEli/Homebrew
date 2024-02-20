@@ -61,6 +61,8 @@ export function jumping(): boolean {
   if (
     k.isKeyPressed("up") ||
     k.isKeyPressed("w") ||
+    k.isKeyPressed("z") ||
+    k.isKeyPressed("c") ||
     k.isGamepadButtonPressed("south") ||
     k.isGamepadButtonPressed("north") ||
     k.isGamepadButtonPressed("west") ||
@@ -76,6 +78,7 @@ export function dashing(): boolean {
   let value: boolean = false;
   if (
     (k.isKeyPressed("space") ||
+      k.isKeyPressed("x") ||
       k.isGamepadButtonPressed("lshoulder") ||
       k.isGamepadButtonPressed("rshoulder") ||
       k.isGamepadButtonPressed("ltrigger") ||

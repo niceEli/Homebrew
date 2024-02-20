@@ -80,7 +80,7 @@ k.onLoad(() => {
   //
   //k.go("UGCLoader");
   //
-  //k.go("Level1");
+  k.go("Level1");
   //k.go("Level2");
   //k.go("Level3");
   //k.go("Level4");
