@@ -16,7 +16,7 @@ import kDownloadToVar from "./kDownloadToVar";
 import loadSpritesSheet from "./kLoadSpriteSheet";
 import * as IMC from "../Controls/INPUT_movement";
 import soundComp from "./soundComp";
-import * as gameInfo from "../gameInfo.json"
+import * as gameInfo from "../gameInfo.json";
 
 export default function kLdtkSceneImporter(
   sceneData,
@@ -32,6 +32,8 @@ export default function kLdtkSceneImporter(
   k.loadSprite("door", "end.png");
 
   let levelsize = 2;
+
+  let isPaused = false;
 
   let isInlevel: number;
   let scripts = [];
@@ -56,6 +58,10 @@ export default function kLdtkSceneImporter(
   function printError(text: any) {
     k.debug.error(text);
     console.error(text);
+  }
+
+  function kResetDep() {
+    printError("kReset Is Deprecated. Please Remove");
   }
 
   let enemys: {
@@ -94,7 +100,9 @@ export default function kLdtkSceneImporter(
     { x: 0, y: 0, sx: 0, sy: 0 },
   ];
 
-  let score: number = Number(sessionStorage.getItem(gameInfo.internalName + "_score"));
+  let score: number = Number(
+    sessionStorage.getItem(gameInfo.internalName + "_score")
+  );
   let deathScore: number = score;
   let lives: number = 0;
   let health: number = 0;
@@ -153,7 +161,6 @@ export default function kLdtkSceneImporter(
                 levelsize,
                 ent.__grid
               ),
-              kReset(currentScene, deathScore),
               k.area(),
               "Player",
               "Solid",
@@ -810,7 +817,10 @@ export default function kLdtkSceneImporter(
 
   k.onUpdate(() => {
     if (isDead) {
-      sessionStorage.setItem(gameInfo.internalName + "_score", String(deathScore));
+      sessionStorage.setItem(
+        gameInfo.internalName + "_score",
+        String(deathScore)
+      );
       k.go("scene");
     }
   });
@@ -897,7 +907,7 @@ export default function kLdtkSceneImporter(
                   hexToRgb,
                   kDownloadToVar,
                   kCamera,
-                  kReset,
+                  kResetDep,
                   loadSpritesSheet,
                   player,
                   score,
@@ -948,4 +958,24 @@ export default function kLdtkSceneImporter(
       k.camPos(k.width() / zoomy.x / 2, k.height() / zoomy.y / 2);
     });
   }
+  k.add([
+    {
+      update() {
+        if (IMC.pausing()) {
+          const objs = k.get("*", { recursive: true, liveUpdate: true });
+          isPaused = !isPaused;
+          print("Paused: " + isPaused);
+          for (let i = 0; i < objs.length; i++) {
+            const obj = objs[i];
+            if (obj.is("noPause")) {
+            } else {
+              obj.paused = isPaused;
+            }
+          }
+        }
+      },
+    },
+    "noPause",
+  ]);
+  k.add([kReset(currentScene, deathScore)]);
 }

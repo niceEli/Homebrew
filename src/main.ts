@@ -29,7 +29,7 @@ loadSounds();
 // Load Scenes
 loadScenes();
 
-k.onLoad(() => {
+k.onLoad(async () => {
   if (k.isKeyDown("c")) {
     k.go("UGCLoader");
     return;
