@@ -353,7 +353,6 @@ export default function kLdtkSceneImporter(
                       k.anchor("center"),
                       k.sprite("SpriteSheet" + spritename),
                       k.z(2000),
-                      k.offscreen({ hide: true }),
                       k.area(),
                       k.pos(
                         ent.__worldX * levelsize + 8 * levelsize,
@@ -372,7 +371,6 @@ export default function kLdtkSceneImporter(
                       k.sprite("SpriteSheet" + spritename),
                       k.anchor("center"),
                       k.z(2000),
-                      k.offscreen({ hide: true }),
                       k.pos(
                         ent.__worldX * levelsize + 8 * levelsize,
                         ent.__worldY * levelsize + 8 * levelsize
@@ -411,7 +409,6 @@ export default function kLdtkSceneImporter(
                   k.sprite("SpriteSheet" + CollectibleSpritename),
                   k.anchor("center"),
                   k.z(2000),
-                  k.offscreen({ hide: true }),
                   k.pos(
                     ent.__worldX * levelsize + 8 * levelsize,
                     ent.__worldY * levelsize + 8 * levelsize
@@ -569,7 +566,6 @@ export default function kLdtkSceneImporter(
                     }
                   ),
                   k.z(2002),
-                  k.offscreen({ hide: true }),
                   k.color(k.WHITE),
                   k.outline(2.5 * levelsize, k.WHITE),
                   k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
@@ -582,7 +578,6 @@ export default function kLdtkSceneImporter(
                     height: text.height,
                   }),
                   k.z(2001),
-                  k.offscreen({ hide: true }),
                   k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
                   {
                     Update() {
