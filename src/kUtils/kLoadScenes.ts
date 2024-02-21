@@ -18,6 +18,7 @@ import Level5 from "../scenes/campaign/Level5";
 import Level6 from "../scenes/campaign/Level6";
 import Level7 from "../scenes/campaign/Level7";
 import Level8 from "../scenes/campaign/Level8";
+import mainMenu from "../scenes/mainMenu";
 
 export default function loadScenes() {
   // Add Scenes
@@ -29,6 +30,7 @@ export default function loadScenes() {
   k.scene("UGCLoader", UGCLoader);
   k.scene("TopDown", TopDown);
   k.scene("Empty", Empty);
+  k.scene("mainMenu", mainMenu)
   // Add Campaign Levels
   k.scene("Level1", Level1);
   k.scene("Level2", Level2);

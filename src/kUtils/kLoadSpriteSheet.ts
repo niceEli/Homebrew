@@ -15,4 +15,5 @@ export default function loadSpritesSheet() {
   k.loadSpriteAtlas("spriteSheet16.png", spriteSheetData);
 
   k.loadFont("Jetbrains", "jetbrains.ttf");
+  k.loadFont("Shantell_Sans", "Shantell_Sans.ttf");
 }

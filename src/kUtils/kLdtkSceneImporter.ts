@@ -101,9 +101,13 @@ export default function kLdtkSceneImporter(
     { x: 0, y: 0, sx: 0, sy: 0 },
   ];
 
-  let score: number = Number(
-    sessionStorage.getItem(gameInfo.internalName + "_score")
-  );
+  let score: number;
+  if (sessionStorage.getItem(gameInfo.internalName + "_isUGC") !== "true") {
+    score = Number(localStorage.getItem(gameInfo.internalName + "_score"));
+  } else {
+    score = 0;
+  }
+
   let deathScore: number = score;
   let lives: number = 0;
   let health: number = 0;
@@ -731,7 +735,6 @@ export default function kLdtkSceneImporter(
   }
 
   k.onUpdate(() => {
-    sessionStorage.setItem(gameInfo.internalName + "_score", String(score));
     for (let i = 0; i < unactiveUpdateTriggers.length; i++) {
       const element = unactiveUpdateTriggers[i];
       try {
@@ -783,6 +786,9 @@ export default function kLdtkSceneImporter(
     isDead = true;
   });
   k.onCollide("Player", "Win_Condition", () => {
+    if (sessionStorage.getItem(gameInfo.internalName + "_isUGC") !== "true") {
+      localStorage.setItem(gameInfo.internalName + "_score", String(score));
+    }
     k.scene("nextLevel", nextScene);
     k.go("nextLevel");
   });
@@ -792,10 +798,6 @@ export default function kLdtkSceneImporter(
 
   k.onUpdate(() => {
     if (isDead) {
-      sessionStorage.setItem(
-        gameInfo.internalName + "_score",
-        String(deathScore)
-      );
       k.go("scene");
     }
   });

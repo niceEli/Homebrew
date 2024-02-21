@@ -10,7 +10,7 @@ export default function kReset(currentScene: SceneDef, deathScore: number) {
     },
     update() {
       if (IMC.reseting()) {
-        sessionStorage.setItem(gameInfo.internalName + "_score", String(deathScore));
+        localStorage.setItem(gameInfo.internalName + "_score", String(deathScore));
         k.go("scene");
       }
     },

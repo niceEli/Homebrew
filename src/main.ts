@@ -1,7 +1,5 @@
-/*Licence (GPL3)*/ console.log(
-  "KaboomTS Game Engine And Physformer2 Game\nCopyright (C) 2024 Eli Cardoso\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details"
-);
-
+/*Licence (GPL3)*/ let licence =
+  "KaboomTS Game Engine And Physformer2 Game\nCopyright (C) 2024 Eli Cardoso\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details";
 // Imports
 import k from "./kaboom";
 import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
@@ -17,9 +15,6 @@ k.add([
   k.anchor("center"),
 ]);
 
-// Reset Score
-sessionStorage.setItem(gameInfo.internalName + "_score", "0");
-
 // Load SpriteSheet
 loadSpritesSheet();
 
@@ -30,13 +25,15 @@ loadSounds();
 loadScenes();
 
 k.onLoad(async () => {
+  console.clear();
+  console.log(licence);
   if (k.isKeyDown("c")) {
     // UGC Debug
     k.go("UGCLoader");
     return;
   } else {
     // Run Scenes
-    k.go(gameInfo.compStartLevel);
+    k.go(gameInfo.gameMenuScene);
     return;
   }
 });
