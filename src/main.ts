@@ -31,10 +31,12 @@ loadScenes();
 
 k.onLoad(() => {
   if (k.isKeyDown("c")) {
+    // UGC Debug
     k.go("UGCLoader");
     return;
+  } else {
+    // Run Scenes
+    k.go(gameInfo.compStartLevel);
+    return;
   }
-
-  // Run Scenes
-  k.go(gameInfo.compStartLevel);
 });
