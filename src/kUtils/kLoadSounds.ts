@@ -7,6 +7,7 @@ export default function loadSounds() {
   k.loadMusic("mus/helloDarkness", "mus/helloDarkness");
   k.loadMusic("mus/homeBrew", "mus/homeBrew");
   k.loadMusic("mus/lethalJester", "mus/lethalJester");
+  k.loadMusic("mus/loading", "mus/loading");
   k.loadMusic("mus/lurkingCloser", "mus/lurkingCloser");
   k.loadMusic("mus/outsideAtNight", "mus/outsideAtNight");
   k.loadMusic("mus/phoneCall", "mus/phoneCall");
@@ -26,6 +27,7 @@ export default function loadSounds() {
   k.loadSound("sfx/keyPickup", "sfx/keyPickup");
   k.loadSound("sfx/kidsGameJump", "sfx/kidsGameJump");
   k.loadSound("sfx/laserShoot", "sfx/laserShoot");
+  k.loadSound("sfx/loadDone", "sfx/loadDone");
   k.loadSound("sfx/marimbaAlert", "sfx/marimbaAlert");
   k.loadSound("sfx/menuAccept", "sfx/menuAccept");
   k.loadSound("sfx/pianoIntro", "sfx/pianoIntro");
