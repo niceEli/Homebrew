@@ -3,6 +3,7 @@
   "internalName": "tech.niceeli.kaboomTS",
   "friendlyName": "PhysFormer 2",
   "version": "1.0.0",
+  "compStartLevel": "Level1",
   "UGCApi": "http://www.niceeli.tech/backbone",
   "tags": [
     "platformer",
