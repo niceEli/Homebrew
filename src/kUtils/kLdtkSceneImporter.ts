@@ -17,6 +17,7 @@ import loadSpritesSheet from "./kLoadSpriteSheet";
 import * as IMC from "../Controls/INPUT_movement";
 import soundComp from "./soundComp";
 import * as gameInfo from "../gameInfo.json";
+import enemyMovement from "./enemyMovement";
 
 export default function kLdtkSceneImporter(
   sceneData,
@@ -527,12 +528,18 @@ export default function kLdtkSceneImporter(
                     k.scale(levelsize),
                     k.z(2147483646),
                     k.sprite("SpriteSheet" + enemySpriteName),
-                    k.state("idleStart", [
-                      "idleStart",
-                      "moveEnd",
-                      "idleEnd",
-                      "moveStart",
-                    ]),
+                    enemyMovement(
+                      k.vec2(
+                        ent.__worldX * levelsize + 8 * levelsize,
+                        ent.__worldY * levelsize + 8 * levelsize
+                      ),
+                      k.vec2(
+                        endPosition.x + 8 * levelsize,
+                        endPosition.y + 8 * levelsize
+                      ),
+                      entValues["moveTime"] / 1000,
+                      entValues["waitTime"] / 1000
+                    ),
                     k.timer(),
                     k.anchor("center"),
                     k.area({ scale: 0.6 }),
@@ -760,33 +767,6 @@ export default function kLdtkSceneImporter(
       }
     }
   });
-  for (let i = 0; i < enemys.length; i++) {
-    const enemy = enemys[i];
-    enemy.ent.onStateEnter("idleStart", () => {
-      k.wait(enemy.waitTime, () => enemy.ent.enterState("moveEnd"));
-    });
-    enemy.ent.onStateEnter("moveEnd", () => {
-      k.tween(
-        enemy.startPos,
-        enemy.endPos,
-        enemy.moveTime,
-        (p) => (enemy.ent.pos = p),
-        k.easings.linear
-      ).then(() => enemy.ent.enterState("idleEnd"));
-    });
-    enemy.ent.onStateEnter("idleEnd", () => {
-      k.wait(enemy.waitTime, () => enemy.ent.enterState("moveStart"));
-    });
-    enemy.ent.onStateEnter("moveStart", () => {
-      k.tween(
-        enemy.endPos,
-        enemy.startPos,
-        enemy.moveTime,
-        (p) => (enemy.ent.pos = p),
-        k.easings.linear
-      ).then(() => enemy.ent.enterState("idleStart"));
-    });
-  }
 
   k.onCollide("Player", "Collectible", (a, b, c) => {
     score++;
@@ -875,6 +855,7 @@ export default function kLdtkSceneImporter(
                 "deathScore",
                 "levelSize",
                 "soundComp",
+                "enemyMovement",
                 `
                   return (async function() {
                     ${Func}
@@ -917,7 +898,8 @@ export default function kLdtkSceneImporter(
                   printError,
                   deathScore,
                   levelsize,
-                  soundComp
+                  soundComp,
+                  enemyMovement
                 )
               );
 

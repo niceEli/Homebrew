@@ -5,7 +5,7 @@ export default function kCamera(
   useCam: boolean = true,
   CamPos: { cx: number; cy: number },
   levelSize: number,
-  grid: number[],
+  grid: number[]
 ) {
   return {
     add() {
@@ -17,19 +17,26 @@ export default function kCamera(
           let y = CamPos.cy - grid[1];
           k.camPos(
             this.pos.x + x * 16 * levelSize,
-            this.pos.y + y * 16 * levelSize,
+            this.pos.y + y * 16 * levelSize
           );
         }
       }
     },
     update() {
       if (useCam) {
-        k.tween(
+        k.camPos(
+          k.lerp(
+            k.camPos(),
+            k.vec2(IMC.looking().x + this.pos.x, IMC.looking().y + this.pos.y),
+            0.025
+          )
+        );
+        /*k.tween(
           k.camPos(),
           k.vec2(IMC.looking().x + this.pos.x, IMC.looking().y + this.pos.y),
           0.5,
           (p) => k.camPos(p),
-        );
+        );*/
       }
     },
   };
