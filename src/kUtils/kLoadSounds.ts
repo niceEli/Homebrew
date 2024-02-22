@@ -13,6 +13,7 @@ export default function loadSounds() {
   k.loadMusic("mus/phoneCall", "mus/phoneCall");
   k.loadMusic("mus/pianoComfort", "mus/pianoComfort");
   k.loadMusic("mus/purgatoriByKORAII", "mus/purgatoriByKORAII");
+  k.loadMusic("mus/rain", "mus/rain");
   k.loadMusic("mus/wrongPlaceWrongTime", "mus/wrongPlaceWrongTime");
   k.loadMusic("mus/youMadeItToTheTop", "mus/youMadeItToTheTop");
 

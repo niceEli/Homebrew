@@ -1,11 +1,16 @@
 import k from "../kaboom";
 import * as gameInfo from "../gameInfo.json";
 import * as IMC from "../Controls/INPUT_movement";
+import { AudioPlay } from "kaboom";
+
+let rainsounds: AudioPlay;
 
 export default function mainMenu() {
   /*https://coolors.co/157f1f-4cb963-a0eade-5c6784-1d263b*/
   k.setBackground(76, 185, 99);
   k.camScale(1, 1);
+  rainsounds = k.play("mus/rain");
+  rainsounds.volume = 0.3;
   let gameName: string;
   if (
     gameInfo["friendlyName"] !== null &&
@@ -156,10 +161,12 @@ export default function mainMenu() {
 }
 
 function play() {
+  rainsounds.stop();
   localStorage.setItem(gameInfo["internalName"] + "_score", "0");
   k.go(gameInfo["compStartLevel"]);
 }
 function continueGame() {
+  rainsounds.stop();
   if (localStorage.getItem(gameInfo["internalName"] + "_cLevel") == null) {
     localStorage.setItem(gameInfo["internalName"] + "_score", "0");
     k.go(gameInfo["compStartLevel"]);
@@ -168,5 +175,6 @@ function continueGame() {
   }
 }
 function playUGC() {
+  rainsounds.stop();
   k.go("UGCLoader");
 }
