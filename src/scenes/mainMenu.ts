@@ -10,10 +10,18 @@ export default function mainMenu() {
   k.setBackground(76, 185, 99);
   k.camScale(1, 1);
   k.add([
-    k.rect(999999999999, 999999999999),
+    k.sprite("greenGrad"),
     k.fixed(),
-    k.color(76, 185, 99),
+    k.pos(0, 0),
+    k.anchor("topleft"),
     k.z(-Infinity),
+    k.area(),
+    k.scale(1, 1),
+    {
+      update() {
+        this.scale = k.vec2(k.width() / 1920, k.height() / 1200);
+      },
+    },
   ]);
   rainsounds = k.play("mus/rain");
   rainsounds.volume = 0.3;
