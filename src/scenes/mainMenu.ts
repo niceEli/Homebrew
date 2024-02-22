@@ -9,6 +9,12 @@ export default function mainMenu() {
   /*https://coolors.co/157f1f-4cb963-a0eade-5c6784-1d263b*/
   k.setBackground(76, 185, 99);
   k.camScale(1, 1);
+  k.add([
+    k.rect(999999999999, 999999999999),
+    k.fixed(),
+    k.color(76, 185, 99),
+    k.z(-Infinity),
+  ]);
   rainsounds = k.play("mus/rain");
   rainsounds.volume = 0.3;
   let gameName: string;
