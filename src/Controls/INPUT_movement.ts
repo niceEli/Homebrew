@@ -158,3 +158,41 @@ export function rumble(time: number) {
     });
   } catch (error) {}
 }
+
+export function Ui_Move() {
+  let value: number = 0;
+  if (
+    k.isKeyPressed("up") ||
+    k.isKeyPressed("w") ||
+    k.isGamepadButtonPressed("dpad-up")
+  ) {
+    value += 1;
+  }
+  if (
+    k.isKeyPressed("down") ||
+    k.isKeyPressed("s") ||
+    k.isGamepadButtonPressed("dpad-down")
+  ) {
+    value -= 1;
+  }
+
+  return value;
+}
+
+export function Ui_Select(): boolean {
+  let value: boolean = false;
+  if (
+    k.isKeyPressed("space") ||
+    k.isKeyPressed("enter") ||
+    k.isKeyPressed("z") ||
+    k.isGamepadButtonPressed("south") ||
+    k.isGamepadButtonPressed("north") ||
+    k.isGamepadButtonPressed("west") ||
+    k.isGamepadButtonPressed("east")
+  ) {
+    value = true;
+    rumble(100);
+  }
+
+  return value;
+}

@@ -941,7 +941,7 @@ export default function kLdtkSceneImporter(
     {
       update() {
         if (IMC.pausing()) {
-          const objs = k.get("*", { recursive: true, liveUpdate: true });
+          const objs = k.get("*", { recursive: true });
           isPaused = !isPaused;
           print("Paused: " + isPaused);
           for (let i = 0; i < objs.length; i++) {
