@@ -160,7 +160,7 @@ export default function mainMenu() {
   k.onClick("ugcButton", () => playUGC());
 }
 
-function play() {
+async function play() {
   rainsounds.stop();
   localStorage.setItem(gameInfo["internalName"] + "_score", "0");
   k.go(gameInfo["compStartLevel"]);
@@ -168,8 +168,7 @@ function play() {
 function continueGame() {
   rainsounds.stop();
   if (localStorage.getItem(gameInfo["internalName"] + "_cLevel") == null) {
-    localStorage.setItem(gameInfo["internalName"] + "_score", "0");
-    k.go(gameInfo["compStartLevel"]);
+    play();
   } else {
     k.go(localStorage.getItem(gameInfo["internalName"] + "_cLevel"));
   }
