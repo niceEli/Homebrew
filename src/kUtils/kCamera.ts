@@ -28,7 +28,7 @@ export default function kCamera(
           k.lerp(
             k.camPos(),
             k.vec2(IMC.looking().x + this.pos.x, IMC.looking().y + this.pos.y),
-            0.025
+            0.025 * 144 * k.dt()
           )
         );
         /*k.tween(
