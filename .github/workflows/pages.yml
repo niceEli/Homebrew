@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: '21.x'
       - name: Install Dependencies
-        run: npm install
+        run: npm install --force
       - name: Build
         run: npm run buildWeb
       - name: Upload artifact
