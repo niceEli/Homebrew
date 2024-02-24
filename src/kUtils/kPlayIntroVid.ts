@@ -8,6 +8,7 @@ export default function kPlayIntroVid(
   video.autoplay = true;
   video.loop = false;
   video.controls = false;
+  video.muted = true;
 
   video.style.position = "fixed";
   video.style.top = "0";
