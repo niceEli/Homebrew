@@ -6,6 +6,7 @@ import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
 import loadSounds from "./kUtils/kLoadSounds";
 import loadScenes from "./kUtils/kLoadScenes";
 import * as gameInfo from "./gameInfo.json";
+import kPlayIntroVid from "./kUtils/kPlayIntroVid";
 
 // Make Black Screen
 k.add([
@@ -26,6 +27,18 @@ loadScenes();
 
 k.onLoad(async () => {
   console.clear();
+  if (
+    gameInfo["introVid"] == undefined ||
+    gameInfo["introVid"] == "" ||
+    gameInfo["introVid"] == null
+  ) {
+    onStart();
+  } else {
+    kPlayIntroVid(gameInfo["introVid"], onStart);
+  }
+});
+
+async function onStart() {
   console.log(licence);
   if (k.isKeyDown("c")) {
     // UGC Debug
@@ -36,4 +49,4 @@ k.onLoad(async () => {
     k.go(gameInfo.gameMenuScene);
     return;
   }
-});
+}

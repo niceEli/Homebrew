@@ -22,6 +22,7 @@ export default async function UGCLoader() {
   let dz = document.createElement("form");
   dz.id = "UGCUploadLoadLevel";
   dz.className = "dropzone";
+  dz.style.zIndex = "999";
   dz.action = ".";
   dz.setAttribute(
     "style",

@@ -3,6 +3,7 @@
   "internalName": "tech.niceeli.homebrew",
   "friendlyName": "PhysFormer 2",
   "version": "1.0.0",
+  "introVid": "./intro.mp4",
   "gameMenuScene": "mainMenu",
   "compStartLevel": "Level1",
   "UGCApi": "http://homebrew.niceeli.tech/",
