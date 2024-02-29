@@ -39,6 +39,13 @@ k.onLoad(async () => {
 });
 
 async function onStart() {
+  if (
+    gameInfo["licence"] == undefined ||
+    gameInfo["licence"] == "" ||
+    gameInfo["licence"] == null
+  ) {
+    licence = gameInfo["licence"];
+  }
   console.log(licence);
   if (k.isKeyDown("c")) {
     // UGC Debug
