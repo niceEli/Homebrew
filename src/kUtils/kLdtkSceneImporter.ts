@@ -18,6 +18,7 @@ import * as IMC from "../Controls/INPUT_movement";
 import soundComp from "./soundComp";
 import * as gameInfo from "../gameInfo.json";
 import enemyMovement from "./enemyMovement";
+import PlayerPawnCircleTopDown from "./kMatterCircleTopDown";
 
 /**
  * Imports LDtk scene data and initializes the level, including loading sprites, setting up triggers, handling collisions, and managing game objects.
@@ -846,6 +847,7 @@ export default function kLdtkSceneImporter(
                 "matterRect4Sprites",
                 "matterRect4Static",
                 "PlayerPawnCircle",
+                "PlayerPawnCircleTopDown",
                 "matterCircle",
                 "hexToRgb",
                 "kDownloadToVar",
@@ -891,6 +893,7 @@ export default function kLdtkSceneImporter(
                   matterRect4Sprites,
                   matterRect4Static,
                   PlayerPawnCircle,
+                  PlayerPawnCircleTopDown,
                   matterCircle,
                   hexToRgb,
                   kDownloadToVar,

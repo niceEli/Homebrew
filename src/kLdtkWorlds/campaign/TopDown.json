@@ -2584,10 +2584,10 @@
 							"defUid": 134,
 							"px": [32,224],
 							"fieldInstances": [
-								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "playaComp = {\n    update do\n       this.pos.x = this.pos.x + IMC.movementTD().x * 350 * k.dt()\n        this.pos.y = this.pos.y + IMC.movementTD().y * 350 * k.dt()\n    end\n}\n\nlocal playa = k.add([\n k.sprite(\"SpriteSheet3\"),\n   k.scale(levelSize),\n   k.pos(X,Y),\n playaComp,\n    k.area(),\n    matterCircle(engine, {}, 8 * levelSize, true),\n    k.anchor(\"center\"),\n   kCamera(true, null, 2, null),\n    \"Player\"\n])\n\n\nk.onCollideUpdate(\"Player\", \"Solid\", with a, b, col do\n   a.pos.y = a.pos.y + col.displacement.y\n   a.pos.x = a.pos.x + col.displacement.x\n   IMC.rumble(100)\nend)", "__tile": null, "defUid": 136, "realEditorValues": [{
+								{ "__identifier": "AsyncJSCode", "__type": "Multilines", "__value": "local playa = k.add([\n  k.sprite(\"SpriteSheet3\"),\n    k.scale(levelSize),\n    k.pos(X,Y),\n    k.area(),\n    PlayerPawnCircleTopDown(engine, { friction: 0 }, 8 * levelsize, k.vec2(levelsize, levelsize), levelsize / 2),\n    k.anchor(\"center\"),\n    kCamera(true, null, 2, null),\n    \"Player\"\n])", "__tile": null, "defUid": 136, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"playaComp = {\\n    update do\\n       this.pos.x = this.pos.x + IMC.movementTD().x * 350 * k.dt()\\n        this.pos.y = this.pos.y + IMC.movementTD().y * 350 * k.dt()\\n    end\\n}\\n\\nlocal playa = k.add([\\n k.sprite(\"SpriteSheet3\"),\\n   k.scale(levelSize),\\n   k.pos(X,Y),\\n playaComp,\\n    k.area(),\\n    matterCircle(engine, {}, 8 * levelSize, true),\\n    k.anchor(\"center\"),\\n   kCamera(true, null, 2, null),\\n    \"Player\"\\n])\\n\\n\\nk.onCollideUpdate(\"Player\", \"Solid\", with a, b, col do\\n   a.pos.y = a.pos.y + col.displacement.y\\n   a.pos.x = a.pos.x + col.displacement.x\\n   IMC.rumble(100)\\nend)"
+										"local playa = k.add([\\n  k.sprite(\"SpriteSheet3\"),\\n    k.scale(levelSize),\\n    k.pos(X,Y),\\n    k.area(),\\n    PlayerPawnCircleTopDown(engine, { friction: 0 }, 8 * levelsize, k.vec2(levelsize, levelsize), levelsize / 2),\\n    k.anchor(\"center\"),\\n    kCamera(true, null, 2, null),\\n    \"Player\"\\n])"
 									]
 								}] },
 								{ "__identifier": "Script_Lang", "__type": "LocalEnum.Script_Type", "__value": "KaLang_Lua", "__tile": { "tilesetUid": 135, "x": 32, "y": 32, "w": 16, "h": 16 }, "defUid": 222, "realEditorValues": [{

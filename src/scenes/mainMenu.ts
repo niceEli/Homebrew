@@ -10,7 +10,6 @@ export default function mainMenu() {
   k.setBackground(k.BLACK);
   let menuBG = k.getSprite("MainMenuBG");
   let asset = menuBG["data"];
-  console.log(asset)
   k.camScale(1, 1);
   k.add([
     k.sprite("MainMenuBG"),

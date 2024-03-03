@@ -45,7 +45,6 @@ export default function PlayerPawnCircleTopDown(
       if (rotate) {
         this.angle = body.angle * (180 / Math.PI);
       }
-      console.log(this.pos);
       Matter.Body.setVelocity(body, {
         x: IMC.movementTD().x * multiplier * 3.5 * scaleOPlayer.x,
         y:
