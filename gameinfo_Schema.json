@@ -23,6 +23,14 @@
       "type": "string",
       "description": "The version of the game."
     },
+    "licence": {
+      "type": "string",
+      "description": "The licence for your game and its homebrew services (optional)."
+    },
+    "TitleBackground": {
+      "type": "string",
+      "description": "The Background Of The Title Screen."
+    },
     "introVid": {
       "type": "string",
       "description": "This Video Plays On Start Of The Game. Remove Or Set To Nothing To Disable Intro"

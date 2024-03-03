@@ -865,6 +865,7 @@ export default function kLdtkSceneImporter(
                 "printError",
                 "deathScore",
                 "levelSize",
+                "levelsize",
                 "soundComp",
                 "enemyMovement",
                 `
@@ -908,6 +909,7 @@ export default function kLdtkSceneImporter(
                   print,
                   printError,
                   deathScore,
+                  levelsize,
                   levelsize,
                   soundComp,
                   enemyMovement

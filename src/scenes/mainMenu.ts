@@ -1,16 +1,19 @@
 import k from "../kaboom";
 import * as gameInfo from "../gameInfo.json";
 import * as IMC from "../Controls/INPUT_movement";
-import { AudioPlay } from "kaboom";
+import { Asset, AudioPlay, SpriteData } from "kaboom";
 
 let rainsounds: AudioPlay;
 
 export default function mainMenu() {
   /*https://coolors.co/157f1f-4cb963-a0eade-5c6784-1d263b*/
-  k.setBackground(76, 185, 99);
+  k.setBackground(k.BLACK);
+  let menuBG = k.getSprite("MainMenuBG");
+  let asset = menuBG["data"];
+  console.log(asset)
   k.camScale(1, 1);
   k.add([
-    k.sprite("greenGrad"),
+    k.sprite("MainMenuBG"),
     k.fixed(),
     k.pos(0, 0),
     k.anchor("topleft"),
@@ -19,7 +22,7 @@ export default function mainMenu() {
     k.scale(1, 1),
     {
       update() {
-        this.scale = k.vec2(k.width() / 1920, k.height() / 1200);
+        this.scale = k.vec2(k.width() / asset.width, k.height() / asset.height);
       },
     },
   ]);

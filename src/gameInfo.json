@@ -1,5 +1,5 @@
 {
-  "$schema": "https://niceeli.tech/gameinfo_Schema.json",
+  "$schema": "https://raw.githubusercontent.com/niceEli/KaboomTS/main/gameinfo_Schema.json",
   "internalName": "tech.niceeli.homebrew",
   "friendlyName": "PhysFormer 2",
   "version": "1.0.0",

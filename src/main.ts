@@ -40,9 +40,9 @@ k.onLoad(async () => {
 
 async function onStart() {
   if (
-    gameInfo["licence"] == undefined ||
-    gameInfo["licence"] == "" ||
-    gameInfo["licence"] == null
+    gameInfo["licence"] != undefined &&
+    gameInfo["licence"] != "" &&
+    gameInfo["licence"] != null
   ) {
     licence = gameInfo["licence"];
   }

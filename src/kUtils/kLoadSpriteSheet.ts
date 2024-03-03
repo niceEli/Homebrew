@@ -1,4 +1,5 @@
 import k from "../kaboom";
+import * as gameInfo from "../gameInfo.json";
 
 export default function loadSpritesSheet() {
   const spriteSheetData = {};
@@ -14,7 +15,15 @@ export default function loadSpritesSheet() {
 
   k.loadSpriteAtlas("spriteSheet16.png", spriteSheetData);
 
-  k.loadSprite("greenGrad", "greenGrad.jpg");
+  if (
+    gameInfo["TitleBackground"] != "" &&
+    gameInfo["TitleBackground"] != undefined &&
+    gameInfo["TitleBackground"] != null
+  ) {
+    k.loadSprite("MainMenuBG", gameInfo["TitleBackground"]);
+  } else {
+    k.loadSprite("MainMenuBG", "greenGrad.jpg");
+  }
 
   k.loadFont("Jetbrains", "jetbrains.ttf");
   k.loadFont("Shantell_Sans", "Shantell_Sans.ttf");
