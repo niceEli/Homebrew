@@ -19,6 +19,15 @@ import soundComp from "./soundComp";
 import * as gameInfo from "../gameInfo.json";
 import enemyMovement from "./enemyMovement";
 
+/**
+ * Imports LDtk scene data and initializes the level, including loading sprites, setting up triggers, handling collisions, and managing game objects.
+ *
+ * @param {any} sceneData - The LDtk scene data to be imported
+ * @param {SceneDef} currentScene - The current scene definition
+ * @param {SceneDef} nextScene - The next scene definition
+ * @param {any} engine - The physics engine
+ * @param {vec2} zoomZ - The zoom vector (default: k.vec2(1, 1))
+ */
 export default function kLdtkSceneImporter(
   sceneData,
   currentScene: SceneDef,
