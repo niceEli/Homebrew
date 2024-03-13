@@ -11,7 +11,7 @@
     "buildGL": "tsc && vite build && electron-builder -l",
     "buildWeb": "tsc && vite build",
     "preview": "vite preview",
-    "postinstall": "cd ./node_modules/kaboom/ && npm i"
+    "postinstall": "node ./npmPJSON_postinstall.js"
   },
   "devDependencies": {
     "electron": "^26.1.0",
