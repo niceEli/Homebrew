@@ -180,6 +180,7 @@ export default function kLdtkSceneImporter(
               "Player",
               "Solid",
             ]);
+            globalThis.player = player;
           }
         }
       }
