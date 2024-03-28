@@ -16,7 +16,7 @@ import kDownloadToVar from "./kDownloadToVar";
 import loadSpritesSheet from "./kLoadSpriteSheet";
 import * as IMC from "../Controls/INPUT_movement";
 import soundComp from "./soundComp";
-import * as gameInfo from "../gameInfo.json";
+import gameInfo from "../gameInfo";
 import enemyMovement from "./enemyMovement";
 import PlayerPawnCircleTopDown from "./kMatterCircleTopDown";
 

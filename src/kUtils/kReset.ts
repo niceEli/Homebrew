@@ -1,7 +1,7 @@
 import { SceneDef } from "kaboom";
 import k from "../kaboom";
 import * as IMC from "../Controls/INPUT_movement";
-import * as gameInfo from "../gameInfo.json";
+import gameInfo from "../gameInfo";
 
 export default function kReset(currentScene: SceneDef, deathScore: number) {
   return {

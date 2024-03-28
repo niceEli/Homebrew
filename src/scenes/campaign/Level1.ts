@@ -1,7 +1,7 @@
 import k from "../../kaboom";
 import Matter from "matter-js";
 
-import * as gameInfo from "../../gameInfo.json"
+import gameInfo from "../../gameInfo"
 
 import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";

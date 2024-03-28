@@ -1,5 +1,5 @@
 import k from "../kaboom";
-import * as gameInfo from "../gameInfo.json";
+import gameInfo from "../gameInfo";
 
 export default function HelloWorld() {
   sessionStorage.setItem(gameInfo.internalName + "_isUGC", "false");

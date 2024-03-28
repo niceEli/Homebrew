@@ -5,8 +5,10 @@ import k from "./kaboom";
 import loadSpritesSheet from "./kUtils/kLoadSpriteSheet";
 import loadSounds from "./kUtils/kLoadSounds";
 import loadScenes from "./kUtils/kLoadScenes";
-import * as gameInfo from "./gameInfo.json";
+import gameInfo from "./gameInfo";
 import kPlayIntroVid from "./kUtils/kPlayIntroVid";
+
+console.log(gameInfo);
 
 // Make Black Screen
 k.add([
@@ -32,7 +34,7 @@ k.onLoad(async () => {
     gameInfo["introVid"] == "" ||
     gameInfo["introVid"] == null
   ) {
-    onStart();
+    await onStart();
   } else {
     kPlayIntroVid(gameInfo["introVid"], onStart);
   }

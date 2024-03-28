@@ -1,7 +1,7 @@
 import k from "../kaboom";
-import * as gameInfo from "../gameInfo.json";
+import gameInfo from "../gameInfo";
 
-export default function loadSpritesSheet() {
+export default async function loadSpritesSheet() {
   const spriteSheetData = {};
 
   for (let i = 0; i < 625; i++) {
@@ -20,9 +20,13 @@ export default function loadSpritesSheet() {
     gameInfo["TitleBackground"] != undefined &&
     gameInfo["TitleBackground"] != null
   ) {
-    k.loadSprite("MainMenuBG", gameInfo["TitleBackground"]);
+    let spr = await k.loadSprite("MainMenuBG", gameInfo["TitleBackground"]);
+    globalThis.titleWidth = spr.width;
+    globalThis.titleHeight = spr.height;
   } else {
-    k.loadSprite("MainMenuBG", "greenGrad.jpg");
+    let spr = await k.loadSprite("MainMenuBG", "greenGrad.jpg");
+    globalThis.titleWidth = spr.width;
+    globalThis.titleHeight = spr.height;
   }
 
   k.loadFont("Jetbrains", "jetbrains.ttf");

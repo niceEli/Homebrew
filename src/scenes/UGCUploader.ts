@@ -1,5 +1,5 @@
 import k from "../kaboom";
-import * as gameInfo from "../gameInfo.json";
+import gameInfo from "../gameInfo";
 
 export default async function UGCUploader() {
   k.setBackground(160, 234, 222);

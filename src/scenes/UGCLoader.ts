@@ -2,7 +2,7 @@ import k from "../kaboom";
 import Matter from "matter-js";
 
 import * as IMC from "../Controls/INPUT_movement";
-import * as gameInfo from "../gameInfo.json";
+import gameInfo from "../gameInfo";
 
 import kLdtkSceneImporter from "../kUtils/kLdtkSceneImporter";
 

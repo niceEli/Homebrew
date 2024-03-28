@@ -3,7 +3,7 @@ import Matter from "matter-js";
 import matterRect from "../kUtils/kMatterRect";
 import matterCircle from "../kUtils/kMatterCircle";
 import PlayerPawnCircle from "../kUtils/kMatterPlayerCircle";
-import * as gameInfo from "../gameInfo.json";
+import gameInfo from "../gameInfo";
 
 export default function kMatterTest() {
   sessionStorage.setItem(gameInfo.internalName + "_isUGC", "false");

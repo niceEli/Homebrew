@@ -16,6 +16,7 @@
   "devDependencies": {
     "electron": "^26.1.0",
     "electron-builder": "^24.6.4",
+    "electron-builder-squirrel-windows": "24.13.3",
     "vite": "^4.5.2",
     "vite-plugin-electron": "^0.14.0",
     "vite-plugin-electron-renderer": "^0.14.5"
@@ -28,6 +29,7 @@
     "axios": "^1.6.2",
     "dropzone": "^6.0.0-beta.2",
     "jquery": "^3.7.1",
+    "js-toml": "^1.0.0",
     "kaboom": "github:replit/kaboom",
     "kaboom-flex-ui": "^0.0.8",
     "kalang": "^0.0.17",

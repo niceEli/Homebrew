@@ -1,11 +1,11 @@
 import k from "../kaboom";
-import * as gameInfo from "../gameInfo.json";
+import gameInfo from "../gameInfo";
 import * as IMC from "../Controls/INPUT_movement";
 import { Asset, AudioPlay, SpriteData } from "kaboom";
 
 let rainsounds: AudioPlay;
 
-export default function mainMenu() {
+export default async function mainMenu() {
   /*https://coolors.co/157f1f-4cb963-a0eade-5c6784-1d263b*/
   k.setBackground(k.BLACK);
   let menuBG = k.getSprite("MainMenuBG");
@@ -21,7 +21,7 @@ export default function mainMenu() {
     k.scale(1, 1),
     {
       update() {
-        this.scale = k.vec2(k.width() / asset.width, k.height() / asset.height);
+        this.scale = k.vec2(k.width() / globalThis.titleWidth, k.height() / globalThis.titleHeight);
       },
     },
   ]);
