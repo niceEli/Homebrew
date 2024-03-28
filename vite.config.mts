@@ -27,6 +27,8 @@ export default defineConfig({
   },
   build: {
     minify: "terser", // or "terser" but you need terser installed
+    target: "esnext",
+    chunkSizeWarningLimit: 10000,
   },
 });
 console.log(
