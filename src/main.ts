@@ -34,7 +34,7 @@ k.onLoad(async () => {
     gameInfo["introVid"] == "" ||
     gameInfo["introVid"] == null
   ) {
-    await onStart();
+    onStart();
   } else {
     kPlayIntroVid(gameInfo["introVid"], onStart);
   }
