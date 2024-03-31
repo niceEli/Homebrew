@@ -96,12 +96,14 @@ export default function kLdtkSceneImporter(
     x: number;
     y: number;
     spriteData: any;
+    sectorID: any;
   }[] = [
     {
       spriteID: "",
       x: 0,
       y: 0,
       spriteData: null,
+      sectorID: null,
     },
   ];
 
@@ -189,6 +191,7 @@ export default function kLdtkSceneImporter(
 
   for (let i = 0; i < sceneData.levels.length; i++) {
     const element = sceneData.levels[i];
+    const sectorID = element.iid;
     let bg = k.add([
       k.rect(element.pxWid * levelsize, element.pxHei * levelsize),
       k.pos(element.worldX * levelsize, element.worldY * levelsize),
@@ -200,6 +203,8 @@ export default function kLdtkSceneImporter(
         hexToRgb(element.__bgColor).g,
         hexToRgb(element.__bgColor).b
       ),
+      { sectorID: sectorID },
+      "sectorID:" + sectorID,
     ]);
     for (let i = 0; i < element.layerInstances.length; i++) {
       switch (element.layerInstances[i].__type) {
@@ -634,6 +639,7 @@ export default function kLdtkSceneImporter(
               x: x,
               y: y,
               spriteData: spriteTile.data,
+              sectorID: sectorID,
             });
           }
           break;
