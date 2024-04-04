@@ -1,4 +1,4 @@
-import kaboom from "kaboom";
+import kaboom from "kaboom-beta";
 import Matter, { IBodyDefinition } from "matter-js";
 import k from "../kaboom";
 

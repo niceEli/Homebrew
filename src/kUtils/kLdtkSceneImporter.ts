@@ -9,7 +9,7 @@ import matterRect, {
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
-import { GameObj, SceneDef, Vec2 } from "kaboom";
+import { GameObj, SceneDef, Vec2 } from "kaboom-beta";
 import Matter from "matter-js";
 import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";

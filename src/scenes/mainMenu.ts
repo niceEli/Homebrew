@@ -1,7 +1,7 @@
 import k from "../kaboom";
 import gameInfo from "../gameInfo";
 import * as IMC from "../Controls/INPUT_movement";
-import { Asset, AudioPlay, SpriteData } from "kaboom";
+import { Asset, AudioPlay, SpriteData } from "kaboom-beta";
 
 let rainsounds: AudioPlay;
 
@@ -21,7 +21,10 @@ export default async function mainMenu() {
     k.scale(1, 1),
     {
       update() {
-        this.scale = k.vec2(k.width() / globalThis.titleWidth, k.height() / globalThis.titleHeight);
+        this.scale = k.vec2(
+          k.width() / globalThis.titleWidth,
+          k.height() / globalThis.titleHeight
+        );
       },
     },
   ]);
