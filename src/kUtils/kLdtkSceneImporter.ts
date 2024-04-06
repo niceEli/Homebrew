@@ -27,7 +27,7 @@ import PlayerPawnCircleTopDown from "./kMatterCircleTopDown";
  * @param {SceneDef} currentScene - The current scene definition
  * @param {SceneDef} nextScene - The next scene definition
  * @param {any} engine - The physics engine
- * @param {vec2} zoomZ - The zoom vector (default: k.vec2(1, 1))
+ * @param {Vec2} zoomZ - The zoom vector (default: k.vec2(1, 1))
  */
 export default function kLdtkSceneImporter(
   sceneData,
