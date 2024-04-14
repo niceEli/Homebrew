@@ -14,3 +14,5 @@ export const k = kaboom({
 });
 
 export default k;
+
+globalThis.k = k;

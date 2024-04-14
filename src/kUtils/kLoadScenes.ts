@@ -9,6 +9,7 @@ import kLdtkScene from "../scenes/kLdtkScene";
 import UGCLoader from "../scenes/UGCLoader";
 import TopDown from "../scenes/campaign/TopDown";
 import Empty from "../scenes/campaign/Empty";
+import UGCJSInit from "../scenes/UGCJSInit";
 // Import Campaign Levels
 import Level1 from "../scenes/campaign/Level1";
 import Level2 from "../scenes/campaign/Level2";
@@ -30,7 +31,8 @@ export default function loadScenes() {
   k.scene("UGCLoader", UGCLoader);
   k.scene("TopDown", TopDown);
   k.scene("Empty", Empty);
-  k.scene("mainMenu", mainMenu)
+  k.scene("mainMenu", mainMenu);
+  k.scene("UGCJSInit", UGCJSInit);
   // Add Campaign Levels
   k.scene("Level1", Level1);
   k.scene("Level2", Level2);
