@@ -6,7 +6,7 @@ export default async function UGCJSInit() {
   const levelLocation = gameInfo["UGCLevel"];
   let levelData;
   if (globalThis["UGCJSInit"] === undefined) {
-    levelData = await kDownloadToVar(levelLocation);
+    levelData = (await kDownloadToVar(levelLocation)).data;
   } else {
     levelData = globalThis["UGCJSInit"];
   }
