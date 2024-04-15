@@ -11,8 +11,8 @@ export default async function UGCJSInit() {
     levelData = globalThis["UGCJSInit"];
   }
   const level = new Function(
-    "k",
-    "gameInfo",
+    "kaboomContext",
+    "gameInfoCTX",
     `
       return (async function() {
         ${levelData}
