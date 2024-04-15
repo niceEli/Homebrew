@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "npm",
+            "name": "npm run",
+            "command": "run",
+            "scripts": "dev",
+        },
+        {
+            "type": "command",
+            "name": "bun run",
+            "program": "bun",
+            "args": [
+                "run",
+                "dev"
+            ],
+        },
+    ]
+}
