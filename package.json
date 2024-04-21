@@ -13,11 +13,11 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "electron": "^26.6.10",
+    "electron": "^30.0.1",
     "electron-builder": "^24.13.3",
     "electron-builder-squirrel-windows": "24.13.3",
-    "vite": "^4.5.3",
-    "vite-plugin-electron": "^0.14.1",
+    "vite": "^5.2.8",
+    "vite-plugin-electron": "^0.28.4",
     "vite-plugin-electron-renderer": "^0.14.5"
   },
   "main": "dist-electron/main.js",
@@ -32,9 +32,9 @@
     "kaboom-beta": "^3000.1.1-7.b4",
     "kaboom-flex-ui": "^0.0.8",
     "kalang": "^0.0.17",
-    "kiboom": "^1.0.3",
+    "kiboom": "^1.0.4",
     "matter-js": "^0.19.0",
     "terser": "^5.30.3",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.5"
   }
 }
