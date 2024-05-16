@@ -3,7 +3,11 @@ import k from "../kaboom";
 import * as IMC from "../Controls/INPUT_movement";
 import gameInfo from "../gameInfo";
 
-export default function kReset(currentScene: SceneDef, deathScore: number) {
+export default function kReset(
+  currentScene: SceneDef,
+  deathScore: number,
+  kEndSongs: any
+) {
   return {
     add() {
       k.scene("scene", currentScene);
@@ -14,6 +18,7 @@ export default function kReset(currentScene: SceneDef, deathScore: number) {
           gameInfo.internalName + "_score",
           String(deathScore)
         );
+        kEndSongs();
         k.go("scene");
       }
     },

@@ -9,7 +9,7 @@ import matterRect, {
 import PlayerPawnCircle from "./kMatterPlayerCircle";
 import kCamera from "./kCamera";
 import kReset from "./kReset";
-import { GameObj, SceneDef, Vec2 } from "kaboom-beta";
+import { AudioPlay, GameObj, SceneDef, Vec2 } from "kaboom-beta";
 import Matter from "matter-js";
 import matterCircle from "./kMatterCircle";
 import kDownloadToVar from "./kDownloadToVar";
@@ -19,6 +19,8 @@ import soundComp from "./soundComp";
 import gameInfo from "../gameInfo";
 import enemyMovement from "./enemyMovement";
 import PlayerPawnCircleTopDown from "./kMatterCircleTopDown";
+import getNGSong from "./kNGLoader";
+import axios from "axios";
 
 /**
  * Imports LDtk scene data and initializes the level, including loading sprites, setting up triggers, handling collisions, and managing game objects.
@@ -29,7 +31,7 @@ import PlayerPawnCircleTopDown from "./kMatterCircleTopDown";
  * @param {any} engine - The physics engine
  * @param {Vec2} zoomZ - The zoom vector (default: k.vec2(1, 1))
  */
-export default function kLdtkSceneImporter(
+export default async function kLdtkSceneImporter(
   sceneData,
   currentScene: SceneDef,
   nextScene: SceneDef,
@@ -62,6 +64,12 @@ export default function kLdtkSceneImporter(
   let i;
   let r;
 
+  let sfxQ: AudioPlay[] = [];
+
+  globalThis.sfxQ = sfxQ;
+
+  let xhr = new XMLHttpRequest();
+
   function print(text: any) {
     k.debug.log(text);
     console.log(text);
@@ -73,6 +81,20 @@ export default function kLdtkSceneImporter(
 
   function kResetDep() {
     printError("kReset Is Deprecated. Please Remove");
+  }
+
+  function kEndSongs() {
+    for (let i = 0; i < sfxQ.length; i++) {
+      const sfx = sfxQ[i];
+      sfx.stop();
+    }
+  }
+
+  function kSetSongsPause(paused: boolean) {
+    for (let i = 0; i < sfxQ.length; i++) {
+      const sfx = sfxQ[i];
+      sfx.paused = paused;
+    }
   }
 
   let enemys: {
@@ -501,15 +523,35 @@ export default function kLdtkSceneImporter(
               case "Play_Sound":
                 let qsSound: string;
                 if (entValues["Name"] === "CUSTOM") {
-                  qsSound = entValues["Custom_Sound"];
+                  if (
+                    Number(entValues["Custom_Sound"]) ==
+                    entValues["Custom_Sound"]
+                  ) {
+                    qsSound = "newgroundsAudio_" + entValues["Custom_Sound"];
+                  } else {
+                    qsSound = entValues["Custom_Sound"];
+                  }
                 } else {
                   qsSound = kEnumToPath.run(entValues["Name"]);
                 }
 
                 if (!sounds.includes(qsSound)) {
+                  if (qsSound.startsWith("newgroundsAudio_")) {
+                    //16 letter remove
+                    let ngSound = qsSound.substring(16);
+                    k.loadSound(qsSound, await getNGSong(ngSound));
+                  }
                   sounds.push(qsSound);
                 }
-                let Play_Sound_Code = 'k.play("' + String(qsSound) + '");';
+                let doLoop = false;
+                if (entValues["Loop"] === true) {
+                  doLoop = true;
+                }
+                let seekPos = 0;
+                if (typeof entValues["StartPos"] == "number") {
+                  seekPos = entValues["StartPos"];
+                }
+                let Play_Sound_Code = `sfxQ.push(k.play('${String(qsSound)}', {loop: ${doLoop}, seek: ${seekPos} }));`;
                 if (
                   maxGroups < entValues["GroupID"] ||
                   maxGroups < entValues["NextGID"]
@@ -806,6 +848,7 @@ export default function kLdtkSceneImporter(
     if (sessionStorage.getItem(gameInfo.internalName + "_isUGC") !== "true") {
       localStorage.setItem(gameInfo.internalName + "_score", String(score));
     }
+    kEndSongs();
     k.scene("nextLevel", nextScene);
     k.go("nextLevel");
   });
@@ -815,6 +858,7 @@ export default function kLdtkSceneImporter(
 
   k.onUpdate(() => {
     if (isDead) {
+      kEndSongs();
       k.go("scene");
     }
   });
@@ -877,6 +921,7 @@ export default function kLdtkSceneImporter(
                 "levelsize",
                 "soundComp",
                 "enemyMovement",
+                "sfxQ",
                 `
                   return (async function() {
                     ${Func}
@@ -922,7 +967,8 @@ export default function kLdtkSceneImporter(
                   levelsize,
                   levelsize,
                   soundComp,
-                  enemyMovement
+                  enemyMovement,
+                  sfxQ
                 )
               );
 
@@ -969,6 +1015,7 @@ export default function kLdtkSceneImporter(
         if (IMC.pausing()) {
           const objs = k.get("*", { recursive: true });
           isPaused = !isPaused;
+          kSetSongsPause(isPaused);
           print("Paused: " + isPaused);
           for (let i = 0; i < objs.length; i++) {
             const obj = objs[i];
@@ -982,5 +1029,5 @@ export default function kLdtkSceneImporter(
     },
     "noPause",
   ]);
-  k.add([kReset(currentScene, deathScore)]);
+  k.add([kReset(currentScene, deathScore, kEndSongs), "noPause"]);
 }
