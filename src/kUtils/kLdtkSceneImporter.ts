@@ -467,6 +467,10 @@ export default async function kLdtkSceneImporter(
               case "Player_Start":
                 break;
               case "Phys_Object":
+                let physObjColor = 1;
+                if (entValues["Opacity"] !== undefined) {
+                  physObjColor = entValues["Opacity"];
+                }
                 let POent = k.add([
                   k.pos(ent.__worldX * levelsize, ent.__worldY * levelsize),
                   k.anchor("center"),
@@ -477,6 +481,7 @@ export default async function kLdtkSceneImporter(
                     hexToRgb(entValues["Color"]).g,
                     hexToRgb(entValues["Color"]).b
                   ),
+                  k.opacity(physObjColor),
                   k.rotate(0),
                   k.z(300000000),
                   matterRect(engine, {
