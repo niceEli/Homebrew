@@ -38,6 +38,7 @@ export default async function kLdtkSceneImporter(
   engine?: any,
   zoomZ = k.vec2(1, 1)
 ) {
+  k.debug.paused = true;
   // Load The Level
   k.scene("scene", currentScene);
   k.loadSprite("CTPlayer", "CTPlayer.png");
@@ -1035,4 +1036,5 @@ export default async function kLdtkSceneImporter(
     "noPause",
   ]);
   k.add([kReset(currentScene, deathScore, kEndSongs), "noPause"]);
+  k.debug.paused = false;
 }
