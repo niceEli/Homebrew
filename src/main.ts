@@ -8,8 +8,6 @@ import gameInfo from "./gameInfo";
 import kPlayIntroVid from "./kUtils/kPlayIntroVid";
 import getNGSong from "./kUtils/kNGLoader";
 
-console.log(gameInfo);
-
 // Make Black Screen
 k.add([
   k.rect(99999999, 99999999),
@@ -26,8 +24,6 @@ loadSounds();
 
 // Load Scenes
 loadScenes();
-
-globalThis.getNGSong = getNGSong;
 
 k.onLoad(async () => {
   console.clear();
