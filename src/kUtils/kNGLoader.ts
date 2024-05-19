@@ -54,7 +54,11 @@ export default async function getNGSong(id: string): Promise<ArrayBuffer> {
     url = url.substring(url.indexOf("url") + 3);
     url = url.substring(url.indexOf(':"') + 2);
     url = url.replace(/\\\//g, "/");
-
+    let domData = new DOMParser().parseFromString(data, "text/html");
+    let artistElement = domData.querySelector(
+      "#outer-skin > div.body-main > div > div > div > div.column.thin > div:nth-child(1) > div:nth-child(2) > div.item-user > div.item-details > div.item-details-main > h4 > a"
+    );
+    let artist = artistElement.textContent;
     let title = data.substring(data.indexOf("<title>") + 7);
     title = title.substring(0, title.lastIndexOf("</title>"));
 
@@ -62,7 +66,7 @@ export default async function getNGSong(id: string): Promise<ArrayBuffer> {
 
     let songArray: ArrayBuffer;
     songArray = await (await (await fetch(songUrl)).blob()).arrayBuffer();
-    print(`Downloaded Song: ${title} from ID ${id}`);
+    print(`Downloaded Song: ${title} by ${artist}, from ID ${id}`);
     return songArray;
   } catch (error) {
     if (error === 404) {
