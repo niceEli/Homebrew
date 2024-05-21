@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 import * as IMC from "../Controls/INPUT_movement";
 
 export default function kCamera(

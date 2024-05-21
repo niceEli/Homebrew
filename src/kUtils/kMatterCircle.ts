@@ -1,6 +1,6 @@
 import kaboom from "kaplay-beta";
 import Matter, { IBodyDefinition } from "matter-js";
-import k from "../kaboom";
+import k from "../kaplay";
 
 export default function matterCircle(
   engine: any,

@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 import Matter from "matter-js";
 
 import * as IMC from "../Controls/INPUT_movement";

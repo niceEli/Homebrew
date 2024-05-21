@@ -1706,7 +1706,7 @@
 				},
 				{
 					"identifier": "Custom_Sound",
-					"doc": "This Is The Sound You Will Use If The Sound For This Actor Is Set To Custom. It Can Be Realative To KaboomTS/Public Or A URL",
+					"doc": "This Is The Sound You Will Use If The Sound For This Actor Is Set To Custom. It Can Be Realative To Homebrew/Public Or A URL",
 					"__type": "String",
 					"uid": 214,
 					"type": "F_String",
@@ -2037,7 +2037,7 @@
 				},
 				{
 					"identifier": "Custom_Sound",
-					"doc": "This Is The Sound You Will Use If The Sound For This Actor Is Set To Custom. It Can Be Realative To KaboomTS/Public Or A URL",
+					"doc": "This Is The Sound You Will Use If The Sound For This Actor Is Set To Custom. It Can Be Realative To Homebrew/Public Or A URL",
 					"__type": "String",
 					"uid": 213,
 					"type": "F_String",

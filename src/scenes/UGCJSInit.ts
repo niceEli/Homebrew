@@ -1,6 +1,6 @@
 import gameInfo from "../gameInfo";
 import kDownloadToVar from "../kUtils/kDownloadToVar";
-import k from "../kaboom";
+import k from "../kaplay";
 
 export default async function UGCJSInit() {
   const levelLocation = gameInfo["UGCLevel"];

@@ -1666,7 +1666,7 @@
 				},
 				{
 					"identifier": "Sound_Effect",
-					"doc": "assuming . = KaboomTS/Public",
+					"doc": "assuming . = Homebrew/Public",
 					"__type": "String",
 					"uid": 170,
 					"type": "F_String",

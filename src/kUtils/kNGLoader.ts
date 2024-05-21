@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 
 export default async function getNGSong(id: string): Promise<ArrayBuffer> {
   async function getPage(url: string): Promise<string> {

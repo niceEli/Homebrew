@@ -1,7 +1,7 @@
-import k from "../../kaboom";
+import k from "../../kaplay";
 import Matter from "matter-js";
 
-import gameInfo from "../../gameInfo"
+import gameInfo from "../../gameInfo";
 
 import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../../scenes/kMatterTest";

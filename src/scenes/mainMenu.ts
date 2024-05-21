@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 import gameInfo from "../gameInfo";
 import * as IMC from "../Controls/INPUT_movement";
 import { Asset, AudioPlay, SpriteData } from "kaplay-beta";

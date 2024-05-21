@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 import * as kEnumToPath from "./kEnumToPath";
 import * as lua from "kalang";
 import { hexToRgb } from "./kColor";

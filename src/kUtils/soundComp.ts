@@ -1,5 +1,5 @@
 import { Asset, AudioPlay, AudioPlayOpt, SoundData } from "kaplay-beta";
-import k from "../kaboom";
+import k from "../kaplay";
 
 export default function soundComp(
   src: string | SoundData | Asset<SoundData>,

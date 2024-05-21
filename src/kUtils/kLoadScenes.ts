@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 
 // Import Scenes
 import HelloWorld from "../scenes/helloworld";

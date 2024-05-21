@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 import Matter from "matter-js";
 import matterRect from "../kUtils/kMatterRect";
 import PlayerPawnCircle from "../kUtils/kMatterPlayerCircle";

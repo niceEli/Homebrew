@@ -1,7 +1,7 @@
 {
-  "name": "niceelitechkaboom",
+  "name": "tech.niceeli.homebrew",
   "author": "niceEli",
-  "description": "The Kaboom TS Game Engine (Hey atleast its not unity)",
+  "description": "The Homebrew Game Engine And Physformer 2 Game",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

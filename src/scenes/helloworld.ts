@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 import gameInfo from "../gameInfo";
 
 export default function HelloWorld() {

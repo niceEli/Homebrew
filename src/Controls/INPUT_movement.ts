@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 import { Vec2 } from "kaplay-beta";
 import { Vector } from "matter-js";
 

@@ -1,2 +1,3 @@
-# KaboomTS
- Kaboom Typescript is a basic Kaboomjs engine with Matterjs (Written in Typescript)
+# Homebrew
+
+ Homebrew is a basic game engine based on kaplay with Matterjs support (Written in Typescript)

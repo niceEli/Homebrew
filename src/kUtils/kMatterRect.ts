@@ -1,5 +1,5 @@
 import { Vec2 } from "kaplay-beta";
-import k from "../kaboom";
+import k from "../kaplay";
 import Matter, { IChamferableBodyDefinition } from "matter-js";
 
 export default function matterRect(

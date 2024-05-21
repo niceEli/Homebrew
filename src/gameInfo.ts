@@ -1,5 +1,5 @@
 import { load } from "js-toml";
-import k from "./kaboom";
+import k from "./kaplay";
 
 let tomlData;
 export let gameInfo;

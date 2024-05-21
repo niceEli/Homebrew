@@ -1,7 +1,7 @@
 import kaboom from "kaplay-beta";
 import flexUIPlugin from "kaboom-flex-ui";
 
-let canvas: HTMLCanvasElement = document.querySelector("#kaboomGLCanvas");
+let canvas: HTMLCanvasElement = document.querySelector("#kaplayGLCanvas");
 
 export const k = kaboom({
   background: [0, 0, 0],

@@ -1,5 +1,5 @@
 import * as IMC from "../Controls/INPUT_movement";
-import k from "../kaboom";
+import k from "../kaplay";
 import Matter, { IBodyDefinition, Vector } from "matter-js";
 
 export default function PlayerPawnCircle(

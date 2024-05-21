@@ -6,5 +6,5 @@ gameMenuScene = "mainMenu"
 TitleBackground = "./greenGrad.jpg"
 compStartLevel = "Level1"
 UGCApi = "http://homebrew.niceeli.tech/"
-UGCLevel = "https://gh.niceEli.tech/KaboomTSUGCScene/bundle.js"
+UGCLevel = "https://gh.niceEli.tech/HomebrewUGCScene/bundle.js"
 tags = ["platformer", "fun", "difficult"]
