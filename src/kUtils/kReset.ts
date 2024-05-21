@@ -1,4 +1,4 @@
-import { SceneDef } from "kaboom-beta";
+import { SceneDef } from "kaplay-beta";
 import k from "../kaboom";
 import * as IMC from "../Controls/INPUT_movement";
 import gameInfo from "../gameInfo";

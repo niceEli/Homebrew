@@ -1,7 +1,7 @@
 import k from "../kaboom";
 import gameInfo from "../gameInfo";
 import * as IMC from "../Controls/INPUT_movement";
-import { Asset, AudioPlay, SpriteData } from "kaboom-beta";
+import { Asset, AudioPlay, SpriteData } from "kaplay-beta";
 
 let rainsounds: AudioPlay;
 

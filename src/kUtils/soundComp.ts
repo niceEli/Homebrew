@@ -1,4 +1,4 @@
-import { Asset, AudioPlay, AudioPlayOpt, SoundData } from "kaboom-beta";
+import { Asset, AudioPlay, AudioPlayOpt, SoundData } from "kaplay-beta";
 import k from "../kaboom";
 
 export default function soundComp(

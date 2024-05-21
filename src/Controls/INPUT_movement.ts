@@ -1,5 +1,5 @@
 import k from "../kaboom";
-import { Vec2 } from "kaboom-beta";
+import { Vec2 } from "kaplay-beta";
 import { Vector } from "matter-js";
 
 export function movement(): number {

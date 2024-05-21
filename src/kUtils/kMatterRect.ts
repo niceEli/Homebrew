@@ -1,4 +1,4 @@
-import { Vec2 } from "kaboom-beta";
+import { Vec2 } from "kaplay-beta";
 import k from "../kaboom";
 import Matter, { IChamferableBodyDefinition } from "matter-js";
 
