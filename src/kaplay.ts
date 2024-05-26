@@ -1,4 +1,4 @@
-import kaboom from "kaplay-beta";
+import kaboom from "kaplay";
 import flexUIPlugin from "kaboom-flex-ui";
 
 let canvas: HTMLCanvasElement = document.querySelector("#kaplayGLCanvas");
