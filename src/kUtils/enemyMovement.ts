@@ -1,4 +1,4 @@
-import type { Comp, GameObj, Vec2 } from "kaplay-beta";
+import type { Comp, GameObj, Vec2 } from "kaplay";
 import k from "../kaplay";
 
 export default function enemyMovement(

@@ -1,4 +1,4 @@
-import kaboom from "kaplay-beta";
+import kaboom from "kaplay";
 import Matter, { IBodyDefinition } from "matter-js";
 import k from "../kaplay";
 

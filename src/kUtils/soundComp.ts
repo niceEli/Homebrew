@@ -1,4 +1,4 @@
-import { Asset, AudioPlay, AudioPlayOpt, SoundData } from "kaplay-beta";
+import { Asset, AudioPlay, AudioPlayOpt, SoundData } from "kaplay";
 import k from "../kaplay";
 
 export default function soundComp(

@@ -1,4 +1,4 @@
-import { Vec2 } from "kaplay-beta";
+import { Vec2 } from "kaplay";
 import k from "../kaplay";
 import Matter, { IChamferableBodyDefinition } from "matter-js";
 

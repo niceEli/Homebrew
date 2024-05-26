@@ -1,5 +1,5 @@
 import k from "../kaplay";
-import { Vec2 } from "kaplay-beta";
+import { Vec2 } from "kaplay";
 import { Vector } from "matter-js";
 
 export function movement(): number {
