@@ -29,10 +29,8 @@
     "dropzone": "^6.0.0-beta.2",
     "jquery": "^3.7.1",
     "js-toml": "^1.0.0",
-    "kaplay-beta": "^3001.0.0-alpha.4-b2",
-    "kaboom-flex-ui": "^0.0.8",
+    "kaplay": "^3001.0.0-alpha.3",
     "kalang": "^0.0.17",
-    "kiboom": "^1.0.4",
     "matter-js": "^0.19.0",
     "terser": "^5.30.3",
     "typescript": "^5.4.5"
