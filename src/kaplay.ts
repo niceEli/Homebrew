@@ -1,8 +1,8 @@
-import kaboom from "kaplay";
+import kaplay from "kaplay";
 
 let canvas: HTMLCanvasElement = document.querySelector("#kaplayGLCanvas");
 
-export const k = kaboom({
+export const k = kaplay({
   background: [0, 0, 0],
   font: "sans-serif",
   canvas: canvas,
