@@ -13,7 +13,7 @@
             "request": "launch",
             "command": "bun dev",
             "cwd": "${workspaceFolder}"
-          },
+        },
         {
             "type": "bun",
             "request": "attach",
