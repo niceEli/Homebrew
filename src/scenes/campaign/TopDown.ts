@@ -9,6 +9,8 @@ import kMatterTest from "../../scenes/kMatterTest";
 
 import Empty from "./Empty"; //You need to uncomment this
 
+import db from "../../indexedDB";
+
 export default async function TopDown() {
   sessionStorage.setItem(gameInfo.internalName + "_isUGC", "false");
   k.setBackground(0, 0, 0, 1);
@@ -24,7 +26,7 @@ export default async function TopDown() {
   Matter.Composite.create(engine);
   let sceneData = await import("../../kLdtkWorlds/campaign/TopDown.json");
   // Load This Scene And Sprites
-  localStorage.setItem(gameInfo.internalName + "_cLevel", LevelName);
+  db.storage.put({ value: LevelName, key: "cLevel" }, "cLevel");
   try {
     kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine, k.vec2(2, 2));
   } catch (error) {

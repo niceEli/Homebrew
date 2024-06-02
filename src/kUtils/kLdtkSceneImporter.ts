@@ -20,7 +20,7 @@ import gameInfo from "../gameInfo";
 import enemyMovement from "./enemyMovement";
 import PlayerPawnCircleTopDown from "./kMatterCircleTopDown";
 import getNGSong from "./kNGLoader";
-import axios from "axios";
+import db from "../indexedDB";
 
 /**
  * Imports LDtk scene data and initializes the level, including loading sprites, setting up triggers, handling collisions, and managing game objects.
@@ -138,7 +138,7 @@ export default async function kLdtkSceneImporter(
 
   let score: number;
   if (sessionStorage.getItem(gameInfo.internalName + "_isUGC") !== "true") {
-    score = Number(localStorage.getItem(gameInfo.internalName + "_score"));
+    score = Number((await db.storage.get("score")).value);
   } else {
     score = 0;
   }
@@ -853,7 +853,7 @@ export default async function kLdtkSceneImporter(
   });
   k.onCollide("Player", "Win_Condition", () => {
     if (sessionStorage.getItem(gameInfo.internalName + "_isUGC") !== "true") {
-      localStorage.setItem(gameInfo.internalName + "_score", String(score));
+      db.storage.put({ value: String(score), key: "score" }, "score");
     }
     kEndSongs();
     k.scene("nextLevel", nextScene);

@@ -10,6 +10,8 @@ import kMatterTest from "../../scenes/kMatterTest";
 import Empty from "./Empty"; //You need to uncomment this
 import Level7 from "./Level7";
 
+import db from "../../indexedDB";
+
 export default async function Level6() {
   sessionStorage.setItem(gameInfo.internalName + "_isUGC", "false");
   k.setBackground(0, 0, 0, 1);
@@ -25,7 +27,7 @@ export default async function Level6() {
   Matter.Composite.create(engine);
   let sceneData = await import("../../kLdtkWorlds/campaign/Level6.json");
   // Load This Scene And Sprites
-  localStorage.setItem(gameInfo.internalName + "_cLevel", LevelName);
+  db.storage.put({ value: LevelName, key: "cLevel" }, "cLevel");
   try {
     kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
   } catch (error) {

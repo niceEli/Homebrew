@@ -2,6 +2,7 @@ import k from "../kaplay";
 import gameInfo from "../gameInfo";
 import * as IMC from "../Controls/INPUT_movement";
 import { Asset, AudioPlay, SpriteData } from "kaplay";
+import db from "../indexedDB";
 
 let rainsounds: AudioPlay;
 
@@ -181,15 +182,15 @@ export default async function mainMenu() {
 
 async function play() {
   rainsounds.stop();
-  localStorage.setItem(gameInfo["internalName"] + "_score", "0");
+  db.storage.put({ value: "0", key: "score"}, "score")
   k.go(gameInfo["compStartLevel"]);
 }
-function continueGame() {
+async function continueGame() {
   rainsounds.stop();
-  if (localStorage.getItem(gameInfo["internalName"] + "_cLevel") == null) {
+  if (await db.storage.get("cLevel") == null) {
     play();
   } else {
-    k.go(localStorage.getItem(gameInfo["internalName"] + "_cLevel"));
+    k.go((await db.storage.get("cLevel")).value);
   }
 }
 function playUGC() {

@@ -9,6 +9,8 @@ import delay from "../../kUtils/kDelay";
 import Empty from "./Empty";
 import Level2 from "./Level2";
 
+import db from "../../indexedDB";
+
 export default async function Level1() {
   sessionStorage.setItem(gameInfo.internalName + "_isUGC", "false");
   k.setBackground(0, 0, 0, 1);
@@ -24,7 +26,7 @@ export default async function Level1() {
   Matter.Composite.create(engine);
   let sceneData = await import("../../kLdtkWorlds/campaign/Level1.json");
   // Load This Scene And Sprites
-  localStorage.setItem(gameInfo.internalName + "_cLevel", LevelName);
+  db.storage.put({ value: LevelName, key: "cLevel" }, "cLevel");
   try {
     kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
   } catch (error) {

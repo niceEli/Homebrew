@@ -5,6 +5,7 @@ import gameInfo from "../gameInfo";
 
 import kLdtkSceneImporter from "../kUtils/kLdtkSceneImporter";
 import kMatterTest from "../scenes/kMatterTest";
+import db from "../indexedDB";
 
 import Empty from "./campaign/Empty"; //You need to uncomment this
 
@@ -25,7 +26,7 @@ export default async function kLdtkScene() {
   });
   let sceneData = await import("../kLdtkWorlds/example.json");
   // Load This Scene And Sprites
-  localStorage.setItem(gameInfo.internalName + "_cLevel", ThisLevel.name);
+  db.storage.put({ value: ThisLevel.name, key: "cLevel" }, "cLevel");
   try {
     kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
   } catch (error) {

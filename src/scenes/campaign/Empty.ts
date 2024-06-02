@@ -5,7 +5,7 @@ import delay from "../../kUtils/kDelay";
 import gameInfo from "../../gameInfo";
 
 import kLdtkSceneImporter from "../../kUtils/kLdtkSceneImporter";
-import kMatterTest from "../../scenes/kMatterTest";
+import db from "../../indexedDB";
 
 //import Empty from "./Empty"; //You need to uncomment this
 
@@ -24,7 +24,7 @@ export default async function Empty() {
   Matter.Composite.create(engine);
   let sceneData = await import("../../kLdtkWorlds/campaign/Empty.json");
   // Load This Scene And Sprites
-  localStorage.setItem(gameInfo.internalName + "_cLevel", LevelName);
+  db.storage.put({ value: LevelName, key: "cLevel" }, "cLevel");
   try {
     kLdtkSceneImporter(sceneData, ThisLevel, Nextlevel, engine);
   } catch (error) {

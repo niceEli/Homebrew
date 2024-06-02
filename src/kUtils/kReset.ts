@@ -2,6 +2,7 @@ import { SceneDef } from "kaplay";
 import k from "../kaplay";
 import * as IMC from "../Controls/INPUT_movement";
 import gameInfo from "../gameInfo";
+import db from "../indexedDB";
 
 export default function kReset(
   currentScene: SceneDef,
@@ -14,10 +15,7 @@ export default function kReset(
     },
     update() {
       if (IMC.reseting()) {
-        localStorage.setItem(
-          gameInfo.internalName + "_score",
-          String(deathScore)
-        );
+        db.storage.put({ value: String(deathScore), key: "score" }, "score");
         kEndSongs();
         k.go("scene");
       }
