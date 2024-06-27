@@ -13,4 +13,5 @@ export default defineConfig({
     chunkSizeWarningLimit: 10000,
     sourcemap: "inline",
   },
+  base: "./",
 });
