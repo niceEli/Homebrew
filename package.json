@@ -4,23 +4,17 @@
   "description": "The Homebrew Game Engine And Physformer 2 Game",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build && electron-builder",
-    "buildWin": "tsc && vite build && electron-builder -w",
-    "buildMac": "tsc && vite build && electron-builder -m",
-    "buildGL": "tsc && vite build && electron-builder -l",
-    "buildWeb": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "web:dev": "vite",
+    "web:build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
   },
   "devDependencies": {
-    "electron": "^30.0.1",
-    "electron-builder": "^24.13.3",
-    "electron-builder-squirrel-windows": "24.13.3",
-    "vite": "^5.2.8",
-    "vite-plugin-electron": "^0.28.4",
-    "vite-plugin-electron-renderer": "^0.14.5"
+    "@tauri-apps/cli": "^2.0.0-beta.20",
+    "vite": "^5.2.8"
   },
-  "main": "dist-electron/main.js",
   "dependencies": {
     "@types/dropzone": "^5.7.8",
     "@types/jquery": "^3.5.29",

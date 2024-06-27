@@ -1,0 +1,35 @@
+{
+  "productName": "Homebrew",
+  "version": "0.1.0",
+  "identifier": "tech.niceeli.homebrew",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run web:dev",
+    "beforeBuildCommand": "npm run web:build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Physformer 2",
+        "width": 960,
+        "height": 720,
+        "resizable": false,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json"
+}
