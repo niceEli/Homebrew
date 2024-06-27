@@ -1,7 +1,6 @@
 import * as IMC from "../Controls/INPUT_movement";
 import k from "../kaplay";
 import Matter, { IBodyDefinition, Vector } from "matter-js";
-import { BrowserWindow } from "electron";
 
 export default function PlayerPawnCircleTopDown(
   engine: Matter.Engine,

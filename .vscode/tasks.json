@@ -6,7 +6,7 @@
 			"script": "bun run build",
 			"problemMatcher": [],
 			"label": "bun: build",
-			"detail": "bun run tsc && vite build && electron-builder - package.json",
+			"detail": "bun run build - package.json",
 			"group": {
 				"kind": "build",
 				"isDefault": true
