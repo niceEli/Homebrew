@@ -8,7 +8,7 @@ export default function kPlayIntroVid(
   video.autoplay = true;
   video.loop = false;
   video.controls = false;
-  if ("isTauri" in window) {
+  if (!("isTauri" in window)) {
     video.muted = true;
   }
 
