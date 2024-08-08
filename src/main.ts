@@ -6,7 +6,6 @@ import loadSounds from "./kUtils/kLoadSounds";
 import loadScenes from "./kUtils/kLoadScenes";
 import gameInfo from "./gameInfo";
 import kPlayIntroVid from "./kUtils/kPlayIntroVid";
-import getNGSong from "./kUtils/kNGLoader";
 
 // Make Black Screen
 k.add([
